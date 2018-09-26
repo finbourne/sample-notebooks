@@ -32,22 +32,22 @@ def qry_holdings(date,scope,portfolio):
         t = src.transaction
         if(t):
             txn_data = {'commitment': t.type,
-                        'commitment_security_uid': t.security_uid,
+                        'commitment_instrument_uid': t.instrument_uid,
                         'settlement_date': t.settlement_date}
             record.update(txn_data)
              
-    holdings = client.get_aggregate_holdings(scope,portfolio,qry_date)
+    holdings = client.get_holdings(scope,portfolio,qry_date)
 
-    columns = ['holding_type','security_uid','units']
+    columns = ['holding_type','instrument_uid','units']
     df =  arrayToDf(holdings.values, columns, getTxnDetails)
     #Add in empty transaction details if they are missing
     if 'commitment' not in df.columns.values:
-        for col in ['commitment','commitment_security_uid','settlement_date']:
+        for col in ['commitment','commitment_instrument_uid','settlement_date']:
            df[col] = np.nan;
     return df;
 
 def qry_transactions(scope,id):
-    txn_columns = ['trade_id', 'type', 'security_uid', 'trade_date', 'settlement_date', 'units',
+    txn_columns = ['trade_id', 'type', 'instrument_uid', 'trade_date', 'settlement_date', 'units',
                'trade_price', 'total_consideration', 'exchange_rate', 'settlement_currency',
                'trade_currency', 'counterparty_id', 'source', 'dividend_state',
                'trade_price_type', 'unit_type', 'netting_set']
@@ -56,7 +56,7 @@ def qry_transactions(scope,id):
         
 def cash_ladder(date,scope,portfolio):
     SDATE='settlement_date'
-    CCY='security_uid'
+    CCY='instrument_uid'
     QTY='units'
     TYPE='holding_type'
     CUM='cum'
@@ -133,12 +133,12 @@ def alt_cash_ladder(date,scope,portfolio):
     df = df[df['holding_type'] != 'P']
 
     df['settlement_date'] = pd.to_datetime(df['settlement_date'].fillna(qry_date),utc=True).dt.date
-    df = df.sort_values(['security_uid','settlement_date'])
-    df['balance'] = df[['security_uid','units']].groupby(['security_uid'],as_index=False).cumsum()['units']
+    df = df.sort_values(['instrument_uid','settlement_date'])
+    df['balance'] = df[['instrument_uid','units']].groupby(['instrument_uid'],as_index=False).cumsum()['units']
 
-    columns = ['security_uid','settlement_date','commitment','holding_type','commitment_security_uid','units','balance']
+    columns = ['instrument_uid','settlement_date','commitment','holding_type','commitment_instrument_uid','units','balance']
 
-    df = df[columns].rename(columns={'security_uid':'Currency',
+    df = df[columns].rename(columns={'instrument_uid':'Currency',
                                 'settlement_date':'Cash Date',
                                 'commitment':'Transaction Type',
                                 'holding_type':'Cash Type',
