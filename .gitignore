@@ -1,0 +1,5 @@
+/diagrams
+.idea
+secrets.json
+.ipynb_checkpoints/
+__pycache__/

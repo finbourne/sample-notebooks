@@ -1,0 +1,9 @@
+portfolio_group_name,portfolio_name,transaction_id,instrument_uid,type,units,transaction_price,transaction_currency
+client-A-portfolios,client-A-strategy-balanced,tid_35b77104-7c72-4515-af2b-d22bb45e6edd,WPP_LondonStockEx_WPP,Sell,265600,8.91,GBP
+client-A-portfolios,client-A-strategy-tech,tid_2ac903c9-3615-4716-80d7-1608d40617dc,MicroFocus_LondonStockEx_MCRO,Buy,15074,13.2867,GBP
+client-B-portfolios,client-B-strategy-balanced,tid_4f192c6a-e74b-464e-95c2-62a18b092bd8,Kingfisher_LondonStockEx_KGF,Sell,325000,2.345,GBP
+client-B-portfolios,client-B-strategy-balanced,tid_6fc1a588-f19b-4222-93d5-c35dcf4c7d46,UKGiltTreasury_4.5_2034,Buy,10501,140.572,GBP
+client-B-portfolios,client-B-strategy-fixedincome,tid_3a95473f-1b4a-4652-8047-91624f3f0e19,UKGiltTreasury_3.75_2021,Buy,24000,109.126,GBP
+client-B-portfolios,client-B-strategy-fixedincome,tid_a1a582d2-372b-4f95-883b-97147e3b88d9,USTreasury_2.00_2021,Sell,57000,97.8,USD
+client-C-portfolios,client-C-strategy-balanced,tid_8ceaa0ba-ee3c-4c1e-9c94-00329f0c213f,Whitebread_LondonStockEx_WTB,Sell,70000,47.03,GBP
+client-C-portfolios,client-C-strategy-balanced,tid_adefc478-aca8-4a9b-89b1-57f49a31d1b5,TESCO_LondonStockEx_TSCO,Sell,342000,1.8865,GBP
