@@ -77,12 +77,8 @@ def create_scope_ids(num_scopes):
     
     Output
     scopes: List of scope identifiers
-    """
-    
-    scopes = []
-    
-    for i in range(num_scopes):
-        scopes.append(str(uuid.uuid4())[:4])
+    """ 
+    scopes = [str(uuid.uuid4())[:4] for i in range(num_scopes)]
     
     return scopes
 
@@ -112,11 +108,9 @@ def fetch_portfolio_names(csv_file):
                 
     client_portfolios = {}
 
-    for portfolio_group in portfolios['portfolio_group_name'].unique():
-        client_portfolios[portfolio_group] = []
-                
-        for portfolio in portfolios.loc[portfolios['portfolio_group_name'] == portfolio_group, 'portfolio_name']:
-            client_portfolios[portfolio_group].append(portfolio)
+    for index, portfolio_group, portfolio in portfolios.itertuples():
+        
+        client_portfolios.setdefault(portfolio_group, []).append(portfolio)
     
     return client_portfolios
 
@@ -127,6 +121,7 @@ def fetch_instrument_universe(csv_file, paper=False):
     
     Input
     csv_file: The name of the csv file including the extension i.e. .csv
+    paper: Whether or not this is for the paper portfolios use case
     
     Output
     instrument_universe: Dictionary containing the instrument universe
