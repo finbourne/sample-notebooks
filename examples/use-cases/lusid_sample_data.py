@@ -133,6 +133,7 @@ def fetch_instrument_universe(csv_file, paper=False):
     instrument_universe = {}
     
     if paper:
+        instruments = instruments.loc[:, ['instrument_name', 'currency', 'figi', 'ticker','isin','sedol']]
         for index, instrument_name, currency, figi, ticker, isin, sedol in instruments.itertuples():
             instrument_universe[instrument_name] = {'identifiers': {'Figi': figi,
                                                                     'Isin': isin,
@@ -142,6 +143,7 @@ def fetch_instrument_universe(csv_file, paper=False):
                                                     'currency': currency}
         
     else:
+        instruments = instruments.loc[:, ['instrument_name', 'client_internal', 'currency']]
         for index, instrument_name, client_internal, currency in instruments.itertuples():
             instrument_universe[instrument_name] = {'identifiers': {'ClientInternal': client_internal,
                                                                     'LUID': ''},
