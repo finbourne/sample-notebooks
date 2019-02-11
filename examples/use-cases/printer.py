@@ -190,14 +190,6 @@ def transactions_strategy(transaction_list, portfolios=False):
             print (colours.bold + 'Strategy: ' + colours.end + transaction['strategy'] + '\n')
         print ('\n')
 
-
-def portfolio_response(response):
-    print (colours.bold + 'Portfolio Created' + colours.end)
-    print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
-    print (colours.bold + 'Code: ' + colours.end + response.id.code)
-    print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
-    print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
-
 def derived_portfolio_response(response):
     print (colours.bold + 'Portfolio Created' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
@@ -207,8 +199,30 @@ def derived_portfolio_response(response):
     print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
     print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
 
-def portfolio_group_response(response):
-    print (colours.FAIL + colours.bold + 'Portfolio Group Created' + colours.end)
+def portfolio_response(response):
+    if response.is_derived:
+        print (colours.bold + 'Derived Portfolio Created' + colours.end)
+        print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
+        print (colours.bold + 'Code: ' + colours.end + response.id.code)
+        print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
+        print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
+        print (colours.bold + 'Parent Portfolio Details' + colours.end)
+        print (colours.bold + 'Code: ' + colours.end + response.parent_portfolio_id.code)
+    else:
+        print (colours.bold + 'Portfolio Created' + colours.end)
+        print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
+        print (colours.bold + 'Code: ' + colours.end + response.id.code)
+        print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
+        print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
+
+def portfolio_group_response(response, operation):
+    if operation == 'created':
+        print (colours.FAIL + colours.bold + 'Portfolio Group Created' + colours.end)
+    elif operation == 'updated':
+        print (colours.FAIL + colours.bold + 'Portfolio Group Updated' + colours.end)
+    else:
+        print (colours.FAIL + colours.bold + 'Portfolio Group' + colours.end)
+    print (colours.bold + 'Name: ' + colours.end + response.display_name)
     print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
     print (colours.bold + 'Code: ' + colours.end + response.id.code)
     print (colours.bold + 'Portfolios Inside Group: ' + colours.end)
@@ -217,6 +231,25 @@ def portfolio_group_response(response):
         print (portfolios.code)
     print ('\n')
 
+def expanded_portfolio_group_response(response):
+    print (colours.FAIL + colours.bold + 'Portfolio Group Full Details : ' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
+    print (colours.bold + 'Code: ' + colours.end + response.id.code)
+    print ('\n')
+    print (colours.bold + 'Portfolios Inside Group: ' + colours.end)
+    for folio in response.values:
+        portfolio_response(folio)
+    print ('\n')
+    print (colours.bold + 'Subgroups Inside Group: ' + colours.end)
+    for sub in response.sub_groups:
+        print (colours.bold + 'Name: ' + colours.end + sub.name)
+        print (colours.bold + 'Scope: ' + colours.end + sub.id.scope)
+        print (colours.bold + 'Code: ' + colours.end + sub.id.code)
+        print ('\n')
+        print (colours.bold + 'Portfolios Inside SubGroup: ' + colours.end)
+        for folio in sub.values:
+            portfolio_response(folio)
+        print ('\n')
 
 def instrument_response(response, identifier='ClientInternal'):
 
@@ -277,14 +310,14 @@ def add_property_response(response, scope, portfolio_name, transaction_id):
     print (colours.bold + 'Property Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
 
 def holdings_response(response, scope, code):
-    print (colours.bold + 'Holdings in Portfolio' + colours.end)
-    print (colours.bold + 'Scope: ' + colours.end, scope)
-    print (colours.bold + 'Code: ' + colours.end, code, '\n')
+    print (colours.bold + 'Holdings for Portfolio' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + scope)
+    print (colours.bold + 'Code: ' + colours.end + code + '\n')
     for holding in response.values:
-        print ('Instrument Name: ', holding.properties[0].value)
-        print ('Units: ', holding.units)
-        print ('Cost: ', round(holding.cost.amount,2))
-        print ('Currency: ', holding.cost.currency +'\n')
+        print (colours.bold + 'Instrument Name: ' + colours.end + holding.properties[0].value)
+        print (colours.bold + 'Units: ' + colours.end + str(holding.units))
+        print (colours.bold + 'Cost: ' + colours.end + str(holding.cost.amount))
+        print (colours.bold + 'Currency: ' + colours.end + holding.cost.currency + '\n')
 
 def get_transactions_response(response, scope, code):
     print (colours.bold + 'Transactions Retrieved from Portfolio' + colours.end)
@@ -320,7 +353,7 @@ def aggregation_response_paper(response):
         print (colours.bold + 'Current Price :' + '£' + colours.end + str(round(result['Sum(Holding/default/Price)'], 2)))
         print (colours.bold + 'Present Value :' + colours.end + '£' + str(round(result['Sum(Holding/default/PV)'],2)))
         print (colours.bold + 'Cost :' + colours.end + '£' + str(round(result['Sum(Holding/default/Cost)'], 2)))
-        print (colours.bold + 'Return :' + colours.end + str(round(((result['Sum(Holding/default/PV)']-result['Sum(Holding/default/Cost)'])/result['Sum(Holding/default/Cost)'])*100*sign,4)) + '%' + '\n')
+        print (colours.bold + 'Return :' + colours.end + str(round(((result['Sum(Holding/default/PV)']-result['Sum(Holding/default/Cost)'])/result['Sum(Holding/default/Cost)'])*100*sign, 4)) + '%' + '\n')
 
         total_cost += result['Sum(Holding/default/Cost)']
         total_pv += result['Sum(Holding/default/PV)']
@@ -379,6 +412,7 @@ def aggregation_response_index(agg_response):
     print (colours.bold + 'Current Index Level :' + colours.end + str(round(present,2)))
     print (colours.bold + 'Return :' + colours.end + str(round(total_return*100,4)) + '%')
 
+
 def transaction_type_response(response, filters=[]):
     i = 0
     for mapping in response.values:
@@ -412,12 +446,11 @@ def transaction_type_response(response, filters=[]):
                     print (colours.bold + 'Properties: ' + colours.end + key + ': ' + value + '\n')
         print ('\n\n')
 
-def holdings_response(response, scope, code):
-    print (colours.bold + 'Holdings for Portfolio' + colours.end)
-    print (colours.bold + 'Scope: ' + colours.end + scope)
-    print (colours.bold + 'Code: ' + colours.end + code + '\n')
-    for holding in response.values:
-        print (colours.bold + 'Instrument Name: ' + colours.end + holding.properties[0].value)
-        print (colours.bold + 'Units: ' + colours.end + str(holding.units))
-        print (colours.bold + 'Cost: ' + colours.end + str(holding.cost.amount))
-        print (colours.bold + 'Currency: ' + colours.end + holding.cost.currency + '\n')
+
+def group_commands(response, group_name):
+    print (colours.bold + 'Commands Applied To Group ' + group_name + colours.end)
+    print (colours.bold + 'Number of commands : ' + colours.end + str(response.count))
+    for command in response.values:
+        print (colours.bold + 'Description : ' + colours.end + command.description)
+        print (colours.bold + 'At Time : ' + colours.end + str(command.processed_time))
+        print('\n')

@@ -2,6 +2,7 @@
 .idea
 secrets.json
 .ipynb_checkpoints/
+templates/
 __pycache__/
 *lusid
 *.html
