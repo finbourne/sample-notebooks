@@ -10,6 +10,7 @@ from urllib.request import pathname2url
 import json
 from random import shuffle, randint
 from msrest.authentication import BasicTokenAuthentication
+import numpy as np
 
 def authenticate_secrets():
     # Load our configuration details from the environment variables
@@ -301,7 +302,9 @@ def fetch_client_transactions(csv_file, instrument_universe, days_back, portfoli
     
     _client_transactions = {}
             
-    for index, portfolio, trans_id, instr_name, trans_desc, trans_type, trans_units, trans_price, trans_currency, trans_strategy, trans_cost in transactions.itertuples():
+    for row in transactions.iterrows():
+        
+        instrument = row[1]
         
         day = randint(0,days_back-1)
         hour = randint(0,8)
@@ -311,17 +314,23 @@ def fetch_client_transactions(csv_file, instrument_universe, days_back, portfoli
         
         transaction_date = days_ago_trade_open + timedelta(days=day, hours=hour, minutes=minute, seconds=second, microseconds=microsecond)
         
-        _client_transactions[trans_id] = {'type': trans_type,
-                                          'portfolio': portfolio,
-                                          'instrument_name': instr_name,
-                                          'instrument_uid': instrument_universe[instr_name]['identifiers']['LUID'],
+        if instrument['figi'] is not np.nan:
+            identifier = instrument['figi']
+        else:
+            identifier = instrument['currency_code']
+        trans_id = instrument['transaction_id']
+        _client_transactions[trans_id] = {'type': instrument['transaction_type'],
+                                          'portfolio': instrument['portfolio_name'],
+                                          'instrument_name': instrument['instrument_name'],
+                                          'instrument_uid': identifier,
                                           'transaction_date': transaction_date.isoformat(),
                                           'settlement_date': (transaction_date + timedelta(days=2)).isoformat(),
-                                          'units': trans_units,
-                                          'transaction_price': trans_price,
-                                          'transaction_currency': trans_currency,
-                                          'total_cost': trans_cost,
-                                          'strategy': trans_strategy}
+                                          'units': instrument['transaction_units'],
+                                          'transaction_price': instrument['transaction_price'],
+                                          'transaction_currency': instrument['transaction_currency'],
+                                          'total_cost': instrument['transaction_cost'],
+                                          'strategy': instrument['transaction_strategy'],
+                                          'description': instrument['transaction_description']}
         
     
     if portfolios:

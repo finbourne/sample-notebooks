@@ -143,7 +143,7 @@ def transactions_strategy(transaction_list, portfolios=False):
             for transaction_id, transaction in transactions_list.items():
                 print (colours.bold + 'Transaction: ' + colours.end + transaction_id)
                 print (colours.bold + 'Instrument Name: ' + colours.end + transaction['instrument_name'])
-                print (colours.bold + 'Instrument LUID: ' + colours.end + transaction['instrument_uid'])
+                print (colours.bold + 'Instrument Id: ' + colours.end + str(transaction['instrument_uid']))
                 print (colours.bold + 'Type: ' + colours.end + transaction['type'])
                 print (colours.bold + 'Units: ' + colours.end + str(transaction['units']))
                 print (colours.bold + 'Price: ' + colours.end + str(transaction['transaction_price']))
@@ -151,6 +151,7 @@ def transactions_strategy(transaction_list, portfolios=False):
                 print (colours.bold + 'Currency: ' + colours.end + transaction['transaction_currency'])
                 print (colours.bold + 'Transaction Date: ' + colours.end + transaction['transaction_date'])
                 print (colours.bold + 'Settlement Date: ' + colours.end + transaction['settlement_date'])
+                print (colours.bold + 'Description: ' + colours.end + transaction['description'])
                 print (colours.bold + 'Strategy: ' + colours.end + transaction['strategy'] + '\n')
             print ('\n')
         
@@ -159,7 +160,7 @@ def transactions_strategy(transaction_list, portfolios=False):
             print (colours.bold + 'Transaction: ' + colours.end + transaction_id)
             print (colours.bold + 'Portfolio: ' + colours.end + transaction['portfolio'])
             print (colours.bold + 'Instrument Name: ' + colours.end + transaction['instrument_name'])
-            print (colours.bold + 'Instrument LUID: ' + colours.end + transaction['instrument_uid'])
+            print (colours.bold + 'Instrument Id: ' + colours.end + str(transaction['instrument_uid']))
             print (colours.bold + 'Type: ' + colours.end + transaction['type'])
             print (colours.bold + 'Units: ' + colours.end + str(transaction['units']))
             print (colours.bold + 'Price: ' + colours.end + str(transaction['transaction_price']))
@@ -167,6 +168,7 @@ def transactions_strategy(transaction_list, portfolios=False):
             print (colours.bold + 'Currency: ' + colours.end + transaction['transaction_currency'])
             print (colours.bold + 'Transaction Date: ' + colours.end + transaction['transaction_date'])
             print (colours.bold + 'Settlement Date: ' + colours.end + transaction['settlement_date'])
+            print (colours.bold + 'Description: ' + colours.end + transaction['description'])
             print (colours.bold + 'Strategy: ' + colours.end + transaction['strategy'] + '\n')
         print ('\n')
     
