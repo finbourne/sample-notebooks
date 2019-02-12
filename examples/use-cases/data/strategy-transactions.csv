@@ -1,9 +1,9 @@
-portfolio_name,transaction_id,instrument_name,trans_desc,trans_type,trans_units,trans_price,trans_currency,trans_strategy,trans_cost
-mandate-balanced,tid_329432525234324,Kingfisher_LondonStockEx_KGF,Equity Sale,Sell,325000,2.345,GBP,quantitativeSignal,762125
-mandate-balanced,tid_325452342424500,UKGiltTreasury_4.5_2034,Equity Purchase,Buy,10501,140.572,GBP,incomeRequirements,1476146.572
-mandate-fixedincome,tid_234295929052090,UKGiltTreasury_3.75_2021,Equity Purchase,Buy,24000,109.126,GBP,incomeRequirements,2619024
-mandate-fixedincome,tid_234942982496001,USTreasury_2.00_2021,Equity Sale,Sell,57000,97.8,USD,internationalExposure,5574600
-mandate-energy,tid_239491298599900,Glencore_LondonStockEx_GLEN,Equity Sale,Sell,120000,2.6,GBP,fundamentalAnalysis,312000
-mandate-energy,tid_121309590059995,BP_LondonStockEx_BP,Equity Purchase,Buy,50000,5.287,GBP,fundamentalAnalysis,264350
-mandate-usgovt,tid_124319009950924,USTreasury_2.00_2021,Equity Sale,Sell,28000,98.1,USD,incomeRequirements,2746800
-mandate-international,tid_212390582999593,Apple_Nasdaq_AAPL,Equity Purchase,Buy,15000,168.49,GBP,newsSentiment,2527350
+portfolio_name,transaction_id,instrument_name,transaction_description,transaction_type,transaction_units,transaction_price,transaction_currency,transaction_strategy,transaction_cost,figi
+mandate-balanced,tid_329432525234324,Kingfisher_LondonStockEx_KGF,Equity Sale,Sell,325000,2.345,GBP,quantitativeSignal,762125,
+mandate-balanced,tid_325452342424500,UKGiltTreasury_4.5_2034,Equity Purchase,Buy,10501,140.572,GBP,incomeRequirements,1476146.572,
+mandate-fixedincome,tid_234295929052090,UKGiltTreasury_3.75_2021,Equity Purchase,Buy,24000,109.126,GBP,incomeRequirements,2619024,
+mandate-fixedincome,tid_234942982496001,USTreasury_2.00_2021,Equity Sale,Sell,57000,97.8,USD,internationalExposure,5574600,
+mandate-energy,tid_239491298599900,Glencore_LondonStockEx_GLEN,Equity Sale,Sell,120000,2.6,GBP,fundamentalAnalysis,312000,
+mandate-energy,tid_121309590059995,BP_LondonStockEx_BP,Equity Purchase,Buy,50000,5.287,GBP,fundamentalAnalysis,264350,
+mandate-usgovt,tid_124319009950924,USTreasury_2.00_2021,Equity Sale,Sell,28000,98.1,USD,incomeRequirements,2746800,
+mandate-international,tid_212390582999593,Apple_Nasdaq_AAPL,Equity Purchase,Buy,15000,168.49,GBP,newsSentiment,2527350,
