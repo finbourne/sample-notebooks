@@ -5,3 +5,4 @@ secrets.json
 __pycache__/
 *lusid
 *requirements.txt
+*.html
