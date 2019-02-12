@@ -318,6 +318,10 @@ def fetch_client_transactions(csv_file, instrument_universe, days_back, portfoli
             identifier = instrument['figi']
         else:
             identifier = instrument['currency_code']
+            
+        if portfolios:
+            identifier = instrument_universe[instrument['instrument_name']]['identifiers']['LUID']
+        
         trans_id = instrument['transaction_id']
         _client_transactions[trans_id] = {'type': instrument['transaction_type'],
                                           'portfolio': instrument['portfolio_name'],
