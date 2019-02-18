@@ -1,0 +1,2 @@
+﻿code,announcement_date,execution_date,record_date,payment_date,input_instrument_figi,input_instrument_internal,input_units_factor,input_cost_factor,output_instrument_figi,output_instrument_internal,output_units_factor,output_cost_factor,dividend_yield,action_description
+5943592342,2019-01-29 12:04:20.970603+00:00,2019-02-08 12:04:20.970603+00:00,2019-02-11 12:04:20.970603+00:00,2019-02-14 12:04:20.970603+00:00,BBG000B9XVV8,imd_34535347,1,1,,CCY_GBP,2,2,0.0017,dividend
