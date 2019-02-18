@@ -227,29 +227,25 @@ def portfolio_group_response(response, operation):
     print (colours.bold + 'Code: ' + colours.end + response.id.code)
     print (colours.bold + 'Portfolios Inside Group: ' + colours.end)
     for portfolios in response.portfolios:
-
         print (portfolios.code)
     print ('\n')
-
+    
 def expanded_portfolio_group_response(response):
     print (colours.FAIL + colours.bold + 'Portfolio Group Full Details : ' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
     print (colours.bold + 'Code: ' + colours.end + response.id.code)
-    print ('\n')
-    print (colours.bold + 'Portfolios Inside Group: ' + colours.end)
+    print (colours.OKBLUE + colours.bold + 'Portfolios Inside Group: ' + colours.end)
     for folio in response.values:
         portfolio_response(folio)
-    print ('\n')
-    print (colours.bold + 'Subgroups Inside Group: ' + colours.end)
+    print (colours.OKGREEN + colours.bold + 'Subgroups Inside Group: ' + colours.end)
     for sub in response.sub_groups:
         print (colours.bold + 'Name: ' + colours.end + sub.name)
         print (colours.bold + 'Scope: ' + colours.end + sub.id.scope)
         print (colours.bold + 'Code: ' + colours.end + sub.id.code)
-        print ('\n')
-        print (colours.bold + 'Portfolios Inside SubGroup: ' + colours.end)
+        print (colours.OKBLUE + colours.bold + 'Portfolios Inside SubGroup: ' + colours.end)
         for folio in sub.values:
             portfolio_response(folio)
-        print ('\n')
+    print ('\n')
 
 def instrument_response(response, identifier='ClientInternal'):
 
