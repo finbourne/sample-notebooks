@@ -1,0 +1,6 @@
+﻿displayName,description,code,baseCurrency,accountingMethod,portfolio_group_id,portfolio_group_name,portfolio_group_description
+UK Equities Fund,,UK-Equities,GBP,AverageCost,FINBOURNE-IM,FINBOURNE Investment Management,FINBOURNE Investment Management Group
+Global Strategies Fund,,Global-Strategies,GBP,AverageCost,FINBOURNE-IM,FINBOURNE Investment Management,FINBOURNE Investment Management Group
+European Equities Fund,,European-Equities,EUR,AverageCost,FINBOURNE-IM,FINBOURNE Investment Management,FINBOURNE Investment Management Group
+US$ Income Fund,,US$-Income,USD,AverageCost,FINBOURNE-US$-Inc,FINBOURNE US$ Inc,FINBOURNE US$ Income Group
+US Corporate Bond Fund,,US-Corporate-Bond,USD,AverageCost,FINBOURNE-US$-Inc,FINBOURNE US$ Inc,FINBOURNE US$ Income Group
