@@ -206,8 +206,8 @@ def portfolio_response(response):
         print (colours.bold + 'Code: ' + colours.end + response.id.code)
         print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
         print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
-        print (colours.bold + 'Parent Portfolio Details' + colours.end)
-        print (colours.bold + 'Code: ' + colours.end + response.parent_portfolio_id.code)
+        print (colours.bold + '   Parent Portfolio Details' + colours.end)
+        print (colours.bold + '   Code: ' + colours.end + response.parent_portfolio_id.code + '\n')
     else:
         print (colours.bold + 'Portfolio Created' + colours.end)
         print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
@@ -237,7 +237,7 @@ def expanded_portfolio_group_response(response):
     print (colours.OKBLUE + colours.bold + 'Portfolios Inside Group: ' + colours.end)
     for folio in response.values:
         portfolio_response(folio)
-    print (colours.OKGREEN + colours.bold + 'Subgroups Inside Group: ' + colours.end)
+    print (colours.OKBLUE + colours.bold + 'Subgroups Inside Group: ' + colours.end)
     for sub in response.sub_groups:
         print (colours.bold + 'Name: ' + colours.end + sub.name)
         print (colours.bold + 'Scope: ' + colours.end + sub.id.scope)
@@ -450,3 +450,28 @@ def group_commands(response, group_name):
         print (colours.bold + 'Description : ' + colours.end + command.description)
         print (colours.bold + 'At Time : ' + colours.end + str(command.processed_time))
         print('\n')
+        
+# The following function prints the details obtained from 'GetPortfolioGroup'
+def get_portfolio_group_response(response):
+    print(colours.FAIL + colours.bold + 'Portfolio Group: ' + colours.end)
+    print(colours.bold + 'Name: ' + colours.end + response.display_name)
+    print(colours.bold + 'Scope: ' + colours.end + response.id.scope)
+    print(colours.bold + 'Code: ' + colours.end + response.id.code)
+    print(colours.bold + 'Portfolios Inside Group: ' + colours.end)
+    for portfolios in response.portfolios:
+        print(portfolios.code)
+    print(colours.OKBLUE + colours.bold + 'Subgroups Inside Group: ' + colours.end)
+    for subgroup in response.sub_groups:
+        print(subgroup.code)
+    print('\n')
+# The following function prints the details obtained from 'GetPortfolioDetails'
+def portfolio_details_response(response):
+    print(colours.FAIL + colours.bold + 'Portfolio Details: ' + colours.end)
+    print(colours.bold + 'Detail Origin Portfolio Scope: ' + colours.end + response.origin_portfolio_id.scope)
+    print(colours.bold + 'Detail Origin Portfolio Code: ' + colours.end + response.origin_portfolio_id.code)
+    print(colours.bold + 'Base Currency: ' + colours.end + response.base_currency)
+    if hasattr(response, 'accounting_method'):
+        print(colours.bold + 'Accounting Method: ' + colours.end + response.accounting_method)
+    if hasattr(response, 'corporate_action_source_id'):
+        print(colours.bold + 'Corporate Action Source Id: ' + colours.end + response.corporate_action_source_id)
+    print('\n')
