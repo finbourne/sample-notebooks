@@ -1,9 +1,5 @@
-﻿time,price,type,currency,instrument_name,instrument_figi,instrument_internal
-18/02/2019,1622.65,close,USD,Amazon_Nasdaq_AMZN,BBG000BVPXP1,imd_34634534
-18/02/2019,170.8,close,USD,Apple_Nasdaq_AAPL,BBG000B9XVV8,imd_34535347
-18/02/2019,98,close,USD,USTreasury_2.00_2021,BBG00FN3B5K8,imd_34535347
-18/02/2019,142.36,close,USD,USTreasury_6.875_2025,BBG000DQQNJ8,imd_34534539
-17/02/2019,1619.23,close,USD,Amazon_Nasdaq_AMZN,BBG000BVPXP1,imd_34634534
-17/02/2019,172.6,close,USD,Apple_Nasdaq_AAPL,BBG000B9XVV8,imd_34535347
-17/02/2019,98.76,close,USD,USTreasury_2.00_2021,BBG00FN3B5K8,imd_34535347
-17/02/2019,143.58,close,USD,USTreasury_6.875_2025,BBG000DQQNJ8,imd_34534539
+﻿price,type,currency,instrument_name,instrument_figi,instrument_internal
+1622.65,close,USD,Amazon_Nasdaq_AMZN,BBG000BVPXP1,imd_34634534
+170.8,close,USD,Apple_Nasdaq_AAPL,BBG000B9XVV8,imd_34535347
+98,close,USD,USTreasury_2.00_2021,BBG00FN3B5K8,imd_34535347
+142.36,close,USD,USTreasury_6.875_2025,BBG000DQQNJ8,imd_34534539

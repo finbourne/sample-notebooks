@@ -1,1 +1,5 @@
-﻿
+﻿portfolio_name,transaction_id,instrument_uid,type,units,transaction_price,transaction_currency
+UK_High_Growth_Equities_Fund_base_fund_AUD,tid_35b77104-7c72-4515-af2b-d22bb45e6edd,UK_High_Growth_Equities_Fund,FwdFxSell,265600,8.91,GBP
+UK_High_Growth_Equities_Fund_base_fund_GBP,tid_2ac903c9-3615-4716-80d7-1608d40617dc,UK_High_Growth_Equities_Fund,FwdFxSell,15074,13.2867,GBP
+UK_High_Growth_Equities_Fund_base_fund_EUR,tid_6fc1a588-f19b-4222-93d5-c35dcf4c7d46,UK_High_Growth_Equities_Fund,FwdFxSell,10501,140.572,GBP
+UK_High_Growth_Equities_Fund_base_fund_JPY,tid_3a95473f-1b4a-4652-8047-91624f3f0e19,UK_High_Growth_Equities_Fund,FwdFxSell,24000,109.126,GBP
