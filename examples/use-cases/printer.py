@@ -180,6 +180,14 @@ def portfolio_response(response):
     print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
     print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
     
+def derived_portfolio_response(response):
+    print (colours.bold + 'Portfolio Created' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
+    print (colours.bold + 'Code: ' + colours.end + response.id.code)
+    print (colours.bold + 'Parent Portfolio Scope: '  + colours.end + response.parent_portfolio_id.scope)
+    print (colours.bold + 'Parent Portfolio Code: '  + colours.end + response.parent_portfolio_id.code)
+    print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
+    print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
     
 def portfolio_group_response(response):
     print (colours.FAIL + colours.bold + 'Portfolio Group Created' + colours.end)
@@ -235,7 +243,31 @@ def add_property_response(response, scope, portfolio_name, transaction_id):
     print (colours.bold + 'Code: ' + colours.end + portfolio_name)
     print (colours.bold + 'Property Effective From: ' + colours.end + str(response.version.effective_from))
     print (colours.bold + 'Property Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
-    
+
+def holdings_response(response, scope, code):
+    print (colours.bold + 'Holdings in Portfolio' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end, scope)
+    print (colours.bold + 'Code: ' + colours.end, code, '\n')
+    for holding in response.values:
+        print ('Instrument Name: ', holding.properties[0].value)
+        print ('Units: ', holding.units)
+        print ('Cost: ', round(holding.cost.amount,2))
+        print ('Currency: ', holding.cost.currency +'\n')
+        
+def get_transactions_response(response, scope, code):
+    print (colours.bold + 'Transactions Retrieved from Portfolio' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end, scope)
+    print (colours.bold + 'Code: ' + colours.end, code, '\n')
+    for transaction in response.values:
+        print ('Transaction Id: ', transaction.transaction_id)
+        print ('Transaction Type: ', transaction.type)
+        print ('Instrument Name :', transaction.properties[2].value)
+        print ('Units: ', transaction.units, '\n')
+        print ('Price: ', transaction.transaction_price.price)
+        print ('Currency: ', transaction.transaction_currency)
+        print ('Transaction Date: ', transaction.transaction_date, '\n')
+            
+
 def aggregation_response_paper(response):
     total_cost = 0
     total_pv = 0

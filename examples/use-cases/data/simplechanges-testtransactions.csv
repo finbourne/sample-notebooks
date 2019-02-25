@@ -1,0 +1,3 @@
+transaction_id,instrument_uid,type,units,transaction_price,transaction_currency,figi,client_internal
+tid_35b77104-7c72-4515-af2b-d22bb45e6eff,RELXGroup_LondonStockEx_REL,Sell,225000,17.32,GBP,BBG000D03XD4,imd_43532542
+tid_4f192c6a-e74b-464e-95c2-62a18b092bgg,UKGiltTreasury_3.75_2021,Sell,1750987,109.25,GBP,BBG001KKJLR4,imd_34643653
