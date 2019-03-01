@@ -253,8 +253,8 @@ def expansion_portfolio_response(response):
         print (colours.bold + 'Code: ' + colours.end + response.id.code)
         print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
         print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
-    
-    
+
+
 def expanded_portfolio_group_response(response):
     print (colours.FAIL + colours.bold + 'Portfolio Group Full Details : ' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
@@ -458,7 +458,7 @@ def aggregation_response_generic(response):
         for key, value in agg_result.items():
             print ('{}: {}'.format(key, value))
         print ('\n')
-        
+
 def transaction_type_response(response, filters=[]):
     i = 0
     j = 0
@@ -503,7 +503,7 @@ def group_commands(response, group_name):
         print (colours.bold + 'Description : ' + colours.end + command.description)
         print (colours.bold + 'At Time : ' + colours.end + str(command.processed_time))
         print('\n')
-        
+
 # The following function prints the details obtained from 'GetPortfolioGroup'
 def get_portfolio_group_response(response):
     print(colours.FAIL + colours.bold + 'Portfolio Group: ' + colours.end)
@@ -556,13 +556,13 @@ def portfolio_filtering(parents_to_keep, derived_to_keep, parents_to_delete, der
     for p in derived_to_delete:
         print(colours.bold + '    Scope : ' + colours.end + p[0])
         print(colours.bold + '    Code : ' + colours.end + p[1] + '\n')
-    
 
 
 def remaining_portfolios(response, scope):
     print(colours.FAIL + colours.bold + 'Portfolios remaining in scope: ' + colours.end + scope + ':')
     for portfolio in response.values:
         portfolio_response(portfolio)
+
 
 def get_identifiers(response, unique=False):
     for identifier in response.values:
@@ -571,6 +571,14 @@ def get_identifiers(response, unique=False):
             print(colours.bold + '    Is Unique Identifier : ' + colours.end + str(identifier.is_unique_identifier))
             print(colours.bold + '    Identifier Property Key Value : ' + colours.end + identifier.property_key_value)
             print ('\n')
+
             
 def upsert_quotes_response(response):
     print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.values.popitem()[1].as_at))
+
+
+def corporate_action_response(response):
+    print (colours.bold + 'Corporate Actions Source Successfully Created' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
+    print (colours.bold + 'Code: ' + colours.end + response.id.code)
+
