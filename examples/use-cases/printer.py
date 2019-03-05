@@ -262,7 +262,7 @@ def get_transactions_response(response, scope, code):
         print ('Transaction Id: ', transaction.transaction_id)
         print ('Transaction Type: ', transaction.type)
         print ('Instrument Name :', transaction.properties[2].value)
-        print ('Units: ', transaction.units, '\n')
+        print ('Units: ', transaction.units)
         print ('Price: ', transaction.transaction_price.price)
         print ('Currency: ', transaction.transaction_currency)
         print ('Transaction Date: ', transaction.transaction_date, '\n')
