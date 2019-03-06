@@ -4,5 +4,4 @@ secrets.json
 .ipynb_checkpoints/
 __pycache__/
 *lusid
-*requirements.txt
 *.html
