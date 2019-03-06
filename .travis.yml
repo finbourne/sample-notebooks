@@ -5,16 +5,13 @@ script:
 - cd tests
 - docker build -t finbourne/notebook-test-runner:travis .
 - cd ..
-- docker run -e FBN_TOKEN_URL=$FBN_TOKEN_URL -e FBN_USERNAME=$FBN_USERNAME
- -e FBN_PASSWORD=$FBN_PASSWORD -e FBN_CLIENT_ID=$FBN_CLIENT_ID
-  -e FBN_CLIENT_SECRET=$FBN_CLIENT_SECRET -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL
-  -e FBN_NOTEBOOK_FOLDER=/usr/notebooks
-  -v $(pwd):/usr/notebooks
-  --name fbn-notebook-test-runner
+- docker run -e FBN_TOKEN_URL=$FBN_TOKEN_URL -e FBN_USERNAME=$FBN_USERNAME -e FBN_PASSWORD=$FBN_PASSWORD
+  -e FBN_CLIENT_ID=$FBN_CLIENT_ID -e FBN_CLIENT_SECRET=$FBN_CLIENT_SECRET -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL
+  -e FBN_NOTEBOOK_FOLDER=/usr/notebooks -v $(pwd):/usr/notebooks --name fbn-notebook-test-runner
   --rm finbourne/notebook-test-runner:travis
 
 notifications:
   slack:
     rooms:
-      secure: "EnIltTm4RPP316t6VGPwTavzbuGmyNovwGia7ZmRx3XM/CK+2kqUuKyn+4rTzVTihj3z4swoudjVDzh4QPek7KeOUPg6z4qLwRwafksS023GkaVK8gIPLc6ILGYxTh7ZXtLsQK8TfDVmvGi/undHArxMXpPeIZQRj/TcqQvDnaZ7fToD8KM8MVE3084pzYr0apWGC9IR247JP5A/XS2axuxUlFSMTZJDPz1ARkKJJOE/672zeOpriEjmGYEaS0bOI2TugINO7a9swzLdvaSusYevpjP5VtecAeq2WpVXHUqpUGFzVumgXSn6A+wQcdypw/JyCyTh79Koq+bNVzEjb8P8QEgSx89ie3JG9HaeNuf28e+0Wl7BzLiMsV2khw6sfwjvsPDFLWJ/jdqaDlOz1mcWgnGTNY4mdPd/CtZAILZi1/C/pm1HctQVhyBWv0aQ8vziN3ebxSio/gR8VM1bkasS0xdX/rjr6nZmeL88kdhQs9b8pDfmklCPDzZydNYMXbLhRTW5hE+4g8O3/OTwYKNGqlRowLNL6D/dOM6aQ7Qq7MFHrwYyMdLlPbVvMgSQUftANhqWJSWVmDls+EBgY4nHKrVLUIrSp3DCllZZl9sNzgr54ChelddmPUryl/1+cBOwOqrO4IJ0f1TuJNDPpJD1i+BoiQvSMbnyvKe8yIA="
+      secure: "iTL7F4N9aETeMN/mpi+ivcVL16yE3IrkeChoCKv0005CCORzjhlNhTFpgjH2EeAbWyUXB3OWe0vDtttP6JfSLaulrUA6+9lg7WEkgy9OvaVPF1GxgNIQ+Nh4TYYQxL+p2gDPDu/ID69rbRX4QFY7QXI2wukOZcXJZGPX90HnC8YzinlW64u2yQ1v1NQDJH18ZXZpXcxxtbgqoTUWyiH+eYBAAg8UpTUGt20hXuyn+2OhKYRcQ0YpeuCuWzL/j7Ifpo/qJl7AnlBFORQU9trzfbKwPKwCEdk+W3/63Jeg9+Ga6HKpn6gl62KP59tfPoR0SZZp/vmjOUE/sBAJjOiPw0zzxuTv0lZeZeHB4yS3RJMUDhlufP6HUjwDBuQNit0Mqe61MIlH750xA5iFSJZFAZ1i1uLQ/e6BkiZr/pXPoyGvsRM7Ha9s/29lXd3Z/gFklFUCBzmC3gmWsNfxf2q/616RIsU03gYQV87f61T5H/8omMf/6sm1qM/UUlgZCeEpm06931lwq7w487xO1s79QJ959XeTUTa+BYE/9/9nGk4CG9w67AQjl7svC8RGs2AaZNSC4rLcZ4EtiOjlhIV3fee9k5E+S9CzjEkeOeWVW8+xZAfH+E/vsDYqKps/7xORKVkTTAVvmrNcoAwhin47YveZ6SknhLAUPLs47gOq8RU="
     on_failure: always
