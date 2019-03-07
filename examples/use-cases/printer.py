@@ -75,12 +75,12 @@ def reconciliation_response(response, scope, code):
     for reconciliation_break in response.values:
         print (colours.bold + 'Reconciliation Break' + colours.end)
         print (colours.bold + 'Instrument LUID: ' + colours.end + reconciliation_break.instrument_uid)
-        print (colours.bold + 'Left Units: ' + colours.end + str(reconciliation_break.left_units))
-        print (colours.bold + 'Right Accountant Units: ' + colours.end + str(reconciliation_break.right_units))
-        print (colours.bold + 'Difference In Units: ' + colours.FAIL + str(reconciliation_break.difference_units) + colours.end)
-        print (colours.bold + 'Left Cost: ' + colours.end + str(reconciliation_break.left_cost.amount))
-        print (colours.bold + 'Right Cost: ' + colours.end + str(reconciliation_break.right_cost.amount))
-        print (colours.bold + 'Difference In Cost: ' + colours.FAIL + str(reconciliation_break.difference_cost.amount) + colours.end)
+        print (colours.bold + 'Left Units: ' + colours.end + str(round(reconciliation_break.left_units,0)))
+        print (colours.bold + 'Right Units: ' + colours.end + str(round(reconciliation_break.right_units,0)))
+        print (colours.bold + 'Difference In Units: ' + colours.FAIL + str(round(reconciliation_break.difference_units,0)) + colours.end)
+        print (colours.bold + 'Left Cost: ' + colours.end + str(round(reconciliation_break.left_cost.amount,2)))
+        print (colours.bold + 'Right Cost: ' + colours.end + str(round(reconciliation_break.right_cost.amount,2)))
+        print (colours.bold + 'Difference In Cost: ' + colours.FAIL + str(round(reconciliation_break.difference_cost.amount,2)) + colours.end)
         print (colours.bold + 'Currency: ' + colours.end + str(reconciliation_break.left_cost.currency))
         print('\n')
 
@@ -379,19 +379,28 @@ def aggregation_response_index(agg_response):
     print (colours.bold + 'Current Index Level :' + colours.end + str(round(present,2)))
     print (colours.bold + 'Return :' + colours.end + str(round(total_return*100,4)) + '%')
 
-def transaction_type_response(response):
+def transaction_type_response(response, filters=[]):
     i = 0
     for mapping in response.values:
         i += 1
-        print (colours.bold + 'Transaction Type Aliases #{}'.format(i) + colours.end + '\n')
+        aliases = [alias.type for alias in mapping.aliases]
+        matches = [value for value in aliases if value in filters]
+        if len(matches) == 0 and len(filters)>=1:
+            continue
+
+        print (colours.bold + colours.UNDERLINE + 'Transaction Configuration #{}'.format(i) + colours.end + '\n')
+
+        print (colours.bold + colours.FAIL + 'Transaction Type Aliases' + colours.end)
         for alias in mapping.aliases:
-            print (colours.bold + 'Transaction Type: ' + colours.end + alias.type)
+            if alias.type not in matches and len(filters)>=1:
+                continue
+            print (colours.bold + 'Transaction Type: ' + colours.end + colours.FAIL + alias.type + colours.end)
             print (colours.bold + 'Alias Description: ' + colours.end + alias.description)
             print (colours.bold + 'Transaction Class: ' + colours.end + alias.transaction_class)
             print (colours.bold + 'Transaction Group: ' + colours.end + alias.transaction_group)
             print (colours.bold + 'Transaction Roles: ' + colours.end + alias.transaction_roles + '\n' + '\n')
 
-        print (colours.bold + 'Transaction Movements #{}'.format(i) + colours.end)
+        print (colours.bold + colours.FAIL + 'Transaction Movements' + colours.end)
         for movement in mapping.movements:
             print (colours.bold + 'Movement Types: ' + colours.end + movement.movement_types)
             print (colours.bold + 'Side: ' + colours.end + movement.side)
@@ -401,7 +410,7 @@ def transaction_type_response(response):
                     key = property_pair.key
                     value = property_pair.value
                     print (colours.bold + 'Properties: ' + colours.end + key + ': ' + value + '\n')
-        print ('\n')
+        print ('\n\n')
 
 def holdings_response(response, scope, code):
     print (colours.bold + 'Holdings for Portfolio' + colours.end)
