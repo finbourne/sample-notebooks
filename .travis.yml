@@ -2,13 +2,10 @@ language: python
 services:
 - docker
 script:
-- cd tests
-- docker build -t finbourne/notebook-test-runner:travis .
-- cd .. 
 - docker run -e FBN_TOKEN_URL=$FBN_TOKEN_URL -e FBN_USERNAME=$FBN_USERNAME -e FBN_PASSWORD=$FBN_PASSWORD
   -e FBN_CLIENT_ID=$FBN_CLIENT_ID -e FBN_CLIENT_SECRET=$FBN_CLIENT_SECRET -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL
   -e FBN_NOTEBOOK_FOLDER=/usr/notebooks -v $(pwd):/usr/notebooks --name fbn-notebook-test-runner
-  --rm finbourne/notebook-test-runner:travis
+  --rm finbourne/notebook-test-runner:latest
 
 notifications:
   slack:
