@@ -207,6 +207,7 @@ def portfolio_response(response):
         print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
         print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
         print (colours.bold + '   Parent Portfolio Details' + colours.end)
+        print (colours.bold + '   Scope: ' + colours.end + response.parent_portfolio_id.scope)
         print (colours.bold + '   Code: ' + colours.end + response.parent_portfolio_id.code + '\n')
     else:
         print (colours.bold + 'Portfolio Created' + colours.end)
@@ -229,6 +230,24 @@ def portfolio_group_response(response, operation):
     for portfolios in response.portfolios:
         print (portfolios.code)
     print ('\n')
+
+def expansion_portfolio_response(response):
+    if response.is_derived:
+        print (colours.bold + 'Derived Portfolio ' + colours.end)
+        print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
+        print (colours.bold + 'Code: ' + colours.end + response.id.code)
+        print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
+        print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
+        print (colours.bold + '   Parent Portfolio Details' + colours.end)
+        print (colours.bold + '   Scope: ' + colours.end + response.parent_portfolio_id.scope)
+        print (colours.bold + '   Code: ' + colours.end + response.parent_portfolio_id.code + '\n')
+    else:
+        print (colours.bold + 'Portfolio ' + colours.end)
+        print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
+        print (colours.bold + 'Code: ' + colours.end + response.id.code)
+        print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
+        print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
+    
     
 def expanded_portfolio_group_response(response):
     print (colours.FAIL + colours.bold + 'Portfolio Group Full Details : ' + colours.end)
@@ -236,7 +255,7 @@ def expanded_portfolio_group_response(response):
     print (colours.bold + 'Code: ' + colours.end + response.id.code)
     print (colours.OKBLUE + colours.bold + 'Portfolios Inside Group: ' + colours.end)
     for folio in response.values:
-        portfolio_response(folio)
+        expansion_portfolio_response(folio)       
     print (colours.OKBLUE + colours.bold + 'Subgroups Inside Group: ' + colours.end)
     for sub in response.sub_groups:
         print (colours.bold + 'Name: ' + colours.end + sub.name)
@@ -244,7 +263,7 @@ def expanded_portfolio_group_response(response):
         print (colours.bold + 'Code: ' + colours.end + sub.id.code)
         print (colours.OKBLUE + colours.bold + 'Portfolios Inside SubGroup: ' + colours.end)
         for folio in sub.values:
-            portfolio_response(folio)
+            expansion_portfolio_response(folio)
     print ('\n')
 
 def instrument_response(response, identifier='ClientInternal'):
@@ -475,3 +494,40 @@ def portfolio_details_response(response):
     if hasattr(response, 'corporate_action_source_id'):
         print(colours.bold + 'Corporate Action Source Id: ' + colours.end + response.corporate_action_source_id)
     print('\n')
+    
+    
+def groups_in_scope(response):
+    print(colours.FAIL + colours.bold + 'Groups in Scope: ' + colours.end)
+    for group in response.values:
+        print(colours.bold + 'Scope : ' + colours.end + group.id.scope)
+        print(colours.bold + 'Code : ' + colours.end + group.id.code)
+        
+        
+def portfolio_filtering(parents_to_keep, derived_to_keep, parents_to_delete, derived_to_delete):
+    print(colours.FAIL + colours.bold + 'Keeping : ' + colours.end)
+    print(colours.OKBLUE + colours.bold + '    Parents: ' + colours.end)
+    for p in parents_to_keep:
+        print(colours.bold + '    Scope : ' + colours.end + p)
+        print(colours.bold + '    Code : ' + colours.end + p)
+        print('\n')
+    print(colours.OKBLUE + colours.bold + '    Derived: ' + colours.end)
+    for p in derived_to_keep:
+        print(colours.bold + '    Scope : ' + colours.end + p)
+        print(colours.bold + '    Code : ' + colours.end + p)
+        print('\n')
+    print(colours.FAIL + colours.bold + 'Deleting : ' + colours.end)
+    for p in parents_to_delete:
+        print(colours.bold + '    Scope : ' + colours.end + p[0])
+        print(colours.bold + '    Code : ' + colours.end + p[1])
+        print('\n')
+    print(colours.OKBLUE + colours.bold + '    Derived: ' + colours.end)
+    for p in derived_to_delete:
+        print(colours.bold + '    Scope : ' + colours.end + p[0])
+        print(colours.bold + '    Code : ' + colours.end + p[1])
+        print('\n')
+        
+        
+def remaining_portfolios(response, scope):
+    print(colours.FAIL + colours.bold + 'Portfolios remaining in scope: ' + colours.end + scope + ':')
+    for portfolio in response.values:
+        portfolio_response(portfolio)
