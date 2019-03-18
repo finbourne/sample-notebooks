@@ -255,7 +255,7 @@ def expanded_portfolio_group_response(response):
     print (colours.bold + 'Code: ' + colours.end + response.id.code)
     print (colours.OKBLUE + colours.bold + 'Portfolios Inside Group: ' + colours.end)
     for folio in response.values:
-        expansion_portfolio_response(folio)       
+        expansion_portfolio_response(folio)
     print (colours.OKBLUE + colours.bold + 'Subgroups Inside Group: ' + colours.end)
     for sub in response.sub_groups:
         print (colours.bold + 'Name: ' + colours.end + sub.name)
@@ -494,39 +494,37 @@ def portfolio_details_response(response):
     if hasattr(response, 'corporate_action_source_id'):
         print(colours.bold + 'Corporate Action Source Id: ' + colours.end + response.corporate_action_source_id)
     print('\n')
-    
-    
+
+
 def groups_in_scope(response):
     print(colours.FAIL + colours.bold + 'Groups in Scope: ' + colours.end)
     for group in response.values:
         print(colours.bold + 'Scope : ' + colours.end + group.id.scope)
         print(colours.bold + 'Code : ' + colours.end + group.id.code)
-        
-        
+
+
 def portfolio_filtering(parents_to_keep, derived_to_keep, parents_to_delete, derived_to_delete):
     print(colours.FAIL + colours.bold + 'Keeping : ' + colours.end)
     print(colours.OKBLUE + colours.bold + '    Parents: ' + colours.end)
-    for p in parents_to_keep:
-        print(colours.bold + '    Scope : ' + colours.end + p)
-        print(colours.bold + '    Code : ' + colours.end + p)
-        print('\n')
+    for p in [parents_to_keep]:
+        print(colours.bold + '    Scope : ' + colours.end + p[0])
+        print(colours.bold + '    Code : ' + colours.end + p[1] + '\n')
     print(colours.OKBLUE + colours.bold + '    Derived: ' + colours.end)
-    for p in derived_to_keep:
-        print(colours.bold + '    Scope : ' + colours.end + p)
-        print(colours.bold + '    Code : ' + colours.end + p)
-        print('\n')
+    for p in [derived_to_keep]:
+        print(colours.bold + '    Scope : ' + colours.end + p[0])
+        print(colours.bold + '    Code : ' + colours.end + p[1] + '\n')
     print(colours.FAIL + colours.bold + 'Deleting : ' + colours.end)
+    print(colours.OKBLUE + colours.bold + '    Parents: ' + colours.end)
     for p in parents_to_delete:
         print(colours.bold + '    Scope : ' + colours.end + p[0])
-        print(colours.bold + '    Code : ' + colours.end + p[1])
-        print('\n')
+        print(colours.bold + '    Code : ' + colours.end + p[1] + '\n')
     print(colours.OKBLUE + colours.bold + '    Derived: ' + colours.end)
     for p in derived_to_delete:
         print(colours.bold + '    Scope : ' + colours.end + p[0])
-        print(colours.bold + '    Code : ' + colours.end + p[1])
-        print('\n')
-        
-        
+        print(colours.bold + '    Code : ' + colours.end + p[1] + '\n')
+    
+
+
 def remaining_portfolios(response, scope):
     print(colours.FAIL + colours.bold + 'Portfolios remaining in scope: ' + colours.end + scope + ':')
     for portfolio in response.values:
