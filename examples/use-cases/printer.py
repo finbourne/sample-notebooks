@@ -490,9 +490,9 @@ def portfolio_details_response(response):
     print(colours.bold + 'Detail Origin Portfolio Code: ' + colours.end + response.origin_portfolio_id.code)
     print(colours.bold + 'Base Currency: ' + colours.end + response.base_currency)
     if hasattr(response, 'accounting_method'):
-        print(colours.bold + 'Accounting Method: ' + colours.end + response.accounting_method)
+        print(colours.bold + 'Accounting Method: ' + colours.end + str(response.accounting_method))
     if hasattr(response, 'corporate_action_source_id'):
-        print(colours.bold + 'Corporate Action Source Id: ' + colours.end + response.corporate_action_source_id)
+        print(colours.bold + 'Corporate Action Source Id: ' + colours.end + str(response.corporate_action_source_id))
     print('\n')
 
 
