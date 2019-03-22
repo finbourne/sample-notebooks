@@ -278,6 +278,9 @@ def instrument_response(response, identifier='ClientInternal'):
         print (colours.bold + 'Instrument Successfully Upserted: ' + colours.end + instrument_name)
         print (colours.bold + '{} ID: '.format(identifier) + colours.end + instrument.identifiers[identifier])
         print (colours.bold + 'LUSID Instrument ID: ' + colours.end + instrument.lusid_instrument_id)
+        if instrument.lookthrough_portfolio is not None:
+            print (colours.bold + 'Lookthrough Portfolio Scope: ' + colours.end + instrument.lookthrough_portfolio.scope)
+            print (colours.bold + 'Lookthrough Portfolio Code ' + colours.end + instrument.lookthrough_portfolio.code)
         print ('\n')
 
     print (len(response.values), ' instruments upserted successfully')
@@ -579,4 +582,14 @@ def corporate_action_response(response):
     print (colours.bold + 'Corporate Actions Source Successfully Created' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
     print (colours.bold + 'Code: ' + colours.end + response.id.code)
+
+def corporate_actions_added_response(response):
+    for action_id, action in response.values.items():
+        print (colours.bold + 'Corporate Action Successfully Upserted' + colours.end)
+        print (colours.bold + 'Code: ' + colours.end + action.corporate_action_code)
+        print (colours.bold + 'Announcement Date: ' + colours.end + str(action.announcement_date))
+        print (colours.bold + 'Ex Date: ' + colours.end + str(action.ex_date) + '\n')
+        
+def upsert_quotes_response(response):
+    print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.as_at_date))
 
