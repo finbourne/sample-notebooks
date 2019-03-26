@@ -54,12 +54,41 @@ def authenticate_secrets():
     assert okta_response.status_code == 200
 
     # Retrieve our api token from the authentication response
-    api_token = {"access_token": okta_response.json()["access_token"]}
+    api_token = okta_response.json()["access_token"]
 
     # Initialise our API client using our token so that we can include it in all future requests
-    credentials = BasicTokenAuthentication(api_token)
-    client = lusid.LUSIDAPI(credentials, api_url)
-    return client
+    # Initialise our API client using our token so that we can include it in all future requests
+    config = lusid.Configuration()
+    config.access_token = api_token
+    config.host = api_url
+    client = lusid.ApiClient(config)
+    
+    class LusidApi():
+        
+        def __init__(self, client):
+            self.aggregation = lusid.AggregationApi(client)
+            self.analytics_stores = lusid.AnalyticsStoresApi(client)
+            self.metadata = lusid.ApplicationMetadataApi(client)
+            self.corporate_action_sources = lusid.CorporateActionSourcesApi(client)
+            self.data_types = lusid.DataTypesApi(client)
+            self.derived_transaction_portfolios = lusid.DerivedTransactionPortfoliosApi(client)
+            self.instruments = lusid.InstrumentsApi(client)
+            self.login = lusid.InstrumentsApi(client)
+            self.portfolio_groups = lusid.PortfolioGroupsApi(client)
+            self.portfolios = lusid.PortfoliosApi(client)
+            self.property_definitions = lusid.PropertyDefinitionsApi(client)
+            self.quotes = lusid.QuotesApi(client)
+            self.reconciliations = lusid.ReconciliationsApi(client)
+            self.reference_portfolio = lusid.ReferencePortfolioApi(client)
+            self.results = lusid.ResultsApi(client)
+            self.schemas = lusid.SchemasApi(client)
+            self.scopes = lusid.ScopesApi(client)
+            self.search = lusid.SearchApi(client)
+            self.system_configuration = lusid.SystemConfigurationApi(client)
+            self.transaction_portfolios = lusid.TransactionPortfoliosApi(client)
+
+            
+    return LusidApi(client)
 
 def authenticate():
     api_url = os.getenv("FBN_LUSID_API_URL")
