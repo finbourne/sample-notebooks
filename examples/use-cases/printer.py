@@ -387,7 +387,7 @@ def analytic_store(analytic_store_response, analytics=False):
     else:
         print (colours.bold + 'Analytic Store Created' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end + analytic_store_response.key.scope)
-    print (colours.bold + 'Effective From: ' + colours.end + analytic_store_response.key.date_property.isoformat())
+    print (colours.bold + 'Effective From: ' + colours.end + analytic_store_response.key.date.isoformat())
 
 def aggregation_response(agg_response):
     for agg_holding in agg_response.data:

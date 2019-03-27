@@ -79,7 +79,7 @@ def authenticate_secrets():
             self.property_definitions = lusid.PropertyDefinitionsApi(client)
             self.quotes = lusid.QuotesApi(client)
             self.reconciliations = lusid.ReconciliationsApi(client)
-            self.reference_portfolio = lusid.ReferencePortfolioApi(client)
+            self.reference_portfolios = lusid.ReferencePortfolioApi(client)
             self.results = lusid.ResultsApi(client)
             self.schemas = lusid.SchemasApi(client)
             self.scopes = lusid.ScopesApi(client)
