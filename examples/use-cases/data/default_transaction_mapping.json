@@ -19,14 +19,14 @@
       ],
       "movements": [
         {
-          "movementTypes": "Settlement, Traded",
+          "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": 1,
           "properties": [],
           "mappings": []
         },
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
           "properties": [],
@@ -54,14 +54,14 @@
       ],
       "movements": [
         {
-          "movementTypes": "Settlement, Traded",
+          "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": -1,
           "properties": [],
           "mappings": []
         },
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
           "properties": [],
@@ -89,14 +89,14 @@
       ],
       "movements": [
         {
-          "movementTypes": "Settlement, Traded",
+          "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": 1,
           "properties": [],
           "mappings": []
         },
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
           "properties": [],
@@ -124,14 +124,14 @@
       ],
       "movements": [
         {
-          "movementTypes": "Settlement, Traded",
+          "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": -1,
           "properties": [],
           "mappings": []
         },
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
           "properties": [],
@@ -166,7 +166,7 @@
       ],
       "movements": [
         {
-          "movementTypes": "Settlement, Traded",
+          "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": 1,
           "properties": [],
@@ -201,7 +201,7 @@
       ],
       "movements": [
         {
-          "movementTypes": "Settlement, Traded",
+          "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": -1,
           "properties": [],
@@ -222,14 +222,14 @@
       ],
       "movements": [
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side1",
           "direction": 1,
           "properties": [],
           "mappings": []
         },
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
           "properties": [],
@@ -257,14 +257,14 @@
       ],
       "movements": [
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side1",
           "direction": -1,
           "properties": [],
           "mappings": []
         },
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
           "properties": [],
@@ -285,14 +285,14 @@
       ],
       "movements": [
         {
-          "movementTypes": "ForwardFx, CashSettlement",
+          "movementTypes": "CashForward",
           "side": "Side1",
           "direction": 1,
           "properties": [],
           "mappings": []
         },
         {
-          "movementTypes": "ForwardFx, CashSettlement",
+          "movementTypes": "CashForward",
           "side": "Side2",
           "direction": -1,
           "properties": [],
@@ -320,14 +320,14 @@
       ],
       "movements": [
         {
-          "movementTypes": "ForwardFx, CashSettlement",
+          "movementTypes": "CashForward",
           "side": "Side1",
           "direction": -1,
           "properties": [],
           "mappings": []
         },
         {
-          "movementTypes": "ForwardFx, CashSettlement",
+          "movementTypes": "CashForward",
           "side": "Side2",
           "direction": 1,
           "properties": [],
@@ -355,7 +355,7 @@
       ],
       "movements": [
         {
-          "movementTypes": "Receivable, CashSettlement",
+          "movementTypes": "CashAccrual",
           "side": "Side1",
           "direction": 1,
           "properties": [],
@@ -383,7 +383,7 @@
       ],
       "movements": [
         {
-          "movementTypes": "Receivable, CashSettlement",
+          "movementTypes": "CashAccrual",
           "side": "Side1",
           "direction": -1,
           "properties": [],
@@ -411,7 +411,7 @@
       ],
       "movements": [
         {
-          "movementTypes": "Settlement, Traded",
+          "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": 1,
           "properties": [
@@ -423,7 +423,7 @@
           "mappings": []
         },
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
           "properties": [],
@@ -451,7 +451,7 @@
       ],
       "movements": [
         {
-          "movementTypes": "Settlement, Traded",
+          "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": -1,
           "properties": [
@@ -463,7 +463,7 @@
           "mappings": []
         },
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
           "properties": [],
@@ -491,7 +491,7 @@
       ],
       "movements": [
         {
-          "movementTypes": "Settlement, Traded",
+          "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": -1,
           "properties": [
@@ -503,7 +503,7 @@
           "mappings": []
         },
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
           "properties": [],
@@ -531,7 +531,7 @@
       ],
       "movements": [
         {
-          "movementTypes": "Settlement, Traded",
+          "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": 1,
           "properties": [
@@ -543,7 +543,7 @@
           "mappings": []
         },
         {
-          "movementTypes": "Commitment, CashSettlement",
+          "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
           "properties": [],

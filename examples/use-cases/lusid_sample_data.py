@@ -9,7 +9,6 @@ import requests
 from urllib.request import pathname2url
 import json
 from random import shuffle, randint
-from msrest.authentication import BasicTokenAuthentication
 import numpy as np
 
 def authenticate_secrets():
