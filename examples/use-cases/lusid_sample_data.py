@@ -56,7 +56,6 @@ def authenticate_secrets():
     api_token = okta_response.json()["access_token"]
 
     # Initialise our API client using our token so that we can include it in all future requests
-    # Initialise our API client using our token so that we can include it in all future requests
     config = lusid.Configuration()
     config.access_token = api_token
     config.host = api_url

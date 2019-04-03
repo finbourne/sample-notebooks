@@ -4,43 +4,110 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 import os
-from msrest.authentication import BasicTokenAuthentication
+import sample_login
+import pytz
 
-api_url = os.getenv("FBN_LUSID_API_URL")
-api_token = {"access_token": os.environ["ACCESS_TOKEN"]}
-credentials = BasicTokenAuthentication(api_token)
-client = lusid.LUSIDAPI(credentials, api_url)
+client = sample_login.authenticate_secrets()
 
-#create a DataFrame from an array of objects
 def arrayToDf(data,columns,*args):
+    """
+    Create a DataFrame from an array of objects
+    
+    Inputs
+    data (list) - A list of objects
+    columns (list) - A list of columns to add to the DataFrame
+    
+    Returns
+    df (DataFrame) - A DataFrame containing the data 
+    """
+    
     def to_record(obj):
+        """
+        Takes an object and maps the attributes that we are interested in
+        to a dictionary with the attribute name as the key and the value as 
+        the value
+        
+        Inputs
+        obj (object) - The object to convert to a dictionary
+        
+        Returns
+        record (dictionary) - A dictionary of attribute-value pairs
+        """
+        
+        # pick the values for the required columns of the object
         record = {col : getattr(obj,col) for col in columns}
+        # checks to see if any properties exist
         props = getattr(obj,"properties",None)
+        # if there are properties
         if props:
+            # add the property to our dictionary
             record.update({"P:" + p.key : p.value for p in props})
+        # for any functions in our arguments, call them
         for f in args:
+           # provides the record and object to the function
            f(record,obj)
         return record
-
+    
+    # converts a list of dictionaries with column names as keys into a DataFrame
     df = pd.DataFrame.from_records([to_record(o) for o in data])
-
+    
+    # returns a dataframe with the columns in alphabetical order
     return df[sorted(df.columns.values)]
 
 def qry_holdings(date,scope,portfolio):
+    """
+    This returns the positions of a portfolio as a DataFrame
+    
+    Inputs
+    date (datetime) - The date to get the positions for
+    scope (string) - The scope of the portfolio to get positions for
+    portfolio (string) - The code of the portfolio to get positions for
+    
+    Returns
+    df (Pandas DataFrame) - Contains the positions of the portfolio
+    """
+    
+    # ensure the date is in datetime format and not a string
     qry_date = pd.to_datetime(date,utc=True)
+    
     def getTxnDetails(record,src):
+        """
+        This function that takes a dictionary of 
+        
+        Inputs
+        record (dictionary) - Dictionary of atttribute-value pairs generated
+        from an object
+        src (object) - The source object 
+        
+        Returns
+        N/A
+        """
+        
+        # see if there is a tansaction attached to this holding object
         t = src.transaction
+        
+        # if there is a transaction
         if(t):
+            # create a dictionary with the transaction data
             txn_data = {'commitment': t.type,
                         'commitment_instrument_uid': t.instrument_uid,
-                        'settlement_date': t.settlement_date}
+                        'settlement_date': pd.to_datetime(t.settlement_date,utc=True)}
+            # update our record with the transaction data
             record.update(txn_data)
-             
-    holdings = client.get_holdings(scope,portfolio,qry_date)
+    
+    # call LUSID to get the portfolios holdings
+    holdings = client.transaction_portfolios.get_holdings(
+        scope=scope,
+        code=portfolio,
+        effective_at=qry_date)
 
+    # set the columns we are interested in from the holdings
     columns = ['holding_type','instrument_uid','units']
-    df =  arrayToDf(holdings.values, columns, getTxnDetails)
-    #Add in empty transaction details if they are missing
+    
+    # create a dataframe from the 
+    df = arrayToDf(holdings.values, columns, getTxnDetails)
+    
+    #Add in empty transaction details if they are missing from all holdings
     if 'commitment' not in df.columns.values:
         for col in ['commitment','commitment_instrument_uid','settlement_date']:
            df[col] = np.nan;
@@ -51,10 +118,27 @@ def qry_transactions(scope,id):
                'trade_price', 'total_consideration', 'exchange_rate', 'settlement_currency',
                'trade_currency', 'counterparty_id', 'source', 'dividend_state',
                'trade_price_type', 'unit_type', 'netting_set']
-    transactions = client.get_trades(scope, id)
+    
+    transactions = client.transaction_portfolios.get_trades(
+        scope=scope, 
+        code=id)
+    
     return arrayToDf(transactions.values,txn_columns)
         
 def cash_ladder(date,scope,portfolio):
+    """
+    This function produces a cash ladder
+    
+    Inputs
+    date (string) - The date to produce the cash ladder for 
+    scope (string) - The scope of the portfolio to produce the cash ladder for
+    portfolio (string) - The code of the portfolio to produce the cash ladder for
+    
+    Returns
+    
+    """
+    
+    # set some commonly used strings as variables for easier access
     SDATE='settlement_date'
     CCY='instrument_uid'
     QTY='units'
@@ -62,34 +146,66 @@ def cash_ladder(date,scope,portfolio):
     CUM='cum'
     ORDER='sort'
     JOIN='join'
+    
+    # convert the date string to a datetime
     qry_date = pd.to_datetime(date,utc=True)
+    
     def check_contents(df):
+        """
+        This function checks the length of a dataframe (no. rows) if it is 0 it
+        returns a printed message noting that there is no holdings in the portfolio
+        
+        Inputs
+        df (Pandas DataFrame) - The dataframe containing the portfolio positions
+        """
+        
         if len(df) == 0:
-            print("Portfolio {} in scope {} contains no cash on {:%Y-%m-%d}".format(portfolio,scope,start_date))
+            print(
+                "Portfolio {} in scope {} contains no cash on {:%Y-%m-%d}".format(
+                    portfolio,scope,start_date)
+            )
 
     # Run one-day earlier, this gives us the beginning of day for the 
     # required qry_date
-    start_date = qry_date +  pd.DateOffset(days=-1)
+    start_date = qry_date + pd.DateOffset(days=-1)
+
+    # Generate a Pandas DataFrame with then holdings of the portfolio
     df = qry_holdings(start_date,scope,portfolio)
+    
+    # Check that the portfolio contains holdings
     check_contents(df)
 
     # To convert holdings data frame into cash ladder
-    # we need to filter out Position types
+    # we need to filter out Position types which hold instruments other than cash
     df = df[df[TYPE] != 'P'].copy()
+
+    # Check that the portfolio contains cash after applying the filter
     check_contents(df)
+    
+    # Set start date for current balances
+    df[SDATE] = df[SDATE].fillna(start_date).dt.date
 
-    #Set date for current balances
-    df[SDATE] = pd.to_datetime(df[SDATE].fillna(start_date),utc=True).dt.date
-
-    #Consolidate
+    # Aggregate the cash balances 
     df = df[[CCY,SDATE,TYPE,QTY]].groupby([CCY,SDATE,TYPE],as_index=False).sum()
 
     #Populate BOD/EOD records
 
     start_date = start_date.date() # change form for working with frame data
+
     #Get unique list of dates, but make sure it includes the qry_date
-    dates=pd.concat([df[[SDATE]], pd.DataFrame({SDATE:[qry_date.date()]})],ignore_index=True).drop_duplicates()
+    dates=pd.concat([
+        df[[SDATE]], 
+        pd.DataFrame(
+            {
+                SDATE:[qry_date.date()]
+            }
+        )
+    ], ignore_index=True, sort=False).drop_duplicates()
+    
+    # Get all dates greater than the start date
     dates=dates[dates[SDATE]>start_date]
+    
+    # Get all currencies
     ccys =df[[CCY]].drop_duplicates()
     
     ccys[JOIN]=1
@@ -105,7 +221,7 @@ def cash_ladder(date,scope,portfolio):
     df[ORDER] = df[TYPE].map({'C':2,'A':3,'R':4})
     df[TYPE] = df[TYPE].map({'C':'Trades to settle','R':'Estimated funding','A':'Dividend'})
 
-    df = pd.concat([bod,eod,df],ignore_index=True).sort_values([CCY,SDATE,ORDER]).reset_index(drop=True)
+    df = pd.concat([bod,eod,df],ignore_index=True, sort=False).sort_values([CCY,SDATE,ORDER]).reset_index(drop=True)
 
     #Calculate cumulative quantity
     df[CUM] = df[[CCY,QTY]].groupby([CCY],as_index=False).cumsum()[QTY]
@@ -115,7 +231,7 @@ def cash_ladder(date,scope,portfolio):
     df.loc[subset.index,QTY] = subset[CUM]
 
     #Filter out T-1 balances (just used to provide BOD balance)
-    
+
     df = df[df[SDATE] > start_date]
 
     #Pivot the data
