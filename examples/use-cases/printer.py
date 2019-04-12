@@ -529,3 +529,11 @@ def remaining_portfolios(response, scope):
     print(colours.FAIL + colours.bold + 'Portfolios remaining in scope: ' + colours.end + scope + ':')
     for portfolio in response.values:
         portfolio_response(portfolio)
+
+def get_identifiers(response, unique=False):
+    for identifier in response.values:
+        if (identifier.cardinality == 'IdentifierCardinalityUnique') == unique:
+            print(colours.bold + '    Identifier Name : ' + colours.end + identifier.id_name)
+            print(colours.bold + '    Identifier Cardinality : ' + colours.end + identifier.cardinality)
+            print(colours.bold + '    Identifier Property Key Value : ' + colours.end + identifier.property_key_value)
+            print ('\n')
