@@ -1,4 +1,4 @@
-portfolio_code,instrument_name,quantity,price,currency,figi
-Global-Strategies,January 19 Calls on AMZN US,,240.12,USD,BBG00MMQR535
+PortfolioCode,InstrumentName,Quantity,Price,Currency,Figi
+Global-Strategies,January 19 Calls on AMZN US,,,USD,BBG00MMQR535
 Global-Strategies,January 19 Calls on AAPL US,,,USD,BBG00MMPH5X5
-Global-Strategies,September 19 Calls on BP/ LN,,,GBP,BBG00M2Z8958
+Global-Strategies,September 18 Calls on BP/ LN,,,GBP,BBG00M2Z8958
