@@ -532,8 +532,8 @@ def remaining_portfolios(response, scope):
 
 def get_identifiers(response, unique=False):
     for identifier in response.values:
-        if (identifier.cardinality == 'IdentifierCardinalityUnique') == unique:
+        if identifier.is_unique_identifier == unique:
             print(colours.bold + '    Identifier Name : ' + colours.end + identifier.id_name)
-            print(colours.bold + '    Identifier Cardinality : ' + colours.end + identifier.cardinality)
+            print(colours.bold + '    Is Unique Identifier : ' + colours.end + str(identifier.is_unique_identifier))
             print(colours.bold + '    Identifier Property Key Value : ' + colours.end + identifier.property_key_value)
             print ('\n')
