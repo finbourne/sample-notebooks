@@ -1,0 +1,10 @@
+PortfolioCode,InstrumentName,Quantity,Price,Currency,Figi,ClientInternal,TransactionType,TransactionId,TransactionDate,SettlementDate,SettlementAmt,TransactionToSettlementExRate,TransactionCurrency,SettlementCurrency
+Global-Strategies,UKGiltTreasury_2.0_2025,2222.41,,GBP,,imd_34534536,ACCR,1852034,,,2222.41,1,GBP,GBP
+Global-Strategies,UKGiltTreasury_3.5_2045,2552.305479,,GBP,,imd_54234532,ACCR,1852047,,,2552.305479,1,GBP,GBP
+Global-Strategies,UKGiltTreasury_3.75_2021,6798.421233,,GBP,,imd_34643653,ACCR,1852071,,,6798.421233,1,GBP,GBP
+Global-Strategies,UKGiltTreasury_4.5_2034,955.2452055,,GBP,,imd_34534534,ACCR,1852078,,,955.2452055,1,GBP,GBP
+Global-Strategies,USTreasury_2.00_2021,7891.747945,,USD,,imd_34535347,ACCR,1852126,,,7891.747945,1,USD,USD
+Global-Strategies,USTreasury_6.875_2025,10059.14212,,USD,,imd_34534539,ACCR,1852127,,,10059.14212,1,USD,USD
+Global-Strategies,UKGiltTreasury_4.5_2034,20000,142.83,GBP,,imd_34534534,PURCHASE,1852169,,,2856600,1,GBP,GBP
+Global-Strategies,UKGiltTreasury_3.75_2021,43000,107.44,GBP,,imd_34643653,SALE,1852203,,,4619920,1,GBP,GBP
+Global-Strategies,USTreasury_6.875_2025,15000,122.38,USD,,imd_34534536,SALE,1852252,,,1835700,1,USD,USD
