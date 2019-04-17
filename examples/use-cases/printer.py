@@ -332,7 +332,12 @@ def holdings_response(response, scope, code):
         print (colours.bold + 'Instrument Name: ' + colours.end + holding.properties[0].value)
         print (colours.bold + 'Units: ' + colours.end + str(holding.units))
         print (colours.bold + 'Cost: ' + colours.end + str(holding.cost.amount))
-        print (colours.bold + 'Currency: ' + colours.end + holding.cost.currency + '\n')
+        print (colours.bold + 'Currency: ' + colours.end + holding.cost.currency)
+        if holding.transaction is not None:
+            print (colours.bold + 'Unsettled Transaction Id: ' + colours.end + str(holding.transaction.transaction_id))
+            print (colours.bold + 'Settlement Date: ' + colours.end + str(holding.transaction.settlement_date))
+        print ('\n')
+            
 
 def get_transactions_response(response, scope, code):
     print (colours.bold + 'Transactions Retrieved from Portfolio' + colours.end)

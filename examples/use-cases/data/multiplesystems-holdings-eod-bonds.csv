@@ -1,0 +1,9 @@
+PortfolioCode,InstrumentName,Quantity,Price,Currency,Figi,ClientInternal
+Global-Strategies,UKGiltTreasury_2.0_2025,405589,106.637,GBP,,imd_34534536
+Global-Strategies,UKGiltTreasury_3.5_2045,266169,134.433,GBP,,imd_54234532
+Global-Strategies,UKGiltTreasury_3.75_2021,618713,108.126,GBP,,imd_34643653
+Global-Strategies,UKGiltTreasury_4.5_2034,97481,140.572,GBP,,imd_34534534
+Global-Strategies,USTreasury_2.00_2021,1440244,97.9,USD,,imd_34535347
+Global-Strategies,USTreasury_6.875_2025,519049,124.52,USD,,imd_34534539
+Global-Strategies,USD_Cash,23000000,1,USD,,
+Global-Strategies,GBP_Cash,2778667,1,GBP,,
