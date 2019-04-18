@@ -435,13 +435,14 @@ def aggregation_response_index(agg_response):
 
 def transaction_type_response(response, filters=[]):
     i = 0
+    j = 0
     for mapping in response.values:
         i += 1
         aliases = [alias.type for alias in mapping.aliases]
         matches = [value for value in aliases if value in filters]
         if len(matches) == 0 and len(filters)>=1:
             continue
-
+        j += 1
         print (colours.bold + colours.UNDERLINE + 'Transaction Configuration #{}'.format(i) + colours.end + '\n')
 
         print (colours.bold + colours.FAIL + 'Transaction Type Aliases' + colours.end)
@@ -465,6 +466,8 @@ def transaction_type_response(response, filters=[]):
                     value = property_pair.value
                     print (colours.bold + 'Properties: ' + colours.end + key + ': ' + value + '\n')
         print ('\n\n')
+    if j == 0:
+        print ('No matching transaction types in the configuration')
 
 
 def group_commands(response, group_name):
