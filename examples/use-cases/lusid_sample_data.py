@@ -106,7 +106,7 @@ def create_scope_ids(num_scopes):
     Output
     scopes: List of scope identifiers
     """ 
-    scopes = [str(uuid.uuid4())[:4] for i in range(num_scopes)]
+    scopes = [ str(uuid.uuid4()) for i in range(num_scopes)]
     
     return scopes
 
