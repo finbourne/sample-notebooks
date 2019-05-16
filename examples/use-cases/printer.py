@@ -308,7 +308,7 @@ def output_transactions(response, scope, code):
     for transaction in response.values:
         print (colours.bold + 'Transaction Id: ' + colours.end + transaction.transaction_id)
         print (colours.bold + 'Transaction Type: ' + colours.end + transaction.type)
-        print (colours.bold + 'Instrument Name: ' + colours.end + transaction.properties[4].value)
+#         print (colours.bold + 'Instrument Name: ' + colours.end + transaction.properties[4].value)
         print (colours.bold + 'Units: ' + colours.end + str(transaction.units))
         print (colours.bold + 'Price: ' + colours.end + str(transaction.transaction_price.price))
         print (colours.bold + 'Currency: ' + colours.end + transaction.transaction_currency)
@@ -329,7 +329,7 @@ def holdings_response(response, scope, code):
     print (colours.bold + 'Scope: ' + colours.end + scope)
     print (colours.bold + 'Code: ' + colours.end + code + '\n')
     for holding in response.values:
-        print (colours.bold + 'Instrument Name: ' + colours.end + holding.properties[0].value)
+#         print (colours.bold + 'Instrument Name: ' + colours.end + holding.properties[0].value)
         print (colours.bold + 'Units: ' + colours.end + str(holding.units))
         print (colours.bold + 'Cost: ' + colours.end + str(holding.cost.amount))
         print (colours.bold + 'Currency: ' + colours.end + holding.cost.currency + '\n')
@@ -341,7 +341,7 @@ def get_transactions_response(response, scope, code):
     for transaction in response.values:
         print ('Transaction Id: ', transaction.transaction_id)
         print ('Transaction Type: ', transaction.type)
-        print ('Instrument Name :', transaction.properties[2].value)
+#         print ('Instrument Name :', transaction.properties[2].value)
         print ('Units: ', transaction.units)
         print ('Price: ', transaction.transaction_price.price)
         print ('Currency: ', transaction.transaction_currency)
