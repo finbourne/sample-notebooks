@@ -545,3 +545,6 @@ def get_identifiers(response, unique=False):
             print(colours.bold + '    Is Unique Identifier : ' + colours.end + str(identifier.is_unique_identifier))
             print(colours.bold + '    Identifier Property Key Value : ' + colours.end + identifier.property_key_value)
             print ('\n')
+            
+def upsert_quotes_response(response):
+    print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.as_at))
