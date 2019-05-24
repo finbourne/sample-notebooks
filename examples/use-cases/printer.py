@@ -432,7 +432,14 @@ def aggregation_response_index(agg_response):
     print (colours.bold + 'Current Index Level :' + colours.end + str(round(present,2)))
     print (colours.bold + 'Return :' + colours.end + str(round(total_return*100,4)) + '%')
 
-
+def aggregation_response_generic(response):
+    print(colours.bold + 'Aggregation Results: ' + colours.end)
+    
+    for agg_result in response.data:
+        for key, value in agg_result.items():
+            print ('{}: {}'.format(key, value))
+        print ('\n')
+        
 def transaction_type_response(response, filters=[]):
     i = 0
     j = 0
