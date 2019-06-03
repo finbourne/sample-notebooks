@@ -7,7 +7,7 @@ RUN pip install jupyterthemes
 # Set the theme
 RUN jt -ofs 12 -t chesterish
 
-RUN pip install lusid-sdk
+RUN pip install lusid-sdk-preview
 
 RUN mkdir -p /tmp/working
 
