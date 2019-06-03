@@ -99,14 +99,11 @@ def authenticate():
 
 def create_scope_id():
     """
-    This function creates unique IDs for as many scopes as we need. There
-    is a 1 in 16^8 = 4,294,967,296 chance of a collision.
-    
-    Input
-    num_scopes: Integer value for the number of identifiers that we need
+    This function creates a unique ID based on the time since epoch for use 
+    as a scope id.
     
     Output
-    scopes: List of scope identifiers
+    scopes: Scope identifier
     """ 
     # Get the current time since epoch
     test = default_time.time()
