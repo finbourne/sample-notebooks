@@ -11,6 +11,7 @@ import json
 from random import shuffle, randint
 import numpy as np
 import hashlib
+import time as default_time
 
 def authenticate_secrets():
     # Load our configuration details from the environment variables
@@ -107,12 +108,12 @@ def create_scope_id():
     Output
     scopes: List of scope identifiers
     """ 
-    # Get the current datetime which is guaranteed to be unique 
-    current_datetime = str(datetime.now(pytz.UTC))
-    # Take the hash of this
-    test_hash = hashlib.md5(current_datetime.encode('utf-8'))
-    # Create the scope id from the hash by adding a dash every 4 characters
-    scope_id = ('-'.join(test_hash.hexdigest()[i:i+4] for i in range(0, len(test_hash.hexdigest()), 4)))
+    # Get the current time since epoch
+    test = default_time.time()
+    # Multiply by 7 to get value to 100s of nano seconds
+    timestamp = hex(int(test*10000000.0))
+    # Create the scope id by joining the hex representation with dashes every 4 charachters
+    scope_id = '-'.join(timestamp[i:i+4] for i in range(2, len(timestamp), 4))
     return scope_id
 
 def import_file(csv_file):
