@@ -54,6 +54,7 @@ def reconciliation(reconciled_portfolios, flag=False):
         for portfolio_name, reconciliation_breaks in reconciled_portfolios.items():
             print (colours.bold + 'Portfolio: ' + colours.end + portfolio_name + '\n')
             for reconciliation_break in reconciliation_breaks.values:
+                rec_properties = {rec_prop.key: rec_prop.value for rec_prop in reconciliation_break.instrument_properties}
                 print (colours.bold + 'Reconciliation Break' + colours.end)
                 print (colours.bold + 'Instrument: ' + colours.end + reconciliation_break.instrument_uid)
                 print (colours.bold + 'Internal Units: ' + colours.end + str(reconciliation_break.left_units))
@@ -63,6 +64,8 @@ def reconciliation(reconciled_portfolios, flag=False):
                 print (colours.bold + 'Fund Accountant Cost: ' + colours.end + str(reconciliation_break.right_cost.amount))
                 print (colours.bold + 'Difference In Cost: ' + colours.FAIL + str(reconciliation_break.difference_cost.amount) + colours.end)
                 print (colours.bold + 'Currency: ' + colours.end + str(reconciliation_break.left_cost.currency))
+                for key, value in rec_properties.items():
+                    print (colours.bold + '{}: '.format(key) + colours.end + str(value))
                 print('\n')
         print ('\n')
 
@@ -73,6 +76,7 @@ def reconciliation_response(response, scope, code):
     if len(response.values) == 0:
         print (colours.bold + 'No Reconciliation Breaks' + colours.end)
     for reconciliation_break in response.values:
+        rec_properties = {rec_prop.key: rec_prop.value for rec_prop in reconciliation_break.instrument_properties}
         print (colours.bold + 'Reconciliation Break' + colours.end)
         print (colours.bold + 'Instrument LUID: ' + colours.end + reconciliation_break.instrument_uid)
         print (colours.bold + 'Left Units: ' + colours.end + str(round(reconciliation_break.left_units,0)))
@@ -82,6 +86,8 @@ def reconciliation_response(response, scope, code):
         print (colours.bold + 'Right Cost: ' + colours.end + str(round(reconciliation_break.right_cost.amount,2)))
         print (colours.bold + 'Difference In Cost: ' + colours.FAIL + str(round(reconciliation_break.difference_cost.amount,2)) + colours.end)
         print (colours.bold + 'Currency: ' + colours.end + str(reconciliation_break.left_cost.currency))
+        for key, value in rec_properties.items():
+            print (colours.bold + '{}: '.format(key) + colours.end + str(value))
         print('\n')
 
 def trades(late_trades):
@@ -301,14 +307,18 @@ def adjust_holdings_response(response, scope, portfolio_name):
     print (colours.bold + 'Adjusted Holdings Effective From: ' + colours.end + str(response.version.effective_from))
     print (colours.bold + 'Adjusted Holdings Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
 
-def output_transactions(response, scope, code):
+def output_transactions(response, scope, code, property_keys=[]):
     print (colours.bold + 'Output Transactions for Portfolio' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end + scope)
     print (colours.bold + 'Code: ' + colours.end + code + '\n')
     for transaction in response.values:
         print (colours.bold + 'Transaction Id: ' + colours.end + transaction.transaction_id)
         print (colours.bold + 'Transaction Type: ' + colours.end + transaction.type)
-#         print (colours.bold + 'Instrument Name: ' + colours.end + transaction.properties[4].value)
+        transaction_properties = {t_property.key: t_property.value for t_property in transaction.properties}
+        for key, value in transaction_properties.items():
+            if len(property_keys) > 0 and key not in property_keys:
+                continue
+            print (colours.bold + '{}: '.format(key) + colours.end + str(value))
         print (colours.bold + 'Units: ' + colours.end + str(transaction.units))
         print (colours.bold + 'Price: ' + colours.end + str(transaction.transaction_price.price))
         print (colours.bold + 'Currency: ' + colours.end + transaction.transaction_currency)
@@ -329,7 +339,9 @@ def holdings_response(response, scope, code):
     print (colours.bold + 'Scope: ' + colours.end + scope)
     print (colours.bold + 'Code: ' + colours.end + code + '\n')
     for holding in response.values:
-#         print (colours.bold + 'Instrument Name: ' + colours.end + holding.properties[0].value)
+        holding_properties = {h_property.key: h_property.value for h_property in holding.properties}
+        for key, value in holding_properties.items():
+            print (colours.bold + '{}: '.format(key) + colours.end + str(value))
         print (colours.bold + 'Units: ' + colours.end + str(holding.units))
         print (colours.bold + 'Cost: ' + colours.end + str(holding.cost.amount))
         print (colours.bold + 'Currency: ' + colours.end + holding.cost.currency)
@@ -339,17 +351,21 @@ def holdings_response(response, scope, code):
         print ('\n')
             
 
-def get_transactions_response(response, scope, code):
+def get_transactions_response(response, scope, code, property_keys=[]):
     print (colours.bold + 'Transactions Retrieved from Portfolio' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end, scope)
     print (colours.bold + 'Code: ' + colours.end, code, '\n')
     for transaction in response.values:
         print ('Transaction Id: ', transaction.transaction_id)
         print ('Transaction Type: ', transaction.type)
-#         print ('Instrument Name :', transaction.properties[2].value)
         print ('Units: ', transaction.units)
         print ('Price: ', transaction.transaction_price.price)
         print ('Currency: ', transaction.transaction_currency)
+        transaction_properties = {t_property.key: t_property.value for t_property in transaction.properties}
+        for key, value in transaction_properties.items():
+            if len(property_keys) > 0 and key not in property_keys:
+                continue 
+            print ('{}: '.format(key) + str(value))
         print ('Transaction Date: ', transaction.transaction_date, '\n')
 
 def portfolio_properties_response(response):

@@ -10,6 +10,7 @@ from urllib.request import pathname2url
 import json
 from random import shuffle, randint
 import numpy as np
+import hashlib
 
 def authenticate_secrets():
     # Load our configuration details from the environment variables
@@ -95,10 +96,10 @@ def authenticate():
     client = lusid.LUSIDAPI(credentials, api_url)
     return client
 
-def create_scope_ids(num_scopes):
+def create_scope_id():
     """
     This function creates unique IDs for as many scopes as we need. There
-    is a 1 in 36**4 = 1,679,616 chance of a collision. 
+    is a 1 in 16^8 = 4,294,967,296 chance of a collision.
     
     Input
     num_scopes: Integer value for the number of identifiers that we need
@@ -106,10 +107,13 @@ def create_scope_ids(num_scopes):
     Output
     scopes: List of scope identifiers
     """ 
-    scopes = [str(uuid.uuid4())[:4] for i in range(num_scopes)]
-    
-    return scopes
-
+    # Get the current datetime which is guaranteed to be unique 
+    current_datetime = str(datetime.now(pytz.UTC))
+    # Take the hash of this
+    test_hash = hashlib.md5(current_datetime.encode('utf-8'))
+    # Create the scope id from the hash by adding a dash every 4 characters
+    scope_id = ('-'.join(test_hash.hexdigest()[i:i+4] for i in range(0, len(test_hash.hexdigest()), 4)))
+    return scope_id
 
 def import_file(csv_file):
     """
