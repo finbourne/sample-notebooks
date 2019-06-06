@@ -1,7 +1,7 @@
-﻿account_code,account_name,currency,description,primary_acount_owner_id,household_id,other_account_owner_id
-040004-929987648,OneIntlBrokerage,USD,Primary trading account,invstr_7325jhv93,hhd_jxgru45055,
-040004-778939522,OneIntlBrokerage,USD,College fund ,invstr_7325jhv93,hhd_jxgru45055,invstr_bbgj93921
-204507-250099511,VangETF,USD,Passive exchange traded fund,invstr_a1kf37761,hhd_ab3452342,
-774001-899930233,FidelityOnlineUSEquityOptions,USD,Online US equity & option trades,invstr_bbgj93921,hhd_jxgru45055,
-400250-613060229,ActiveManagedBlckrock,USD,Actively managed high return investment account,invstr_a1kf37761,hhd_ab3452342,
-769231-448679901,MutualFund,USD,Pooled investment vehicle,invstr_7325jhv93,hhd_ab3452342,
+﻿account_code,account_name,currency,description,primary_acount_owner_id,household_id,other_account_owner_id,financial_advisor_id
+040004-929987648,OneIntlBrokerage,USD,Primary trading account,invstr_7325jhv93,hhd_jxgru45055,,ffid_abkjas9932
+040004-778939522,OneIntlBrokerage,USD,College fund ,invstr_7325jhv93,hhd_jxgru45055,invstr_bbgj93921,ffid_abkjas9932
+204507-250099511,VangETF,USD,Passive exchange traded fund,invstr_a1kf37761,hhd_ab3452342,,ffid_abkjas9932
+774001-899930233,FidelityOnlineUSEquityOptions,USD,Online US equity & option trades,invstr_bbgj93921,hhd_jxgru45055,,ffid_xxye990221
+400250-613060229,ActiveManagedBlckrock,USD,Actively managed high return investment account,invstr_a1kf37761,hhd_ab3452342,,ffid_abkjas9932
+769231-448679901,MutualFund,USD,Pooled investment vehicle,invstr_7325jhv93,hhd_ab3452342,,ffid_abkjas9932
