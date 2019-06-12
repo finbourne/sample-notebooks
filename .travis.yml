@@ -20,8 +20,6 @@ script:
     fbn_lusid_api_url="DEVELOP_FBN_LUSID_API_URL"
   fi
 
-  cd sdk
-  docker build -t finbourne/lusid-sdk-csharp-test .
   docker run \
     -e FBN_TOKEN_URL=${!fbn_token_url} \
     -e FBN_USERNAME=${!fbn_username} \
