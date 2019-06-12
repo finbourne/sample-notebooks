@@ -2,10 +2,36 @@ language: python
 services:
 - docker
 script:
-- docker run -e FBN_TOKEN_URL=$FBN_TOKEN_URL -e FBN_USERNAME=$FBN_USERNAME -e FBN_PASSWORD=$FBN_PASSWORD
-  -e FBN_CLIENT_ID=$FBN_CLIENT_ID -e FBN_CLIENT_SECRET=$FBN_CLIENT_SECRET -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL
-  -e FBN_NOTEBOOK_FOLDER=/usr/notebooks -v $(pwd):/usr/notebooks --name fbn-notebook-test-runner
-  --rm finbourne/notebook-test-runner:latest
+- |
+
+  if [ "$TRAVIS_BRANCH" = "master" ]; then
+    fbn_token_url="MASTER_FBN_TOKEN_URL"
+    fbn_username="MASTER_FBN_USERNAME"
+    fbn_password="MASTER_FBN_PASSWORD"
+    fbn_clientid="MASTER_FBN_CLIENT_ID"
+    fbn_client_secret="MASTER_FBN_CLIENT_SECRET"
+    fbn_lusid_api_url="MASTER_FBN_LUSID_API_URL"
+  else
+    fbn_token_url="DEVELOP_FBN_TOKEN_URL"
+    fbn_username="DEVELOP_FBN_USERNAME"
+    fbn_password="DEVELOP_FBN_PASSWORD"
+    fbn_clientid="DEVELOP_FBN_CLIENT_ID"
+    fbn_client_secret="DEVELOP_FBN_CLIENT_SECRET"
+    fbn_lusid_api_url="DEVELOP_FBN_LUSID_API_URL"
+  fi
+
+  cd sdk
+  docker build -t finbourne/lusid-sdk-csharp-test .
+  docker run \
+    -e FBN_TOKEN_URL=${!fbn_token_url} \
+    -e FBN_USERNAME=${!fbn_username} \
+    -e FBN_PASSWORD=${!fbn_password} \
+    -e FBN_CLIENT_ID=${!fbn_clientid} \
+    -e FBN_CLIENT_SECRET=${!fbn_client_secret} \
+    -e FBN_LUSID_API_URL=${!fbn_lusid_api_url} \
+    -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
+    -v $(pwd):/usr/notebooks \
+    finbourne/notebook-test-runner:latest
 
 notifications:
   slack:
