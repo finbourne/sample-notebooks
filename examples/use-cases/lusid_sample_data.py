@@ -12,8 +12,76 @@ from random import shuffle, randint
 import numpy as np
 import hashlib
 import time as default_time
+from collections import UserString
+
+class RefreshingToken(UserString):
+
+    def __init__(self):
+
+        token_data = {
+            "expires": datetime.now(),
+            "current_access_token": ''
+        }
+
+        current_access_token = ''
+
+        def get_token():
+            if token_data['expires'] <= datetime.now():
+                with open("./../access_token.txt", "r") as access_token_file:
+                    token_data['current_access_token'] = access_token_file.read()
+
+                token_data['expires'] = datetime.now() + timedelta(seconds=120)
+
+            return token_data['current_access_token']
+
+        self.access_token = get_token
+
+    def __getattribute__(self, name):
+        token = object.__getattribute__(self, 'access_token')()
+        if name == 'data':
+            return token
+        return token.__getattribute__(name)
+
 
 def authenticate_secrets():
+    
+    class LusidApi():
+
+        def __init__(self, client):
+            self.aggregation = lusid.AggregationApi(client)
+            self.analytics_stores = lusid.AnalyticsStoresApi(client)
+            self.metadata = lusid.ApplicationMetadataApi(client)
+            self.corporate_action_sources = lusid.CorporateActionSourcesApi(client)
+            self.data_types = lusid.DataTypesApi(client)
+            self.derived_transaction_portfolios = lusid.DerivedTransactionPortfoliosApi(client)
+            self.instruments = lusid.InstrumentsApi(client)
+            self.login = lusid.InstrumentsApi(client)
+            self.portfolio_groups = lusid.PortfolioGroupsApi(client)
+            self.portfolios = lusid.PortfoliosApi(client)
+            self.property_definitions = lusid.PropertyDefinitionsApi(client)
+            self.quotes = lusid.QuotesApi(client)
+            self.reconciliations = lusid.ReconciliationsApi(client)
+            self.reference_portfolios = lusid.ReferencePortfolioApi(client)
+            self.results = lusid.ResultsApi(client)
+            self.schemas = lusid.SchemasApi(client)
+            self.scopes = lusid.ScopesApi(client)
+            self.search = lusid.SearchApi(client)
+            self.system_configuration = lusid.SystemConfigurationApi(client)
+            self.transaction_portfolios = lusid.TransactionPortfoliosApi(client)
+    
+    
+    environment = os.getenv("FBN_DEPLOYMENT_ENVIRONMENT", None)
+
+    if environment == "JupyterNotebook":
+        config = lusid.Configuration()
+        config.access_token = RefreshingToken()
+        api_url = os.getenv("FBN_LUSID_API_URL", None)
+        if api_url is None:
+            raise 'No api_url'
+        config.host = api_url
+        client = lusid.ApiClient(config)
+        return LusidApi(client)
+    
     # Load our configuration details from the environment variables
     token_url = os.getenv("FBN_TOKEN_URL", None)
     api_url = os.getenv("FBN_LUSID_API_URL", None)
@@ -62,32 +130,7 @@ def authenticate_secrets():
     config.access_token = api_token
     config.host = api_url
     client = lusid.ApiClient(config)
-    
-    class LusidApi():
         
-        def __init__(self, client):
-            self.aggregation = lusid.AggregationApi(client)
-            self.analytics_stores = lusid.AnalyticsStoresApi(client)
-            self.metadata = lusid.ApplicationMetadataApi(client)
-            self.corporate_action_sources = lusid.CorporateActionSourcesApi(client)
-            self.data_types = lusid.DataTypesApi(client)
-            self.derived_transaction_portfolios = lusid.DerivedTransactionPortfoliosApi(client)
-            self.instruments = lusid.InstrumentsApi(client)
-            self.login = lusid.InstrumentsApi(client)
-            self.portfolio_groups = lusid.PortfolioGroupsApi(client)
-            self.portfolios = lusid.PortfoliosApi(client)
-            self.property_definitions = lusid.PropertyDefinitionsApi(client)
-            self.quotes = lusid.QuotesApi(client)
-            self.reconciliations = lusid.ReconciliationsApi(client)
-            self.reference_portfolios = lusid.ReferencePortfolioApi(client)
-            self.results = lusid.ResultsApi(client)
-            self.schemas = lusid.SchemasApi(client)
-            self.scopes = lusid.ScopesApi(client)
-            self.search = lusid.SearchApi(client)
-            self.system_configuration = lusid.SystemConfigurationApi(client)
-            self.transaction_portfolios = lusid.TransactionPortfoliosApi(client)
-
-            
     return LusidApi(client)
 
 def authenticate():
