@@ -77,7 +77,7 @@ def authenticate_secrets():
         config.access_token = RefreshingToken()
         api_url = os.getenv("FBN_LUSID_API_URL", None)
         if api_url is None:
-            raise 'No api_url'
+            raise KeyError("Missing FBN_LUSID_API_URL environment variable, please set it to the LUSID base API url")
         config.host = api_url
         client = lusid.ApiClient(config)
         return LusidApi(client)
