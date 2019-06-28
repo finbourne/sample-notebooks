@@ -495,7 +495,7 @@ def transaction_type_response(response, filters=[]):
 
 def group_commands(response, group_name):
     print (colours.bold + 'Commands Applied To Group ' + group_name + colours.end)
-    print (colours.bold + 'Number of commands : ' + colours.end + str(response.count))
+    print (colours.bold + 'Number of commands : ' + colours.end + str(len(response.links)))
     for command in response.values:
         print (colours.bold + 'Description : ' + colours.end + command.description)
         print (colours.bold + 'At Time : ' + colours.end + str(command.processed_time))
