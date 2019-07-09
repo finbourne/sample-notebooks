@@ -571,3 +571,51 @@ def get_identifiers(response, unique=False):
             
 def upsert_quotes_response(response):
     print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.as_at))
+
+def sub_holdings(response):
+    
+    rows = []
+    
+    for sub_holding in response.values:
+        
+        row = {}
+        
+        row['Lusid Unique Instrument Id'] = sub_holding.instrument_uid
+        row['Units'] = sub_holding.units
+        
+        for sub_holding_key in sub_holding.sub_holding_keys:
+            row[sub_holding_key.key.split('/')[2]] = sub_holding_key.value
+        
+        
+        for transaction_property in sub_holding.properties:
+            row["_".join(transaction_property.key.split('/')[::2])] = transaction_property.value
+        
+        row['Total Cost'] = sub_holding.cost.amount
+        row['Currency'] = sub_holding.cost.currency
+        
+        rows.append(row)
+        
+    dataframe = pd.DataFrame(rows)
+
+    return dataframe
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
