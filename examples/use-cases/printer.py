@@ -596,10 +596,13 @@ def sub_holdings(response):
         rows.append(row)
         
     dataframe = pd.DataFrame(rows)
-
+    
+    if 'InvestorId' in dataframe.columns:
+        dataframe = dataframe.sort_values(['InvestorId', 'SubscriptionType'], ascending=False)
     return dataframe
         
-        
+def add_transaction_property(response):
+    print(colours.bold + "Added transaction properties asAt: " + colours.end + str(response.version.as_at_date))
         
         
         
