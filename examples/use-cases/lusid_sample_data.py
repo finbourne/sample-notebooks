@@ -355,14 +355,13 @@ def client_transactions(csv_file, instrument_universe):
                                                                        
     return _client_transactions, yesterday_trade_open
 
-def fetch_client_transactions(csv_file, instrument_universe, days_back, portfolios=False):
+def fetch_client_transactions(csv_file, days_back):
     """
     This function loads the data from our daily accountant report and writes it to a dictionary,
     the logic is exactly the same as fetch_client_take_on_balances so we just use that.
     
     Input
     csv_file: The name of the csv file including the extension i.e. .csv
-    instrument_universe: The instrument universe
     
     Output
     _client_transactions: Dictionary containing the client transactions
@@ -374,11 +373,9 @@ def fetch_client_transactions(csv_file, instrument_universe, days_back, portfoli
     
     transactions = import_file(csv_file)
     
-    _client_transactions = {}
+    _client_transactions = []
             
-    for row in transactions.iterrows():
-        
-        instrument = row[1]
+    for index, transaction in transactions.iterrows():
         
         day = randint(0,days_back-1)
         hour = randint(0,8)
@@ -388,36 +385,29 @@ def fetch_client_transactions(csv_file, instrument_universe, days_back, portfoli
         
         transaction_date = days_ago_trade_open + timedelta(days=day, hours=hour, minutes=minute, seconds=second, microseconds=microsecond)
         
-        if instrument['figi'] is not np.nan:
-            identifier = instrument['figi']
+        if transaction['figi'] is not np.nan:
+            identifier = transaction['figi']
         else:
-            identifier = instrument['currency_code']
-            
-        if portfolios:
-            identifier = instrument_universe[instrument['instrument_name']]['identifiers']['LUID']
+            identifier = transaction['currency']
         
-        trans_id = instrument['transaction_id']
-        _client_transactions[trans_id] = {'type': instrument['transaction_type'],
-                                          'portfolio': instrument['portfolio_name'],
-                                          'instrument_name': instrument['instrument_name'],
-                                          'instrument_uid': identifier,
-                                          'transaction_date': transaction_date.isoformat(),
-                                          'settlement_date': (transaction_date + timedelta(days=2)).isoformat(),
-                                          'units': instrument['transaction_units'],
-                                          'transaction_price': instrument['transaction_price'],
-                                          'transaction_currency': instrument['transaction_currency'],
-                                          'total_cost': instrument['transaction_cost'],
-                                          'strategy': instrument['transaction_strategy'],
-                                          'description': instrument['transaction_description']}
+        _client_transactions.append(
+            {'transaction_id': transaction['transaction_id'],
+            'type':  transaction['transaction_type'],
+            'portfolio':  transaction['portfolio_name'],
+            'instrument_name':  transaction['instrument_name'],
+            'instrument_uid': identifier,
+            'transaction_date': transaction_date.isoformat(),
+            'settlement_date': (transaction_date + timedelta(days=2)).isoformat(),
+            'units':  transaction['transaction_units'],
+            'transaction_price':  transaction['transaction_price'],
+            'transaction_currency':  transaction['transaction_currency'],
+            'total_cost':  transaction['transaction_cost'],
+            'strategy':  transaction['transaction_strategy'],
+            'description':  transaction['transaction_description'],
+            'portfolio': transaction['portfolio_name']}
+        )
         
-    
-    if portfolios:
-        __client_transactions = {}
-        for trans_id, transaction in _client_transactions.items():
-            __client_transactions.setdefault(transaction['portfolio'], {})[trans_id] = transaction
-    else:
-        __client_transactions = _client_transactions
-            
 
+    __client_transactions = pd.DataFrame(data=_client_transactions)
                                                                        
     return __client_transactions
