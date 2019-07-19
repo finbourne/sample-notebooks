@@ -413,16 +413,16 @@ def analytic_store(analytic_store_response, analytics=False):
 def aggregation_response(agg_response):
     for agg_holding in agg_response.data:
 
-        if agg_holding['Instrument/default/Name'] == '<Unknown>':
-            instrument_name = 'Cash'
-            Luid = 'CCY_' + agg_holding['Holding/default/SubHoldingKey'].split('=')[1].split('/')[0]
+        if agg_holding['Holding/default/SubHoldingKey'].split('=')[0] == 'Currency':
             currency = agg_holding['Holding/default/SubHoldingKey'].split('=')[1]
+            
         else:
-            instrument_name = agg_holding['Instrument/default/Name']
-            Luid = agg_holding['Holding/default/SubHoldingKey'].split('=')[1].split('/')[0]
             currency = agg_holding['Holding/default/SubHoldingKey'].split('=')[1].split('/')[1]
+            
+        instrument_name = agg_holding['Instrument/default/Name']
+        Luid = agg_holding['Holding/default/SubHoldingKey'].split('=')[1].split('/')[0]
 
-        print (colours.bold + 'LUSID Instrument Id: ' + colours.end + Luid)
+        print (colours.bold + 'LUSID Instrument Id / Currency: ' + colours.end + Luid)
         print (colours.bold + 'Instrument Name: ' + colours.end + instrument_name)
         print (colours.bold + 'Instrument Units: ' + colours.end + str(round(agg_holding['Sum(Holding/default/Units)'],2)))
         print (colours.bold + 'Instrument Cost: ' + colours.end + str(round(agg_holding['Sum(Holding/default/Cost)'],2)))
