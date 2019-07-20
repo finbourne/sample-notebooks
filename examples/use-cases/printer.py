@@ -377,7 +377,7 @@ def portfolio_properties_response(response):
     print (colours.bold + 'Code: ' + colours.end, response.origin_portfolio_id.code, '\n')
     for _property_key, _property_value in response.properties.items():
         print (colours.bold + 'Property key: ' + colours.end + _property_key)
-        print (colours.bold + 'Value: ' + colours.end + _property_value.value + '\n')
+        print (colours.bold + 'Value: ' + colours.end + _property_value.value.label_value + '\n')
 
 def aggregation_response_paper(response):
     total_cost = 0
@@ -573,4 +573,4 @@ def get_identifiers(response, unique=False):
             print ('\n')
             
 def upsert_quotes_response(response):
-    print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.as_at))
+    print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.values.popitem()[1].as_at))
