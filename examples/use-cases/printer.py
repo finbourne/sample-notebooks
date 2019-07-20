@@ -339,7 +339,10 @@ def holdings_response(response, scope, code):
     print (colours.bold + 'Scope: ' + colours.end + scope)
     print (colours.bold + 'Code: ' + colours.end + code + '\n')
     for holding in response.values:
-        holding_properties = {h_property.key: h_property.value for h_property in holding.properties}
+        holding_properties = {
+            k: p.value.label_value if p.value.label_value is not None else p.value.metric_value.value
+            for (k, p) in holding.properties.items()
+        }
         for key, value in holding_properties.items():
             print (colours.bold + '{}: '.format(key) + colours.end + str(value))
         print (colours.bold + 'Units: ' + colours.end + str(holding.units))
