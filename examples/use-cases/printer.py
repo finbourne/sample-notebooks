@@ -377,7 +377,7 @@ def portfolio_properties_response(response):
     print (colours.bold + 'Code: ' + colours.end, response.origin_portfolio_id.code, '\n')
     for _property_key, _property_value in response.properties.items():
         print (colours.bold + 'Property key: ' + colours.end + _property_key)
-        print (colours.bold + 'Value: ' + colours.end + _property_value.value + '\n')
+        print (colours.bold + 'Value: ' + colours.end + _property_value.value.label_value + '\n')
 
 def aggregation_response_paper(response):
     total_cost = 0
@@ -573,26 +573,4 @@ def get_identifiers(response, unique=False):
             print ('\n')
             
 def upsert_quotes_response(response):
-    print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.as_at))
-
-
-def get_holdings_df(response):
-    rows = []
-    nested_fields = ['cost', 'cost_portfolio_ccy', 'properties', 'sub_holding_keys']
-
-    for holding in response.values:
-        current_row = {}
-        current_row.update(vars(holding))
-        for field in nested_fields:
-            del current_row["_" + field]
-        current_row['cost.amount'] = holding.cost.amount
-        current_row['cost.currency'] = holding.cost.currency
-        current_row['cost_portfolio_ccy.amount'] = holding.cost.amount
-        for sub_holding_key in holding.sub_holding_keys:
-            current_row[sub_holding_key.key] = sub_holding_key.value
-        for _property in holding.properties:
-            current_row[_property.key] = _property.value
-        rows.append(current_row)
-
-    df = pd.DataFrame(rows)
-    return df
+    print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.values.popitem()[1].as_at))
