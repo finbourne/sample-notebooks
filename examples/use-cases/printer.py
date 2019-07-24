@@ -253,8 +253,8 @@ def expansion_portfolio_response(response):
         print (colours.bold + 'Code: ' + colours.end + response.id.code)
         print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
         print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
-
-
+    
+    
 def expanded_portfolio_group_response(response):
     print (colours.FAIL + colours.bold + 'Portfolio Group Full Details : ' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
@@ -278,9 +278,6 @@ def instrument_response(response, identifier='ClientInternal'):
         print (colours.bold + 'Instrument Successfully Upserted: ' + colours.end + instrument_name)
         print (colours.bold + '{} ID: '.format(identifier) + colours.end + instrument.identifiers[identifier])
         print (colours.bold + 'LUSID Instrument ID: ' + colours.end + instrument.lusid_instrument_id)
-        if instrument.lookthrough_portfolio is not None:
-            print (colours.bold + 'Lookthrough Portfolio Scope: ' + colours.end + instrument.lookthrough_portfolio.scope)
-            print (colours.bold + 'Lookthrough Portfolio Code ' + colours.end + instrument.lookthrough_portfolio.code)
         print ('\n')
 
     print (len(response.values), ' instruments upserted successfully')
@@ -382,6 +379,7 @@ def portfolio_properties_response(response):
         print (colours.bold + 'Property key: ' + colours.end + _property_key)
         print (colours.bold + 'Value: ' + colours.end + _property_value.value.label_value + '\n')
 
+
 def aggregation_response_paper(response):
     total_cost = 0
     total_pv = 0
@@ -462,6 +460,29 @@ def aggregation_response_generic(response):
             print ('{}: {}'.format(key, value))
         print ('\n')
 
+        
+def aggregation_responses_generic_df(responses):
+    
+    dfs = []
+    
+    for response in responses:
+        
+        aggregation_currency = response.aggregation_currency
+        data_response_rows = []
+        for aggregation in response.data:
+            data_row = {}
+            data_row.update(aggregation)
+            data_row['currency'] = aggregation_currency
+            data_response_rows.append(data_row)
+        
+        df = pd.DataFrame(data_response_rows)
+        dfs.append(df)
+    
+    pd.options.display.float_format = '{:,.2f}'.format
+    df_concat = pd.concat(dfs, ignore_index=True)
+    return df_concat
+
+
 def transaction_type_response(response, filters=[]):
     i = 0
     j = 0
@@ -506,7 +527,7 @@ def group_commands(response, group_name):
         print (colours.bold + 'Description : ' + colours.end + command.description)
         print (colours.bold + 'At Time : ' + colours.end + str(command.processed_time))
         print('\n')
-
+        
 # The following function prints the details obtained from 'GetPortfolioGroup'
 def get_portfolio_group_response(response):
     print(colours.FAIL + colours.bold + 'Portfolio Group: ' + colours.end)
@@ -559,13 +580,13 @@ def portfolio_filtering(parents_to_keep, derived_to_keep, parents_to_delete, der
     for p in derived_to_delete:
         print(colours.bold + '    Scope : ' + colours.end + p[0])
         print(colours.bold + '    Code : ' + colours.end + p[1] + '\n')
+    
 
 
 def remaining_portfolios(response, scope):
     print(colours.FAIL + colours.bold + 'Portfolios remaining in scope: ' + colours.end + scope + ':')
     for portfolio in response.values:
         portfolio_response(portfolio)
-
 
 def get_identifiers(response, unique=False):
     for identifier in response.values:
@@ -574,7 +595,6 @@ def get_identifiers(response, unique=False):
             print(colours.bold + '    Is Unique Identifier : ' + colours.end + str(identifier.is_unique_identifier))
             print(colours.bold + '    Identifier Property Key Value : ' + colours.end + identifier.property_key_value)
             print ('\n')
-
             
 def upsert_quotes_response(response):
     print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.values.popitem()[1].as_at))
@@ -594,3 +614,23 @@ def corporate_actions_added_response(response):
         
 def upsert_quotes_response(response):
     print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.as_at))
+
+    response_df_data = []
+    
+    for quote_correlation_id, quote in response.values.items():
+        row_data = {}
+        row_data.update(vars(quote))
+        del row_data['_metric_value']
+        del row_data['_quote_id']
+        row_data.update(vars(quote.quote_id.quote_series_id))
+        row_data.update(vars(quote.metric_value))  
+        row_data['status'] = 'Success'
+        response_df_data.append(row_data)
+
+
+    response_df = pd.DataFrame.from_dict(response_df_data)
+
+    return response_df
+
+
+
