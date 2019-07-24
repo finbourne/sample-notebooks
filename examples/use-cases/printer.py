@@ -373,8 +373,6 @@ def get_transactions_response(response, scope, code, property_keys=[]):
 
 def portfolio_properties_response(response):
     print (colours.bold + 'Properties Sucessfully Updated for Portfolio' + colours.end)
-    print (colours.bold + 'Scope: ' + colours.end, response.origin_portfolio_id.scope)
-    print (colours.bold + 'Code: ' + colours.end, response.origin_portfolio_id.code, '\n')
     for _property_key, _property_value in response.properties.items():
         print (colours.bold + 'Property key: ' + colours.end + _property_key)
         print (colours.bold + 'Value: ' + colours.end + _property_value.value.label_value + '\n')
