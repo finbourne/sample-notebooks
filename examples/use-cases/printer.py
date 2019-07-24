@@ -611,8 +611,6 @@ def corporate_actions_added_response(response):
         print (colours.bold + 'Ex Date: ' + colours.end + str(action.ex_date) + '\n')
         
 def upsert_quotes_response(response):
-    print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.as_at))
-
     response_df_data = []
     
     for quote_correlation_id, quote in response.values.items():
