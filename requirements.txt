@@ -1,4 +1,4 @@
---extra-index-url https://${FBN_NEXUS_USER}:${FBN_NEXUS_PASSWORD}@nexus.finbourne.com/repository/pypi/simple/
+--extra-index-url https://${NEXUS_USER}:${NEXUS_PASSWORD}@nexus.finbourne.com/repository/pypi/simple/
 
 jupyter
 lusid-sdk-preview

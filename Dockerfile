@@ -7,6 +7,9 @@ RUN pip install jupyterthemes
 # Set the theme
 RUN jt -ofs 12 -t chesterish
 
+ENV NEXUS_USER ${NEXUS_USER}
+ENV NEXUS_PASSWORD ${NEXUS_PASSWORD}
+
 RUN pip install lusid-sdk-preview
 
 RUN mkdir -p /tmp/working
