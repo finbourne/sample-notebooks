@@ -1,4 +1,5 @@
 language: python
+install: skip
 services:
 - docker
 script:
