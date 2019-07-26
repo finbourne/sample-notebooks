@@ -339,7 +339,10 @@ def holdings_response(response, scope, code):
     print (colours.bold + 'Scope: ' + colours.end + scope)
     print (colours.bold + 'Code: ' + colours.end + code + '\n')
     for holding in response.values:
-        holding_properties = {h_property.key: h_property.value for h_property in holding.properties}
+        holding_properties = {
+            k: p.value.label_value if p.value.label_value is not None else p.value.metric_value.value
+            for (k, p) in holding.properties.items()
+        }
         for key, value in holding_properties.items():
             print (colours.bold + '{}: '.format(key) + colours.end + str(value))
         print (colours.bold + 'Units: ' + colours.end + str(holding.units))
@@ -370,11 +373,10 @@ def get_transactions_response(response, scope, code, property_keys=[]):
 
 def portfolio_properties_response(response):
     print (colours.bold + 'Properties Sucessfully Updated for Portfolio' + colours.end)
-    print (colours.bold + 'Scope: ' + colours.end, response.origin_portfolio_id.scope)
-    print (colours.bold + 'Code: ' + colours.end, response.origin_portfolio_id.code, '\n')
     for _property_key, _property_value in response.properties.items():
         print (colours.bold + 'Property key: ' + colours.end + _property_key)
-        print (colours.bold + 'Value: ' + colours.end + _property_value.value + '\n')
+        print (colours.bold + 'Value: ' + colours.end + _property_value.value.label_value + '\n')
+
 
 def aggregation_response_paper(response):
     total_cost = 0
@@ -413,16 +415,16 @@ def analytic_store(analytic_store_response, analytics=False):
 def aggregation_response(agg_response):
     for agg_holding in agg_response.data:
 
-        if agg_holding['Instrument/default/Name'] == '<Unknown>':
-            instrument_name = 'Cash'
-            Luid = 'CCY_' + agg_holding['Holding/default/SubHoldingKey'].split('=')[1].split('/')[0]
+        if agg_holding['Holding/default/SubHoldingKey'].split('=')[0] == 'Currency':
             currency = agg_holding['Holding/default/SubHoldingKey'].split('=')[1]
+            
         else:
-            instrument_name = agg_holding['Instrument/default/Name']
-            Luid = agg_holding['Holding/default/SubHoldingKey'].split('=')[1].split('/')[0]
             currency = agg_holding['Holding/default/SubHoldingKey'].split('=')[1].split('/')[1]
+            
+        instrument_name = agg_holding['Instrument/default/Name']
+        Luid = agg_holding['Holding/default/SubHoldingKey'].split('=')[1].split('/')[0]
 
-        print (colours.bold + 'LUSID Instrument Id: ' + colours.end + Luid)
+        print (colours.bold + 'LUSID Instrument Id / Currency: ' + colours.end + Luid)
         print (colours.bold + 'Instrument Name: ' + colours.end + instrument_name)
         print (colours.bold + 'Instrument Units: ' + colours.end + str(round(agg_holding['Sum(Holding/default/Units)'],2)))
         print (colours.bold + 'Instrument Cost: ' + colours.end + str(round(agg_holding['Sum(Holding/default/Cost)'],2)))
@@ -455,7 +457,30 @@ def aggregation_response_generic(response):
         for key, value in agg_result.items():
             print ('{}: {}'.format(key, value))
         print ('\n')
+
         
+def aggregation_responses_generic_df(responses):
+    
+    dfs = []
+    
+    for response in responses:
+        
+        aggregation_currency = response.aggregation_currency
+        data_response_rows = []
+        for aggregation in response.data:
+            data_row = {}
+            data_row.update(aggregation)
+            data_row['currency'] = aggregation_currency
+            data_response_rows.append(data_row)
+        
+        df = pd.DataFrame(data_response_rows)
+        dfs.append(df)
+    
+    pd.options.display.float_format = '{:,.2f}'.format
+    df_concat = pd.concat(dfs, ignore_index=True)
+    return df_concat
+
+
 def transaction_type_response(response, filters=[]):
     i = 0
     j = 0
@@ -570,4 +595,38 @@ def get_identifiers(response, unique=False):
             print ('\n')
             
 def upsert_quotes_response(response):
-    print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.as_at))
+    print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.values.popitem()[1].as_at))
+
+
+def corporate_action_response(response):
+    print (colours.bold + 'Corporate Actions Source Successfully Created' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
+    print (colours.bold + 'Code: ' + colours.end + response.id.code)
+
+def corporate_actions_added_response(response):
+    for action_id, action in response.values.items():
+        print (colours.bold + 'Corporate Action Successfully Upserted' + colours.end)
+        print (colours.bold + 'Code: ' + colours.end + action.corporate_action_code)
+        print (colours.bold + 'Announcement Date: ' + colours.end + str(action.announcement_date))
+        print (colours.bold + 'Ex Date: ' + colours.end + str(action.ex_date) + '\n')
+        
+def upsert_quotes_response(response):
+    response_df_data = []
+    
+    for quote_correlation_id, quote in response.values.items():
+        row_data = {}
+        row_data.update(vars(quote))
+        del row_data['_metric_value']
+        del row_data['_quote_id']
+        row_data.update(vars(quote.quote_id.quote_series_id))
+        row_data.update(vars(quote.metric_value))  
+        row_data['status'] = 'Success'
+        response_df_data.append(row_data)
+
+
+    response_df = pd.DataFrame.from_dict(response_df_data)
+
+    return response_df
+
+
+
