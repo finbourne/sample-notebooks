@@ -314,8 +314,7 @@ def output_transactions(response, scope, code, property_keys=[]):
     for transaction in response.values:
         print (colours.bold + 'Transaction Id: ' + colours.end + transaction.transaction_id)
         print (colours.bold + 'Transaction Type: ' + colours.end + transaction.type)
-        transaction_properties = {t_property.key: t_property.value for t_property in transaction.properties}
-        for key, value in transaction_properties.items():
+        for key, value in transaction.properties.items():
             if len(property_keys) > 0 and key not in property_keys:
                 continue
             print (colours.bold + '{}: '.format(key) + colours.end + str(value))
@@ -364,8 +363,7 @@ def get_transactions_response(response, scope, code, property_keys=[]):
         print ('Units: ', transaction.units)
         print ('Price: ', transaction.transaction_price.price)
         print ('Currency: ', transaction.transaction_currency)
-        transaction_properties = {t_property.key: t_property.value for t_property in transaction.properties}
-        for key, value in transaction_properties.items():
+        for key, value in transaction.properties.items():
             if len(property_keys) > 0 and key not in property_keys:
                 continue 
             print ('{}: '.format(key) + str(value))
@@ -509,10 +507,8 @@ def transaction_type_response(response, filters=[]):
             print (colours.bold + 'Side: ' + colours.end + movement.side)
             print (colours.bold + 'Direction: ' + colours.end + str(movement.direction))
             if len(movement.properties) > 0:
-                for property_pair in movement.properties:
-                    key = property_pair.key
-                    value = property_pair.value
-                    print (colours.bold + 'Properties: ' + colours.end + key + ': ' + value + '\n')
+                for key, value in movement.properties.items():
+                    print (f"{colours.bold}Properties: {colours.end}key: {value}\n")
         print ('\n\n')
     if j == 0:
         print ('No matching transaction types in the configuration')
