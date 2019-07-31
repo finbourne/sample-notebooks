@@ -173,6 +173,7 @@ def resolve_instruments(client, data_frame, identifier_mapping):
 
         # Call LUSID to search for instruments
         attempts = 0
+        
         if len(search_requests) > 0:
             while attempts < 3:
                 try:
@@ -217,7 +218,7 @@ def resolve_instruments(client, data_frame, identifier_mapping):
                             search_request_number].key.split('/')[2]
                     )
                     resolvable_current = False
-                    luid = None
+                    luid_current = np.NaN
                     break
 
         # Update the luid series
@@ -480,7 +481,7 @@ def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, m
         raise Exception('The file_type must be one of "transaction" or "holding", you supplied {}'.format(file_type))
 
     domain_lookup = {
-        'transaction': 'Trade',
+        'transaction': 'Transaction',
         'holding': 'Holding'
     }
 
