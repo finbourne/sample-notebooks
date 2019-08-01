@@ -648,7 +648,7 @@ def get_holdings_df(response):
 
         for _property in holding.properties:
 
-            if sub_holding_key.value.label_value is None:
+            if _property.value.label_value is None:
                 value = _property.value.metric_value.value
             else:
                 value = _property.value.label_value
