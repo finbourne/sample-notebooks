@@ -637,23 +637,24 @@ def get_holdings_df(response):
         current_row['cost.amount'] = holding.cost.amount
         current_row['cost.currency'] = holding.cost.currency
         current_row['cost_portfolio_ccy.amount'] = holding.cost.amount
-        for sub_holding_key in holding.sub_holding_keys:
+
+        for sub_holding_key_key, sub_holding_key in holding.sub_holding_keys.items():
 
             if sub_holding_key.value.label_value is None:
                 value = sub_holding_key.value.metric_value.value
             else:
                 value = sub_holding_key.value.label_value
 
-            current_row[sub_holding_key.key] = value
+            current_row[sub_holding_key_key] = value
 
-        for _property in holding.properties:
+        for _property_key, _property in holding.properties.items():
 
             if _property.value.label_value is None:
                 value = _property.value.metric_value.value
             else:
                 value = _property.value.label_value
 
-            current_row[_property.key] = value
+            current_row[_property_key] = value
 
         rows.append(current_row)
 
