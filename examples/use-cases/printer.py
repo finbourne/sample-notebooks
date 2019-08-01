@@ -625,4 +625,24 @@ def upsert_quotes_response(response):
     return response_df
 
 
+def get_holdings_df(response):
+    rows = []
+    nested_fields = ['cost', 'cost_portfolio_ccy', 'properties', 'sub_holding_keys']
+
+    for holding in response.values:
+        current_row = {}
+        current_row.update(vars(holding))
+        for field in nested_fields:
+            del current_row["_" + field]
+        current_row['cost.amount'] = holding.cost.amount
+        current_row['cost.currency'] = holding.cost.currency
+        current_row['cost_portfolio_ccy.amount'] = holding.cost.amount
+        for sub_holding_key in holding.sub_holding_keys:
+            current_row[sub_holding_key.key] = sub_holding_key.value
+        for _property in holding.properties:
+            current_row[_property.key] = _property.value
+        rows.append(current_row)
+
+    df = pd.DataFrame(rows)
+    return df
 
