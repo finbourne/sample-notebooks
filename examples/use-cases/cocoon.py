@@ -422,9 +422,12 @@ def set_transaction_mapping(client, transaction_mapping):
             # Add properties if they exist in the config
             if len(movement['properties']) > 0:
                 key = movement['properties'][0]['key']
-                value = models.PerpetualPropertyValue(
+                value = models.PropertyValue(
                     label_value=movement['properties'][0]['value'])
-                properties = {key: value}
+                properties = {key: models.PerpetualProperty(
+                    key=key,
+                    value=value
+                )}
             else:
                 properties = {}
 
@@ -605,7 +608,7 @@ def create_property_values(row, null_value, scope, domain, dtypes):
     :param number null_value:
     :param str scope:
     :param str domain:
-    :return: dict {str, models.PerpetualPropertyValue} properties:
+    :return: dict {str, models.PerpetualProperty} properties:
     """
     # Ensure that all data types in the file have been mapped
     if not (set([str(data_type) for data_type in dtypes.unique()]) <= set(globals['data_type_mapping'])):
@@ -630,7 +633,7 @@ def create_property_values(row, null_value, scope, domain, dtypes):
         if lusid_data_type == 'string':
             if pd.isna(row_value):
                 row_value = str(null_value)
-            property_value = models.PerpetualPropertyValue(
+            property_value = models.PropertyValue(
                 label_value=row_value)
 
         if lusid_data_type == 'number':
@@ -638,7 +641,7 @@ def create_property_values(row, null_value, scope, domain, dtypes):
             if pd.isnull(row_value):
                 row_value = null_value
 
-            property_value = models.PerpetualPropertyValue(
+            property_value = models.PropertyValue(
                 metric_value=models.MetricValue(
                     value=row_value))
 
@@ -646,7 +649,10 @@ def create_property_values(row, null_value, scope, domain, dtypes):
         properties[
             '{}/{}/{}'.format(
                 domain, scope, make_code_lusid_friendly(column_name))
-        ] = property_value
+        ] = models.PerpetualProperty(
+            key='{}/{}/{}'.format(domain, scope, make_code_lusid_friendly(column_name)),
+            value=property_value
+        )
 
     return properties
 
@@ -704,9 +710,12 @@ def load_transactions(client, scope, code, data_frame, transaction_mapping_requi
 
             exchange_rate = transaction[transaction_mapping_optional['exchange_rate']]
 
-            properties['Trade/default/TradeToPortfolioRate'] = models.PropertyValue(
-                metric_value=models.MetricValue(
-                    value=1/exchange_rate
+            properties['Trade/default/TradeToPortfolioRate'] = models.PerpetualProperty(
+                key='Trade/default/TradeToPortfolioRate',
+                value=models.PropertyValue(
+                    metric_value=models.MetricValue(
+                        value=1/exchange_rate
+                    )
                 )
             )
 
