@@ -15,7 +15,8 @@ globals['data_type_mapping'] = {
     'object': 'string',
     'float64': 'number',
     'int64': 'number',
-    'bool': 'string'
+    'bool': 'string',
+    'datetime64[ns, UTC]': 'string'
 }
 
 def file_type_checks(file_name_type_mapping):
@@ -422,9 +423,12 @@ def set_transaction_mapping(client, transaction_mapping):
             # Add properties if they exist in the config
             if len(movement['properties']) > 0:
                 key = movement['properties'][0]['key']
-                value = models.PerpetualPropertyValue(
+                value = models.PropertyValue(
                     label_value=movement['properties'][0]['value'])
-                properties = {key: value}
+                properties = {key: models.PerpetualProperty(
+                    key=key,
+                    value=value
+                )}
             else:
                 properties = {}
 
@@ -605,7 +609,7 @@ def create_property_values(row, null_value, scope, domain, dtypes):
     :param number null_value:
     :param str scope:
     :param str domain:
-    :return: dict {str, models.PerpetualPropertyValue} properties:
+    :return: dict {str, models.PerpetualProperty} properties:
     """
     # Ensure that all data types in the file have been mapped
     if not (set([str(data_type) for data_type in dtypes.unique()]) <= set(globals['data_type_mapping'])):
@@ -630,7 +634,7 @@ def create_property_values(row, null_value, scope, domain, dtypes):
         if lusid_data_type == 'string':
             if pd.isna(row_value):
                 row_value = str(null_value)
-            property_value = models.PerpetualPropertyValue(
+            property_value = models.PropertyValue(
                 label_value=row_value)
 
         if lusid_data_type == 'number':
@@ -638,7 +642,7 @@ def create_property_values(row, null_value, scope, domain, dtypes):
             if pd.isnull(row_value):
                 row_value = null_value
 
-            property_value = models.PerpetualPropertyValue(
+            property_value = models.PropertyValue(
                 metric_value=models.MetricValue(
                     value=row_value))
 
@@ -646,7 +650,10 @@ def create_property_values(row, null_value, scope, domain, dtypes):
         properties[
             '{}/{}/{}'.format(
                 domain, scope, make_code_lusid_friendly(column_name))
-        ] = property_value
+        ] = models.PerpetualProperty(
+                key='{}/{}/{}'.format(domain, scope, make_code_lusid_friendly(column_name)),
+                value=property_value
+        )
 
     return properties
 
@@ -696,7 +703,7 @@ def load_transactions(client, scope, code, data_frame, transaction_mapping_requi
         }
 
         # Set the properties for the transaction
-        properties = create_property_values(transaction, -1, scope, 'Trade', dtypes)
+        properties = create_property_values(transaction, -1, scope, 'Transaction', dtypes)
 
         exchange_rate = None
 
@@ -704,9 +711,12 @@ def load_transactions(client, scope, code, data_frame, transaction_mapping_requi
 
             exchange_rate = transaction[transaction_mapping_optional['exchange_rate']]
 
-            properties['Trade/default/TradeToPortfolioRate'] = models.PropertyValue(
-                metric_value=models.MetricValue(
-                    value=1/exchange_rate
+            properties['Transaction/default/TradeToPortfolioRate'] = models.PerpetualProperty(
+                key='Transaction/default/TradeToPortfolioRate',
+                value=models.PropertyValue(
+                    metric_value=models.MetricValue(
+                        value=1/exchange_rate
+                    )
                 )
             )
 
@@ -788,11 +798,10 @@ def load_holdings(client, scope, code, data_frame, holdings_mapping_required, ho
         )
 
         for lusid_field, column_name in holdings_mapping_optional.items():
-
-            if lusid_field.split(".")[1] == 'cost' and (column_name is not None):
+            if (lusid_field.split(".")[1] == 'cost') and (column_name is not None):
                 setattr(single_cost, lusid_field.split(".")[2], holding[column_name])
 
-        if (single_cost.amount is None) or (single_cost.currency is None):
+        if (single_cost.amount is None) and (single_cost.currency is None):
             single_cost = None
 
         single_tax_lot =  models.TargetTaxLotRequest(
@@ -800,8 +809,7 @@ def load_holdings(client, scope, code, data_frame, holdings_mapping_required, ho
             cost=single_cost)
 
         for lusid_field, column_name in holdings_mapping_optional.items():
-
-            if lusid_field.split(".")[1] != 'cost' and (column_name is not None):
+            if (lusid_field.split(".")[1] != 'cost') and (column_name is not None):
                 setattr(single_tax_lot, lusid_field.split(".")[2], holding[column_name])
 
         single_holding_adjustment = models.AdjustHoldingRequest(
@@ -809,6 +817,7 @@ def load_holdings(client, scope, code, data_frame, holdings_mapping_required, ho
             tax_lots=[single_tax_lot],
             properties=properties
         )
+      
 
         # Create the adjust holding request
         holding_adjustments.append(single_holding_adjustment)
