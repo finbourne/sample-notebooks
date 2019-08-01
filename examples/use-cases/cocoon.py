@@ -650,8 +650,8 @@ def create_property_values(row, null_value, scope, domain, dtypes):
             '{}/{}/{}'.format(
                 domain, scope, make_code_lusid_friendly(column_name))
         ] = models.PerpetualProperty(
-            key='{}/{}/{}'.format(domain, scope, make_code_lusid_friendly(column_name)),
-            value=property_value
+                key='{}/{}/{}'.format(domain, scope, make_code_lusid_friendly(column_name)),
+                value=property_value
         )
 
     return properties
@@ -702,7 +702,7 @@ def load_transactions(client, scope, code, data_frame, transaction_mapping_requi
         }
 
         # Set the properties for the transaction
-        properties = create_property_values(transaction, -1, scope, 'Trade', dtypes)
+        properties = create_property_values(transaction, -1, scope, 'Transaction', dtypes)
 
         exchange_rate = None
 
@@ -710,8 +710,8 @@ def load_transactions(client, scope, code, data_frame, transaction_mapping_requi
 
             exchange_rate = transaction[transaction_mapping_optional['exchange_rate']]
 
-            properties['Trade/default/TradeToPortfolioRate'] = models.PerpetualProperty(
-                key='Trade/default/TradeToPortfolioRate',
+            properties['Transaction/default/TradeToPortfolioRate'] = models.PerpetualProperty(
+                key='Transaction/default/TradeToPortfolioRate',
                 value=models.PropertyValue(
                     metric_value=models.MetricValue(
                         value=1/exchange_rate
