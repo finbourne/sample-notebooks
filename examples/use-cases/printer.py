@@ -273,15 +273,17 @@ def expanded_portfolio_group_response(response):
     print ('\n')
 
 def instrument_response(response, identifier='ClientInternal'):
-
+    print(colours.FAIL + colours.bold + 'Instruments Successfully Upserted: ' + colours.end)
+  
+    values = []
     for instrument_name, instrument in response.values.items():
-        print (colours.bold + 'Instrument Successfully Upserted: ' + colours.end + instrument_name)
-        print (colours.bold + '{} ID: '.format(identifier) + colours.end + instrument.identifiers[identifier])
-        print (colours.bold + 'LUSID Instrument ID: ' + colours.end + instrument.lusid_instrument_id)
-        print ('\n')
+        nested_values = []
+        nested_values.append(instrument_name)
+        nested_values.append(instrument.identifiers[identifier])
+        nested_values.append(instrument.lusid_instrument_id)
+        values.append(nested_values)
 
-    print (len(response.values), ' instruments upserted successfully')
-    print (len(response.failed), ' instrument upsert failures')
+    return pd.DataFrame(values, columns = ["Instrument",'{} ID'.format(identifier),"LUSID Instrument ID"])
 
 def set_holdings_response(response, scope, portfolio_name):
 
@@ -307,22 +309,97 @@ def adjust_holdings_response(response, scope, portfolio_name):
     print (colours.bold + 'Adjusted Holdings Effective From: ' + colours.end + str(response.version.effective_from))
     print (colours.bold + 'Adjusted Holdings Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
 
+def cancel_adjust_holdings_response(response, scope, portfolio_name):
+
+    print (colours.bold + 'Holdings Adjustment Cancelled for Portfolio' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + scope)
+    print (colours.bold + 'Code: ' + colours.end + portfolio_name)
+    print (colours.bold + 'Adjusted Holdings Effective From: ' + colours.end + str(response.effective_from))
+    print (colours.bold + 'Adjusted Holdings Created On: ' + colours.end + str(response.as_at) + '\n')    
+    
+def list_holdings_adjustments_response(response, scope, portfolio_name):
+    print (colours.bold + "Holding Adjustments for Portfolio:" + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + scope)
+    print (colours.bold + 'Code: ' + colours.end + portfolio_name + '\n')
+    
+    values = []
+    for value in response.values:
+        nested_values = []
+        nested_values.append(value.unmatched_holding_method)
+        nested_values.append(value.version.effective_from)
+        nested_values.append(value.version.as_at_date)
+        values.append(nested_values)
+
+    columns = ["Unmatched Holding Method","Adjustment Effective From","Adjustment Created On"]
+    return pd.DataFrame(values, columns = columns)
+    
+def get_holdings_adjustment_response(response, scope, portfolio_name):
+    print(colours.FAIL + colours.bold + "Holdings Adjustment in Portfolio: " + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + scope)
+    print (colours.bold + 'Code: ' + colours.end + portfolio_name + '\n')
+    
+    identifiers = []
+    values = []   
+    for holding in response.adjustments:
+        for key, value in holding.instrument_identifiers.items():
+            if key not in identifiers:
+                identifiers.append(key)           
+
+    for holding in response.adjustments:
+        nested_values = []
+        for identifier in identifiers:
+            for key, value in holding.instrument_identifiers.items():
+                if key == identifier:
+                    nested_values.append(value)
+                else:
+                    nested_values.append("-")
+        nested_values.append(holding.tax_lots[0].units)
+        nested_values.append(holding.tax_lots[0].cost.amount)
+        nested_values.append(holding.tax_lots[0].cost.currency)
+        nested_values.append(response.version.effective_from)
+        nested_values.append(response.version.as_at_date)
+        values.append(nested_values)
+
+    columns = identifiers
+    columns.extend(["Units", "Cost", "Currency", "Adjustment Effective From", "Adjustment Created On"])
+
+    return pd.DataFrame(values, columns = columns)
+    
 def output_transactions(response, scope, code, property_keys=[]):
-    print (colours.bold + 'Output Transactions for Portfolio' + colours.end)
+    print (colours.FAIL + colours.bold + 'Output Transactions for Portfolio' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end + scope)
     print (colours.bold + 'Code: ' + colours.end + code + '\n')
+    
+    identifiers = []
     for transaction in response.values:
-        print (colours.bold + 'Transaction Id: ' + colours.end + transaction.transaction_id)
-        print (colours.bold + 'Transaction Type: ' + colours.end + transaction.type)
         for key, value in transaction.properties.items():
-            if len(property_keys) > 0 and key not in property_keys:
-                continue
-            print (colours.bold + '{}: '.format(key) + colours.end + str(value))
-        print (colours.bold + 'Units: ' + colours.end + str(transaction.units))
-        print (colours.bold + 'Price: ' + colours.end + str(transaction.transaction_price.price))
-        print (colours.bold + 'Currency: ' + colours.end + transaction.transaction_currency)
-        print (colours.bold + 'Transaction Date: ' + colours.end + str(transaction.transaction_date))
-        print (colours.bold + 'Settlement Date: ' + colours.end + str(transaction.settlement_date) + '\n')
+            if len(property_keys) > 0:
+                if key not in identifiers and key in property_keys:
+                    identifiers.append(key)
+            else:
+                if key not in identifiers :
+                    identifiers.append(key)
+
+    values = []
+    for transaction in response.values:
+            nested_values = []
+            nested_values.append(transaction.transaction_id)
+            nested_values.append(transaction.type)
+            for identifier in identifiers:
+                for key, value in transaction.properties.items():
+                    if key == identifier:
+                        nested_values.append(value.value.label_value)
+            nested_values.append(transaction.units)
+            nested_values.append(transaction.transaction_price.price)
+            nested_values.append(transaction.transaction_currency)
+            nested_values.append(transaction.transaction_date)
+            nested_values.append(transaction.settlement_date)
+            values.append(nested_values)
+    columns = ["Transaction ID", "Transaction Type"]
+    columns.extend(identifiers)
+    columns.extend(["Units", "Price", "Currency", "Transaction Date", "Settlement Date"])
+
+    return pd.DataFrame(values, columns = columns)
 
 def add_property_response(response, scope, portfolio_name, transaction_id):
 
@@ -337,38 +414,80 @@ def holdings_response(response, scope, code):
     print (colours.bold + 'Holdings for Portfolio' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end + scope)
     print (colours.bold + 'Code: ' + colours.end + code + '\n')
+    
+    identifiers = []
+    for transaction in response.values:
+        for key, value in transaction.properties.items():
+            if key not in identifiers:
+                identifiers.append(key)
+
+    values = []
     for holding in response.values:
-        holding_properties = {
-            k: p.value.label_value if p.value.label_value is not None else p.value.metric_value.value
-            for (k, p) in holding.properties.items()
-        }
-        for key, value in holding_properties.items():
-            print (colours.bold + '{}: '.format(key) + colours.end + str(value))
-        print (colours.bold + 'Units: ' + colours.end + str(holding.units))
-        print (colours.bold + 'Cost: ' + colours.end + str(holding.cost.amount))
-        print (colours.bold + 'Currency: ' + colours.end + holding.cost.currency)
         if holding.transaction is not None:
-            print (colours.bold + 'Unsettled Transaction Id: ' + colours.end + str(holding.transaction.transaction_id))
-            print (colours.bold + 'Settlement Date: ' + colours.end + str(holding.transaction.settlement_date))
-        print ('\n')
-            
+            nested_values = []
+            for identifier in identifiers:
+                for key, value in holding.properties.items():
+                    if key == identifier:
+                        nested_values.append(value.value.label_value)
+            nested_values.append(holding.units)
+            nested_values.append(holding.cost.amount)
+            nested_values.append(holding.cost.currency)
+            nested_values.append(holding.transaction.transaction_id)
+            nested_values.append(holding.transaction.settlement_date)
+            values.append(nested_values)
+        else:
+            nested_values = []
+            for identifier in identifiers:
+                for key, value in holding.properties.items():
+                    if key == identifier:
+                        nested_values.append(value.value.label_value)
+            nested_values.append(holding.units)
+            nested_values.append(holding.cost.amount)
+            nested_values.append(holding.cost.currency)
+            nested_values.append("-")
+            nested_values.append("-")
+            values.append(nested_values)
+    columns = identifiers
+    columns.extend(["Units","Cost","Currency","Unsettled Transaction Id","Settlement Date"])
+
+
+    return pd.DataFrame(values, columns = columns)
 
 def get_transactions_response(response, scope, code, property_keys=[]):
-    print (colours.bold + 'Transactions Retrieved from Portfolio' + colours.end)
+    print (colours.FAIL + colours.bold + 'Transactions Retrieved from Portfolio' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end, scope)
     print (colours.bold + 'Code: ' + colours.end, code, '\n')
+    
+    identifiers = []
     for transaction in response.values:
-        print ('Transaction Id: ', transaction.transaction_id)
-        print ('Transaction Type: ', transaction.type)
-        print ('Units: ', transaction.units)
-        print ('Price: ', transaction.transaction_price.price)
-        print ('Currency: ', transaction.transaction_currency)
         for key, value in transaction.properties.items():
-            if len(property_keys) > 0 and key not in property_keys:
-                continue 
-            print ('{}: '.format(key) + str(value))
-        print ('Transaction Date: ', transaction.transaction_date, '\n')
+            if len(property_keys) > 0:
+                if key not in identifiers and key in property_keys:
+                    identifiers.append(key)
+            else:
+                if key not in identifiers :
+                    identifiers.append(key)
 
+    values = []
+    for transaction in response.values:
+            nested_values = []
+            nested_values.append(transaction.transaction_id)
+            nested_values.append(transaction.type)
+            for identifier in identifiers:
+                for key, value in transaction.properties.items():
+                    if key == identifier:
+                        nested_values.append(value.value.label_value)
+            nested_values.append(transaction.units)
+            nested_values.append(transaction.transaction_price.price)
+            nested_values.append(transaction.transaction_currency)
+            nested_values.append(transaction.transaction_date)
+            values.append(nested_values)
+    columns = ["Transaction ID", "Transaction Type"]
+    columns.extend(identifiers)
+    columns.extend(["Units", "Price", "Currency", "Transaction Date"])
+
+    return pd.DataFrame(values, columns = columns)
+    
 def portfolio_properties_response(response):
     print (colours.bold + 'Properties Sucessfully Updated for Portfolio' + colours.end)
     for _property_key, _property_value in response.properties.items():
@@ -660,4 +779,89 @@ def get_holdings_df(response):
 
     df = pd.DataFrame(rows)
     return df
+        
+def cut_label_response(response):
+    print(colours.FAIL + colours.bold + "Cut Label Created" + colours.end)
+    print(colours.bold + "Display Name: " + colours.end + response.display_name)
+    print(colours.bold + "Code: " + colours.end + response.code)
+    if response.cut_local_time.minutes and response.cut_local_time.hours < 10:
+        print(colours.bold + "Local Time: " + colours.end + "0" + str(response.cut_local_time.hours) + ":0" + 
+              str(response.cut_local_time.minutes))
+    elif response.cut_local_time.minutes < 10:
+        print(colours.bold + "Local Time: " + colours.end + str(response.cut_local_time.hours) + ":0" + 
+              str(response.cut_local_time.minutes))
+    elif response.cut_local_time.hours < 10:
+        print(colours.bold + "Local Time: " + colours.end + "0" + str(response.cut_local_time.hours) + ":" + 
+              str(response.cut_local_time.minutes))
+    else:
+        print(colours.bold + "Local Time: " + colours.end + str(response.cut_local_time.hours) + ":" + 
+              str(response.cut_local_time.minutes))
+    print(colours.bold + "Timezone: " + colours.end + response.time_zone)
+    print(colours.bold + "Description: " + colours.end + response.description + "\n")
+    
+def get_cut_label(response):
+    print (colours.FAIL + colours.bold + "Cut Label Details:" + colours.end)
+    print(colours.bold + "Display Name: " + colours.end + response.display_name)
+    print(colours.bold + "Code: " + colours.end + response.code)
+    if response.cut_local_time.minutes and response.cut_local_time.hours < 10:
+        print(colours.bold + "Local Time: " + colours.end + "0" + str(response.cut_local_time.hours) + ":0" + 
+              str(response.cut_local_time.minutes))
+    elif response.cut_local_time.minutes < 10:
+        print(colours.bold + "Local Time: " + colours.end + str(response.cut_local_time.hours) + ":0" + 
+              str(response.cut_local_time.minutes))
+    elif response.cut_local_time.hours < 10:
+        print(colours.bold + "Local Time: " + colours.end + "0" + str(response.cut_local_time.hours) + ":" + 
+              str(response.cut_local_time.minutes))
+    else:
+        print(colours.bold + "Local Time: " + colours.end + str(response.cut_local_time.hours) + ":" + 
+              str(response.cut_local_time.minutes))
+    print(colours.bold + "Timezone: " + colours.end + response.time_zone)
+    print(colours.bold + "Description: " + colours.end + response.description + "\n")
+        
+def list_cut_label_details(response):
+    print(colours.FAIL+ colours.bold + "Existing Cut Labels:" + colours.end)
+    
+    values = []
+    for body in response.values:
+        nested_values = []
+        if body.cut_local_time.minutes < 10 and body.cut_local_time.hours < 10:
+                my_date = "0" + str(body.cut_local_time.hours) + ":0" + str(body.cut_local_time.minutes)
+        elif body.cut_local_time.minutes < 10 :
+                my_date = str(body.cut_local_time.hours) + ":0" + str(body.cut_local_time.minutes)
+        elif body.cut_local_time.hours < 10:
+                my_date = "0" + str(body.cut_local_time.hours) + ":" + str(body.cut_local_time.minutes)
+        else:
+                my_date = str(body.cut_local_time.hours) + ":" + str(body.cut_local_time.minutes)
+        nested_values.append(body.display_name)
+        nested_values.append(body.code)
+        nested_values.append(my_date)
+        nested_values.append(body.time_zone)
+        nested_values.append(body.description)
+        values.append(nested_values)
 
+    return pd.DataFrame(values, columns = ["Display Name", "Code", "Local Time", "Timezone", "Description"])
+        
+def list_cut_labels(response):
+    print(colours.FAIL+ colours.bold + "Existing Cut Labels:" + colours.end)
+    for body in response.values:
+        print(body.display_name)
+        
+def update_cut_label(response):
+    print(colours.FAIL + colours.bold + "Updated Cut Label:" + colours.end)
+    print(colours.bold + "Display Name: " + colours.end + response.display_name)
+    print(colours.bold + "Code: " + colours.end + response.code)
+    if response.cut_local_time.minutes and response.cut_local_time.hours < 10:
+        print(colours.bold + "Local Time: " + colours.end + "0" + str(response.cut_local_time.hours) + ":0" + 
+              str(response.cut_local_time.minutes))
+    elif response.cut_local_time.minutes < 10:
+        print(colours.bold + "Local Time: " + colours.end + str(response.cut_local_time.hours) + ":0" + 
+              str(response.cut_local_time.minutes))
+    elif response.cut_local_time.hours < 10:
+        print(colours.bold + "Local Time: " + colours.end + "0" + str(response.cut_local_time.hours) + ":" + 
+              str(response.cut_local_time.minutes))
+    else:
+        print(colours.bold + "Local Time: " + colours.end + str(response.cut_local_time.hours) + ":" + 
+              str(response.cut_local_time.minutes))
+    print(colours.bold + "Timezone: " + colours.end + response.time_zone)
+    print(colours.bold + "Description: " + colours.end + response.description + "\n")
+    
