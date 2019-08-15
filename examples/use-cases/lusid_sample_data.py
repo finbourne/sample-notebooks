@@ -68,6 +68,7 @@ def authenticate_secrets():
             self.search = lusid.SearchApi(client)
             self.system_configuration = lusid.SystemConfigurationApi(client)
             self.transaction_portfolios = lusid.TransactionPortfoliosApi(client)
+            self.cut_labels = lusid.CutLabelDefinitionsApi(client)
     
     
     environment = os.getenv("FBN_DEPLOYMENT_ENVIRONMENT", None)
