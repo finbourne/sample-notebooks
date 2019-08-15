@@ -551,6 +551,93 @@
         }
       ],
       "properties": []
+    },
+    {
+      "aliases": [
+        {
+          "type": "Loan",
+          "description": "A private corporate loan to a company",
+          "transactionClass": "Loan",
+          "transactionGroup": "PrivateDebt",
+          "transactionRoles": "ShortLonger"
+        }
+      ],
+      "movements": [
+        {
+          "movementTypes": "StockMovement",
+          "side": "Side1",
+          "direction": 1,
+          "properties": [
+            {
+              "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+              "value": "FirstInFirstOut"
+            }
+          ],
+          "mappings": []
+        },
+        {
+          "movementTypes": "CashCommitment",
+          "side": "Side2",
+          "direction": -1,
+          "properties": [],
+          "mappings": []
+        }
+      ],
+      "properties": []
+    },
+    {
+      "aliases": [
+        {
+          "type": "Coupon",
+          "description": "A coupon payment from a private corporate loan to a company",
+          "transactionClass": "Loan",
+          "transactionGroup": "PrivateDebt",
+          "transactionRoles": "Longer"
+        }
+      ],
+      "movements": [
+        {
+          "movementTypes": "CashCommitment",
+          "side": "Side2",
+          "direction": 1,
+          "properties": [],
+          "mappings": []
+        }
+      ],
+      "properties": []
+    },
+    {
+      "aliases": [
+        {
+          "type": "Repayment",
+          "description": "A partial or full repayment from a private corporate loan to a company",
+          "transactionClass": "Loan",
+          "transactionGroup": "PrivateDebt",
+          "transactionRoles": "LongShorter"
+        }
+      ],
+      "movements": [
+        {
+          "movementTypes": "StockMovement",
+          "side": "Side1",
+          "direction": -1,
+          "properties": [
+            {
+              "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+              "value": "FirstInFirstOut"
+            }
+          ],
+          "mappings": []
+        },
+        {
+          "movementTypes": "CashCommitment",
+          "side": "Side2",
+          "direction": 1,
+          "properties": [],
+          "mappings": []
+        }
+      ],
+      "properties": []
     }
   ]
 }
