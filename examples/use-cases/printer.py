@@ -1,4 +1,5 @@
 import pandas as pd
+pd.set_option('display.float_format', lambda x: '%.2f' % x)
 
 # Used to make our print functions a little prettier
 class colours:
@@ -264,7 +265,7 @@ def expanded_portfolio_group_response(response):
         expansion_portfolio_response(folio)
     print (colours.OKBLUE + colours.bold + 'Subgroups Inside Group: ' + colours.end)
     for sub in response.sub_groups:
-        print (colours.bold + 'Name: ' + colours.end + sub.display_name)
+        print (colours.bold + 'Name: ' + colours.end + sub.name)
         print (colours.bold + 'Scope: ' + colours.end + sub.id.scope)
         print (colours.bold + 'Code: ' + colours.end + sub.id.code)
         print (colours.OKBLUE + colours.bold + 'Portfolios Inside SubGroup: ' + colours.end)
