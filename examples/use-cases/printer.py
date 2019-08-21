@@ -705,9 +705,9 @@ def remaining_portfolios(response, scope):
 def get_identifiers(response, unique=False):
     for identifier in response.values:
         if identifier.is_unique_identifier == unique:
-            print(colours.bold + '    Identifier Name : ' + colours.end + identifier.id_name)
-            print(colours.bold + '    Is Unique Identifier : ' + colours.end + str(identifier.is_unique_identifier))
-            print(colours.bold + '    Identifier Property Key Value : ' + colours.end + identifier.property_key_value)
+            print(colours.bold + '    Identifier Type : ' + colours.end + identifier.identifier_type)
+            print(colours.bold + '    Is Unique Identifier Type : ' + colours.end + str(identifier.is_unique_identifier_type))
+            print(colours.bold + '    Identifier Property Key : ' + colours.end + identifier.property_key)
             print ('\n')
             
 def upsert_quotes_response(response):
