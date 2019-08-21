@@ -110,11 +110,11 @@ def resolve_instruments(client, data_frame, identifier_mapping):
         raise Exception('there are values in identifier_mapping that are not columns in the dataframe')
 
     # Get the allowable instrument identifiers from LUSID
-    response = client.instruments.get_instrument_identifiers()
+    response = client.instruments.get_instrument_identifier_types()
 
     # Collect the names and property keys for the identifiers and concatenate them
-    allowable_identifier_names = [identifier.id_name for identifier in response.values]
-    allowable_identifier_keys = [identifier.property_key_value for identifier in response.values]
+    allowable_identifier_names = [identifier.identifier_type for identifier in response.values]
+    allowable_identifier_keys = [identifier.property_key for identifier in response.values]
     allowable_identifiers = allowable_identifier_names + allowable_identifier_keys
 
     # Check that the identifiers in the mapping are all allowed to be used in LUSID
