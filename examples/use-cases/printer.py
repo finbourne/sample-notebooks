@@ -866,3 +866,67 @@ def update_cut_label(response):
     print(colours.bold + "Timezone: " + colours.end + response.time_zone)
     print(colours.bold + "Description: " + colours.end + response.description + "\n")
     
+def property_response(response):
+    print (colours.bold + 'Property Response Details' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + response.scope)
+    print (colours.bold + 'Code: ' + colours.end + response.code)
+    print (colours.bold + 'Lifetime: ' + colours.end + response.life_time + '\n')
+    
+def property_instance(prop):
+    print (colours.bold + 'Property Created' + colours.end)
+    print (colours.bold + 'Key: ' + colours.end + prop.key )
+    print (colours.bold + 'Label Value: ' + colours.end + str(prop.value.label_value) )
+    print (colours.bold + 'Metric Value: ' + colours.end + str(prop.value.metric_value) + '\n')
+    
+def delete_property_definition(response):
+    print ("not implemented :-|")
+
+def list_property_details(responses):
+    
+    print(colours.bold + "Created Properties:" + colours.end)
+
+    values = []
+    for response in responses:
+        nested_values = []
+        
+        nested_values.append(response.key)
+        nested_values.append(response.value.label_value)
+        nested_values.append(response.value.metric_value)
+        
+        values.append(nested_values)
+    
+    return pd.DataFrame(values, columns = ["Key", "Label Value", "Metric Value"])
+
+def holdings_response_instrument_id_shk(response):
+    headers = ["Units", "Cost", "Currency", "Instrument Id", "Sub-holding Key"]
+    all_rows = []
+    for each_value in response.values:
+        row=[]
+        row.append(each_value.units)
+        row.append(each_value.cost.amount)
+        row.append(each_value.cost.currency)
+        row.append(each_value.instrument_uid)
+        row.append("")
+        
+        for key in each_value.sub_holding_keys:
+            row[4]+=(each_value.sub_holding_keys[key].value.label_value).replace('<Not Classified>',"")
+        
+        if row[4] == "":
+            row[4] = "none"
+        
+        all_rows.append(row)
+    
+    return pd.DataFrame(all_rows, columns=headers)
+
+def holdings_response_instrument_id(response):
+    headers = ["Units", "Cost", "Currency", "Instrument Id"]
+    all_rows = []
+    for each_value in response.values:
+        row=[]
+        row.append(each_value.units)
+        row.append(each_value.cost.amount)
+        row.append(each_value.cost.currency)
+        row.append(each_value.instrument_uid)
+        all_rows.append(row)
+    
+    return pd.DataFrame(all_rows, columns=headers)
