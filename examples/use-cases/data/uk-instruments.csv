@@ -1,0 +1,18 @@
+instrument_name,client_internal,currency,isin,figi,exchange_code,country_issue,ticker,market_sector,security_type,coupon,S&P Rating
+BP_LondonStockEx_BP,imd_43535553,GBP,GB0007980591,BBG000C05BD1,LN,united_kingdom,BP/,equity,common_stock,,
+BurfordCapital_LondonStockEx_BUR,imd_43534356,GBP,GG00B4L84979,BBG000PN88Q7,LN,united_kingdom,BUR,equity,common_stock,,
+EKFDiagnostics_LondonStockEx_EKF,imd_34535355,GBP,GB0031509804,BBG000BVNBN3,LN,united_kingdom,EKF,equity,common_stock,,
+Glencore_LondonStockEx_GLEN,imd_34534555,GBP,JE00B4T3BW64,BBG001MM1KV4,LN,united_kingdom,GLEN,equity,common_stock,,
+JustEat_LondonStockEx_JE,imd_35436366,GBP,GB00BKX5CN86,BBG0065YWM39,LN,united_kingdom,JE/,equity,common_stock,,
+Kingfisher_LondonStockEx_KGF,imd_34535552,GBP,GB0033195214,BBG000BKH1W6,LN,united_kingdom,KGF,equity,common_stock,,
+MicroFocus_LondonStockEx_MCRO,imd_34567338,GBP,GB00BD8YWM01,BBG000G4KKD2,LN,united_kingdom,MCRO,equity,common_stock,,
+RELXGroup_LondonStockEx_REL,imd_43532542,GBP,GB00B2B0DG97,BBG000D03XD4,LN,united_kingdom,REL,equity,common_stock,,
+Sage_LondonStockEx_SGE,imd_23536673,GBP,GB00B8C3BL03,BBG000BN0PP3,LN,united_kingdom,SGE,equity,common_stock,,
+TESCO_LondonStockEx_TSCO,imd_34634673,GBP,GB0008847096,BBG000BF46Y8,LN,united_kingdom,TSCO,equity,common_stock,,
+UKGiltTreasury_2.0_2025,imd_34534536,GBP,GB00BTHH2R79,BBG0088JSC32,LN,united_kingdom,UKT 2 09/07/25,govt,uk_gilt_stock,2,AA
+UKGiltTreasury_3.5_2045,imd_54234532,GBP,GB00BN65R313,BBG006N6HZM7,LN,united_kingdom,UKT 3.5 01/22/45,govt,uk_gilt_stock,3.5,AA
+UKGiltTreasury_3.75_2021,imd_34643653,GBP,GB00B4RMG977,BBG001KKJLR4,LN,united_kingdom,UKT 3.75 09/07/21,govt,uk_gilt_stock,3.75,AA
+UKGiltTreasury_4.5_2034,imd_34534534,GBP,GB00B52WS153,BBG0000D14P3,LN,united_kingdom,UKT 4.5 09/07/34,govt,uk_gilt_stock,4.5,AA
+WPP_LondonStockEx_WPP,imd_34536734,GBP,JE00B8KF9B49,BBG000BF6B57,LN,united_kingdom,WPP,equity,common_stock,,
+Whitebread_LondonStockEx_WTB,imd_35349900,GBP,GB00B1KJJ408,BBG000BRVH05,LN,united_kingdom,WTB,equity,common_stock,,
+TESCO_6.13_2022,imd_34001121,GBP,XS0414345974,,,united_kingdom,,corporate,corporate_bond,6.13,A-

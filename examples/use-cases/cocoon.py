@@ -34,7 +34,7 @@ def file_type_checks(file_name_type_mapping):
             and if so add the extension'''.format(file_name, file_type))
 
 
-def upsert_instruments(client, data_frame, instrument_identifier_mapping, instrument_mapping_required, instrument_mapping_optional):
+def load_instruments(client, data_frame, instrument_identifier_mapping, instrument_mapping_required, instrument_mapping_optional, property_columns, scope):
     """
     This function upserts instruments
 
@@ -45,6 +45,8 @@ def upsert_instruments(client, data_frame, instrument_identifier_mapping, instru
     :param instrument_mapping_optional:
     :return:
     """
+    
+    dtypes = data_frame.loc[:, property_columns].dtypes
 
     # Initialise our batch upsert request
     batch_upsert_request = {}
@@ -54,6 +56,8 @@ def upsert_instruments(client, data_frame, instrument_identifier_mapping, instru
 
         # Create our identifiers
         identifiers = {}
+        
+        properties = create_property_values(instrument, -1, scope, 'Instrument', dtypes, instrument_properties=True)
 
         for identifier_lusid, identifier_column in instrument_identifier_mapping['identifier_mapping'].items():
 
@@ -65,7 +69,8 @@ def upsert_instruments(client, data_frame, instrument_identifier_mapping, instru
         # Add the instrument to our batch request using the FIGI as the main unique identifier
         single_instrument = models.InstrumentDefinition(
             name=instrument[instrument_mapping_required['name']],
-            identifiers=identifiers)
+            identifiers=identifiers,
+            properties=properties)
 
         batch_upsert_request[instrument[instrument_mapping_required['name']]] = single_instrument
 
@@ -212,6 +217,7 @@ def resolve_instruments(client, data_frame, identifier_mapping):
                     comment_current = 'Uniquely resolved to an instrument in the securities master'
                     resolvable_current = True
                     luid_current = result.mastered_instruments[0].identifiers['LusidInstrumentId'].value
+                    break
 
                 elif len(result.mastered_instruments) > 1:
                     comment_current = 'Multiple instruments found for the instrument using identifier {}'.format(
@@ -220,7 +226,7 @@ def resolve_instruments(client, data_frame, identifier_mapping):
                     )
                     resolvable_current = False
                     luid_current = np.NaN
-                    break
+                    
 
         # Update the luid series
         luid.iloc[index] = luid_current
@@ -464,31 +470,34 @@ def set_transaction_mapping(client, transaction_mapping):
     return response
 
 
-def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, mapping_optional, source, file_type):
+def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, mapping_optional, source, file_type, identifier_mapping=None, property_columns=[]):
     """
     Handles loading transactions into multiple portfolios
 
     :param LusidApi client: The LusidApi client to use
     :param str scope: The scope of the portfolios to load the transactions into
     :param Pandas DataFrame data_frame: The dataframe containing the transactions
-    :param dict{str, str} mapping: The dictionary mapping the dataframe fields to LUSID's base transaction/holding schema
+    :param dict{str, str} mapping_required: The dictionary mapping the dataframe fields to LUSID's required base transaction/holding schema
+    :param dict{str, str} mapping_optional: The dictionary mapping the dataframe fields to LUSID's optional base transaction/holding schema
     :param str source: The source system of the transactions
-    :param str file_type: The type of file i.e. transactions or holdings
+    :param str file_type: The type of file i.e. transactions or holdings or instruments
+    :param dict{str, str} identifier_mapping: The dictionary mapping of LUSID instrument identifiers to identifiers in the dataframe
+    :param list[str] property_columns: The columns to create properties for
     :return: dict{str, UpsertPortfolioTransactionsResponse} responses: A mapping between the portfolio and the response
     """
     # Initialise the responses dictionary
     responses = {}
-    # Get the unique portfolios
-    portfolios = data_frame[mapping_required['portfolio_code']].unique()
 
-    if file_type.lower() not in ['transaction', 'holding']:
-        raise Exception('The file_type must be one of "transaction" or "holding", you supplied {}'.format(file_type))
+    if file_type.lower() not in ['transaction', 'holding', 'instrument']:
+        raise Exception('The file_type must be one of "transaction" or "holding" or "instrument", you supplied {}'.format(file_type))
 
     domain_lookup = {
         'transaction': 'Transaction',
-        'holding': 'Holding'
+        'holding': 'Holding',
+        'instrument': 'Instrument'
     }
 
+    
     missing_property_columns, data_frame = check_property_definitions_exist_in_scope(
         client=client,
         scope=scope,
@@ -499,8 +508,11 @@ def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, m
 
     # If there are missing properties
     if len(missing_property_columns) > 0:
-        print('There are missing {} properties, these will be added'.format(file_type.lower()))
-        print(missing_property_columns)
+        if len(property_columns) > 0:
+            missing_property_columns = [x for x in missing_property_columns if x in property_columns]
+        if len(missing_property_columns) > 0:
+            print('There are missing {} properties, these will be added'.format(file_type.lower()))
+            print(missing_property_columns)
 
         # Create property definitions for all of the columns in the file that have missing definitions
         property_key_mapping, data_frame = create_property_definitions_from_file(
@@ -509,16 +521,23 @@ def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, m
             domain=domain_lookup[file_type.lower()],
             data_frame=data_frame,
             missing_property_columns=missing_property_columns)
-
+        
+    if 'instrument' in file_type.lower():
+        response = load_instruments(client, data_frame, identifier_mapping, mapping_required, mapping_optional, property_columns, scope)
+        return response
+        
+    # Get the unique portfolios
+    portfolios = data_frame[mapping_required['portfolio_code']].unique()   
+        
     # Iterate over each portfolio and upsert the transactions
     for portfolio in portfolios:
         _data_frame = data_frame.loc[data_frame[mapping_required['portfolio_code']] == portfolio]
         if 'transaction' in file_type.lower():
-            response = load_transactions(client, scope, str(portfolio), _data_frame,  mapping_required, mapping_optional, source)
+            response = load_transactions(client, scope, str(portfolio), _data_frame,  mapping_required, mapping_optional, source, property_columns)
         elif 'holding' in file_type.lower():
             response = load_holdings(client, scope, str(portfolio), _data_frame,  mapping_required, mapping_optional)
-        responses[portfolio] = response
-
+        
+        responses['portfolio'] = response
     return responses
 
 
@@ -601,7 +620,7 @@ def check_property_definitions_exist_in_scope_single(client, property_key):
     return (missing, data_type)
 
 
-def create_property_values(row, null_value, scope, domain, dtypes):
+def create_property_values(row, null_value, scope, domain, dtypes, instrument_properties=False):
     """
     This function generates the property values for a row in a file
 
@@ -654,7 +673,11 @@ def create_property_values(row, null_value, scope, domain, dtypes):
                 key='{}/{}/{}'.format(domain, scope, make_code_lusid_friendly(column_name)),
                 value=property_value
         )
-
+        
+    # If these properties are for instruments they need to be in a list rather than a dictionary
+    if instrument_properties:
+        properties = list(properties.values())
+            
     return properties
 
 
@@ -673,7 +696,7 @@ def convert_datetime_utc(datetime):
     return datetime
 
 
-def load_transactions(client, scope, code, data_frame, transaction_mapping_required, transaction_mapping_optional, source):
+def load_transactions(client, scope, code, data_frame, transaction_mapping_required, transaction_mapping_optional, source, property_columns=[]):
     """
     This function loads transactions for a given portfolio into LUSID
 
@@ -687,7 +710,10 @@ def load_transactions(client, scope, code, data_frame, transaction_mapping_requi
     """
     # Initialise a list to hold the requests
     transaction_requests = []
-    dtypes = data_frame.drop(['resolvable', 'foundWith', 'LusidInstrumentId', 'comment'], axis=1).dtypes
+    if len(property_columns) > 0:
+        dtypes = data_frame.loc[:, property_columns].dtypes
+    else:
+        dtypes = data_frame.drop(['resolvable', 'foundWith', 'LusidInstrumentId', 'comment'], axis=1).dtypes
 
     # Iterate over each transaction
     for index, transaction in data_frame.iterrows():
