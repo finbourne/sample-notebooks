@@ -18,13 +18,23 @@ import boto3
 globals = {}
 
 def connect_athena_s3_clients(AWS_SERVER_PUBLIC_KEY, AWS_SERVER_SECRET_KEY, region):
-
+    """
+    param (str) AWS_SERVER_PUBLIC_KEY: The AWS public key for the Athena/S3 user
+    param (str) AWS_SERVER_SECRET_KEY: The AWS secret key for the Athena/S3 user
+    param (str) region: The default AWS region to use
+    
+    returns (boto3.s3.resource) s3_client: The AWS S3 client
+    returns (boto3.athena.client) athena_client: The AWS Athena client
+    """
+    
+    # Create a boto3 session using AWS access credentials
     session = boto3.Session(
         aws_access_key_id=AWS_SERVER_PUBLIC_KEY,
         aws_secret_access_key=AWS_SERVER_SECRET_KEY,
         region_name=region
     )
-
+    
+    # Create an S3 Resource and an Athena client
     s3_client = session.resource('s3')
     athena_client = session.client('athena')
         
@@ -33,6 +43,19 @@ def connect_athena_s3_clients(AWS_SERVER_PUBLIC_KEY, AWS_SERVER_SECRET_KEY, regi
 
 def fetch_data(athena_client, s3_client, database_name, sql_query, results_bucket, output_file_path, retry_time):
     
+    """
+    param (boto3.client) client: The Athena client
+    param (boto3.resource) s3: The s3 resource
+    param (str) database_name: The name of the database to execute the query against
+    param (str) sql_query: The query to execute
+    param (str) results_bucket: The bucket to contain the Athena results
+    returns (str) output_file_path: The path of the output file from the Athena query
+    param (int) retry_time: The retry time in seconds to check that the query has succeeded
+    
+    returns (Pandas DataFrame) <unamed>: The Pandas DataFrame containing the generated view
+    """
+    
+    # Generate the data view using AWS Athena
     output_bucket, output_path = generate_data_view(
         client=athena_client, 
         results_bucket=results_bucket, 
@@ -41,6 +64,7 @@ def fetch_data(athena_client, s3_client, database_name, sql_query, results_bucke
         retry_time=retry_time
         )
 
+    # Fetch the data view from AWS S3
     fetch_data_view(
         s3=s3_client, 
         bucket=output_bucket, 
@@ -48,15 +72,19 @@ def fetch_data(athena_client, s3_client, database_name, sql_query, results_bucke
         output_path=output_file_path, 
         retry_time=retry_time)
     
+    # Load the data into a dataframe from the file
     return pd.read_csv(output_file_path)
 
+
 def generate_data_view(client, results_bucket, database_name, sql_query, retry_time):
+    
     """
-    param (boto3.client) client: The Athena client
+    param (boto3.athena.client) client: The Athena client
     param (str) results_bucket: The bucket to contain the Athena results
     param (str) database_name: The name of the database to execute the query against
     param (str) sql_query: The query to execute
     param (int) retry_time: The retry time in seconds to check that the query has succeeded
+    
     returns (str) output_bucket: The bucket containing the output of the Athena query
     returns (str) output_file_path: The path of the output file from the Athena query
     """
@@ -106,6 +134,7 @@ def generate_data_view(client, results_bucket, database_name, sql_query, retry_t
 
 
 def fetch_data_view(s3, bucket, file_path, output_path, retry_time):
+    
     """
     param (boto3.resource) s3: The s3 resource
     param (str) bucket: The bucket to retrieve the file from
@@ -127,11 +156,218 @@ def fetch_data_view(s3, bucket, file_path, output_path, retry_time):
             else:
                 raise
 
+
+def valuation(client, marketdata_scope, portfolio_group, time):
+    
+    """
+    This function values a portfolio group in LUSID
+    
+    param (lusid.client) client: The LUSID client to use
+    param (str) marketdata_scope: The scope of the marketdata to use in the valuation
+    param (models.ResourceId) portfolio_group: The resourceId of the portfolio group with its scope and code
+    param (date or str) time: The time at which to run the valuation
+    
+    
+    returns (Pandas DataFrame): The response from the valuation
+    """
+
+    # Create an inline recipe to use for the valuation
+    inline_recipe = models.ConfigurationRecipe(
+        code='quotes_recipe',
+        market=models.MarketContext(
+            market_rules=[
+                models.MarketDataKeyRule(
+                   key='Equity.Figi.*',
+                   supplier='DataScope',
+                   data_scope=marketdata_scope,
+                   quote_type='Price',
+                   field='Mid'),
+               models.MarketDataKeyRule(
+                   key='Equity.Isin.*',
+                   supplier='DataScope',
+                   data_scope=marketdata_scope,
+                   quote_type='Price',
+                   field='Mid'),
+                models.MarketDataKeyRule(
+                   key='Equity.LusidInstrumentId.*',
+                   supplier='DataScope',
+                   data_scope=marketdata_scope,
+                   quote_type='Price',
+                   field='Mid'),
+                models.MarketDataKeyRule(
+                   key='Fx.CurrencyPair.*',
+                   supplier='DataScope',
+                   data_scope=marketdata_scope,
+                   quote_type='Rate',
+                   field='Mid')
+            ],
+            suppliers=models.MarketContextSuppliers(
+                commodity='DataScope',
+                credit='DataScope',
+                equity='DataScope',
+                fx='DataScope',
+                rates='DataScope'),
+            options=models.MarketOptions(
+                default_supplier='DataScope',
+                default_instrument_code_type='Figi',
+                default_scope=marketdata_scope)
+        )
+    )
+
+    # Create the aggreation request with the fields required
+    aggregation_request = models.AggregationRequest(
+        inline_recipe=inline_recipe,
+        effective_at=time,
+        metrics=[
+            models.AggregateSpec(key='Holding/default/SubHoldingKey',
+            op='Value'),
+            models.AggregateSpec(key='Instrument/default/Name',
+            op='Value'),
+            models.AggregateSpec(key='Holding/default/Units',
+            op='Sum'),
+            models.AggregateSpec(key='Holding/default/Cost',
+            op='Sum'),
+            models.AggregateSpec(key='Holding/default/PV',
+            op='Sum'),
+        ],
+        group_by=[
+            'Holding/default/SubHoldingKey'
+        ])
+
+    # Perform the valuation
+    response = client.aggregation.get_aggregation_by_group(
+        scope=portfolio_group.scope,
+        code=portfolio_group.code,
+        request=aggregation_request)
+
+    # Return the response in a Pandas DataFrame
+    return prettyprint.aggregation_responses_generic_df([response])
+
                 
                 
+def create_portfolio_group(client, scope, code, portfolios):
+    
+    """
+    This creates a portfolio group which contains a group of provided portfolios. This function is idempotent. It attempts
+    to delete the portfolio group before creating it to ensure that it will always be created.
+    
+    param (lusid.client) client: The LUSID client to use
+    param (str) scope: The LUSID scope to create the portfolio group in
+    param (str) code: The code to create the portfolio group with
+    param (list[models.ResourceId]) portfolios: A list of resource ids for the portfolios to add to the group
+    
+    returns (lusid.models.createportfoliogroupresonse): The response from creating the group
+    """
+    
+    try:
+        client.portfolio_groups.delete_portfolio_group(
+            scope=scope,
+            code=code)
+    except:
+        pass
+    
+    group_request = models.CreatePortfolioGroupRequest(
+        code=code,
+        display_name=code,
+        values=portfolios,
+        sub_groups=None,
+        description=None)
+
+    portfolio_group = client.portfolio_groups.create_portfolio_group(
+        scope=scope,
+        request=group_request)
+    
+    return portfolio_group
+                
+                
+def upsert_quotes(client, scope, data_frame, instrument_identifier_mapping, instrument_identifier_heirarchy, required_mapping):
+    """
+    This function takes quotes from a data_frame and upserts them into LUSID
+    
+    param (lusid.client) client: The LUSID client to use
+    param (str) scope: The LUSID scope to upsert the quotes into
+    param (Pandas DataFrame) data_frame: The DataFrame that the quotes are in
+    param (dict) instrument_identifier_mapping : The dictionary with the instrument identifier mapping between LUSID and the dataframe
+    param (list[str]) instrument_identifier_heirarchy : The heirarchy to use for the LUSID instrument identifiers when upserting quotes
+    param (dict) required_mapping: The mapping of the LUSID required quote fields to the dataframe fields
+    
+    
+    returns (Pandas DataFrame): The succesfully upserted quotes
+    """
+    
+    # Initialise an empty instrument quotes list to hold the quotes
+    instrument_quotes = {}
+    
+    quote_type_values = {
+        'mid_price': {
+            'quote_type': 'Price',
+            'price_side': 'Mid',
+            'value': 'price',
+        },
+        'mid_rate': {
+            'quote_type': 'Rate',
+            'price_side': 'Mid',
+            'value': 'rate',
+        }
+    }
+    
+    # Iterate over the quotes
+    for index, quote in data_frame.iterrows():
+        
+        quote_type = quote_type_values[quote[required_mapping['quote_type']]]["quote_type"]
+        field = quote_type_values[quote[required_mapping['quote_type']]]["price_side"]
+            
+        for identifier in instrument_identifier_heirarchy:
+            
+            identifier_value = quote[instrument_identifier_mapping['identifier_mapping'][identifier]]
+            
+            if (identifier == "CurrencyPair") and (len(identifier_value) == 6):
+                identifier_value = identifier_value[:3] + "/" + identifier_value[3:]
+                
+            
+            if not pd.isna(identifier_value):
+                break
+        
+        # Add the quote to the list of upsert quote requests
+        effective_date = quote[required_mapping['effective_at']]
+        
+        instrument_quotes[identifier + "_" + identifier_value + "_" + effective_date] = models.UpsertQuoteRequest(
+            quote_id=models.QuoteId(
+                quote_series_id=models.QuoteSeriesId(
+                    provider='DataScope',
+                    instrument_id=identifier_value,
+                    instrument_id_type=identifier,
+                    quote_type=quote_type,
+                    field=field
+                ),
+                effective_at=effective_date),
+            metric_value=models.MetricValue(
+                value=quote[required_mapping['value']],
+                unit=quote[required_mapping['currency']]),
+            lineage='InternalSystem'
+        )
+
+        
+    # Upsert the quotes into LUSID
+    response = client.quotes.upsert_quotes(
+        scope=scope,
+        quotes=instrument_quotes)
+
+    # Pretty print the response
+    #prettyprint.upsert_quotes_response(response)
+    return prettyprint.upsert_quotes_response(response)               
+                
+    
 def create_transaction_type_configuration(client, aliases, movements):
     
     """
+    This function creates a transaction type configuration if it doesn't already exist.
+    
+    param (lusid.Client) client: The LUSID client to use
+    param (list[tuple(str, str)]) aliases: A list of aliases with their type and group to use for the transaction type
+    param (list[lusid.models.TransactionConfigurationMovementDataRequest]) movements: The movements to use for the transaction type
+    
+    return (lusid.models.createtransactiontyperesponse) response: The response from creating the transaction type
     """
     
     # Call LUSID to get your transaction type configuration
@@ -148,7 +384,7 @@ def create_transaction_type_configuration(client, aliases, movements):
     for alias in aliases:
 
         if alias in aliases_current:
-            raise ValueError(f"Alias of type {alias[0]} with source {alias[1]} already exists")
+            return response
         
         aliases_new.append(models.TransactionConfigurationTypeAlias(
             type=alias[0],
@@ -172,6 +408,16 @@ def create_transaction_type_configuration(client, aliases, movements):
 
 def create_portfolios(client, scopes, code, currency):
     
+    """
+    This function creates a portfolio in multiple scopes. 
+    
+    param (lusid.Client) client: The LUSID client to use
+    param (list[str]) scopes: The scopes to create the portfolio in
+    param (str) code: The code for the portfolio
+    param (str) currency: The base/reporting currency of the portfolio
+    
+    return (list[lusid.models.createportfolioresponse]) responses: The responses from creating the portfolio in each scope
+    """
     # The date your portfolio was first created
     portfolio_creation_date = (datetime.now(pytz.UTC) - timedelta(days=5000))
     
@@ -217,6 +463,8 @@ def create_cut_labels(client, exchange_names, cut_label_type):
     param (list[str]) exchange_names: The list of exchanges to create cut labels for
     param (str) cut_label_type: The type of cut label to create, options are currently
     'market open' or 'market close'.
+    
+    return (list[lusid.models.cutlabelresponse]) responses: The responses from creating the cut labels
     """
     
     # The available cut labels and exchanges

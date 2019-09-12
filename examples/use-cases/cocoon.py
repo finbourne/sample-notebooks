@@ -524,7 +524,7 @@ def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, m
         
     if 'instrument' in file_type.lower():
         response = load_instruments(client, data_frame, identifier_mapping, mapping_required, mapping_optional, property_columns, scope)
-        return response
+        return {'instruments': response}
         
     # Get the unique portfolios
     portfolios = data_frame[mapping_required['portfolio_code']].unique()   
