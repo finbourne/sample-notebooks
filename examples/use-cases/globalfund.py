@@ -159,19 +159,15 @@ def fetch_data_view(s3, bucket, file_path, output_path, retry_time):
 
 def valuation(client, marketdata_scope, portfolio_group, time):
     
-    """
-    This function values a portfolio group in LUSID
+    time_parts = [time[:10], time[11:]]
     
-    param (lusid.client) client: The LUSID client to use
-    param (str) marketdata_scope: The scope of the marketdata to use in the valuation
-    param (models.ResourceId) portfolio_group: The resourceId of the portfolio group with its scope and code
-    param (date or str) time: The time at which to run the valuation
-    
-    
-    returns (Pandas DataFrame): The response from the valuation
-    """
+    if time_parts[1] == 'LSE_market_close':
+        time_parts[1] = "16:30:00.000000+00:00"
+    elif time_parts[1] == 'NYSE_market_close':
+        time_parts[1] = "21:00:00.000000+00:00"
+        
+    time = "T".join(time_parts)
 
-    # Create an inline recipe to use for the valuation
     inline_recipe = models.ConfigurationRecipe(
         code='quotes_recipe',
         market=models.MarketContext(
@@ -214,7 +210,6 @@ def valuation(client, marketdata_scope, portfolio_group, time):
         )
     )
 
-    # Create the aggreation request with the fields required
     aggregation_request = models.AggregationRequest(
         inline_recipe=inline_recipe,
         effective_at=time,
@@ -229,19 +224,21 @@ def valuation(client, marketdata_scope, portfolio_group, time):
             op='Sum'),
             models.AggregateSpec(key='Holding/default/PV',
             op='Sum'),
+            models.AggregateSpec(key='Holding/default/PV',
+            op='Proportion')
         ],
         group_by=[
             'Holding/default/SubHoldingKey'
         ])
 
-    # Perform the valuation
     response = client.aggregation.get_aggregation_by_group(
         scope=portfolio_group.scope,
         code=portfolio_group.code,
         request=aggregation_request)
-
-    # Return the response in a Pandas DataFrame
-    return prettyprint.aggregation_responses_generic_df([response])
+    
+    dataframe = prettyprint.aggregation_responses_generic_df([response])
+    dataframe = dataframe.append(dataframe.sum(numeric_only=True), ignore_index=True)
+    return dataframe
 
                 
                 
