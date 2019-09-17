@@ -80,7 +80,7 @@ def authenticate_secrets():
         if api_url is None:
             raise KeyError("Missing FBN_LUSID_API_URL environment variable, please set it to the LUSID base API url")
         config.host = api_url
-        client = lusid.ApiClient(config)
+        client = lusid.ApiClient(config, header_name="X-LUSID-Application", header_value="LusidJupyterNotebook")
         return LusidApi(client)
     
     # Load our configuration details from the environment variables
