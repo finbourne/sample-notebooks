@@ -887,9 +887,8 @@ def aggregation_response_generic_df(response, index_key, name):
     df.sort_values(index_key, inplace=True, ascending=True)
     df = df.append(df.sum(numeric_only=True), ignore_index=True)
     df.at[len(df)-1, index_key] = "TOTAL"
-    df.name = name
+    df.columns.name = name
     df.set_index(index_key, drop=True, inplace=True)
     df = df.round(2)
     pd.options.display.float_format = '{:,}'.format
     return df
-
