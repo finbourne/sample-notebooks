@@ -1,7 +1,7 @@
-﻿account_code,account_name,currency,description,primary_acount_owner_id,household_id,other_account_owner_id,financial_advisor_id,mandate_description,mandate_id,branch_id
-040004-929987648,OneIntlBrokerage,USD,Primary trading account,invstr_7325jhv93,hhd_jxgru45055,,ffid_abkjas9932,To maximise returns within a given risk threshold and focusing on investments with strong ESG scores,mndt_9mdf9822,broomf_CO_USA
-040004-778939522,OneIntlBrokerage,USD,College fund ,invstr_7325jhv93,hhd_jxgru45055,invstr_bbgj93921,ffid_abkjas9932,To build a college fund for multiple dependants,mndt_99kljdslf0,broomf_CO_USA
-204507-250099511,VangETF,USD,Passive exchange traded fund,invstr_a1kf37761,hhd_ab3452342,,ffid_abkjas9932,To hold 80% in low risk passive instruments and maximise return with a high risk tolerance with the remaining 20%,mndt_xxku9sdf9,broomf_CO_USA
-774001-899930233,FidelityOnlineUSEquityOptions,USD,Online US equity & option trades,invstr_bbgj93921,hhd_jxgru45055,,ffid_xxye990221,To maximise return with a high risk tolerance profile,mndt_uu99sadf2,miami_FL_USA
-400250-613060229,ActiveManagedBlckrock,USD,Actively managed high return investment account,invstr_a1kf37761,hhd_ab3452342,,ffid_abkjas9932,To hold 80% in low risk passive instruments and maximise return with a high risk tolerance with the remaining 20%,mndt_xxku9sdf9,broomf_CO_USA
-769231-448679901,MutualFund,USD,Pooled investment vehicle,invstr_7325jhv93,hhd_ab3452342,,ffid_abkjas9932,To maximise returns within a given risk threshold and focusing on investments with strong ESG scores,mndt_9mdf9822,broomf_CO_USA
+﻿account_code,account_name,currency,description,primary_acount_owner_id,household_id,other_account_owner_id,financial_advisor_id
+040004-929987648,OneIntlBrokerage,USD,Primary trading account,invstr_7325jhv93,hhd_jxgru45055,,ffid_abkjas9932
+040004-778939522,OneIntlBrokerage,USD,College fund ,invstr_7325jhv93,hhd_jxgru45055,invstr_bbgj93921,ffid_abkjas9932
+204507-250099511,VangETF,USD,Passive exchange traded fund,invstr_a1kf37761,hhd_ab3452342,,ffid_abkjas9932
+774001-899930233,FidelityOnlineUSEquityOptions,USD,Online US equity & option trades,invstr_bbgj93921,hhd_jxgru45055,,ffid_xxye990221
+400250-613060229,ActiveManagedBlckrock,USD,Actively managed high return investment account,invstr_a1kf37761,hhd_ab3452342,,ffid_abkjas9932
+769231-448679901,MutualFund,USD,Pooled investment vehicle,invstr_7325jhv93,hhd_ab3452342,,ffid_abkjas9932
