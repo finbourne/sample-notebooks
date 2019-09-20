@@ -576,6 +576,7 @@ def aggregation_response_generic(response):
             print ('{}: {}'.format(key, value))
         print ('\n')
 
+
 def aggregation_responses_generic_df(responses):
     
     dfs = []
@@ -611,6 +612,7 @@ def aggregation_response_households_generic_df(response, index_key, name):
     df.round(2)
     pd.options.display.float_format = '{:,}'.format
     return df
+        
 
 def transaction_type_response(response, filters=[]):
     i = 0
@@ -878,17 +880,4 @@ def update_cut_label(response):
               str(response.cut_local_time.minutes))
     print(colours.bold + "Timezone: " + colours.end + response.time_zone)
     print(colours.bold + "Description: " + colours.end + response.description + "\n")
-
-def aggregation_response_generic_df(response, index_key, name):
-    df = pd.DataFrame(response.data)
-    # Replace <Unknown> as the name for cash instruments with Cash
-    if "Instrument/default/Name" in df.columns:
-        df["Instrument/default/Name"] = df["Instrument/default/Name"].apply(lambda x: "Cash" if x == '<Unknown>' else x)
-    df.sort_values(index_key, inplace=True, ascending=True)
-    df = df.append(df.sum(numeric_only=True), ignore_index=True)
-    df.at[len(df)-1, index_key] = "TOTAL"
-    df.name = name
-    df.set_index(index_key, drop=True, inplace=True)
-    df = df.round(2)
-    pd.options.display.float_format = '{:,}'.format
-    return df
+    
