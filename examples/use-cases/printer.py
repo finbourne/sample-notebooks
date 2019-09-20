@@ -892,4 +892,3 @@ def aggregation_response_generic_df(response, index_key, name):
     df = df.round(2)
     pd.options.display.float_format = '{:,}'.format
     return df
-
