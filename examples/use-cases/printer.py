@@ -576,6 +576,7 @@ def aggregation_response_generic(response):
             print ('{}: {}'.format(key, value))
         print ('\n')
 
+        
 def aggregation_responses_generic_df(responses):
     
     dfs = []
@@ -597,7 +598,6 @@ def aggregation_responses_generic_df(responses):
     df_concat = pd.concat(dfs, ignore_index=True)
     return df_concat
 
-
 def aggregation_response_households_generic_df(response, index_key, name):
     df = pd.DataFrame(response.data)
     # Replace <Unknown> as the name for cash instruments with Cash
@@ -610,12 +610,12 @@ def aggregation_response_households_generic_df(response, index_key, name):
     df.set_index(index_key, drop=True, inplace=True)
     df.round(2)
     pd.options.display.float_format = '{:,}'.format
-    return df
+    return df    
 
-def transaction_type_response(response, filters=[]):
+def transaction_type_response(txnResponse, filters=[]):
     i = 0
     j = 0
-    for mapping in response.values:
+    for mapping in txnResponse.transaction_configs:
         i += 1
         aliases = [alias.type for alias in mapping.aliases]
         matches = [value for value in aliases if value in filters]
@@ -878,7 +878,7 @@ def update_cut_label(response):
               str(response.cut_local_time.minutes))
     print(colours.bold + "Timezone: " + colours.end + response.time_zone)
     print(colours.bold + "Description: " + colours.end + response.description + "\n")
-
+    
 def aggregation_response_generic_df(response, index_key, name):
     df = pd.DataFrame(response.data)
     # Replace <Unknown> as the name for cash instruments with Cash
@@ -892,3 +892,4 @@ def aggregation_response_generic_df(response, index_key, name):
     df = df.round(2)
     pd.options.display.float_format = '{:,}'.format
     return df
+    

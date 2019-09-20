@@ -1,5 +1,5 @@
 {
-  "values": [
+  "transactionConfigRequests": [
     {
       "aliases": [
         {
@@ -22,18 +22,17 @@
           "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         },
         {
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -57,18 +56,17 @@
           "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         },
         {
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -92,18 +90,17 @@
           "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         },
         {
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -127,18 +124,17 @@
           "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         },
         {
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -169,11 +165,10 @@
           "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -204,11 +199,10 @@
           "movementTypes": "StockMovement",
           "side": "Side1",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -225,18 +219,17 @@
           "movementTypes": "CashCommitment",
           "side": "Side1",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         },
         {
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -260,18 +253,17 @@
           "movementTypes": "CashCommitment",
           "side": "Side1",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         },
         {
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -288,18 +280,17 @@
           "movementTypes": "CashForward",
           "side": "Side1",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         },
         {
           "movementTypes": "CashForward",
           "side": "Side2",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -323,18 +314,17 @@
           "movementTypes": "CashForward",
           "side": "Side1",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         },
         {
           "movementTypes": "CashForward",
           "side": "Side2",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -358,11 +348,10 @@
           "movementTypes": "CashAccrual",
           "side": "Side1",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -386,11 +375,10 @@
           "movementTypes": "CashAccrual",
           "side": "Side1",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -426,11 +414,10 @@
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -466,11 +453,10 @@
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -506,11 +492,10 @@
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -546,11 +531,10 @@
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -579,11 +563,10 @@
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": -1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -600,11 +583,10 @@
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     },
     {
       "aliases": [
@@ -633,11 +615,10 @@
           "movementTypes": "CashCommitment",
           "side": "Side2",
           "direction": 1,
-          "properties": [],
+          "properties": {},
           "mappings": []
         }
-      ],
-      "properties": []
+      ]
     }
   ]
 }
