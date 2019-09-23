@@ -1,0 +1,6 @@
+﻿isocur,moodys_rating,name,isin,figi,assettype,issuercountry,bloombergticker,exchange_traded,couprate,int_id,sector
+USD,NaN,Amazon_Nasdaq_AMZN,US0231351067,BBG000BVPXP1,common_stock,united_states_america,AMZN,UN,nan,imd_34634534,equity
+USD,NaN,Apple_Nasdaq_AAPL,US0378331005,BBG000B9XVV8,common_stock,united_states_america,AAPL,UN,nan,imd_35345345,equity
+USD,Aa2,USTreasury_2.00_2021,US912828U816,BBG00FN3B5K8,us_government,united_states_america,T 2 12/31/21,BERLIN,2,imd_34535347,govt
+USD,Aa2,USTreasury_6.875_2025,US912810EV62,BBG000DQQNJ8,us_government,united_states_america,T 6.875 08/15/25,NEW YORK,6.88,imd_34534539,govt
+USD,Baa1,TESCO_6.15_2037,US881575AC87,NaN,corporate_bond,united_states_america,NaN,NaN,6.15,imd_54001121,corporate
