@@ -127,7 +127,8 @@ def create_portfolio_group(client, scope, code, portfolios):
         display_name=code,
         values=portfolios,
         sub_groups=None,
-        description=None)
+        description=None,
+        created=datetime.now(pytz.UTC))
 
     portfolio_group = client.portfolio_groups.create_portfolio_group(
         scope=scope,
