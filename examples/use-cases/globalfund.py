@@ -111,10 +111,13 @@ def create_portfolio_group(client, scope, code, portfolios):
     param (str) scope: The LUSID scope to create the portfolio group in
     param (str) code: The code to create the portfolio group with
     param (list[models.ResourceId]) portfolios: A list of resource ids for the portfolios to add to the group
+    param (datetime) creation_date: The creation date of the portfolio group
     
     returns (lusid.models.createportfoliogroupresonse): The response from creating the group
     """
-    
+
+    portfolio_creation_date = datetime.now(pytz.UTC) - timedelta(days=5000)
+
     try:
         client.portfolio_groups.delete_portfolio_group(
             scope=scope,
@@ -128,7 +131,7 @@ def create_portfolio_group(client, scope, code, portfolios):
         values=portfolios,
         sub_groups=None,
         description=None,
-        created=datetime.now(pytz.UTC))
+        created=portfolio_creation_date)
 
     portfolio_group = client.portfolio_groups.create_portfolio_group(
         scope=scope,
