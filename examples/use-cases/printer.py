@@ -892,3 +892,59 @@ def aggregation_response_generic_df(response, index_key, name):
     df = df.round(2)
     pd.options.display.float_format = '{:,}'.format
     return df
+
+
+def corporate_action_request_details(ca):
+    print(colours.bold + 'CA Code and Type: ' + colours.end + str(ca['code']) + str(ca['action_description']))
+    print(colours.bold + 'Announcement Date : ' + colours.end + str(ca['announcement_date']))
+    print(colours.bold + 'Ex Date : ' + colours.end + str(ca['ex_date']))
+    print(colours.bold + 'Record Date : ' + colours.end + str(ca['record_date']))
+    print(colours.bold + 'Payment Date : ' + colours.end + str(ca['payment_date']))
+    print(colours.bold + 'input instrument : ' + colours.end + str(ca['input_instrument_luid']))
+    print(colours.bold + 'Units in : ' + colours.end + str(ca['input_units_factor']) + colours.bold + ' Cost in : ' + colours.end + str(ca['input_cost_factor']))
+    print(colours.bold + 'output instrument : ' + colours.end + str(ca['output_instrument_luid']))
+    print(colours.bold + 'output internal : ' + colours.end + str(ca['output_instrument_internal']))
+    print(colours.bold + 'Units out : ' + colours.end + str(ca['output_units_factor']) + colours.bold + ' Cost out : ' + colours.end + str(ca['output_cost_factor']))
+    print('')
+
+def batch_upsert_corporate_actions_response(response):
+    if response.failed:
+        print(colours.bold + colours.FAIL + "One or more corporate actions failed to upsert"+ colours.end )
+    for value in response.values:
+        print(colours.bold + colours.OKBLUE + 'Corporate Action Id : ' + colours.end + value)
+        ca = response.values[value]
+        print(colours.bold + 'Announcement Date : ' + colours.end + str(ca.announcement_date))
+        print(colours.bold + 'Ex Date : ' + colours.end + str(ca.ex_date))
+        print(colours.bold + 'Payment Date : ' + colours.end + str(ca.payment_date))
+        print(colours.bold + 'Record Date : ' + colours.end + str(ca.record_date))
+        print(colours.bold + colours.OKBLUE + '   Transitions : ' + colours.end)
+        for t in ca.transitions:
+            print(colours.bold + 'Input LUID: ' + colours.end + t.input_transition.instrument_uid +
+                  colours.bold + ' with Cost factor: ' + colours.end + str(t.input_transition.cost_factor),
+                  colours.bold + ' and Unit Factor: ' + colours.end + str(t.input_transition.units_factor))
+            for o in t.output_transitions:
+                print(colours.bold + 'Output LUID: ' + colours.end + o.instrument_uid,
+                      colours.bold + ' with Cost Factor: ' + colours.end + str(o.cost_factor),
+                      colours.bold + ' and Unit Factor: ' + colours.end + str(o.units_factor))
+        print('')
+
+def get_corporate_actions_response(scope, code, response):
+    for ca in response.values:
+        print(colours.bold + colours.OKBLUE + 'Corporate Action Id : ' + colours.end + ca.corporate_action_code)
+        print(colours.bold + 'Source Id : ' + colours.end)
+        print(colours.bold + '    Scope : ' + colours.end + scope)
+        print(colours.bold + '    Code : ' + colours.end + code)
+        print(colours.bold + 'Announcement Date : ' + colours.end + str(ca.announcement_date))
+        print(colours.bold + 'Ex Date : ' + colours.end + str(ca.ex_date))
+        print(colours.bold + 'Payment Date : ' + colours.end + str(ca.payment_date))
+        print(colours.bold + 'Record Date : ' + colours.end + str(ca.record_date))
+        print(colours.bold + colours.OKBLUE + '   Transitions : ' + colours.end)
+        for t in ca.transitions:
+            print(colours.bold + 'Input LUID: ' + colours.end + t.input_transition.instrument_uid +
+                  colours.bold + ' with Cost factor: ' + colours.end + str(t.input_transition.cost_factor),
+                  colours.bold + ' and Unit Factor: ' + colours.end + str(t.input_transition.units_factor))
+            for o in t.output_transitions:
+                print(colours.bold + 'Output LUID: ' + colours.end + o.instrument_uid,
+                      colours.bold + ' with Cost Factor: ' + colours.end + str(o.cost_factor),
+                      colours.bold + ' and Unit Factor: ' + colours.end + str(o.units_factor))
+        print('')
