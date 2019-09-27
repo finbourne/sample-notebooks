@@ -10,9 +10,13 @@ import pytz
 # Authenticate our user and create our API client
 client = import_data.authenticate_secrets()
 
-def fetch_scope(scope_name):
+def fetch_scope(scope_name, description):
     scope_id = import_data.create_scope_id()
-    return '{}-{}'.format(scope_name, scope_id)
+    scope_code = '{}-{}'.format(scope_name, scope_id)
+    
+    prettyprint.heading('{}'.format(description), scope_code)
+    
+    return scope_code
 
 def create_portfolio(scope, display_name, code, base_currency, description, created):
     # Create the request to add our portfolio
