@@ -28,8 +28,8 @@ docker run -it -v $(pwd):/tmp/working -p 8888:8888 finbourne/lusid-sample-notebo
 
 ### 6) Copy the token shown in your console and paste it into your browser to log in
 
-### 7) Create a secrets.json folder in the **examples** folder with your LUSID credentials
-see https://support.lusid.com/getting-started-with-apis-sdks for details on this
+### 7) Create a secrets.json file in the **examples** folder with your LUSID credentials
+see **Using a secrets.json file** at https://support.lusid.com/getting-started-with-apis-sdks for details on this
 
 
 ### 8) You're good to go!
