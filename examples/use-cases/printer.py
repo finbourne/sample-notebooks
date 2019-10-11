@@ -612,10 +612,10 @@ def aggregation_response_households_generic_df(response, index_key, name):
     pd.options.display.float_format = '{:,}'.format
     return df
 
-def transaction_type_response(response, filters=[]):
+def transaction_type_response(txnResponse, filters=[]):
     i = 0
     j = 0
-    for mapping in response.values:
+    for mapping in txnResponse.transaction_configs:
         i += 1
         aliases = [alias.type for alias in mapping.aliases]
         matches = [value for value in aliases if value in filters]
