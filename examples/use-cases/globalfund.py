@@ -235,7 +235,7 @@ def create_transaction_type_configuration(client, aliases, movements):
 
     aliases_current = []
 
-    for transaction_grouping in response.transactionConfigRequests:
+    for transaction_grouping in response.transaction_configs:
         for alias in transaction_grouping.aliases:
             aliases_current.append((alias.type, alias.transaction_group))
     
