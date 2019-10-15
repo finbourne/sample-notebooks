@@ -34,7 +34,7 @@ def file_type_checks(file_name_type_mapping):
             and if so add the extension'''.format(file_name, file_type))
 
 
-def load_instruments(client, data_frame, instrument_identifier_mapping, instrument_mapping_required, instrument_mapping_optional, property_columns, scope):
+def load_instruments(client, data_frame, instrument_identifier_mapping, instrument_mapping_required, instrument_mapping_optional, property_columns, scope, properties_scope=None):
     """
     This function upserts instruments
 
@@ -57,7 +57,10 @@ def load_instruments(client, data_frame, instrument_identifier_mapping, instrume
         # Create our identifiers
         identifiers = {}
         
-        properties = create_property_values(instrument, -1, scope, 'Instrument', dtypes, instrument_properties=True)
+        if properties_scope is None:
+            properties_scope = scope
+        
+        properties = create_property_values(instrument, -1, properties_scope, 'Instrument', dtypes, instrument_properties=True)
 
         for identifier_lusid, identifier_column in instrument_identifier_mapping['identifier_mapping'].items():
 
@@ -341,7 +344,7 @@ def find_missing_portfolios(client, scope, codes):
     return missing_portfolios
 
 
-def create_portfolios_if_not_exist(client, scope, data_frame, required_mapping, optional_mapping):
+def create_portfolios_if_not_exist(client, scope, data_frame, required_mapping, optional_mapping, property_columns, properties_scope=None):
     """
     This function creates portfolios
 
@@ -354,6 +357,8 @@ def create_portfolios_if_not_exist(client, scope, data_frame, required_mapping, 
     :return: dict[str: models.Portfolio]: A dict of the created portfolios keyed by the code
     """
     responses = {}
+    
+    dtypes = data_frame.loc[:, property_columns].dtypes
 
     portfolio_codes_to_check = data_frame[required_mapping['code']].unique()
 
@@ -363,22 +368,28 @@ def create_portfolios_if_not_exist(client, scope, data_frame, required_mapping, 
 
     # Determine which need to be created by excluding those that already exist
     portfolio_codes_to_create = list(set(portfolio_codes_to_check) - set(existing_portfolio_codes))
+    
+    portfolios_to_create = data_frame.loc[data_frame[required_mapping['code']].isin(portfolio_codes_to_create)]
 
-    for code in portfolio_codes_to_create:
-
-        portfolio = data_frame.loc[data_frame[required_mapping['code']] == code]
+    for index, portfolio in portfolios_to_create.iterrows():
+        
+        if properties_scope is None:
+            properties_scope = scope
+        
+        properties = create_property_values(portfolio, -1, properties_scope, 'Portfolio', dtypes, instrument_properties=False)
 
         # Build the request to create the portfolio
         request = models.CreateTransactionPortfolioRequest(
-            display_name=portfolio[required_mapping['display_name']].values[0],
-            code=make_code_lusid_friendly(code),
-            created=portfolio[required_mapping['created']].values[0],
-            base_currency=portfolio[required_mapping['base_currency']].values[0])
+            display_name=portfolio[required_mapping['display_name']],
+            code=make_code_lusid_friendly(portfolio[required_mapping['code']]),
+            created=portfolio[required_mapping['created']],
+            base_currency=portfolio[required_mapping['base_currency']],
+            properties=properties)
 
         for lusid_field, column_name in optional_mapping.items():
 
             if column_name is not None:
-                setattr(request, lusid_field, portfolio[column_name].values[0])
+                setattr(request, lusid_field, portfolio[column_name])
 
         # Call LUSID to create the portfolio
         response = client.transaction_portfolios.create_portfolio(
@@ -386,7 +397,7 @@ def create_portfolios_if_not_exist(client, scope, data_frame, required_mapping, 
             create_request=request
         )
 
-        responses[code] = response
+        responses[portfolio[required_mapping['code']]] = response
 
     return responses
 
@@ -470,7 +481,7 @@ def set_transaction_mapping(client, transaction_mapping):
     return response
 
 
-def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, mapping_optional, source, file_type, identifier_mapping=None, property_columns=[]):
+def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, mapping_optional, source, file_type, identifier_mapping=None, property_columns=[], properties_scope=None):
     """
     Handles loading transactions into multiple portfolios
 
@@ -488,19 +499,22 @@ def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, m
     # Initialise the responses dictionary
     responses = {}
 
-    if file_type.lower() not in ['transaction', 'holding', 'instrument']:
-        raise Exception('The file_type must be one of "transaction" or "holding" or "instrument", you supplied {}'.format(file_type))
+    if file_type.lower() not in ['transaction', 'holding', 'instrument', 'portfolio']:
+        raise Exception('The file_type must be one of "transaction" or "holding" or "instrument" or "portfolio", you supplied {}'.format(file_type))
 
     domain_lookup = {
         'transaction': 'Transaction',
         'holding': 'Holding',
-        'instrument': 'Instrument'
+        'instrument': 'Instrument',
+        'portfolio': 'Portfolio'
     }
 
+    if properties_scope is None:
+        properties_scope = scope
     
     missing_property_columns, data_frame = check_property_definitions_exist_in_scope(
         client=client,
-        scope=scope,
+        scope=properties_scope,
         domain=domain_lookup[file_type.lower()],
         data_frame=data_frame)
 
@@ -517,14 +531,19 @@ def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, m
         # Create property definitions for all of the columns in the file that have missing definitions
         property_key_mapping, data_frame = create_property_definitions_from_file(
             client=client,
-            scope=scope,
+            scope=properties_scope,
             domain=domain_lookup[file_type.lower()],
             data_frame=data_frame,
             missing_property_columns=missing_property_columns)
         
     if 'instrument' in file_type.lower():
-        response = load_instruments(client, data_frame, identifier_mapping, mapping_required, mapping_optional, property_columns, scope)
+        response = load_instruments(client, data_frame, identifier_mapping, mapping_required, mapping_optional, property_columns, scope,
+properties_scope)
         return {'instruments': response}
+    
+    if 'portfolio' in file_type.lower():
+        responses = create_portfolios_if_not_exist(client, scope, data_frame, mapping_required, mapping_optional, property_columns, properties_scope)
+        return responses
         
     # Get the unique portfolios
     portfolios = data_frame[mapping_required['portfolio_code']].unique()   
@@ -533,11 +552,11 @@ def load_file_multiple_portfolios(client, scope, data_frame, mapping_required, m
     for portfolio in portfolios:
         _data_frame = data_frame.loc[data_frame[mapping_required['portfolio_code']] == portfolio]
         if 'transaction' in file_type.lower():
-            response = load_transactions(client, scope, str(portfolio), _data_frame,  mapping_required, mapping_optional, source, property_columns)
+            response = load_transactions(client, scope, str(portfolio), _data_frame,  mapping_required, mapping_optional, source, property_columns, properties_scope)
         elif 'holding' in file_type.lower():
-            response = load_holdings(client, scope, str(portfolio), _data_frame,  mapping_required, mapping_optional)
+            response = load_holdings(client, scope, str(portfolio), _data_frame,  mapping_required, mapping_optional, property_columns, properties_scope)
         
-        responses['portfolio'] = response
+        responses[portfolio] = response
     return responses
 
 
@@ -652,14 +671,16 @@ def create_property_values(row, null_value, scope, domain, dtypes, instrument_pr
         # Use the correct LUSID property value based on the data type
         if lusid_data_type == 'string':
             if pd.isna(row_value):
-                row_value = str(null_value)
+                continue
+                #row_value = str(null_value)
             property_value = models.PropertyValue(
                 label_value=row_value)
 
         if lusid_data_type == 'number':
             # Handle null values given the input null value override
             if pd.isnull(row_value):
-                row_value = null_value
+                continue
+                #row_value = null_value
 
             property_value = models.PropertyValue(
                 metric_value=models.MetricValue(
@@ -696,7 +717,7 @@ def convert_datetime_utc(datetime):
     return datetime
 
 
-def load_transactions(client, scope, code, data_frame, transaction_mapping_required, transaction_mapping_optional, source, property_columns=[]):
+def load_transactions(client, scope, code, data_frame, transaction_mapping_required, transaction_mapping_optional, source, property_columns=[], properties_scope=None):
     """
     This function loads transactions for a given portfolio into LUSID
 
@@ -729,7 +750,10 @@ def load_transactions(client, scope, code, data_frame, transaction_mapping_requi
         }
 
         # Set the properties for the transaction
-        properties = create_property_values(transaction, -1, scope, 'Transaction', dtypes)
+        if properties_scope is None:
+            properties_scope = scope
+            
+        properties = create_property_values(transaction, -1, properties_scope, 'Transaction', dtypes)
 
         exchange_rate = None
 
@@ -777,7 +801,7 @@ def load_transactions(client, scope, code, data_frame, transaction_mapping_requi
     return response
 
 
-def load_holdings(client, scope, code, data_frame, holdings_mapping_required, holdings_mapping_optional):
+def load_holdings(client, scope, code, data_frame, holdings_mapping_required, holdings_mapping_optional, property_columns, properties_scope=None):
     """
     This function sets the holdings for a given portfolio from a set of holdings
 
@@ -791,7 +815,7 @@ def load_holdings(client, scope, code, data_frame, holdings_mapping_required, ho
     # Initialise a list to hold the requests
     holding_adjustments = []
     # Create a Pandas Series with the column names and data types less the resolved details for property generation
-    dtypes = data_frame.drop(['resolvable', 'foundWith', 'LusidInstrumentId', 'comment'], axis=1).dtypes
+    dtypes = data_frame.loc[:, property_columns].dtypes
     # Get all effective dates from the file
     effective_dates = list(data_frame[holdings_mapping_required['effective_date']].unique())
     # If there is more than one throw an error
@@ -814,9 +838,12 @@ def load_holdings(client, scope, code, data_frame, holdings_mapping_required, ho
         identifiers = {
             'Instrument/default/{}'.format(identifier_key): holding['LusidInstrumentId']
         }
-
+        
+        if properties_scope is None:
+            properties_scope = scope
+            
         # Set the properties for the holding
-        properties = create_property_values(holding, -1, scope, 'Holding', dtypes)
+        properties = create_property_values(holding, -1, properties_scope, 'Holding', dtypes)
 
         single_cost = models.CurrencyAndAmount(
             amount=None,
