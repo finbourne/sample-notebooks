@@ -74,7 +74,7 @@ def batch_upsert(instrument_universe, client):
 
     # Call LUSID to upsert our batch
     instrument_response = client.instruments.upsert_instruments(
-        requests=batch_upsert_request)
+        instruments=batch_upsert_request)
 
     # Pretty print the response from LUSID
     prettyprint.instrument_response(instrument_response, identifier='Figi')
@@ -94,7 +94,7 @@ def request_transaction_portfolio_creation(portfolio_code, portfolio_creation_da
     # Call LUSID to create our portfolio
     portfolio_response = client.transaction_portfolios.create_portfolio(
         scope=analyst_scope_code,
-        create_request=transaction_portfolio_request)
+        transaction_portfolio=transaction_portfolio_request)
 
     # Pretty print the response from LUSID
     prettyprint.portfolio_response(portfolio_response)
