@@ -79,7 +79,7 @@ def load_instruments(client, data_frame, instrument_identifier_mapping, instrume
 
     # Call LUSID to upsert our batch
     instrument_response = client.instruments.upsert_instruments(
-        requests=batch_upsert_request)
+        instruments=batch_upsert_request)
 
     # Pretty print the response from LUSID
     return instrument_response
@@ -394,7 +394,7 @@ def create_portfolios_if_not_exist(client, scope, data_frame, required_mapping, 
         # Call LUSID to create the portfolio
         response = client.transaction_portfolios.create_portfolio(
             scope=scope,
-            create_request=request
+            transaction_portfolio=request
         )
 
         responses[portfolio[required_mapping['code']]] = response

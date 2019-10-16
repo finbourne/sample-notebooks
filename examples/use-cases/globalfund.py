@@ -304,7 +304,7 @@ def create_portfolios(client, scopes, code, currency):
         # Call LUSID to create your portfolio
         response = client.transaction_portfolios.create_portfolio(
             scope=scope,
-            create_request=transaction_portfolio_request)
+            transaction_portfolio=transaction_portfolio_request)
         
         responses.append(response)
         
