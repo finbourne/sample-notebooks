@@ -722,10 +722,6 @@ def get_identifiers(response, unique=False):
             print(colours.bold + '    Is Unique Identifier : ' + colours.end + str(identifier.is_unique_identifier_type))
             print(colours.bold + '    Identifier Property Key Value : ' + colours.end + identifier.property_key)
             print ('\n')
-            
-def upsert_quotes_response(response):
-    print (colours.bold + 'Quotes Successfully Upserted At: ' + colours.end + str(response.values.popitem()[1].as_at))
-
 
 def corporate_action_response(response):
     print (colours.bold + 'Corporate Actions Source Successfully Created' + colours.end)
