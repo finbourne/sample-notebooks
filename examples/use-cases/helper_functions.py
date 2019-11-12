@@ -262,15 +262,16 @@ def get_figi_LUID(instrument, client):
         identifier=instrument['figi']).lusid_instrument_id
     return luid
 
-def create_instrument_analytics(analytics_effective_date, today, analytics_store_dates, instrument_prices, analyst_scope_code, client):
+def create_instrument_quotes(quotes_effective_date, today, instrument_prices, analyst_scope_code, client):
     # Create prices via instrument, analytic
-    instrument_analytics_inception = []
-    instrument_analytics_today = []
+    # Set our quotes effective dates
+    quotes_effective_date = datetime.now(pytz.UTC) - timedelta(days=3)
+    today = datetime.now(pytz.UTC)
 
-    # Create dummy prices of 1 for all instruments except cash
-    for row in instrument_prices.iterrows():
+    instrument_quotes = {}
 
-        instrument = row[1]
+    # Create prices for all instruments except cash
+    for index, instrument in instrument_prices.iterrows():
 
         if 'Cash' in instrument['instrument_name']:
             continue
@@ -280,43 +281,76 @@ def create_instrument_analytics(analytics_effective_date, today, analytics_store
             identifier_type='Figi',
             identifier=instrument['figi']).lusid_instrument_id
 
-        instrument_analytics_inception.append(models.InstrumentAnalytic(
-            instrument_uid=luid,
-            value=instrument['price_original']))
+        instrument_quotes[luid + str(quotes_effective_date)] = models.UpsertQuoteRequest(
+            quote_id=models.QuoteId(
+                quote_series_id=models.QuoteSeriesId(
+                    provider='DataScope',
+                    instrument_id=luid,
+                    instrument_id_type='LusidInstrumentId',
+                    quote_type='Price',
+                    field='Mid'
+                ),
+                effective_at=quotes_effective_date
+            ),
+            metric_value=models.MetricValue(
+                value=instrument["price_original"],
+                unit=instrument["currency"]),
+            lineage='InternalSystem'
+        )
 
-        instrument_analytics_today.append(models.InstrumentAnalytic(
-            instrument_uid=luid,
-            value=instrument['price_current']))
+        instrument_quotes[luid + str(today)] = models.UpsertQuoteRequest(
+            quote_id=models.QuoteId(
+                quote_series_id=models.QuoteSeriesId(
+                    provider='DataScope',
+                    instrument_id=luid,
+                    instrument_id_type='LusidInstrumentId',
+                    quote_type='Price',
+                    field='Mid'
+                ),
+                effective_at=today
+            ),
+            metric_value=models.MetricValue(
+                value=instrument["price_current"],
+                unit=instrument["currency"]),
+            lineage='InternalSystem'
+        )
 
-    instrument_analytics = [instrument_analytics_inception, instrument_analytics_today]
+    response = client.quotes.upsert_quotes(
+        scope=analyst_scope_code,
+        quotes=instrument_quotes
+    )
 
-    for date, instrument_analytic_set in zip(analytics_store_dates, instrument_analytics):
+    prettyprint.upsert_quotes_response(response)
 
-        # Create analytics store request
-        analytics_store_request = models.CreateAnalyticStoreRequest(
-            scope=analyst_scope_code,
-            date=date.isoformat())
+def create_aggregation_request(analyst_scope_code, today):
 
-        # Call LUSID to create our analytics store
-        client.analytics_stores.create_analytic_store(
-            request=analytics_store_request)
-
-        # Call LUSID to set up our newly created analytics store with our prices
-        client.analytics_stores.set_analytics(
-            scope=analyst_scope_code,
-            year=date.year,
-            month=date.month,
-            day=date.day,
-            data=instrument_analytic_set)
-
-    print ('Analytics Set')
-
-def create_aggregation_request(analyst_scope_code, today, transaction_portfolio_code, client):
     # Create our aggregation request
+    inline_recipe = models.ConfigurationRecipe(
+        code='quotes_recipe',
+        market=models.MarketContext(
+            market_rules=[
+                models.MarketDataKeyRule(
+                    key='Equity.LusidInstrumentId.*',
+                    supplier='DataScope',
+                    data_scope=analyst_scope_code,
+                    quote_type='Price',
+                    field='Mid')
+            ],
+            suppliers=models.MarketContextSuppliers(
+                commodity='DataScope',
+                credit='DataScope',
+                equity='DataScope',
+                fx='DataScope',
+                rates='DataScope'),
+            options=models.MarketOptions(
+                default_supplier='DataScope',
+                default_instrument_code_type='LusidInstrumentId',
+                default_scope=analyst_scope_code)
+        )
+    )
+
     aggregation_request = models.AggregationRequest(
-        recipe_id=models.ResourceId(
-            scope=analyst_scope_code,
-            code='default'),
+        inline_recipe=inline_recipe,
         effective_at=today,
         metrics=[
             models.AggregateSpec(
@@ -331,23 +365,16 @@ def create_aggregation_request(analyst_scope_code, today, transaction_portfolio_
             models.AggregateSpec(
                 key='Holding/default/PV',
                 op='Sum'),
-           models.AggregateSpec(
-               key='Holding/default/Price',
-               op='Sum') 
+            models.AggregateSpec(
+                key='Holding/default/Price',
+                op='Sum')
         ],
-    group_by=[
-        'Holding/default/SubHoldingKey'
-    ])
-    
-    return aggregation_request
-    
-    # Call LUSID to aggregate across all of our portfolios
-    aggregated_portfolio = client.aggregation.get_aggregation_by_portfolio(
-        scope=analyst_scope_code,
-        code=transaction_portfolio_code,
-        request=aggregation_request)
+        group_by=[
+            'Holding/default/SubHoldingKey'
+        ])
 
-    prettyprint.aggregation_response_paper(aggregated_portfolio)
+    return aggregation_request
+
 
 def setup_index(analyst_scope_code, reference_portfolio_code, instrument_prices, client):
     # Set an arbitary index level to start our index with
@@ -393,27 +420,15 @@ def setup_index(analyst_scope_code, reference_portfolio_code, instrument_prices,
         )
     return index_setup
 
-def create_analytics_aggregation_request(analyst_scope_code, index_portfolio_code, today, client):
-    aggregation_request = models.AggregationRequest(
-        recipe_id=models.ResourceId(
-            scope=analyst_scope_code,
-            code='default'),
-            effective_at=today,
-            metrics=[
-                models.AggregateSpec(
-                    key='Holding/default/PV',
-                    op='Sum'),
-                models.AggregateSpec(
-                    key='Holding/default/Cost',
-                    op='Sum')
-            ],
-    group_by=['Portfolio/default/Name'])
-    
+def run_aggregation(analyst_scope_code, index_portfolio_code, today, client):
+
     # Call LUSID to aggregate across all of our portfolios
     aggregated_portfolio = client.aggregation.get_aggregation_by_portfolio(
         scope=analyst_scope_code,
         code=index_portfolio_code,
-        request=aggregation_request
+        request=create_aggregation_request(
+            analyst_scope_code=analyst_scope_code,
+            today=today)
     )
 
     # Pretty print the response from LUSID

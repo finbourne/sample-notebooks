@@ -49,7 +49,6 @@ def authenticate_secrets():
 
         def __init__(self, client):
             self.aggregation = lusid.AggregationApi(client)
-            self.analytics_stores = lusid.AnalyticsStoresApi(client)
             self.metadata = lusid.ApplicationMetadataApi(client)
             self.corporate_action_sources = lusid.CorporateActionSourcesApi(client)
             self.data_types = lusid.DataTypesApi(client)

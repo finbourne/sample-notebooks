@@ -522,14 +522,6 @@ def instrument_prices(instrument_analytics):
         print (colours.bold + 'Price 3 Days Ago :' + colours.end + '£' + str(round(prices[0],2)))
         print (colours.bold + 'Price Today :' + colours.end + '£' + str(round(prices[1],2)) + '\n')
 
-def analytic_store(analytic_store_response, analytics=False):
-    if analytics:
-        print (colours.bold + 'Analytics Set' + colours.end)
-    else:
-        print (colours.bold + 'Analytic Store Created' + colours.end)
-    print (colours.bold + 'Scope: ' + colours.end + analytic_store_response.key.scope)
-    print (colours.bold + 'Effective From: ' + colours.end + analytic_store_response.key.date.isoformat())
-
 def aggregation_response(agg_response):
     for agg_holding in agg_response.data:
 
