@@ -16,7 +16,7 @@ import json
 import time
 globals = {}
 
-def valuation(client, marketdata_scope, portfolio_group, time):
+def valuation(api_factory, marketdata_scope, portfolio_group, time):
     
     time_parts = [time[:10], time[11:]]
     
@@ -90,7 +90,7 @@ def valuation(client, marketdata_scope, portfolio_group, time):
             'Holding/default/SubHoldingKey'
         ])
 
-    response = client.aggregation.get_aggregation_by_group(
+    response = api_factory.build(lusid.api.AggregationApi).get_aggregation_by_group(
         scope=portfolio_group.scope,
         code=portfolio_group.code,
         request=aggregation_request)
@@ -101,13 +101,13 @@ def valuation(client, marketdata_scope, portfolio_group, time):
 
                 
                 
-def create_portfolio_group(client, scope, code, portfolios):
+def create_portfolio_group(api_factory, scope, code, portfolios):
     
     """
     This creates a portfolio group which contains a group of provided portfolios. This function is idempotent. It attempts
     to delete the portfolio group before creating it to ensure that it will always be created.
     
-    param (lusid.client) client: The LUSID client to use
+    param (lusid.utilities.ClientApiFactory) api_factory: The LUSID api factory to use
     param (str) scope: The LUSID scope to create the portfolio group in
     param (str) code: The code to create the portfolio group with
     param (list[models.ResourceId]) portfolios: A list of resource ids for the portfolios to add to the group
@@ -119,7 +119,7 @@ def create_portfolio_group(client, scope, code, portfolios):
     portfolio_creation_date = datetime.now(pytz.UTC) - timedelta(days=5000)
 
     try:
-        client.portfolio_groups.delete_portfolio_group(
+        api_factory.build(lusid.api.PortfolioGroupsApi).delete_portfolio_group(
             scope=scope,
             code=code)
     except:
@@ -133,18 +133,18 @@ def create_portfolio_group(client, scope, code, portfolios):
         description=None,
         created=portfolio_creation_date)
 
-    portfolio_group = client.portfolio_groups.create_portfolio_group(
+    portfolio_group = api_factory.build(lusid.api.PortfolioGroupsApi).create_portfolio_group(
         scope=scope,
         request=group_request)
     
     return portfolio_group
                 
                 
-def upsert_quotes(client, scope, data_frame, instrument_identifier_mapping, instrument_identifier_heirarchy, required_mapping):
+def upsert_quotes(api_factory, scope, data_frame, instrument_identifier_mapping, instrument_identifier_heirarchy, required_mapping):
     """
     This function takes quotes from a data_frame and upserts them into LUSID
     
-    param (lusid.client) client: The LUSID client to use
+    param (lusid.utilities.ClientApiFactory) api_factory: The LUSID api factory to use
     param (str) scope: The LUSID scope to upsert the quotes into
     param (Pandas DataFrame) data_frame: The DataFrame that the quotes are in
     param (dict) instrument_identifier_mapping : The dictionary with the instrument identifier mapping between LUSID and the dataframe
@@ -209,7 +209,7 @@ def upsert_quotes(client, scope, data_frame, instrument_identifier_mapping, inst
 
         
     # Upsert the quotes into LUSID
-    response = client.quotes.upsert_quotes(
+    response = api_factory.build(lusid.api.QuotesApi).upsert_quotes(
         scope=scope,
         quotes=instrument_quotes)
 
@@ -218,12 +218,12 @@ def upsert_quotes(client, scope, data_frame, instrument_identifier_mapping, inst
     return prettyprint.upsert_quotes_response(response)               
                 
     
-def create_transaction_type_configuration(client, aliases, movements):
+def create_transaction_type_configuration(api_factory, aliases, movements):
     
     """
     This function creates a transaction type configuration if it doesn't already exist.
     
-    param (lusid.Client) client: The LUSID client to use
+    param (lusid.utilities.ClientApiFactory) api_factory: The LUSID api factory to use
     param (list[tuple(str, str)]) aliases: A list of aliases with their type and group to use for the transaction type
     param (list[lusid.models.TransactionConfigurationMovementDataRequest]) movements: The movements to use for the transaction type
     
@@ -231,7 +231,7 @@ def create_transaction_type_configuration(client, aliases, movements):
     """
     
     # Call LUSID to get your transaction type configuration
-    response = client.system_configuration.list_configuration_transaction_types()
+    response = api_factory.build(lusid.api.SystemConfigurationApi).list_configuration_transaction_types()
 
     aliases_current = []
 
@@ -255,7 +255,7 @@ def create_transaction_type_configuration(client, aliases, movements):
         ))
             
         
-    response = client.system_configuration.create_configuration_transaction_type(
+    response = api_factory.build(lusid.api.SystemConfigurationApi).create_configuration_transaction_type(
         type=models.TransactionConfigurationDataRequest(
             aliases=aliases_new,
             movements=movements,
@@ -266,12 +266,12 @@ def create_transaction_type_configuration(client, aliases, movements):
     return response
 
 
-def create_portfolios(client, scopes, code, currency):
+def create_portfolios(api_factory, scopes, code, currency):
     
     """
     This function creates a portfolio in multiple scopes. 
     
-    param (lusid.Client) client: The LUSID client to use
+    param (lusid.utilities.ClientApiFactory) api_factory: The LUSID api factory to use
     param (list[str]) scopes: The scopes to create the portfolio in
     param (str) code: The code for the portfolio
     param (str) currency: The base/reporting currency of the portfolio
@@ -286,7 +286,7 @@ def create_portfolios(client, scopes, code, currency):
     for scope in scopes:
     
         try:
-            client.portfolios.delete_portfolio(
+            api_factory.build(lusid.api.PortfoliosApi).delete_portfolio(
                 scope=scope,
                 code=code
             )
@@ -302,7 +302,7 @@ def create_portfolios(client, scopes, code, currency):
             sub_holding_keys=None)
 
         # Call LUSID to create your portfolio
-        response = client.transaction_portfolios.create_portfolio(
+        response = api_factory.build(lusid.api.TransactionPortfoliosApi).create_portfolio(
             scope=scope,
             transaction_portfolio=transaction_portfolio_request)
         
@@ -311,7 +311,7 @@ def create_portfolios(client, scopes, code, currency):
     return responses
 
                 
-def create_cut_labels(client, exchange_names, cut_label_type):
+def create_cut_labels(api_factory, exchange_names, cut_label_type):
     
     """
     This function creates cut labels for the open or close of a short list
@@ -319,7 +319,7 @@ def create_cut_labels(client, exchange_names, cut_label_type):
     label already exists before creating it. If it does already exist it will delete it
     first before attempting creation. 
     
-    param (lusid.Client) client: The LUSID client to use
+    param (lusid.utilities.ClientApiFactory) api_factory: The LUSID api factory to use
     param (list[str]) exchange_names: The list of exchanges to create cut labels for
     param (str) cut_label_type: The type of cut label to create, options are currently
     'market open' or 'market close'.
@@ -363,8 +363,8 @@ def create_cut_labels(client, exchange_names, cut_label_type):
     for exchange in exchange_names:
         exchange_code = exchange+'_'+cut_label_type
         try:
-            response = client.cut_labels.get_cut_label_definition(code=exchange_code)
-            response = client.cut_labels.delete_cut_label_definition(code=exchange_code)             
+            response = api_factory.build(lusid.api.CutLabelDefinitionsApi).get_cut_label_definition(code=exchange_code)
+            response = api_factory.build(lusid.api.CutLabelDefinitionsApi).delete_cut_label_definition(code=exchange_code)
         except lusid.ApiException as e:
             pass
     
@@ -380,7 +380,7 @@ def create_cut_labels(client, exchange_names, cut_label_type):
             cut_local_time=exchange_time,
             time_zone=exchange_info[exchange]['time_zone'])           
         try:
-            response = client.cut_labels.create_cut_label_definition(
+            response = api_factory.build(lusid.api.CutLabelDefinitionsApi).create_cut_label_definition(
                 create_request=request)      
             responses.append(response)             
         except lusid.ApiException as e:

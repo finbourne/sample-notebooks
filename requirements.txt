@@ -5,3 +5,4 @@ lusid-sdk-preview
 pandas
 pytz
 requests
+lusidtools

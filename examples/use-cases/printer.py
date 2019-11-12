@@ -1,4 +1,5 @@
 import pandas as pd
+import lusid
 pd.set_option('display.float_format', lambda x: '%.2f' % x)
 
 # Used to make our print functions a little prettier
@@ -207,21 +208,26 @@ def derived_portfolio_response(response):
     print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
 
 def portfolio_response(response):
-    if response.is_derived:
-        print (colours.bold + 'Derived Portfolio Created' + colours.end)
-        print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
-        print (colours.bold + 'Code: ' + colours.end + response.id.code)
-        print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
-        print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
-        print (colours.bold + '   Parent Portfolio Details' + colours.end)
-        print (colours.bold + '   Scope: ' + colours.end + response.parent_portfolio_id.scope)
-        print (colours.bold + '   Code: ' + colours.end + response.parent_portfolio_id.code + '\n')
+
+    if isinstance(response, lusid.models.PortfolioDetails):
+        portfolio_details_response(response)
+
     else:
-        print (colours.bold + 'Portfolio Created' + colours.end)
-        print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
-        print (colours.bold + 'Code: ' + colours.end + response.id.code)
-        print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
-        print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
+        if response.is_derived:
+            print (colours.bold + 'Derived Portfolio Created' + colours.end)
+            print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
+            print (colours.bold + 'Code: ' + colours.end + response.id.code)
+            print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
+            print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
+            print (colours.bold + '   Parent Portfolio Details' + colours.end)
+            print (colours.bold + '   Scope: ' + colours.end + response.parent_portfolio_id.scope)
+            print (colours.bold + '   Code: ' + colours.end + response.parent_portfolio_id.code + '\n')
+        else:
+            print (colours.bold + 'Portfolio Created' + colours.end)
+            print (colours.bold + 'Scope: ' + colours.end + response.id.scope)
+            print (colours.bold + 'Code: ' + colours.end + response.id.code)
+            print (colours.bold + 'Portfolio Effective From: ' + colours.end + str(response.created))
+            print (colours.bold + 'Portfolio Created On: ' + colours.end + str(response.version.as_at_date) + '\n')
 
 def portfolio_group_response(response, operation):
     if operation == 'created':
