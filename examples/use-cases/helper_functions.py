@@ -1,3 +1,4 @@
+import lusid
 import lusid.models as models
 import lusid_sample_data as import_data
 
@@ -8,8 +9,8 @@ import pytz
 import printer as prettyprint
 import pandas as pd
 
-def delete_all_current_instruments(client):
-    response = client.instruments.list_instruments()
+def delete_all_current_instruments(api_factory):
+    response = api_factory.build(lusid.api.InstrumentsApi).list_instruments()
     if len(response.values) == 0:
         print('No previous existing instruments')
         return None
@@ -22,12 +23,12 @@ def delete_all_current_instruments(client):
             identifier.append(response.values[ii].identifiers[key])
         print(identifierTypes)
         print(identifier)
-        deleted = client.instruments.delete_instrument(identifierTypes[0], identifier[0])
+        deleted = api_factory.build(lusid.api.InstrumentsApi).delete_instrument(identifierTypes[0], identifier[0])
         print(deleted)
 
-def delete_all_current_portfolios(client):
+def delete_all_current_portfolios(api_factory):
     # delete ALL existing scopes
-    response = client.portfolios.list_portfolios()
+    response = api_factory.build(lusid.api.PortfoliosApi).list_portfolios()
     if len(response.values) == 0:
         print('No previous existing portfolios')
         return None
@@ -36,7 +37,7 @@ def delete_all_current_portfolios(client):
         scope = response.values[ii].id.scope 
         print('Deleting:')
         print('Code: {} \nScope: {}'.format(code, scope))
-        client.portfolios.delete_portfolio(scope, code)
+        api_factory.build(lusid.api.PortfoliosApi).delete_portfolio(scope, code)
         print('All scopes deleted')
 
 def create_analyst_scope():
@@ -46,7 +47,7 @@ def create_analyst_scope():
     prettyprint.heading('Analyst Scope Code', analyst_scope_code)
     return analyst_scope_code
 
-def batch_upsert(instrument_universe, client):
+def batch_upsert(instrument_universe, api_factory):
     # Initialise our batch upsert request
     batch_upsert_request = {}
     # Iterate over our instrument universe
@@ -73,7 +74,7 @@ def batch_upsert(instrument_universe, client):
             identifiers=identifiers)
 
     # Call LUSID to upsert our batch
-    instrument_response = client.instruments.upsert_instruments(
+    instrument_response = api_factory.build(lusid.api.InstrumentsApi).upsert_instruments(
         instruments=batch_upsert_request)
 
     # Pretty print the response from LUSID
@@ -81,7 +82,7 @@ def batch_upsert(instrument_universe, client):
     return batch_upsert_request
         
         
-def request_transaction_portfolio_creation(portfolio_code, portfolio_creation_date, analyst_scope_code, description, client):
+def request_transaction_portfolio_creation(portfolio_code, portfolio_creation_date, analyst_scope_code, description, api_factory):
     
         # Create the request to add our portfolio
     transaction_portfolio_request = models.CreateTransactionPortfolioRequest(
@@ -92,7 +93,7 @@ def request_transaction_portfolio_creation(portfolio_code, portfolio_creation_da
         created=portfolio_creation_date)
 
     # Call LUSID to create our portfolio
-    portfolio_response = client.transaction_portfolios.create_portfolio(
+    portfolio_response = api_factory.build(lusid.api.TransactionPortfoliosApi).create_portfolio(
         scope=analyst_scope_code,
         transaction_portfolio=transaction_portfolio_request)
 
@@ -100,7 +101,7 @@ def request_transaction_portfolio_creation(portfolio_code, portfolio_creation_da
     prettyprint.portfolio_response(portfolio_response)
     
 
-def request_reference_portfolio_creation(reference_portfolio_code, portfolio_creation_date, analyst_scope_code, client):
+def request_reference_portfolio_creation(reference_portfolio_code, portfolio_creation_date, analyst_scope_code, api_factory):
     
     # Create the request to add our portfolio
     reference_portfolio_request = models.CreateReferencePortfolioRequest(
@@ -110,7 +111,7 @@ def request_reference_portfolio_creation(reference_portfolio_code, portfolio_cre
         created=portfolio_creation_date)
 
     # Call LUSID to create our reference portfolio
-    portfolio_response = client.reference_portfolios.create_reference_portfolio(
+    portfolio_response = api_factory.build(lusid.api.ReferencePortfolioApi).create_reference_portfolio(
         scope=analyst_scope_code,
         reference_portfolio=reference_portfolio_request)
 
@@ -118,7 +119,7 @@ def request_reference_portfolio_creation(reference_portfolio_code, portfolio_cre
     prettyprint.portfolio_response(portfolio_response)
 
 
-def populate_with_cash(holdings_effective_date, initial_cash_balance, analyst_scope_code, transaction_portfolio_code, client):
+def populate_with_cash(holdings_effective_date, initial_cash_balance, analyst_scope_code, transaction_portfolio_code, api_factory):
     # Create a holding adjustment to set our initial cash balance
     holding_adjustment = [
         models.AdjustHoldingRequest(
@@ -137,7 +138,7 @@ def populate_with_cash(holdings_effective_date, initial_cash_balance, analyst_sc
     ]
 
     # Call LUSID to set our initial cash balance
-    set_holdings_response = client.transaction_portfolios.set_holdings(
+    set_holdings_response = api_factory.build(lusid.api.TransactionPortfoliosApi).set_holdings(
         scope=analyst_scope_code,
         code=transaction_portfolio_code,
         effective_at=holdings_effective_date,
@@ -149,7 +150,7 @@ def populate_with_cash(holdings_effective_date, initial_cash_balance, analyst_sc
         analyst_scope_code, 
         transaction_portfolio_code)
 
-def upsert_constituents(instrument_market_cap, holdings_effective_date, analyst_scope_code, reference_portfolio_code, client):
+def upsert_constituents(instrument_market_cap, holdings_effective_date, analyst_scope_code, reference_portfolio_code, api_factory):
     # Initialise a list to hold our constituents
     constituents = []
     # Work out the total market capitalisation of the entire index
@@ -175,13 +176,13 @@ def upsert_constituents(instrument_market_cap, holdings_effective_date, analyst_
         constituents=constituents)
 
     # Call LUSID to upsert our constituents into our reference portfolio
-    response = client.reference_portfolios.upsert_reference_portfolio_constituents(
+    response = api_factory.build(lusid.api.ReferencePortfolioApi).upsert_reference_portfolio_constituents(
         scope=analyst_scope_code,
         code=reference_portfolio_code,
         constituents=constituents_request)
 
     print ('Constituents Upserted')
-def request_define_property(domain, scope, code, display_name, client):
+def request_define_property(domain, scope, code, display_name, api_factory):
     # Create a request to define our strategy property
     property_request = models.CreatePropertyDefinitionRequest(
         domain='Transaction',
@@ -195,7 +196,7 @@ def request_define_property(domain, scope, code, display_name, client):
     )
 
     # Call LUSID to create our new property
-    property_response = client.property_definitions.create_property_definition(
+    property_response = api_factory.build(lusid.api.PropertyDefinitionsApi).create_property_definition(
         definition=property_request)
 
     # Grab the key off the response to use when referencing this property in other LUSID calls
@@ -205,7 +206,7 @@ def request_define_property(domain, scope, code, display_name, client):
     prettyprint.heading('Strategy Property Key: ', strategy_property_key)
     return strategy_property_key
     
-def upsert_trades(analyst_transactions, strategy_property_key, scope, portfolio_code, client):
+def upsert_trades(analyst_transactions, strategy_property_key, scope, portfolio_code, api_factory):
     # Initialise a list to hold our transactions
     batch_transaction_requests = []
 
@@ -245,7 +246,7 @@ def upsert_trades(analyst_transactions, strategy_property_key, scope, portfolio_
         )
 
     # Call LUSID to upsert our transactions
-    transaction_response = client.transaction_portfolios.upsert_transactions(
+    transaction_response = api_factory.build(lusid.api.TransactionPortfoliosApi).upsert_transactions(
         scope=scope,
         code=portfolio_code,
         transactions=batch_transaction_requests)
@@ -256,13 +257,13 @@ def upsert_trades(analyst_transactions, strategy_property_key, scope, portfolio_
         scope, 
         portfolio_code)
 
-def get_figi_LUID(instrument, client):
-    luid = client.instruments.get_instrument(
+def get_figi_LUID(instrument, api_factory):
+    luid = api_factory.build(lusid.api.InstrumentsApi).get_instrument(
         identifier_type='Figi',
         identifier=instrument['figi']).lusid_instrument_id
     return luid
 
-def create_instrument_quotes(quotes_effective_date, today, instrument_prices, analyst_scope_code, client):
+def create_instrument_quotes(quotes_effective_date, today, instrument_prices, analyst_scope_code, api_factory):
     # Create prices via instrument, analytic
     # Set our quotes effective dates
     quotes_effective_date = datetime.now(pytz.UTC) - timedelta(days=3)
@@ -277,7 +278,7 @@ def create_instrument_quotes(quotes_effective_date, today, instrument_prices, an
             continue
 
         # Get our Lusid Instrument Id
-        luid = client.instruments.get_instrument(
+        luid = api_factory.build(lusid.api.InstrumentsApi).get_instrument(
             identifier_type='Figi',
             identifier=instrument['figi']).lusid_instrument_id
 
@@ -315,7 +316,7 @@ def create_instrument_quotes(quotes_effective_date, today, instrument_prices, an
             lineage='InternalSystem'
         )
 
-    response = client.quotes.upsert_quotes(
+    response = api_factory.build(lusid.api.QuotesApi).upsert_quotes(
         scope=analyst_scope_code,
         quotes=instrument_quotes
     )
@@ -376,11 +377,11 @@ def create_aggregation_request(analyst_scope_code, today):
     return aggregation_request
 
 
-def setup_index(analyst_scope_code, reference_portfolio_code, instrument_prices, client):
+def setup_index(analyst_scope_code, reference_portfolio_code, instrument_prices, api_factory):
     # Set an arbitary index level to start our index with
     index_level = 1000
     # Call LUSID - get the constituents of our index from our reference portfolio
-    constituents = client.reference_portfolios.get_reference_portfolio_constituents(
+    constituents = api_factory.build(lusid.api.ReferencePortfolioApi).get_reference_portfolio_constituents(
         scope=analyst_scope_code,
         code=reference_portfolio_code,
         effective_at=datetime.now(pytz.UTC))
@@ -393,7 +394,7 @@ def setup_index(analyst_scope_code, reference_portfolio_code, instrument_prices,
     for index, instrument in instrument_prices.iterrows():
 
         # Get our Lusid Instrument ID
-        Luid = client.instruments.get_instrument(
+        Luid = api_factory.build(lusid.api.InstrumentsApi).get_instrument(
             identifier_type='Figi',
             identifier=instrument['figi']).lusid_instrument_id
         # Get the initial price for each constituent of the index from our analytics store
@@ -420,10 +421,10 @@ def setup_index(analyst_scope_code, reference_portfolio_code, instrument_prices,
         )
     return index_setup
 
-def run_aggregation(analyst_scope_code, index_portfolio_code, today, client):
+def run_aggregation(analyst_scope_code, index_portfolio_code, today, api_factory):
 
     # Call LUSID to aggregate across all of our portfolios
-    aggregated_portfolio = client.aggregation.get_aggregation_by_portfolio(
+    aggregated_portfolio = api_factory.build(lusid.api.AggregationApi).get_aggregation_by_portfolio(
         scope=analyst_scope_code,
         code=index_portfolio_code,
         request=create_aggregation_request(

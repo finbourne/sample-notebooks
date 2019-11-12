@@ -7,7 +7,7 @@ import os
 import sample_login
 import pytz
 
-client = sample_login.authenticate_secrets()
+api_factory = sample_login.authenticate_secrets()
 
 def arrayToDf(data,columns,*args):
     """
@@ -96,7 +96,7 @@ def qry_holdings(date,scope,portfolio):
             record.update(txn_data)
     
     # call LUSID to get the portfolios holdings
-    holdings = client.transaction_portfolios.get_holdings(
+    holdings = api_factory.build(lusid.api.TransactionPortfoliosApi).get_holdings(
         scope=scope,
         code=portfolio,
         effective_at=qry_date)
@@ -119,7 +119,7 @@ def qry_transactions(scope,id):
                'trade_currency', 'counterparty_id', 'source', 'dividend_state',
                'trade_price_type', 'unit_type', 'netting_set']
     
-    transactions = client.transaction_portfolios.get_trades(
+    transactions = api_factory.build(lusid.api.TransactionPortfoliosApi).get_trades(
         scope=scope, 
         code=id)
     
