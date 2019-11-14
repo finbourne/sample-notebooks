@@ -1,5 +1,6 @@
 import pandas as pd
 import lusid
+import numpy as np
 pd.set_option('display.float_format', lambda x: '%.2f' % x)
 
 # Used to make our print functions a little prettier
@@ -401,12 +402,24 @@ def output_transactions(response, scope, code, property_keys=[]):
             nested_values.append(transaction.transaction_currency)
             nested_values.append(transaction.transaction_date)
             nested_values.append(transaction.settlement_date)
+            if len(transaction.realised_gain_loss) > 0:
+                nested_values.append(
+                    sum(
+                        transaction.realised_gain_loss[i].realised_trade_ccy.amount for i in range(len(transaction.realised_gain_loss))
+                    )
+                )
+            else:
+                nested_values.append(np.NaN)
             values.append(nested_values)
     columns = ["Transaction ID", "Transaction Type"]
     columns.extend(identifiers)
     columns.extend(["Units", "Price", "Currency", "Transaction Date", "Settlement Date"])
+    columns.extend(["Realised Gain Loss"])
 
-    return pd.DataFrame(values, columns = columns)
+    df = pd.DataFrame(values, columns = columns)
+    df = df.sort_values("Realised Gain Loss")
+    df = df.append(df.sum(numeric_only=True), ignore_index=True)
+    return df
 
 def add_property_response(response, scope, portfolio_name, transaction_id):
 
