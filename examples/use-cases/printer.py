@@ -955,3 +955,34 @@ def get_corporate_actions_response(scope, code, response):
                       colours.bold + ' with Cost Factor: ' + colours.end + str(o.cost_factor),
                       colours.bold + ' and Unit Factor: ' + colours.end + str(o.units_factor))
         print('')
+
+
+def sub_holdings(response):
+    rows = []
+
+    for sub_holding in response.values:
+
+        row = {}
+
+        row['Lusid Unique Instrument Id'] = sub_holding.instrument_uid
+        row['Units'] = sub_holding.units
+
+        for sub_holding_key, sub_holding_value in sub_holding.sub_holding_keys.items():
+            row["/".join(sub_holding_key.split('/')[::2])] = sub_holding_value.value.label_value
+
+        for transaction_property_key, transaction_property_value in sub_holding.properties.items():
+            row["_".join(transaction_property_key.split('/')[::2])] = transaction_property_value.value.label_value
+
+        row['Total Cost'] = sub_holding.cost.amount
+        row['Currency'] = sub_holding.cost.currency
+
+        rows.append(row)
+
+    dataframe = pd.DataFrame(rows)
+
+    if 'InvestorId' in dataframe.columns:
+        dataframe = dataframe.sort_values(['InvestorId', 'SubscriptionType'], ascending=False)
+    return dataframe
+
+def add_transaction_property(response):
+    print(colours.bold + "Added transaction properties asAt: " + colours.end + str(response.version.as_at_date))
