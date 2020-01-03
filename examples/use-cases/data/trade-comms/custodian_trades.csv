@@ -1,0 +1,22 @@
+fund_code,fund_name,isin,client_id,security_description,security_group,trd_number,transaction_code,trade_date,settle_date,units,price,principal,trading_currency,country_of_risk,country_of_risk_name,trade_tax,broker_commission,exchange_rate
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0002162385,EQ_1234,Aviva,COMMON STOCK,trd_123,custodian_buy,27/11/2019,29/11/2019,124626,4.012,499999.51,GBP,GB,United Kingdom,350,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0002162385,EQ_1234,Aviva,COMMON STOCK,trd_124,custodian_buy,27/11/2019,29/11/2019,12462,4.012,49997.54,GBP,GB,United Kingdom,350,30,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0000566504,EQ_1235,BHP,COMMON STOCK,trd_125,custodian_buy,27/11/2019,29/11/2019,57777,17.308,1000004.32,GBP,GB,United Kingdom,360,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0000566504,EQ_1235,BHP,COMMON STOCK,trd_126,custodian_buy,27/11/2019,29/11/2019,57777,17.308,1000004.32,GBP,GB,United Kingdom,360,40,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0031348658,EQ_1236,Barclays,COMMON STOCK,trd_127,custodian_buy,27/11/2019,29/11/2019,143119,1.7468,250000.27,GBP,GB,United Kingdom,355,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0031348658,EQ_1236,Barclays,COMMON STOCK,trd_128,custodian_buy,27/11/2019,29/11/2019,143119,1.7468,250000.27,GBP,GB,United Kingdom,355,30,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0007980591,EQ_1237,BP,COMMON STOCK,trd_129,custodian_buy,27/11/2019,29/11/2019,101585,4.922,500001.37,GBP,GB,United Kingdom,350,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0007980591,EQ_1237,BP,COMMON STOCK,trd_130,custodian_buy,27/11/2019,29/11/2019,101585,4.922,500001.37,GBP,GB,United Kingdom,350,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0005405286,EQ_1238,HSBC,COMMON STOCK,trd_131,custodian_buy,27/11/2019,29/11/2019,21349,5.855,124998.4,GBP,GB,United Kingdom,360,30,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0005405286,EQ_1238,HSBC,COMMON STOCK,trd_132,custodian_buy,27/11/2019,29/11/2019,21349,5.855,124998.4,GBP,GB,United Kingdom,360,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0006043169,EQ_1239,Morrisons,COMMON STOCK,trd_133,custodian_buy,27/11/2019,29/11/2019,186474,2.011,374999.21,GBP,GB,United Kingdom,355,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0006043169,EQ_1239,Morrisons,COMMON STOCK,trd_134,custodian_buy,27/11/2019,29/11/2019,186474,2.011,374999.21,GBP,GB,United Kingdom,355,30,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0008847096,EQ_1240,Tesco,COMMON STOCK,trd_135,custodian_buy,27/11/2019,29/11/2019,106838,2.34,250000.92,GBP,GB,United Kingdom,350,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB0008847096,EQ_1240,Tesco,COMMON STOCK,trd_136,custodian_buy,27/11/2019,29/11/2019,106838,2.34,250000.92,GBP,GB,United Kingdom,350,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB00BGDT3G23,EQ_1241,Rightmove,COMMON STOCK,trd_137,custodian_buy,27/11/2019,29/11/2019,79542,6.286,500001.01,GBP,GB,United Kingdom,350,30,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB00BGDT3G23,EQ_1241,Rightmove,COMMON STOCK,trd_138,custodian_buy,27/11/2019,29/11/2019,79542,6.286,500001.01,GBP,GB,United Kingdom,350,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB00BH4HKS39,EQ_1242,vodafone,COMMON STOCK,trd_139,custodian_buy,27/11/2019,29/11/2019,467990,1.6026,750000.77,GBP,GB,United Kingdom,360,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB00BH4HKS39,EQ_1242,vodafone,COMMON STOCK,trd_140,custodian_buy,27/11/2019,29/11/2019,467990,1.6026,750000.77,GBP,GB,United Kingdom,360,30,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB00B1XZS820,EQ_1243,Anglo American plc,COMMON STOCK,trd_141,custodian_buy,27/11/2019,29/11/2019,36452,20.575,749999.9,GBP,GB,United Kingdom,355,20,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,GB00B1XZS820,EQ_1243,Anglo American plc,COMMON STOCK,trd_142,custodian_buy,27/11/2019,29/11/2019,36452,20.575,749999.9,GBP,GB,United Kingdom,355,40,1
+LUSID_FUND,LUSID's top 10 FTSE stock portfolio,,,GBP Cash,CASH,trd_143,custodian_sub,27/11/2019,29/11/2019,12000000,1,12000000,GBP,GB,United Kingdom,0,0,1
