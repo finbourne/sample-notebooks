@@ -11,7 +11,9 @@ from lusidtools.general_utils import fetch_instrument_market_cap
 from lusidtools.general_utils.quick_func import fetch_instrument_analytics
 from lusidtools.general_utils.quick_func import fetch_client_take_on_balances
 
-from lusidtools.general_utils.quick_func import fetch_fund_accountant_daily_holdings_report
+from lusidtools.general_utils.quick_func import (
+    fetch_fund_accountant_daily_holdings_report,
+)
 from lusidtools.general_utils.quick_func import client_transactions
 from lusidtools.general_utils.quick_func import fetch_client_transactions
 
@@ -72,23 +74,46 @@ class TestResponseToPandasObject(unittest.TestCase):
         test_file = Path(__file__).parent.joinpath("data", "test_holdings.csv")
         client_take_on_balances = fetch_client_take_on_balances(test_file)
         self.assertIsInstance(client_take_on_balances, dict)
-        self.assertTrue(client_take_on_balances["client-A-strategy-balanced"]["WPP_LondonStockEx_WPP"]["quantity"], 2956000)
+        self.assertTrue(
+            client_take_on_balances["client-A-strategy-balanced"][
+                "WPP_LondonStockEx_WPP"
+            ]["quantity"],
+            2956000,
+        )
 
     def test_fetch_fund_accountant_daily_holdings_report(self):
         test_file = Path(__file__).parent.joinpath("data", "test_holdings.csv")
-        fund_accountant_daily_holdings_report = fetch_fund_accountant_daily_holdings_report(test_file)
+        fund_accountant_daily_holdings_report = fetch_fund_accountant_daily_holdings_report(
+            test_file
+        )
         self.assertIsInstance(fund_accountant_daily_holdings_report, dict)
-        self.assertTrue(fund_accountant_daily_holdings_report["client-A-strategy-balanced"]["WPP_LondonStockEx_WPP"]["quantity"], 2956000)
+        self.assertTrue(
+            fund_accountant_daily_holdings_report["client-A-strategy-balanced"][
+                "WPP_LondonStockEx_WPP"
+            ]["quantity"],
+            2956000,
+        )
 
     def test_client_transactions(self):
         test_file = Path(__file__).parent.joinpath("data", "test_transactions.csv")
-        instrument_universe = {'WPP_LondonStockEx_WPP': {'identifiers': {"LUID": 'LUID_TEST12345'}}}
-        client_transactions_dict = client_transactions(test_file, instrument_universe)[0]
+        instrument_universe = {
+            "WPP_LondonStockEx_WPP": {"identifiers": {"LUID": "LUID_TEST12345"}}
+        }
+        client_transactions_dict = client_transactions(test_file, instrument_universe)[
+            0
+        ]
         self.assertIsInstance(client_transactions_dict, dict)
-        self.assertTrue(client_transactions_dict["client-A-strategy-balanced"]["tid_35b77104-7c72-4515-af2b-d22bb45e6edd"]["instrument_uid"], "LUID_TEST12345")
+        self.assertTrue(
+            client_transactions_dict["client-A-strategy-balanced"][
+                "tid_35b77104-7c72-4515-af2b-d22bb45e6edd"
+            ]["instrument_uid"],
+            "LUID_TEST12345",
+        )
 
     def test_fetch_client_transactions(self):
-        test_file = Path(__file__).parent.joinpath("data", "test_strategy_transactions.csv")
+        test_file = Path(__file__).parent.joinpath(
+            "data", "test_strategy_transactions.csv"
+        )
         client_transactions = fetch_client_transactions(test_file, 1)
         self.assertIsInstance(client_transactions, pd.DataFrame)
         self.assertTrue(client_transactions["transaction_id"][0], "tid_329432525234324")
