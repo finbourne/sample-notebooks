@@ -1,0 +1,3 @@
+portfolio_name,transaction_id,instrument_name,transaction_description,transaction_type,transaction_units,transaction_price,transaction_currency,transaction_strategy,transaction_cost,figi,currency
+mandate-balanced,tid_329432525234324,Kingfisher_LondonStockEx_KGF,Equity Sale,Sell,325000,2.345,GBP,quantitativeSignal,762125,BBG000BKH1W6,GBP
+mandate-balanced,tid_325452342424500,UKGiltTreasury_4.5_2034,Equity Purchase,Buy,10501,140.572,GBP,incomeRequirements,1476146.572,BBG0000D14P3,GBP

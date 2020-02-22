@@ -1,0 +1,4 @@
+portfolio_group_name,portfolio_name,instrument_name,quantity,price
+client-A-portfolios,client-A-strategy-balanced,WPP_LondonStockEx_WPP,2690400,8.71
+client-A-portfolios,client-A-strategy-balanced,UKGiltTreasury_2.0_2025,375856,8.71
+client-A-portfolios,client-A-strategy-balanced,JustEat_LondonStockEx_JE,4026354,5.464

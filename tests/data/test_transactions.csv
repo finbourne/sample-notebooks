@@ -1,0 +1,2 @@
+portfolio_group_name,portfolio_name,transaction_id,instrument_uid,type,units,transaction_price,transaction_currency
+client-A-portfolios,client-A-strategy-balanced,tid_35b77104-7c72-4515-af2b-d22bb45e6edd,WPP_LondonStockEx_WPP,Sell,265600,8.91,GBP
