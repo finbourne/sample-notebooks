@@ -1,3 +1,4 @@
+![LUSID_by_Finbourne](https://content.finbourne.com/LUSID_repo.png)
 
 | branch | status |
 | --- | --- |
