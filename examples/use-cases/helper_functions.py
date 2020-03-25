@@ -266,8 +266,9 @@ def get_figi_LUID(instrument, api_factory):
 def create_instrument_quotes(quotes_effective_date, today, instrument_prices, analyst_scope_code, api_factory):
     # Create prices via instrument, analytic
     # Set our quotes effective dates
-    quotes_effective_date = datetime.now(pytz.UTC) - timedelta(days=3)
-    today = datetime.now(pytz.UTC)
+    now = datetime.now(pytz.UTC).replace(hour=0, minute=0, second=0, microsecond=0)
+    quotes_effective_date = now - timedelta(days=3)
+    today = now
 
     instrument_quotes = {}
 
@@ -323,7 +324,7 @@ def create_instrument_quotes(quotes_effective_date, today, instrument_prices, an
 
     prettyprint.upsert_quotes_response(response)
 
-def create_aggregation_request(analyst_scope_code, today):
+def create_aggregation_request(analyst_scope_code, today, quotes_date):
 
     # Create our aggregation request
     inline_recipe = models.ConfigurationRecipe(
@@ -335,7 +336,10 @@ def create_aggregation_request(analyst_scope_code, today):
                     supplier='DataScope',
                     data_scope=analyst_scope_code,
                     quote_type='Price',
-                    field='Mid')
+                    field='Mid',
+                    quote_interval=quotes_date.strftime("%Y-%m-%d")
+                )
+
             ],
             suppliers=models.MarketContextSuppliers(
                 commodity='DataScope',
@@ -347,7 +351,8 @@ def create_aggregation_request(analyst_scope_code, today):
                 default_supplier='DataScope',
                 default_instrument_code_type='LusidInstrumentId',
                 default_scope=analyst_scope_code)
-        )
+        ),        
+
     )
 
     aggregation_request = models.AggregationRequest(
@@ -373,7 +378,7 @@ def create_aggregation_request(analyst_scope_code, today):
         group_by=[
             'Holding/default/SubHoldingKey'
         ])
-
+    
     return aggregation_request
 
 
@@ -429,9 +434,11 @@ def run_aggregation(analyst_scope_code, index_portfolio_code, today, api_factory
         code=index_portfolio_code,
         request=create_aggregation_request(
             analyst_scope_code=analyst_scope_code,
-            today=today)
+            today=today,
+            quotes_date=today
+        )
     )
-
+    
     # Pretty print the response from LUSID
     prettyprint.aggregation_response_index(aggregated_portfolio)
 
