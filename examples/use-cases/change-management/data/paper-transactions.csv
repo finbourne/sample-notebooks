@@ -1,0 +1,34 @@
+portfolio_name,transaction_id,instrument_name,transaction_description,transaction_type,transaction_units,transaction_price,transaction_currency,transaction_strategy,transaction_cost,figi,currency
+LSE_FTSE_techMarkFocus_transactions,tid_124398219481,AVEVA GRP,Purchase,Buy,265600,28.94,GBP,quantitativeSignal,7686464,BBG000C21Y87,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_339423984894,GBP_Cash,Brokerage Fees,FundsOut,265600,0.005788,GBP,quantitativeSignal,1537.2928,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_339423984896,GBP_Cash,Stamp Duty,FundsOut,265600,0.01447,GBP,quantitativeSignal,3843.232,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_359231290933,BATM ADVANCED,Purchase,Buy,750000,0.463,GBP,fundamentalAnalysis,347250,BBG000BFJD77,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_223239424244,GBP_Cash,Brokerage Fees,FundsOut,750000,0.0000926,GBP,fundamentalAnalysis,69.45,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_354242442211,GBP_Cash,Stamp Duty,FundsOut,750000,0.0002315,GBP,fundamentalAnalysis,173.625,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_342398989895,COMPUTACENTER,Purchase,SellShort,150000,10.5,GBP,fundamentalAnalysis,1575000,BBG000BN7CL9,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_384809092344,GBP_Cash,Brokerage Fees,FundsOut,150000,0.0021,GBP,fundamentalAnalysis,315,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_348234938244,GBP_Cash,Stamp Duty,FundsOut,150000,0.00525,GBP,fundamentalAnalysis,787.5,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_239394829484,DIALIGHT,Purchase,Buy,1500000,4.18,GBP,quantitativeSignal,6270000,BBG000BLQNG4,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_345798978924,GBP_Cash,Brokerage Fees,FundsOut,1500000,0.000836,GBP,quantitativeSignal,1254,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_354982424555,GBP_Cash,Stamp Duty,FundsOut,1500000,0.00209,GBP,quantitativeSignal,3135,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_352909238244,GENUS,Purchase,Buy,345000,22,GBP,technicalAnalysis,7590000,BBG000CTMKX7,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_394892482455,GBP_Cash,Brokerage Fees,FundsOut,345000,0.0044,GBP,technicalAnalysis,1518,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_342398598555,GBP_Cash,Stamp Duty,FundsOut,345000,0.011,GBP,technicalAnalysis,3795,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_334250655566,MICROGEN,Purchase,Buy,234000,3.92,GBP,quantitativeSignal,917280,BBG000BDSS88,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_345090989054,GBP_Cash,Brokerage Fees,FundsOut,234000,0.000784,GBP,quantitativeSignal,183.456,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_324599699055,GBP_Cash,Stamp Duty,FundsOut,234000,0.00196,GBP,quantitativeSignal,458.64,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_343356386885,MICRO FOCUS,Purchase,SellShort,543000,13.6,GBP,technicalAnalysis,7384800,BBG000G4KJC6,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_343430098090,GBP_Cash,Brokerage Fees,FundsOut,543000,0.00272,GBP,technicalAnalysis,1476.96,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_342453598349,GBP_Cash,Stamp Duty,FundsOut,543000,0.0068,GBP,technicalAnalysis,3692.4,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_359898999484,SDL,Purchase,Buy,55000,5.55,GBP,newsSentiment,305250,BBG000C4HGK1,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_859898955943,GBP_Cash,Brokerage Fees,FundsOut,55000,0.00111,GBP,newsSentiment,61.05,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_598398948934,GBP_Cash,Stamp Duty,FundsOut,55000,0.002775,GBP,newsSentiment,152.625,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_938598989484,ULTRA ELEC.,Purchase,Buy,120000,13.19,GBP,technicalAnalysis,1582800,BBG000HHH4C3,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_353090960355,GBP_Cash,Brokerage Fees,FundsOut,120000,0.002638,GBP,technicalAnalysis,316.56,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_498964842353,GBP_Cash,Stamp Duty,FundsOut,120000,0.006595,GBP,technicalAnalysis,791.4,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_984983948343,SAGE GRP.,Purchase,SellShort,98000,5.89,GBP,fundamentalAnalysis,577220,BBG000BN0PP3,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_982938935892,GBP_Cash,Brokerage Fees,FundsOut,98000,0.001178,GBP,fundamentalAnalysis,115.444,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_342509090592,GBP_Cash,Stamp Duty,FundsOut,98000,0.002945,GBP,fundamentalAnalysis,288.61,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_345208095205,XP POWER,Purchase,Buy,98000,22,GBP,quantitativeSignal,2156000,BBG000BZMBQ2,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_345098250255,GBP_Cash,Brokerage Fees,FundsOut,98000,0.0044,GBP,quantitativeSignal,431.2,,GBP
+LSE_FTSE_techMarkFocus_transactions,tid_345092090592,GBP_Cash,Stamp Duty,FundsOut,98000,0.011,GBP,quantitativeSignal,1078,,GBP
