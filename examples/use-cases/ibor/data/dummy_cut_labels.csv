@@ -1,0 +1,10 @@
+﻿display_name,hours,minutes,time_zone
+LondonOpen,7,0,GB
+LondonMidday,12,0,GB
+SingaporeOpen,9,0,Singapore
+SingaporeMidday,12,0,Singapore
+SingaporeClose,17,0,Singapore
+NewYorkOpen,9,0,America/New_York
+NewYorkMidday,12,0,America/New_York
+NewYorkClose,17,0,America/New_York
+DeleteMe,0,0,Europe/Berlin

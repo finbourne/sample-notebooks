@@ -1,0 +1,2 @@
+PortfolioCode,InstrumentName,Quantity,Price,Currency,Figi,ClientInternal,TransactionType,TransactionId,TransactionDate,SettlementDate,SettlementAmt,TransactionToSettlementExRate,TransactionCurrency,SettlementCurrency
+Global-Strategies,October 19 Calls on AMZN US,6,243.25,USD,BBG00NFXK409,,CALLCONTRACT,98034324,,,1459.5,1,USD,USD

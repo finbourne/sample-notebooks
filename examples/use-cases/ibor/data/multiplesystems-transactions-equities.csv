@@ -1,0 +1,6 @@
+PortfolioCode,InstrumentName,Quantity,Price,Currency,Figi,ClientInternal,TransactionType,TransactionId,TransactionDate,SettlementDate,SettlementAmt,TransactionToSettlementExRate,TransactionCurrency,SettlementCurrency
+Global-Strategies,Glencore_LondonStockEx_GLEN,249999.9442,,GBP,BBG001MM1KV4,,DIV,5788392,,,249999.9442,1,GBP,GBP
+Global-Strategies,Kingfisher_LondonStockEx_KGF,125000,2.345,GBP,BBG000BKH1W6,,BUY,5788411,,,293125,1,GBP,GBP
+Global-Strategies,BurfordCapital_LondonStockEx_BUR,32050,14.02,GBP,BBG000PN88Q7,,SHORTSELL,5788429,,,449341,1,GBP,GBP
+Global-Strategies,EKFDiagnostics_LondonStockEx_EKF,31504,0.26,GBP,BBG000BVNBN3,,SELL,5788497,,,8191.04,1,GBP,GBP
+Global-Strategies,JustEat_LondonStockEx_JE,250000,5.478,GBP,BBG0065YWM39,,BUY,5788522,,,1369500,1,GBP,GBP

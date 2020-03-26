@@ -1,0 +1,8 @@
+instrument_name,client_internal,currency,isin,figi,exchange_code,country_issue,ticker,market_sector,security_type,coupon
+Amazon_Nasdaq_AMZN,imd_34634534,USD,US0231351067,BBG000BVPXP1,UN,united_states_america,AMZN,equity,common_stock,
+Apple_Nasdaq_AAPL,imd_35345345,USD,US0378331005,BBG000B9XVV8,UN,united_states_america,AAPL,equity,common_stock,
+ExpressScripts_NYSE_ESRX,imd_34352311,USD,US30219G1085,BBG000C16621,UN,united_states_america,ESRX,equity,common_stock,
+TrinityIndustries_NYSE_TRN,imd_34235200,USD,US8965221091,BBG000BVL406,UN,united_states_america,TRN,equity,common_stock,
+Trex_NYSE_TREX,imd_32423956,USD,US89531P1057,BBG000BTGM43,UN,united_states_america,TREX,equity,common_stock,
+Cigna_NYSE_CI,imd_32452391,USD,US1255091092,BBG00KXXK940,UN,united_states_america,CI,equity,common_stock,
+Arcosa_NYSE_ACA,imd_23423409,USD,US0396531008,BBG00JGMWFQ5,UN,united_states_america,ACA,equity,common_stock,
