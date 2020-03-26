@@ -1,0 +1,7 @@
+﻿portfolio_code,transaction_id,instrument_name,transaction_description,transaction_type,transaction_units,transaction_price,transaction_currency,transaction_strategy,transaction_cost,figi
+Global-Strategies,tid_329432525234324,Kingfisher_LondonStockEx_KGF,Equity Sale,Sell,325000,2.345,GBP,quantitativeSignal,762125,BBG000BKH1W6
+Global-Strategies,tid_325452342424500,UKGiltTreasury_4.5_2034,Equity Purchase,Buy,10501,140.572,GBP,incomeRequirements,1476146.572,BBG0000D14P3
+Global-Strategies,tid_234295929052090,UKGiltTreasury_3.75_2021,Equity Purchase,Buy,24000,109.126,GBP,incomeRequirements,2619024,BBG001KKJLR4
+Global-Strategies,tid_234942982496001,USTreasury_2.00_2021,Equity Sale,Sell,57000,97.8,USD,internationalExposure,5574600,BBG00FN3B5K8
+Global-Strategies,tid_121309590059995,BP_LondonStockEx_BP,Equity Purchase,Buy,50000,5.287,GBP,fundamentalAnalysis,264350,BBG000C05BD1
+Global-Strategies,tid_124319009950924,USTreasury_2.00_2021,Equity Sale,BrokerSell,-28000,98.1,USD,incomeRequirements,2746800,BBG00FN3B5K8

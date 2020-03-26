@@ -1,0 +1,5 @@
+﻿portfolio_code,transaction_id,instrument_name,transaction_description,transaction_type,transaction_units,transaction_price,transaction_currency,company_exposure,transaction_cost,figi,transaction_date,settlement_date,isin,mtom,accmethod,broker,region,client_internal
+GlobalCreditFund,ab1543673,USD,Initial Funds In,FundsIn,1000000000,1,USD,NaN,1000000000,NaN,2019-09-01T09:31:22.664000+00:00,2019-09-01T09:31:22.664000+00:00,NaN,0,13,xy35920,CR,NaN
+GlobalCreditFund,xfg352235,USTreasury_2.00_2021,Purchase of US Treasury Bonds,BY,50000,99,USD,USGovt,4950000,BBG00FN3B5K8,2019-09-03T18:42:12.435000+00:00,2019-09-05T18:42:12.435000+00:00,US912828U816,1,14,xy90994,CR,imd_34535347
+GlobalCreditFund,ccv335235,USTreasury_6.875_2025,Purchase of US Treasury Bonds,BY,130000,127,USD,USGovt,16510000,BBG000DQQNJ8,2019-09-06T19:12:44.090000+00:00,2019-09-08T19:12:44.090000+00:00,US912810EV62,0,15,xy90994,CR,imd_34534539
+GlobalCreditFund,cvcg767j31,TESCO_6.15_2037,Purchase of Tesco Corporate Bonds,BY,1750000,99,USD,TESCO,173250000,NaN,2019-09-10T13:58:57.113000+00:00,2019-09-11T13:58:57.113000+00:00,US881575AC87,0,21,xy90994,CR,imd_54001121

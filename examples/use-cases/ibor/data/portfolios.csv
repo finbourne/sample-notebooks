@@ -1,0 +1,11 @@
+portfolio_group_name,portfolio_name
+client-A-portfolios,client-A-strategy-balanced
+client-A-portfolios,client-A-strategy-tech
+client-A-portfolios,client-A-strategy-growth
+client-B-portfolios,client-B-strategy-balanced
+client-B-portfolios,client-B-strategy-energy
+client-B-portfolios,client-B-strategy-fixedincome
+client-B-portfolios,client-B-strategy-international
+client-B-portfolios,client-B-strategy-usgovt
+client-C-portfolios,client-C-strategy-balanced
+client-C-portfolios,client-C-strategy-fixedincome

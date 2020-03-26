@@ -1,0 +1,6 @@
+﻿code,action_description,description,announcement_date,ex_date,record_date,payment_date,input_instrument_figi,instrument_input_ticker,input_instrument_name,input_units_factor,input_cost_factor,output_instrument_figi,output_instrument_name,output_ticker,output_instrument_internal,output_units_factor,output_cost_factor,dividend_yield
+5943592342,dividend,Apple Dividend,29/01/2019,08/02/2019,11/02/2019,14/02/2019,BBG000B9XVV8,AAPL,APPLE INC,1,1,,,,CCY_GBP,0.017,0,0.017
+5943592343,merger,Cigna & Express Scripts Merger,08/03/2018,10/12/2018,13/12/2018,20/12/2018,BBG000C16621,ESRX,EXPRESS SCRIPTS HOLDINGS CO,1,1,,,,CCY_USD,48.75,0,
+5943592343,merger,Cigna & Express Scripts Merger,08/03/2018,10/12/2018,13/12/2018,20/12/2018,BBG000C16621,ESRX,EXPRESS SCRIPTS HOLDINGS CO,1,1,BBG00KXXK940,CIGNA CORP,CI,,0.2434,1.9337,
+5943592347,spin-off,Acosa spin-off from Trinity Industries,12/12/2017,17/10/2018,20/10/2018,01/11/2018,BBG000BVL406,TRN,TRINITY INDUSTRIES INC,3,1,BBG00JGMWFQ5,ARCOSA INC,ACA,,1,1.0324,
+5943592498,split,Trex 2 for 1 stock split,07/05/2018,21/05/2018,23/05/2018,19/06/2018,BBG000BTGM43,TREX,TREX COMPANY INC,1,1,BBG000BTGM43,TREX COMPANY INC,TREX,,2,2,
