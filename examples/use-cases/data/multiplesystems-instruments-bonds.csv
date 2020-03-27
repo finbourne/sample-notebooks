@@ -1,7 +1,0 @@
-InstrumentName,ClientInternal,Currency,Isin,Figi,ExchangeCode,CountryIssue,Ticker,MarketSector,SecurityType,Coupon
-UKGiltTreasury_2.0_2025,imd_34534536,GBP,GB00BTHH2R79,,LN,united_kingdom,UKT 2 09/07/25,govt,uk_gilt_stock,2
-UKGiltTreasury_3.5_2045,imd_54234532,GBP,GB00BN65R313,,LN,united_kingdom,UKT 3.5 01/22/45,govt,uk_gilt_stock,3.5
-UKGiltTreasury_3.75_2021,imd_34643653,GBP,GB00B4RMG977,,LN,united_kingdom,UKT 3.75 09/07/21,govt,uk_gilt_stock,3.75
-UKGiltTreasury_4.5_2034,imd_34534534,GBP,GB00B52WS153,,LN,united_kingdom,UKT 4.5 09/07/34,govt,uk_gilt_stock,4.5
-USTreasury_2.00_2021,imd_34535347,USD,US912828U816,,BERLIN,united_states_america,T 2 12/31/21,govt,us_government,2
-USTreasury_6.875_2025,imd_34534539,USD,US912810EV62,,NEW YORK,united_states_america,T 6.875 08/15/25,govt,us_government,6.875

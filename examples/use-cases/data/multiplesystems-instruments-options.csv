@@ -1,4 +1,0 @@
-InstrumentName,ClientInternal,Currency,Isin,Figi,FigiComposite,Sedol,ExchangeCode,CountryIssue,Ticker,MarketSector,SecurityType,Coupon
-October 19 Calls on AMZN US,imd_84634539,USD,,BBG00NFXK409,BBG00NFXK409,,UN,united_states_america,AMZN 10/18/19 C1365,equity,equity_option,
-October 19 Puts on AAPL US,imd_85345347,USD,,BBG00NBRV912,BBG00NBRV912,,UN,united_states_america,AAPL 10/18/19 P140,equity,equity_option,
-September 19 Calls on BP/ LN,imd_83535553,GBP,,BBG00M2Z8958,,,LN,united_kingdom,BPA 09/20/19 C570,equity,equity_option,
