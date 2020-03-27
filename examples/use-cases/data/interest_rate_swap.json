@@ -1,8 +1,0 @@
-{
-  "assetType":"swap",
-  "flow conventions":"GBP_6m_LIBOR",
-  "strike":0.02234,
-  "StartDate":"03/04/2015",
-  "MaturityDate":"04/04/2025",
-  "InternalContractId":"irs_85678992"
-}

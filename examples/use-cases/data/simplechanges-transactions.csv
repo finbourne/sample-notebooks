@@ -1,4 +1,0 @@
-transaction_id,instrument_uid,type,units,transaction_price,transaction_currency,figi,client_internal
-tid_35b77104-7c72-4515-af2b-d22bb45e6edd,WPP_LondonStockEx_WPP,Sell,410000,8.372,GBP,BBG000BF6B57,imd_34536734
-tid_4f192c6a-e74b-464e-95c2-62a18b092bd8,Kingfisher_LondonStockEx_KGF,Sell,2879200,2.363,GBP,BBG000BKH1W6,imd_34535552
-tid_3a95473f-1b4a-4652-8047-91624f3f0e19,Glencore_LondonStockEx_GLEN,Buy,669180,2.7385,GBP,BBG001MM1KV4,imd_34534555
