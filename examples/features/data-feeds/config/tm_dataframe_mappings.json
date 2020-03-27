@@ -1,0 +1,15 @@
+{
+	
+	"quote_id.quote_series_id.provider": "Provider",
+	"quote_id.quote_series_id.instrument_id": "InstrumentID",
+	"quote_id.quote_series_id.instrument_id_type": "InstrumentType",
+	"quote_id.quote_series_id.quote_type": "QuoteType",
+	"quote_id.quote_series_id.field": "Field",
+	"quote_id.effective_at": "EffectiveAt",
+	"metric_value.value": "Value",
+	"metric_value.unit": "Unit",
+	"lineage": "Lineage",
+	"cut_label": "CutLabel",
+	"uploaded_by": "UploadedBy",
+	"as_at": "AsAt"
+}
