@@ -72,6 +72,37 @@ def reconciliation(reconciled_portfolios, flag=False):
                 print('\n')
         print ('\n')
 
+def upsert_orders_response(response, scope):
+    print (colours.bold + 'Orders upserted' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + scope + '\n')
+    for order in response.values:
+        print (colours.bold + 'Order: ' + colours.end + order.id.code)
+        print (colours.bold + 'Order Book: ' + colours.end + order.order_book.code)
+        print (colours.bold + 'Portfolio: ' + colours.end + order.portfolio.code)
+        print (colours.bold + 'Quantity: ' + colours.end + str(order.quantity))
+        print (colours.bold + 'Side: ' + colours.end + order.side)
+        print (colours.bold + 'LUSID instrument: ' + colours.end + order.lusid_instrument_id)
+        for key in order.instrument_identifiers:
+            print (colours.bold + '{}: '.format(key) + colours.end + order.instrument_identifiers[key])
+        for key in order.properties:
+            print (colours.bold + '{}: '.format(key) + colours.end + order.properties[key].value.label_value)
+    print ('\n')
+
+def upsert_allocations_response(response, scope):
+    print (colours.bold + 'Allocations upserted' + colours.end)
+    print (colours.bold + 'Scope: ' + colours.end + scope + '\n')
+    for allocation in response.values:
+        print (colours.bold + 'Allocation: ' + colours.end + allocation.id.code)
+        print (colours.bold + 'Originating Order: ' + colours.end + allocation.allocated_order_id.code)
+        print (colours.bold + 'Portfolio: ' + colours.end + allocation.portfolio_id.code)
+        print (colours.bold + 'Quantity: ' + colours.end + str(allocation.quantity))
+        print (colours.bold + 'LUSID instrument: ' + colours.end + allocation.lusid_instrument_id)
+        for key in allocation.instrument_identifiers:
+            print (colours.bold + '{}: '.format(key) + colours.end + allocation.instrument_identifiers[key])
+        for key in allocation.properties:
+            print (colours.bold + '{}: '.format(key) + colours.end + allocation.properties[key].value.label_value)
+    print ('\n')
+
 def reconciliation_response(response, scope, code):
     print (colours.bold + 'Reconciliation Breaks for Portfolio' + colours.end)
     print (colours.bold + 'Scope: ' + colours.end + scope)
