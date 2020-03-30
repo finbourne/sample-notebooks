@@ -35,7 +35,15 @@ Key concepts:
 * Setting up `portfolio` static data
 * LUSID's extensible data model
 
-### 4) Risk and performance
+### 4) Private assets
+
+The notebooks in the **private-assets** folder show how LUSID can be used to manage complex and bespoke assets such as real esate and infrastructure projects.
+
+Key concepts:
+
+* LUSID's `extensible data model`
+
+### 5) Risk and performance
 
 The notebooks in the **risk-and-performance** folder show how LUSID's aggregation functionality can be used to measure risk and track performance. 
 
@@ -46,7 +54,7 @@ Key concepts:
 * Configuring `recipes` to drive valuations
 * Loading and retrieving `quotes` and prices from multiple sources
 
-### 5) Wealth management
+### 6) Wealth management
 
 The notebook(s) in the **wealth-management** folder outline the use-cases for a wealth manager who needs to manage a large number of portfolios on LUSID where each portfolio represents an individual or household. 
 
