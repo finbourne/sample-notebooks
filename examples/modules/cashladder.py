@@ -41,7 +41,7 @@ def arrayToDf(data,columns,*args):
         # if there are properties
         if props:
             # add the property to our dictionary
-            record.update({"P:" + p.key : p.value for p in props})
+            record.update({"P:" + p.key : p.value.label_value for p in props.values()})
         # for any functions in our arguments, call them
         for f in args:
            # provides the record and object to the function
