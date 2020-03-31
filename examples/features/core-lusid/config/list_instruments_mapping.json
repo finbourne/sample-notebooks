@@ -1,0 +1,17 @@
+{
+	"lusid_instrument_id": "Luid",
+	"version.effective_from": "EffectiveFrom",
+	"version.as_at_date": "AsAt",
+	"name": "InstrumentName",
+	"identifiers.LusidInstrumentId":"LusidInstrumentId",
+	"identifiers.Currency": "Currency",
+	"identifiers.ClientInternal": "ClientInternalId",
+	"identifiers.Ticker": "Ticker",
+	"identifiers.Sedol": "Sedol",
+	"identifiers.Figi": "Figi",
+	"identifiers.Isin": "Isin",
+	"instrument_definition.content": "Content",
+	"instrument_definition.instrument_format": "Format",
+	"lookthrough_portfolio.scope": "LTScope",
+	"lookthrough_portfolio.code": "LTCode"
+}
