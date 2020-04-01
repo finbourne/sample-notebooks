@@ -1,0 +1,3 @@
+portfolio_code,portfolio_name,portfolio_base_currency,ticker,sedol,instrument_type,instrument_id,name,txn_id,txn_type,txn_trade_date,txn_settle_date,txn_units,txn_price,txn_consideration,currency,strategy,cash_transactions
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0002162385,SEDOL1,equity,EQ_1234,Aviva,corpact_0001,DividendReinvest,01/03/2020,01/03/2020,10000,0,0,GBP,ftse_tracker,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GBP,GBP,dividend,GBP,BHP,corpact_0002,DividendCash,01/03/2020,01/03/2020,200000,1,20000,GBP,ftse_tracker,GBP
