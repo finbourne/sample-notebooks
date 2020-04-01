@@ -1,0 +1,2 @@
+code,action_description,description,announcement_date,ex_date,record_date,payment_date,client_id,input_instrument_name,input_units_factor,input_cost_factor,output_instrument_figi,output_instrument_name,output_ticker,output_instrument_luid,output_instrument_internal,output_units_factor,output_cost_factor,dividend_yield
+5943592342,dividend-cash,BHP,31/03/2020,31/03/2020,31/03/2020,31/03/2020,EQ_1235,BHP,1,1,,,,,CCY_GBP,0.017,0,0.017
