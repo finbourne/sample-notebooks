@@ -33,4 +33,4 @@
         "settlement_date": "txn_settle_date"
     },
     "optional": {},
-    "properties": ["confirmation_status", "settlement_status"]}}
+    "properties": ["ConfirmationStatus", "SettlementStatus"]}}
