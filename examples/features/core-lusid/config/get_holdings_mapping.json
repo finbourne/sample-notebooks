@@ -1,0 +1,11 @@
+{
+"instrument_uid": "LusidInstrumentId",
+"sub_holding_keys": "SubHoldingKeys",
+"holding_type": "HoldingType",
+"units": "Units",
+"settled_units": "SettledUnits",
+"cost.amount": "Amount-Cost", 
+"cost.currency": "Currency-Cost",
+"cost_portfolio_ccy.amount": "Amount-CostPortfolioCcy",
+"cost_portfolio_ccy.currency": "Currenct-CostPortfolioCcy"
+}
