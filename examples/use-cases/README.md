@@ -18,7 +18,7 @@ The notebooks in the **change-management** folder shows how LUSID can be used to
 Key concepts:
 
 * Using LUSID `scopes` to segregate data
-* Creating a sandboxed trading environment with up-to-date testing data
+* Creating a sand-boxed trading environment with up-to-date testing data
 * Migrating between investment systems
  
 ### 3) IBOR
@@ -37,20 +37,20 @@ Key concepts:
 
 ### 4) Order management
 
-The noteboosk in the **order-management** folder show how LUSID's orders, placements, and allocations can be used to manage the order generation and trade execution processes. 
+The notebooks in the **order-management** folder show how LUSID's orders, placements, and allocations can be used to manage the order generation and trade execution processes. 
 
 ### 5) Post-trade processing
 
-The notebooks in the **post-trade-processing** folder show how LUSID can be used to manage confirmations, settlement, and all other actvities after trade execution. 
+The notebooks in the **post-trade-processing** folder show how LUSID can be used to manage confirmations, settlement, and all other activities after trade execution. 
 
 Key concepts:
 
-* Using `properties` to track the transaction lifecycle
+* Using `properties` to track the transaction life-cycle
 
 
 ### 6) Private assets
 
-The notebooks in the **private-assets** folder show how LUSID can be used to manage complex and bespoke assets such as real esate and infrastructure projects.
+The notebooks in the **private-assets** folder show how LUSID can be used to manage complex and bespoke assets such as real estate and infrastructure projects.
 
 Key concepts:
 
