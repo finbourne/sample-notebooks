@@ -13,10 +13,12 @@
 	"total_consideration.amount": "TotalConsideration",
 	"total_consideration.currency": "TotalConsiderationCurrency",
 	"exchange_rate": "ExchangeRate",
-    "transaction_to_portfolio_rate": "TxnToPortRate",
-    "transaction_currency": "TxnCurrency",
+    "transaction_to_portfolio_rate": "TransactionToPortfolioRate",
+    "transaction_currency": "TransactionCurrency",
 	"ResultantHolding(default-Properties)": "ResultantHolding",
     "Name(default-Properties)": "InstrumentName",
     "transaction_status": "TransactionStatus",
-    "entry_date_time": "EntryDateTime"
+    "entry_date_time": "EntryDateTime",
+    "realised_gain_loss": "RealisedGainLoss",
+    "instrument_identifiers.Instrument/default/Currency": "InstrumentCurrency"
 }
