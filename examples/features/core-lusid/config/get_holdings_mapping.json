@@ -7,5 +7,7 @@
 "cost.amount": "Amount-Cost", 
 "cost.currency": "Currency-Cost",
 "cost_portfolio_ccy.amount": "Amount-CostPortfolioCcy",
-"cost_portfolio_ccy.currency": "Currenct-CostPortfolioCcy"
+"cost_portfolio_ccy.currency": "Currenct-CostPortfolioCcy",
+"Name(default-Properties)": "InstrumentName",
+"SourcePortfolioId(default-Properties)": "SourcePortfolioId"
 }
