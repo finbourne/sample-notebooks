@@ -77,8 +77,8 @@ def upsert_orders_response(response, scope):
     print (colours.bold + 'Scope: ' + colours.end + scope + '\n')
     for order in response.values:
         print (colours.bold + 'Order: ' + colours.end + order.id.code)
-        print (colours.bold + 'Order Book: ' + colours.end + order.order_book.code)
-        print (colours.bold + 'Portfolio: ' + colours.end + order.portfolio.code)
+        print (colours.bold + 'Order Book: ' + colours.end + order.order_book_id.code)
+        print (colours.bold + 'Portfolio: ' + colours.end + order.portfolio_id.code)
         print (colours.bold + 'Quantity: ' + colours.end + str(order.quantity))
         print (colours.bold + 'Side: ' + colours.end + order.side)
         print (colours.bold + 'LUSID instrument: ' + colours.end + order.lusid_instrument_id)
