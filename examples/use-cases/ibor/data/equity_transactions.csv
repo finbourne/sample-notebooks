@@ -1,0 +1,11 @@
+portfolio_code,portfolio_name,portfolio_base_currency,ISIN,sedol,instrument_type,instrument_id,name,txn_id,txn_type,txn_trade_date,txn_settle_date,txn_units,txn_price,txn_consideration,currency,strategy,cash_transactions
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0002162385,0216238,equity,EQ_1234,Aviva,txn-1,StockIn,02/01/2020,04/01/2020,120000,4.23,600000,GBP,ftse_tracker,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB00BH0P3Z91,BH0P3Z9,equity,EQ_1235,BHP,txn-2,StockIn,02/01/2020,04/01/2020,60000,17.89,1080000,GBP,ftse_tracker,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0031348658,3134865,equity,EQ_1236,Barclays,txn-3,StockIn,02/01/2020,04/01/2020,150000,1.8,300000,GBP,ftse_tracker,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0007980591,0798059,equity,EQ_1237,BP,txn-4,StockIn,02/01/2020,04/01/2020,100000,4.75,500000,GBP,ftse_tracker,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0005405286,0540528,equity,EQ_1238,HSBC,txn-5,StockIn,02/01/2020,04/01/2020,20000,5.89,120000,GBP,ftse_tracker,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0006043169,0604316,equity,EQ_1239,Morrisons,txn-6,StockIn,15/01/2020,17/01/2020,180000,1.87,360000,GBP,ftse_tracker,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0008847096,0884709,equity,EQ_1240,Tesco,txn-7,StockIn,16/01/2020,18/01/2020,4000,2.47,36000,GBP,ftse_tracker,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB00BGDT3G23,BGDT3G2,equity,EQ_1241,Rightmove,txn-8,StockIn,15/01/2020,17/01/2020,80000,6.59,480000,GBP,ftse_tracker,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB00BH4HKS39,BH4HKS3,equity,EQ_1242,vodafone,txn-9,StockIn,15/01/2020,17/01/2020,450000,1.56,450000,GBP,ftse_tracker,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB00B1XZS820,B1XZS82,equity,EQ_1243,Anglo American plc,txn-10,StockIn,15/01/2020,17/01/2020,35000,21.68,700000,GBP,ftse_tracker,
