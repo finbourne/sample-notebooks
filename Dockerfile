@@ -9,8 +9,9 @@ RUN jt -ofs 12 -t chesterish
 
 ENV NEXUS_USER ${NEXUS_USER}
 ENV NEXUS_PASSWORD ${NEXUS_PASSWORD}
+ENV FBN_SECRETS_PATH=/tmp/working/examples/secrets.json
 
-RUN pip install lusid-sdk-preview
+RUN pip install lusid-sdk-preview lusid-jam
 
 RUN mkdir -p /tmp/working
 
