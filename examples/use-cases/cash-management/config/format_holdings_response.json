@@ -1,0 +1,17 @@
+{
+
+        "instrument_uid": "LusidInstrumentId",
+        "holding_type": "HoldingType",
+        "units": "Units",
+        "settled_units": "SettledUnits",
+        "cost.amount": "AmountCost",
+        "cost.currency": "CurrencyCost",
+        "cost_portfolio_ccy.amount": "CostPortfolioCcyAmount",
+        "cost_portfolio_ccy.currency": "CostPortfolioCcyCurrency",
+        "Name(default-Properties)": "InstrumentName",
+    "SourcePortfolioId(default-Properties)": "SourcePortfolioId",
+    "sub_holding_keys": "SubHoldingKeys"
+
+
+
+}
