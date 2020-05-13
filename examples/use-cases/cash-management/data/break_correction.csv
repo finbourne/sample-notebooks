@@ -1,0 +1,2 @@
+scope,portfolio_code,portfolio_name,portfolio_base_currency,instrument_type,instrument_id,name,txn_id,txn_type,txn_trade_date,txn_settle_date,txn_units,txn_price,txn_consideration,currency,cash_transactions
+ibor,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,cash,GBP,Manual adjustment,cash_003,FundsOut,01/05/2020,03/05/2020,5000,1,5000,GBP,GBP

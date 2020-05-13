@@ -1,0 +1,14 @@
+scope,portfolio_code,portfolio_name,portfolio_base_currency,instrument_type,instrument_id,name,txn_id,txn_type,txn_trade_date,txn_settle_date,txn_units,txn_price,txn_consideration,currency,cash_transactions
+IBOR,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,equity,EQ_1234,Aviva,trd_0001,Buy,01/04/2020,03/04/2020,100000,1,100000,GBP,
+IBOR,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,equity,EQ_1236,Barclays,trd_0002,Buy,01/04/2020,03/04/2020,100000,1,100000,GBP,
+IBOR,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,equity,EQ_1237,BP,trd_0003,Buy,01/04/2020,03/04/2020,200000,1,200000,GBP,
+IBOR,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,equity,EQ_1237,BP,trd_0004,Buy,01/04/2020,03/04/2020,100000,1,100000,GBP,
+IBOR,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,cash,GBP,GBP Cash,cash_001,FundsIn,01/04/2020,03/04/2020,1000000,1,1000000,GBP,GBP
+IBOR,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,cash,GBP,GBP Cash,cash_002,FundsOut,01/05/2020,03/05/2020,2000000,1,2000000,GBP,GBP
+Custodian,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,equity,EQ_1234,Aviva,trd_0001,Buy,01/04/2020,03/04/2020,100000,1,100000,GBP,
+Custodian,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,equity,EQ_1236,Barclays,trd_0002,Buy,01/04/2020,03/04/2020,100000,1,100000,GBP,
+Custodian,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,equity,EQ_1237,BP,trd_0003,Buy,01/04/2020,03/04/2020,200000,1,200000,GBP,
+Custodian,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,equity,EQ_1237,BP,trd_0004,Buy,01/04/2020,03/04/2020,100000,1,100000,GBP,
+Custodian,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,cash,GBP,GBP Cash,cash_001,FundsIn,01/04/2020,03/04/2020,1000000,1,1000000,GBP,GBP
+Custodian,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,cash,GBP,GBP Cash,cash_002,FundsOut,01/05/2020,03/05/2020,2000000,1,2000000,GBP,GBP
+Custodian,GLOBAL-EQUITY,A generic global Equity portfolio,GBP,cash,GBP,Stock Exchange Feee,cash_003,FundsOut,01/05/2020,03/05/2020,5000,1,5000,GBP,GBP
