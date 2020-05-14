@@ -1,0 +1,46 @@
+{
+    "instruments": {
+        "identifier_mapping": {
+            "ClientInternal": "instrument_id"
+        },
+        "required": {
+            "name": "name"
+        },
+        "properties": [
+            "instrument_type"
+        ],
+        "optional": {}
+    },
+    "portfolios": {
+        "required": {
+            "code": "portfolio_code",
+            "display_name": "portfolio_name",
+            "base_currency": "portfolio_base_currency"
+        },
+        "optional": {
+            "created": "$2000-01-01T00:00:00+00:00"
+        },
+        "identifier_mapping" : {},
+        "properties": []
+    },
+    "transactions": {
+        "identifier_mapping": {
+            "ClientInternal": "instrument_id",
+            "Currency": "cash_transactions"
+        },
+        "required": {
+            "code": "portfolio_code",
+            "transaction_id": "txn_id",
+            "type": "txn_type",
+            "transaction_price.price": "txn_price",
+            "transaction_price.type": "$Price",
+            "total_consideration.amount": "txn_consideration",
+            "units": "txn_units",
+            "transaction_date": "txn_trade_date",
+            "total_consideration.currency": "currency",
+            "settlement_date": "txn_settle_date"
+        },
+    "optional": {},
+    "properties": []
+    }
+} 
