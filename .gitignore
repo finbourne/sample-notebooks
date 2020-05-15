@@ -198,3 +198,4 @@ venv.bak/
 # secrets
 **/secrets*
 **/.idea/
+**/.*

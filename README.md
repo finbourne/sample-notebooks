@@ -7,29 +7,29 @@
 
 Sample notebooks showcasing how to use the LUSID SDK.
 
-## To Interact with the notebooks
+# Running the notebooks locally
 
-1. Clone the sample-notebooks repository
-2. Ensure that you are in the sample-notebooks folder
-3. Build the Docker image locally
+Create a `secrets.json` file in the **examples** folder with your LUSID credentials. See **Using a secrets.json file** at https://support.lusid.com/getting-started-with-apis-sdks for details on this.
+
+## Docker
+
+1. Ensure that you are in the sample-notebooks folder
+2. Build the Docker image locally
 
 ```
 docker build -t finbourne/lusid-sample-notebooks .
 ```
 
-4. Run the Docker image
+3. Run the Docker image
 
 **Windows**
 ```
-docker run -it -v %cd%:/tmp/working -p 8888:8888 finbourne/lusid-sample-notebooks
+$ docker run --rm -it --name fbn-jupyter -v %cd%:/home/jovyan -e FBN_SECRETS_PATH=/home/jovyan/examples/secrets.json -p 8888:8888 finbourne/lusid-sample-notebooks
 ```
-**Mac/Linux**
+**macOS/linux**
 ```
-docker run -it -v $(pwd):/tmp/working -p 8888:8888 finbourne/lusid-sample-notebooks
+$ docker run --rm -it --name fbn-jupyter -v $(pwd):/home/jovyan -e FBN_SECRETS_PATH=/home/jovyan/examples/secrets.json -p 8888:8888 finbourne/lusid-sample-notebooks
 ```
-5. Navigate to `localhost:8888`
-6. Copy the token shown in your console and paste it into your browser to log in
-7. Create a secrets.json file in the **examples** folder with your LUSID credentials
-see **Using a secrets.json file** at https://support.lusid.com/getting-started-with-apis-sdks for details on this
 
-You're good to go!
+4. Click on the link shown in the console to open up JupyterHub in a browser.
+5. You can now navigate to your chosen notebook and run it.

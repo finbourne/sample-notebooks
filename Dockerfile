@@ -1,20 +1,19 @@
 # Pull base image
-FROM gcr.io/kaggle-images/python
+FROM jupyter/base-notebook:python-3.7.6
 
-# Install Jupyterthemes
-RUN pip install jupyterthemes
+ENV NEXUS_USER ${NEXUS_USER}
+ENV NEXUS_PASSWORD ${NEXUS_PASSWORD}
+ENV FBN_SECRETS_PATH ${FBN_SECRETS_PATH}
+
+RUN mkdir -p /tmp/working
+COPY requirements.txt /tmp/working
+
+RUN pip install -r /tmp/working/requirements.txt
 
 # Set the theme
 RUN jt -ofs 12 -t chesterish
 
-ENV NEXUS_USER ${NEXUS_USER}
-ENV NEXUS_PASSWORD ${NEXUS_PASSWORD}
-
-RUN pip install lusid-sdk-preview
-
-RUN mkdir -p /tmp/working
-
 EXPOSE 8888
 
 # Start the Jupyter notebook
-CMD ["jupyter", "notebook", "--no-browser", "--ip='0.0.0.0'", "--notebook-dir=/tmp/working", "--allow-root"]
+CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0"]

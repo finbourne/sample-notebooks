@@ -1,10 +1,10 @@
---extra-index-url https://${NEXUS_USER}:${NEXUS_PASSWORD}@nexus.finbourne.com/repository/pypi/simple/
-
 jupyter
+jupyterthemes
 lusid-sdk-preview
 openpyxl
 pandas
 pytz
+numpy
 requests
 lusidtools
 lusid-jam
