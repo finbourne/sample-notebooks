@@ -1,0 +1,5 @@
+﻿portfolio_code,instrument_name,quantity,price,currency,ClientInternal,cash_transactions
+EQUITY_UK,Aviva,132000,5,GBP,EQ_1234,
+EQUITY_UK,BHP,120000,18,GBP,EQ_1235,
+EQUITY_UK,Barclays,300000,2,GBP,EQ_1236,
+EQUITY_UK,Cash,8580000,1,GBP,GBP,GBP
