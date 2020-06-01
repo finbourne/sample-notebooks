@@ -1,0 +1,2 @@
+﻿Name,Units,TransactionType,Figi,Ticker,Cost,Price,Id,Date,SettlementDate,TransactionCurrency,SettlementCurrency
+NETFLIX INC,27315,Buy,"BBG000CL9VN6	",NFLX,11566809.9,423.46,FGKUW89XA,2020-04-28T13:00:00-04:00,2020-05-01T13:00:00-04:00,USD,USD
