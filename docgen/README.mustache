@@ -5,17 +5,15 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 * `features` - This folder contains notebooks showing specific LUSID features. For example, there is notebook showing you how to call holdings using a get holdings request. These notebooks are generally short and specific.
 * `use-cases` - This folder contains notebooks showing sample business implementations or use-cases. These notebooks will generally combine various LUSID features to solve a business use-case. For example, there is notebook which uses the LUSID features of derived portfolios, quotes, and get holdings to back-test a trading strategy. These `use-case` notebooks are generally longer than the `feature` ones.
 
-## examples/features/core-lusid
+{{#paths}}
+## {{k}}
 | filename | title | description | features |
 | --- | --- | --- | --- |
-| Derived portfolios.ipynb | Derived portfolios |  | derived portfolios, holdings, transactions |
+{{#v}}
+| {{filename}} | {{title}} | {{description}} | {{formatted_features}} |
+{{/v}}
 
-## examples/use-cases/ibor
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| Generating Corporate actions natively in LUSID.ipynb | Corporate Actions in LUSID |  | corporate actions, derived portfolios, holdings, transactions |
-| Valuations with recipes.ipynb | Valuation with recipes | This notebooks shows how to value a portfolio using recipes with different pricing sources | manifests, recipes, transactions, valuation |
-
+{{/paths}}
 
 | :warning: This file is generated, any direct edits may be lost |
 | --- |

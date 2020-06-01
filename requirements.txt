@@ -8,3 +8,5 @@ numpy
 requests
 lusidtools
 lusid-jam
+docstring-parser
+chevron
