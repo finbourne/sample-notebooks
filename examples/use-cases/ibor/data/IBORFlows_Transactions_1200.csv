@@ -1,0 +1,2 @@
+﻿Name,Units,TransactionType,ClientInternal,Cost,Price,Id,Date,SettlementDate,TransactionCurrency,SettlementCurrency,ResultingStockFigi,ResultingStockTicker,ResultingStockUnits,ResultingStockCost
+FB Rights Issuance,4616,ExerciseRights,FBRights2020_04_27,999133.2,0,FGBYU24RY,2020-04-28T12:00:00-04:00,2020-04-30T12:00:00-04:00,USD,USD,BBG000MM2P62,FB,4616,999133.2
