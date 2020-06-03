@@ -1,2 +1,0 @@
-﻿Name,Units,TransactionType,ClientInternal,Cost,Price,Id,Date,SettlementDate,TransactionCurrency,SettlementCurrency,ResultingStockFigi,ResultingStockTicker,ResultingStockUnits,ResultingStockCost
-MSFT Convertible Bond,2567,ExerciseConvertibleBond,MFST1.25,0,0,GBHHE95QX,2020-04-28T11:00:00-04:00,2020-04-30T11:00:00-04:00,USD,USD,BBG000BPH459,MSFT,20536,2322416
