@@ -1,2 +1,0 @@
-﻿Name,Units,TransactionType,Cost,Price,Broker,Id,Date,SettlementDate,TransactionCurrency,SettlementCurrency,InvestorId
-Cash,5000000,FundsIn,5000000,1,,KBRIN82VJ,2020-04-28T10:00:00-04:00,2020-04-29T10:00:00-04:00,USD,USD,INV_SDFKJ32
