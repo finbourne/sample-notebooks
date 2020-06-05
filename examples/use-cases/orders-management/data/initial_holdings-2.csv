@@ -1,0 +1,4 @@
+﻿instrument_name,ccyId,client_internal,isin,figi,quantity,unit_cost,total_cost,currency,strategy
+IBM,,imd_34634534,US0231351067,BBG000BVPXP1,1000,150,150000,USD,Tech
+IBM,,imd_34634534,US0231351067,BBG000BVPXP1,200,150,30000,USD,Balanced
+USD,USD,,,,1000,1,1000,USD,
