@@ -66,13 +66,14 @@ def nb_relative_path(abs_path):
         Relative path with directory navigation removed
 
     """
-    rel_path = os.path.relpath(abs_path)
-    return rel_path[3:]
+    rel_path = os.path.relpath(os.path.dirname(abs_path))
+
+    return rel_path[3:] if rel_path.startswith("../") else rel_path
 
 
 def process_nb(nb_path):
     """
-    Extracts metaadata from a notebook. By convention the metadata must:
+    Extracts metadata from a notebook. By convention the metadata must:
         - be the first cell
         - be a code cell
         - contain a short description
@@ -102,7 +103,7 @@ def process_nb(nb_path):
         return
 
     return NbMeta(
-        nb_relative_path(os.path.dirname(nb_path)),
+        nb_relative_path(nb_path),
         os.path.basename(nb_path),
         doc_str_obj.short_description,
         doc_str_obj.long_description,
@@ -179,12 +180,20 @@ def save_index_page(path, doc):
 
 
 def main():
-    nb_root = Path(__file__).parent.parent.joinpath("examples")
+    repo_root = Path(__file__).parent.parent
+    doc_gen_root = repo_root.joinpath("docgen").resolve()
+    nb_root = repo_root.joinpath("examples").resolve()
+
+    print(f"searching for notebooks in {nb_root}")
 
     meta = parse(nb_root=nb_root)
-    doc = build_doc(meta, 'README.mustache')
+    readme_template = doc_gen_root.joinpath("README.mustache").resolve()
+    doc = build_doc(meta, readme_template)
+    readme = nb_root.joinpath("README.md")
 
-    save_index_page(nb_root.joinpath("README.md"), doc)
+    print(f"saving index to {readme}")
+
+    save_index_page(readme, doc)
 
 
 if __name__ == "__main__":

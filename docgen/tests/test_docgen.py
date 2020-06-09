@@ -1,3 +1,4 @@
+import os
 import unittest
 from pathlib import Path
 
@@ -57,12 +58,18 @@ class DocGenTests(unittest.TestCase):
 
         print(doc)
 
-    def test_nb_relative_path(self):
+    def test_nb_relative_path_with_relative_path(self):
 
-        nb_root = Path(__file__).parent.parent.joinpath("examples").joinpath("use-cases").joinpath("ibor")
+        nb_root = Path(__file__).parent.parent.joinpath("examples").joinpath("use-cases").joinpath("ibor").joinpath("notebook.ipynb")
         rel_path = nb_relative_path(nb_root)
 
-        self.assertEquals(rel_path, "examples/use-cases/ibor")
+        self.assertEqual("examples/use-cases/ibor", rel_path)
+
+    def test_nb_relative_path_with_absolute_path(self):
+        nb_root = Path(__file__).parent.parent.joinpath("examples").joinpath("use-cases").joinpath("ibor").joinpath("notebook.ipynb").absolute()
+        rel_path = nb_relative_path(nb_root)
+
+        self.assertEqual("examples/use-cases/ibor", rel_path)
 
 
 if __name__ == '__main__':
