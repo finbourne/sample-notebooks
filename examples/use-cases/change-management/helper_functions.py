@@ -74,8 +74,7 @@ def batch_upsert(instrument_universe, api_factory):
             identifiers=identifiers)
 
     # Call LUSID to upsert our batch
-    instrument_response = api_factory.build(lusid.api.InstrumentsApi).upsert_instruments(
-        instruments=batch_upsert_request)
+    instrument_response = api_factory.build(lusid.api.InstrumentsApi).upsert_instruments(request_body=batch_upsert_request)
 
     # Pretty print the response from LUSID
     prettyprint.instrument_response(instrument_response, identifier='Figi')
@@ -95,7 +94,7 @@ def request_transaction_portfolio_creation(portfolio_code, portfolio_creation_da
     # Call LUSID to create our portfolio
     portfolio_response = api_factory.build(lusid.api.TransactionPortfoliosApi).create_portfolio(
         scope=analyst_scope_code,
-        transaction_portfolio=transaction_portfolio_request)
+        create_transaction_portfolio_request=transaction_portfolio_request)
 
     # Pretty print the response from LUSID
     prettyprint.portfolio_response(portfolio_response)
@@ -113,7 +112,7 @@ def request_reference_portfolio_creation(reference_portfolio_code, portfolio_cre
     # Call LUSID to create our reference portfolio
     portfolio_response = api_factory.build(lusid.api.ReferencePortfolioApi).create_reference_portfolio(
         scope=analyst_scope_code,
-        reference_portfolio=reference_portfolio_request)
+        create_reference_portfolio_request=reference_portfolio_request)
 
     # Pretty print our response from LUSID
     prettyprint.portfolio_response(portfolio_response)
@@ -142,7 +141,7 @@ def populate_with_cash(holdings_effective_date, initial_cash_balance, analyst_sc
         scope=analyst_scope_code,
         code=transaction_portfolio_code,
         effective_at=holdings_effective_date,
-        holding_adjustments=holding_adjustment)
+        adjust_holding_request=holding_adjustment)
 
     # Pretty print our response from LUSID
     prettyprint.set_holdings_response(
@@ -179,7 +178,7 @@ def upsert_constituents(instrument_market_cap, holdings_effective_date, analyst_
     response = api_factory.build(lusid.api.ReferencePortfolioApi).upsert_reference_portfolio_constituents(
         scope=analyst_scope_code,
         code=reference_portfolio_code,
-        constituents=constituents_request)
+        upsert_reference_portfolio_constituents_request=constituents_request)
 
     print ('Constituents Upserted')
 def request_define_property(domain, scope, code, display_name, api_factory):
@@ -197,7 +196,7 @@ def request_define_property(domain, scope, code, display_name, api_factory):
 
     # Call LUSID to create our new property
     property_response = api_factory.build(lusid.api.PropertyDefinitionsApi).create_property_definition(
-        definition=property_request)
+        create_property_definition_request=property_request)
 
     # Grab the key off the response to use when referencing this property in other LUSID calls
     strategy_property_key = property_response.key
@@ -249,7 +248,7 @@ def upsert_trades(analyst_transactions, strategy_property_key, scope, portfolio_
     transaction_response = api_factory.build(lusid.api.TransactionPortfoliosApi).upsert_transactions(
         scope=scope,
         code=portfolio_code,
-        transactions=batch_transaction_requests)
+        transaction_request=batch_transaction_requests)
 
     # Pretty print the response from LUSID
     prettyprint.transactions_response(
@@ -319,7 +318,7 @@ def create_instrument_quotes(quotes_effective_date, today, instrument_prices, an
 
     response = api_factory.build(lusid.api.QuotesApi).upsert_quotes(
         scope=analyst_scope_code,
-        quotes=instrument_quotes
+        request_body=instrument_quotes
     )
 
     prettyprint.upsert_quotes_response(response)
@@ -432,7 +431,7 @@ def run_aggregation(analyst_scope_code, index_portfolio_code, today, api_factory
     aggregated_portfolio = api_factory.build(lusid.api.AggregationApi).get_aggregation_by_portfolio(
         scope=analyst_scope_code,
         code=index_portfolio_code,
-        request=create_aggregation_request(
+        aggregation_request=create_aggregation_request(
             analyst_scope_code=analyst_scope_code,
             today=today,
             quotes_date=today
