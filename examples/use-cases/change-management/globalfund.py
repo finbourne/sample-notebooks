@@ -93,7 +93,7 @@ def valuation(api_factory, marketdata_scope, portfolio_group, time):
     response = api_factory.build(lusid.api.AggregationApi).get_aggregation_by_group(
         scope=portfolio_group.scope,
         code=portfolio_group.code,
-        request=aggregation_request)
+        aggregation_request=aggregation_request)
     
     dataframe = prettyprint.aggregation_responses_generic_df([response])
     dataframe = dataframe.append(dataframe.sum(numeric_only=True), ignore_index=True)
@@ -135,7 +135,7 @@ def create_portfolio_group(api_factory, scope, code, portfolios):
 
     portfolio_group = api_factory.build(lusid.api.PortfolioGroupsApi).create_portfolio_group(
         scope=scope,
-        request=group_request)
+        create_portfolio_group_request=group_request)
     
     return portfolio_group
                 
@@ -211,7 +211,7 @@ def upsert_quotes(api_factory, scope, data_frame, instrument_identifier_mapping,
     # Upsert the quotes into LUSID
     response = api_factory.build(lusid.api.QuotesApi).upsert_quotes(
         scope=scope,
-        quotes=instrument_quotes)
+        request_body=instrument_quotes)
 
     # Pretty print the response
     #prettyprint.upsert_quotes_response(response)
@@ -256,7 +256,7 @@ def create_transaction_type_configuration(api_factory, aliases, movements):
             
         
     response = api_factory.build(lusid.api.SystemConfigurationApi).create_configuration_transaction_type(
-        type=models.TransactionConfigurationDataRequest(
+        transaction_configuration_data_request=models.TransactionConfigurationDataRequest(
             aliases=aliases_new,
             movements=movements,
             properties=None
@@ -304,7 +304,7 @@ def create_portfolios(api_factory, scopes, code, currency):
         # Call LUSID to create your portfolio
         response = api_factory.build(lusid.api.TransactionPortfoliosApi).create_portfolio(
             scope=scope,
-            transaction_portfolio=transaction_portfolio_request)
+            create_transaction_portfolio_request=transaction_portfolio_request)
         
         responses.append(response)
         
@@ -381,7 +381,7 @@ def create_cut_labels(api_factory, exchange_names, cut_label_type):
             time_zone=exchange_info[exchange]['time_zone'])           
         try:
             response = api_factory.build(lusid.api.CutLabelDefinitionsApi).create_cut_label_definition(
-                create_request=request)      
+                create_cut_label_definition_request=request)
             responses.append(response)             
         except lusid.ApiException as e:
             pass
