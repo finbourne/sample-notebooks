@@ -327,6 +327,7 @@ def create_aggregation_request(analyst_scope_code, today, quotes_date):
 
     # Create our aggregation request
     inline_recipe = models.ConfigurationRecipe(
+        scope="User",
         code='quotes_recipe',
         market=models.MarketContext(
             market_rules=[

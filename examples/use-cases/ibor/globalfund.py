@@ -28,6 +28,7 @@ def valuation(api_factory, marketdata_scope, portfolio_group, time):
     time = "T".join(time_parts)
 
     inline_recipe = models.ConfigurationRecipe(
+        scope="User",
         code='quotes_recipe',
         market=models.MarketContext(
             market_rules=[
