@@ -35,7 +35,7 @@ script:
     fbn_nexus_username="DEVELOP_NEXUS_USERNAME"
 
     swagger_location=/swagger/v0/swagger.json
-    fbn_sdk_version=$(curl -s "${!fbn_lusid_api_url}$swagger_location" | awk -F '"' '{ print $10 }')
+    fbn_sdk_version=$(curl -s "${!fbn_lusid_api_url}$swagger_location" | jq -r .info.version)
 
     docker run \
       -e FBN_TOKEN_URL=${!fbn_token_url} \
