@@ -89,9 +89,10 @@ def valuation(api_factory, marketdata_scope, portfolio_group, time):
         ],
         group_by=[
             'Holding/default/SubHoldingKey'
-        ])
+        ],
+        portfolio_identifier_code="GroupPortfolio")
 
-    response = api_factory.build(lusid.api.AggregationApi).get_aggregation_by_group(
+    response = api_factory.build(lusid.api.AggregationApi).get_aggregation(
         scope=portfolio_group.scope,
         code=portfolio_group.code,
         aggregation_request=aggregation_request)
