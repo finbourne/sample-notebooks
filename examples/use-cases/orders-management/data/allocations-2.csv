@@ -1,3 +1,0 @@
-﻿portfolio,instrument_name,client_internal,isin,figi,quantity,price,currency,allocation_id,originating_order,strategy,side
-us_long_live,IBM,imd_34634534,US0231351067,BBG000BVPXP1,82,0.9,USD,ALLOC001,ORD001,Tech,buy limit
-us_long_live,IBM,imd_34634534,US0231351067,BBG000BVPXP1,61,1.1,USD,ALLOC002,ORD002,Tech,sell limit
