@@ -360,7 +360,10 @@ def create_aggregation_request(analyst_scope_code, today, quotes_date):
         effective_at=today,
         metrics=[
             models.AggregateSpec(
-                key='Holding/default/SubHoldingKey',
+                key='Instrument/default/LusidInstrumentId',
+                op='Value'),
+            models.AggregateSpec(
+                key='Instrument/default/Name',
                 op='Value'),
             models.AggregateSpec(
                 key='Holding/default/Units',
@@ -376,7 +379,7 @@ def create_aggregation_request(analyst_scope_code, today, quotes_date):
                 op='Sum')
         ],
         group_by=[
-            'Holding/default/SubHoldingKey'
+            'Instrument/default/LusidInstrumentId'
         ])
     
     return aggregation_request
@@ -439,6 +442,12 @@ def run_aggregation(analyst_scope_code, index_portfolio_code, today, api_factory
         )
     )
     
-    # Pretty print the response from LUSID
-    prettyprint.aggregation_response_index(aggregated_portfolio)
+    df = pd.DataFrame(aggregated_portfolio.data)
+    df.loc["Total"] = df.sum(numeric_only=True)
+    df["return"] = (df["Sum(Holding/default/PV)"] - df["Sum(Holding/default/Cost)"]) / df["Sum(Holding/default/Cost)"]
+    df = df.rename(columns={
+        "Sum(Holding/default/PV)": "Current Index Level",
+        "Sum(Holding/default/Cost)": "Initial Index Level"
+    })
+    return df
 

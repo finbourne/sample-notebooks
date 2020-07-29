@@ -360,7 +360,7 @@ def create_aggregation_request(analyst_scope_code, today, quotes_date):
         effective_at=today,
         metrics=[
             models.AggregateSpec(
-                key='Holding/default/SubHoldingKey',
+                key='Instrument/default/LusidInstrumentId',
                 op='Value'),
             models.AggregateSpec(
                 key='Holding/default/Units',
@@ -376,7 +376,7 @@ def create_aggregation_request(analyst_scope_code, today, quotes_date):
                 op='Sum')
         ],
         group_by=[
-            'Holding/default/SubHoldingKey'
+            'Instrument/default/LusidInstrumentId'
         ])
     
     return aggregation_request
