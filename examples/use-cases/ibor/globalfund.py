@@ -74,7 +74,7 @@ def valuation(api_factory, marketdata_scope, portfolio_group, time):
         inline_recipe=inline_recipe,
         effective_at=time,
         metrics=[
-            models.AggregateSpec(key='Holding/default/SubHoldingKey',
+            models.AggregateSpec(key='Instrument/default/LusidInstrumentId',
             op='Value'),
             models.AggregateSpec(key='Instrument/default/Name',
             op='Value'),
@@ -88,7 +88,7 @@ def valuation(api_factory, marketdata_scope, portfolio_group, time):
             op='Proportion')
         ],
         group_by=[
-            'Holding/default/SubHoldingKey'
+            'Instrument/default/LusidInstrumentId'
         ],
         portfolio_identifier_code="GroupPortfolio")
 
