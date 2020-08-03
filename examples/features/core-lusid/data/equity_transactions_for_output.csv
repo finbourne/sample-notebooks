@@ -1,0 +1,7 @@
+portfolio_code,portfolio_name,portfolio_base_currency,ticker,sedol,instrument_type,instrument_id,name,txn_id,txn_type,txn_trade_date,txn_settle_date,txn_units,txn_price,txn_consideration,currency,strategy,cash_transactions
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0002162385,SEDOL1,equity,EQ_1234,Aviva,trd_0001,StockIn,02/01/2020,04/01/2020,120000,5,600000,GBP,balanced,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0002162385,SEDOL1,equity,EQ_1234,Aviva,trd_0002,StockIn,02/01/2020,04/01/2020,12000,5,60000,GBP,balanced,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0031348658,SEDOL3,equity,EQ_1236,Barclays,trd_0003,StockIn,02/01/2020,04/01/2020,150000,2,300000,GBP,balanced,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0031348658,SEDOL3,equity,EQ_1236,Barclays,trd_0004,StockIn,02/01/2020,04/01/2020,100000,2,300000,GBP,banking,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0005405286,SEDOL5,equity,EQ_1238,HSBC,trd_0005,StockIn,02/01/2020,04/01/2020,20000,6,120000,GBP,banking,
+EQUITY_UK,LUSID's top 10 FTSE stock portfolio,GBP,GB0008847096,SEDOL7,equity,EQ_1240,Tesco,trd_0006,StockIn,16/01/2020,18/01/2020,4000,9,36000,GBP,balanced,
