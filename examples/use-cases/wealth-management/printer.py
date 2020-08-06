@@ -512,7 +512,10 @@ def portfolio_properties_response(response):
     print (colours.bold + 'Properties Sucessfully Updated for Portfolio' + colours.end)
     for _property_key, _property_value in response.properties.items():
         print (colours.bold + 'Property key: ' + colours.end + _property_key)
-        print (colours.bold + 'Value: ' + colours.end + _property_value.value.label_value + '\n')
+        if getattr(_property_value.value, "label_value") is not None:
+            print (colours.bold + 'Value: ' + colours.end + _property_value.value.label_value + '\n')
+        if getattr(_property_value.value, "label_value_set") is not None:
+            print (colours.bold + 'Values: ' + colours.end + str(_property_value.value.label_value_set.values) + '\n')
 
 
 def aggregation_response_paper(response):
