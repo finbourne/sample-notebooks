@@ -12,6 +12,7 @@ script:
     fbn_clientid="MASTER_FBN_CLIENT_ID"
     fbn_client_secret="MASTER_FBN_CLIENT_SECRET"
     fbn_lusid_api_url="MASTER_FBN_LUSID_API_URL"
+    fbn_app_name="MASTER_FBN_APP_NAME"
 
     docker run \
       -e FBN_TOKEN_URL=${!fbn_token_url} \
@@ -20,6 +21,7 @@ script:
       -e FBN_CLIENT_ID=${!fbn_clientid} \
       -e FBN_CLIENT_SECRET=${!fbn_client_secret} \
       -e FBN_LUSID_API_URL=${!fbn_lusid_api_url} \
+      -e FBN_APP_NAME=${!fbn_app_name} \
       -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
       -v $(pwd):/usr/notebooks \
       finbourne/notebook-test-runner:latest
@@ -31,6 +33,7 @@ script:
     fbn_clientid="DEVELOP_FBN_CLIENT_ID"
     fbn_client_secret="DEVELOP_FBN_CLIENT_SECRET"
     fbn_lusid_api_url="DEVELOP_FBN_LUSID_API_URL"
+    fbn_app_name="DEVELOP_FBN_APP_NAME"
     fbn_nexus_password="DEVELOP_NEXUS_PASSWORD"
     fbn_nexus_username="DEVELOP_NEXUS_USERNAME"
 
@@ -44,6 +47,7 @@ script:
       -e FBN_CLIENT_ID=${!fbn_clientid} \
       -e FBN_CLIENT_SECRET=${!fbn_client_secret} \
       -e FBN_LUSID_API_URL=${!fbn_lusid_api_url} \
+      -e FBN_APP_NAME=${!fbn_app_name} \
       -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
       -e NEXUS_USERNAME=${!fbn_nexus_username} \
       -e NEXUS_PASSWORD=${!fbn_nexus_password} \
