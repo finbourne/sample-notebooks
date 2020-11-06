@@ -1,0 +1,85 @@
+# This job runs the project tests
+
+name: run-sample-notebooks-tests
+
+# Trigger the workflow on push or pull request to master or develop
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+          
+      - name: Run tests on MASTER branch
+        if: ${{ github.base_ref == 'master' }}
+        env: 
+          FBN_TOKEN_URL: ${{ secrets.MASTER_FBN_TOKEN_URL }}
+          FBN_USERNAME: ${{ secrets.MASTER_FBN_USERNAME }}
+          FBN_PASSWORD: ${{ secrets.MASTER_FBN_PASSWORD }}
+          FBN_CLIENT_ID: ${{ secrets.MASTER_FBN_CLIENT_ID }}
+          FBN_CLIENT_SECRET: ${{ secrets.MASTER_FBN_CLIENT_SECRET }}
+          FBN_LUSID_API_URL: ${{ secrets.MASTER_FBN_LUSID_API_URL }}
+          FBN_APP_NAME: ${{ secrets.MASTER_FBN_CLIENT_ID }}
+        run: | 
+          
+          swagger_location=/swagger/v0/swagger.json
+          FBN_SDK_VERSION=$(curl -s "${!fbn_lusid_api_url}$swagger_location" | jq -r .info.version)
+          echo "env variables for MASTER have been set"
+          
+          docker run \
+            -e FBN_TOKEN_URL=$FBN_TOKEN_URL \
+            -e FBN_USERNAME=$FBN_USERNAME \
+            -e FBN_PASSWORD=$FBN_PASSWORD \
+            -e FBN_CLIENT_ID=$FBN_CLIENT_ID \
+            -e FBN_CLIENT_SECRET=$FBN_CLIENT_SECRET \
+            -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL \
+            -e FBN_APP_NAME=$FBN_APP_NAME \
+            -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
+            -e SDK_VERSION=$FBN_SDK_VERSION \
+            -v $(pwd):/usr/notebooks \
+            finbourne/notebook-test-runner:latest
+          
+      - name: Run tests on DEVELOP branch
+        if: ${{ github.base_ref == 'develop' || github.ref == 'refs/heads/develop' }}
+        env: 
+          FBN_TOKEN_URL: ${{ secrets.DEVELOP_FBN_TOKEN_URL }}
+          FBN_USERNAME: ${{ secrets.DEVELOP_FBN_USERNAME }}
+          FBN_PASSWORD: ${{ secrets.DEVELOP_FBN_PASSWORD }}
+          FBN_CLIENT_ID: ${{ secrets.DEVELOP_FBN_CLIENT_ID }}
+          FBN_CLIENT_SECRET: ${{ secrets.DEVELOP_FBN_CLIENT_SECRET }}
+          FBN_LUSID_API_URL: ${{ secrets.DEVELOP_FBN_LUSID_API_URL }}
+          FBN_APP_NAME: ${{ secrets.DEVELOP_FBN_CLIENT_ID }}
+          NEXUS_USERNAME: ${{ secrets.DEVELOP_NEXUS_USERNAME }}
+          NEXUS_PASSWORD: ${{ secrets.DEVELOP_NEXUS_PASSWORD }}
+ 
+        run: |
+          
+          swagger_location=/swagger/v0/swagger.json
+          FBN_SDK_VERSION=$(curl -s "${!fbn_lusid_api_url}$swagger_location" | jq -r .info.version)
+          echo "env variables for MASTER have been set"
+          
+          docker run \
+            -e FBN_TOKEN_URL=$FBN_TOKEN_URL \
+            -e FBN_USERNAME=$FBN_USERNAME \
+            -e FBN_PASSWORD=$FBN_PASSWORD \
+            -e FBN_CLIENT_ID=$FBN_CLIENT_ID \
+            -e FBN_CLIENT_SECRET=$FBN_CLIENT_SECRET \
+            -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL \
+            -e FBN_APP_NAME=$FBN_APP_NAME \
+            -e NEXUS_USERNAME=${NEXUS_USERNAME} \
+            -e NEXUS_PASSWORD=${NEXUS_PASSWORD} \
+            -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
+            -e SDK_VERSION=$FBN_SDK_VERSION \
+            -v $(pwd):/usr/notebooks \
+            finbourne/notebook-test-runner:latest
