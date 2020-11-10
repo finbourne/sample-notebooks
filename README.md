@@ -2,8 +2,8 @@
 
 | branch | status |
 | --- | --- |
-| `master` |  [![Build Status](https://travis-ci.org/finbourne/sample-notebooks.svg?branch=master)](https://travis-ci.org/finbourne/sample-notebooks) |
-| `develop` | [![Build Status](https://travis-ci.org/finbourne/sample-notebooks.svg?branch=develop)](https://travis-ci.org/finbourne/sample-notebooks)
+| `master` |  ![run-sample-notebooks-tests](https://github.com/finbourne/sample-notebooks/workflows/run-sample-notebooks-tests/badge.svg?branch=master) |
+| `develop` | ![run-sample-notebooks-tests](https://github.com/finbourne/sample-notebooks/workflows/run-sample-notebooks-tests/badge.svg?branch=develop)
 
 Sample notebooks showcasing how to use the LUSID SDK.
 
