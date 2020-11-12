@@ -33,8 +33,6 @@ jobs:
           FBN_APP_NAME: ${{ secrets.MASTER_FBN_CLIENT_ID }}
         run: | 
           
-          swagger_location=/swagger/v0/swagger.json
-          FBN_SDK_VERSION=$(curl -s "${!fbn_lusid_api_url}$swagger_location" | jq -r .info.version)
           echo "env variables for MASTER have been set"
           
           docker run \
@@ -46,7 +44,6 @@ jobs:
             -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL \
             -e FBN_APP_NAME=$FBN_APP_NAME \
             -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
-            -e SDK_VERSION=$FBN_SDK_VERSION \
             -v $(pwd):/usr/notebooks \
             finbourne/notebook-test-runner:latest
           
@@ -66,8 +63,10 @@ jobs:
         run: |
           
           swagger_location=/swagger/v0/swagger.json
-          FBN_SDK_VERSION=$(curl -s "${!fbn_lusid_api_url}$swagger_location" | jq -r .info.version)
-          echo "env variables for MASTER have been set"
+          FBN_SDK_VERSION=$(curl -s "${{ secrets.DEVELOP_FBN_LUSID_API_URL }}$swagger_location" | jq -r .info.version)
+
+          echo "using SDK version: ${FBN_SDK_VERSION}"
+          echo "env variables for DEVELOP have been set"
           
           docker run \
             -e FBN_TOKEN_URL=$FBN_TOKEN_URL \
