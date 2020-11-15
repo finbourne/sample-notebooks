@@ -46,24 +46,6 @@ jobs:
             -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
             -v $(pwd):/usr/notebooks \
             finbourne/notebook-test-runner:latest
-            
-      - name: Slack notification
-        uses: 8398a7/action-slack@v3
-        with:
-          status: custom
-          fields: workflow,job,commit,repo,ref,author,took
-          custom_payload: |
-            {
-            username: 'github-actions-tests',
-            icon_emoji: ':octocat:',
-            attachments: [{
-              color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-              text: `Job ${process.env.AS_WORKFLOW}(${process.env.AS_COMMIT}) of ${process.env.AS_REPO}@${process.env.AS_REF} by ${process.env.GITHUB_ACTOR} failed in ${process.env.AS_TOOK}`
-            }]
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-        if: failure()
           
       - name: Run tests on DEVELOP branch
         if: ${{ github.base_ref == 'develop' || github.ref == 'refs/heads/develop' }}
