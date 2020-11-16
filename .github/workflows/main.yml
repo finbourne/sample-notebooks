@@ -94,7 +94,7 @@ jobs:
             icon_emoji: ':octocat:',
             attachments: [{
               color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-              text: `Job ${process.env.AS_WORKFLOW}(${process.env.AS_COMMIT}) of ${process.env.AS_REPO}@${process.env.GITHUB_BASE_REF} by ${process.env.GITHUB_ACTOR} failed in ${process.env.AS_TOOK}`
+              text: `Job ${process.env.AS_WORKFLOW}(Commit ${process.env.AS_COMMIT} into ${process.env.GITHUB_BASE_REF} from ${process.env.GITHUB_HEAD_REF}) of ${process.env.AS_REPO} by ${process.env.GITHUB_ACTOR} failed in ${process.env.AS_TOOK}`
             }]
             }
         env:
