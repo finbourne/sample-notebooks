@@ -1,0 +1,58 @@
+name: "Daily build and test"
+on:
+  schedule:
+  - cron: "0 4 * * *"
+    
+jobs:
+  cron-build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+          
+      - name: Run tests on MASTER branch
+        if: ${{ github.base_ref == 'master' }}
+        env: 
+          FBN_TOKEN_URL: ${{ secrets.MASTER_FBN_TOKEN_URL }}
+          FBN_USERNAME: ${{ secrets.MASTER_FBN_USERNAME }}
+          FBN_PASSWORD: ${{ secrets.MASTER_FBN_PASSWORD }}
+          FBN_CLIENT_ID: ${{ secrets.MASTER_FBN_CLIENT_ID }}
+          FBN_CLIENT_SECRET: ${{ secrets.MASTER_FBN_CLIENT_SECRET }}
+          FBN_LUSID_API_URL: ${{ secrets.MASTER_FBN_LUSID_API_URL }}
+          FBN_APP_NAME: ${{ secrets.MASTER_FBN_CLIENT_ID }}
+        run: | 
+          
+          echo "env variables for MASTER have been set"
+          
+          docker run \
+            -e FBN_TOKEN_URL=$FBN_TOKEN_URL \
+            -e FBN_USERNAME=$FBN_USERNAME \
+            -e FBN_PASSWORD=$FBN_PASSWORD \
+            -e FBN_CLIENT_ID=$FBN_CLIENT_ID \
+            -e FBN_CLIENT_SECRET=$FBN_CLIENT_SECRET \
+            -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL \
+            -e FBN_APP_NAME=$FBN_APP_NAME \
+            -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
+            -v $(pwd):/usr/notebooks \
+            finbourne/notebook-test-runner:latest
+        
+      - name: Slack notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          fields: workflow,job,commit,repo,ref,author,took
+          custom_payload: |
+            {
+            username: 'github-actions-tests',
+            icon_emoji: ':octocat:',
+            attachments: [{
+              color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+              text: `${process.env.AS_WORKFLOW} on ${process.env.AS_REPO} have run in ${process.env.AS_TOOK} with status ${{ job.status }}`
+            }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
+        if: always()
+    
