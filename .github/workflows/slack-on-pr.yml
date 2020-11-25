@@ -1,0 +1,31 @@
+name: Slack alert on PR
+
+on:
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+
+  slack-alert-on-pr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+
+    - name: Slack notification on push
+      uses: 8398a7/action-slack@v3
+      with:
+        status: custom
+        fields: workflow,job,commit,repo,ref,author,took
+        custom_payload: |
+          {
+          username: 'github-actions',
+          icon_emoji: ':octocat:',
+          attachments: [{
+            color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+            text: `PR in ${process.env.AS_REPO} has been raised by ${process.env.GITHUB_ACTOR} (${process.env.GITHUB_HEAD_REF} into ${process.env.GITHUB_BASE_REF})`
+          }]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_FOR_GITHUB_ACTIVITY_CHANNEL }}
+      if: always()
