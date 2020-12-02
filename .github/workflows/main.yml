@@ -1,6 +1,6 @@
 # This job runs the project tests
 
-name: run-sample-notebooks-tests
+name: Build and test
 
 # Trigger the workflow on push or pull request to master or develop
 
