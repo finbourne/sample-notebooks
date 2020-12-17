@@ -1,0 +1,35 @@
+name: Slack for Issues
+
+on:
+  issues:
+    types: [opened, edited, deleted, milestoned]
+  issue_comment:
+    types: [created, deleted, edited]
+
+jobs:
+
+  build:
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+          
+      - name: Slack notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          fields: workflow,job,commit,repo,ref,author,took
+          custom_payload: |
+            {
+            username: 'github-actions-tests',
+            icon_emoji: ':octocat:',
+            attachments: [{
+              color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+              text: `Issue #${{ github.event.issue.number }} (${{github.event.issue.title }}) has been ${{ github.event.action }} in ${process.env.AS_REPO} by ${{github.actor }}. Click here for more details: ${{github.event.issue.html_url }}`
+            }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_FOR_GITHUB_ACTIVITY_CHANNEL }}
+          GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
+        if: always()
