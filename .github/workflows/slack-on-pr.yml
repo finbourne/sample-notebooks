@@ -23,7 +23,7 @@ jobs:
           icon_emoji: ':octocat:',
           attachments: [{
             color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-            text: `PR in ${process.env.AS_REPO} has been raised by ${process.env.GITHUB_ACTOR} (${process.env.GITHUB_HEAD_REF} into ${process.env.GITHUB_BASE_REF})`
+            text: `PR in ${process.env.AS_REPO} has been raised by ${process.env.GITHUB_ACTOR} (${process.env.GITHUB_HEAD_REF} into ${process.env.GITHUB_BASE_REF}). Click here for more details: ${{github.event.pull_request.html_url }}`
           }]
           }
       env:
