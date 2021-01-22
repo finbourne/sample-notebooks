@@ -32,7 +32,6 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 ## examples/use-cases/change-management
 | filename | title | description | features |
 | --- | --- | --- | --- |
-| Business Agility - migration between investment systems.ipynb | Business agility | Demonstration of how to migrate your data from one system to another. | holdings, instruments, properties, reconciliations, set holdings, transaction configuration, transactions |
 | Safely and efficiently test changes to your system.ipynb | Testing system changes | Demonstration of how to safely test changes to your data in a production environment | derived portfolios, instrument definitions, instruments, set holdings, transactions |
 | Set up a sandbox trading environment.ipynb | Sandbox trading environment |  | aggregation, instruments, properties, quotes, reference portfolios, set holdings, transactions |
 
@@ -41,7 +40,6 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 | --- | --- | --- | --- |
 | Generating Corporate actions natively in LUSID.ipynb | Corporate Actions in LUSID |  | corporate actions, derived portfolios, holdings, transactions |
 | Generating holdings with the movements engine in LUSID.ipynb | Generating holdings | Generating holdings with the movements engine | cocoon, instruments, transaction configuration, transactions |
-| Get a consolidated view of your data from multiple systems.ipynb | Consolidating multiple systems | Demonstration of how to migrate funds from multiple source systems into LUSID | aggregation, holdings, instruments, properties, quotes, reconciliations, transaction configuration |
 | How do I create holdings in LUSID.ipynb | Creating holdings in LUSID |  | properties, transaction configuration, transactions |
 | IBOR User Journey.ipynb | IBOR User Journey | A day in the life of an IBOR using LUSID | aggregation, aggregation, cocoon, corporate actions, instruments, quotes, results store, sub-holding keys, transaction configuration, valuation reconciliation |
 | Load Transactions from an External System.ipynb | Loading transactions from an external system | Demonstration of loading a transaction XML file from another &quot;External System&quot; into LUSID. | cocoon, holdings, transactions |
@@ -52,7 +50,6 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 | Portfolio types and portfolio groups in LUSID.ipynb | Portfolios and Portfolio Groups |  | commands, corporate actions, portfolio groups, portfolios, transactions |
 | Running a Global Fund.ipynb | Running a global fund | Demonstration of using LUSID to run funds fed from multiple source systems across multiple regions | aggregation, cocoon, cut labels, instruments, quotes, recipes, transaction configuration, transactions |
 | Using cut-labels to manage your business across different time-zones.ipynb | Cut Labels |  | cut labels, holdings, instruments, transactions |
-| Valuations with recipes.ipynb | Valuation with recipes | This notebooks shows how to value a portfolio using recipes with different pricing sources | manifests, recipes, transactions, valuation |
 
 ## examples/use-cases/orders-management
 | filename | title | description | features |
@@ -67,7 +64,6 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 ## examples/use-cases/private-assets
 | filename | title | description | features |
 | --- | --- | --- | --- |
-| Managing cashflows - capital calls and income distributions.ipynb | Running a Fund with Investors | Demonstration of how to manage a fund's subscriptions and capital calls with investors in LUSID | holdings, instruments, properties, transaction configuration, transactions |
 | Supporting a multi-asset class book of business.ipynb | Bespoke asset classes | Demonstration of how to create your own custom instrument inside LUSID, create a transaction against it and value it. | aggregation, instruments, properties, quotes, transactions |
 
 ## examples/use-cases/risk-and-performance
@@ -77,6 +73,11 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 | Calculating P&amp;L on strategy.ipynb | Calculating P&amp;L on strategies | Demonstration of how to use sub-holding keys and output transactions to track P&amp;L on different strategies. | cocoon - seed_data, derived portfolios, output transactions, properties, sub-holding keys, transactions |
 | Manage your investment strategies.ipynb | Managing investment strategies | Demonstration of how to compare how strategies are performing across all of our client's holdings, rather than just looking at a single portfolio in isolation. | aggregation, data types, instruments, portfolio groups, properties, set holdings, transactions |
 | Track trading commissions in your portfolio.ipynb | Track trading costs and commissions in your portfolio |  | cocoon, instruments, portfolio groups, properties, sub-holding keys, transaction configuration, transactions |
+
+## examples/use-cases/valuation
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| Bond Pricing And Accrued Interest Calculation.ipynb | Bond Pricing And Accrued Interest Calculation | Demonstrates pricing a bond and calculating it's accrued interest based on a user defined Bond Instrument. | aggregation, instruments, market data store, quotes, results store |
 
 ## examples/use-cases/wealth-management
 | filename | title | description | features |
