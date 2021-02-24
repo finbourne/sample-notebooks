@@ -323,68 +323,6 @@ def create_instrument_quotes(quotes_effective_date, today, instrument_prices, an
 
     prettyprint.upsert_quotes_response(response)
 
-def create_aggregation_request(analyst_scope_code, today, quotes_date):
-
-    # Create our aggregation request
-    inline_recipe = models.ConfigurationRecipe(
-        scope="User",
-        code='quotes_recipe',
-        market=models.MarketContext(
-            market_rules=[
-                models.MarketDataKeyRule(
-                    key='Equity.LusidInstrumentId.*',
-                    supplier='DataScope',
-                    data_scope=analyst_scope_code,
-                    quote_type='Price',
-                    field='Mid',
-                    quote_interval=quotes_date.strftime("%Y-%m-%d")
-                )
-
-            ],
-            suppliers=models.MarketContextSuppliers(
-                commodity='DataScope',
-                credit='DataScope',
-                equity='DataScope',
-                fx='DataScope',
-                rates='DataScope'),
-            options=models.MarketOptions(
-                default_supplier='DataScope',
-                default_instrument_code_type='LusidInstrumentId',
-                default_scope=analyst_scope_code)
-        ),        
-
-    )
-
-    aggregation_request = models.AggregationRequest(
-        inline_recipe=inline_recipe,
-        effective_at=today,
-        metrics=[
-            models.AggregateSpec(
-                key='Instrument/default/LusidInstrumentId',
-                op='Value'),
-            models.AggregateSpec(
-                key='Instrument/default/Name',
-                op='Value'),
-            models.AggregateSpec(
-                key='Holding/default/Units',
-                op='Sum'),
-            models.AggregateSpec(
-                key='Holding/default/Cost',
-                op='Sum'),
-            models.AggregateSpec(
-                key='Holding/default/PV',
-                op='Sum'),
-            models.AggregateSpec(
-                key='Holding/default/Price',
-                op='Sum')
-        ],
-        group_by=[
-            'Instrument/default/LusidInstrumentId'
-        ])
-    
-    return aggregation_request
-
-
 def setup_index(analyst_scope_code, reference_portfolio_code, instrument_prices, api_factory):
     # Set an arbitary index level to start our index with
     index_level = 1000
@@ -428,26 +366,3 @@ def setup_index(analyst_scope_code, reference_portfolio_code, instrument_prices,
             )
         )
     return index_setup
-
-def run_aggregation(analyst_scope_code, index_portfolio_code, today, api_factory):
-
-    # Call LUSID to aggregate across all of our portfolios
-    aggregated_portfolio = api_factory.build(lusid.api.AggregationApi).get_aggregation(
-        scope=analyst_scope_code,
-        code=index_portfolio_code,
-        aggregation_request=create_aggregation_request(
-            analyst_scope_code=analyst_scope_code,
-            today=today,
-            quotes_date=today
-        )
-    )
-    
-    df = pd.DataFrame(aggregated_portfolio.data)
-    df.loc["Total"] = df.sum(numeric_only=True)
-    df["return"] = (df["Sum(Holding/default/PV)"] - df["Sum(Holding/default/Cost)"]) / df["Sum(Holding/default/Cost)"]
-    df = df.rename(columns={
-        "Sum(Holding/default/PV)": "Current Index Level",
-        "Sum(Holding/default/Cost)": "Initial Index Level"
-    })
-    return df
-
