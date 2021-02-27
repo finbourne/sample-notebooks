@@ -425,20 +425,3 @@ def setup_index(analyst_scope_code, reference_portfolio_code, instrument_prices,
             )
         )
     return index_setup
-
-def run_aggregation(analyst_scope_code, index_portfolio_code, today, api_factory):
-
-    # Call LUSID to aggregate across all of our portfolios
-    aggregated_portfolio = api_factory.build(lusid.api.AggregationApi).get_aggregation(
-        scope=analyst_scope_code,
-        code=index_portfolio_code,
-        aggregation_request=create_aggregation_request(
-            analyst_scope_code=analyst_scope_code,
-            today=today,
-            quotes_date=today
-        )
-    )
-    
-    # Pretty print the response from LUSID
-    prettyprint.aggregation_response_index(aggregated_portfolio)
-
