@@ -1,4 +1,5 @@
 ![LUSID_by_Finbourne](https://content.finbourne.com/LUSID_repo.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffinbourne%2Fsample-notebooks.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffinbourne%2Fsample-notebooks?ref=badge_shield)
 
 | branch | status |
 | --- | --- |
@@ -33,3 +34,7 @@ $ docker run --rm -it --name fbn-jupyter -v $(pwd):/home/jovyan -e FBN_SECRETS_P
 
 4. Click on the link shown in the console to open up JupyterHub in a browser.
 5. You can now navigate to your chosen notebook and run it.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffinbourne%2Fsample-notebooks.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffinbourne%2Fsample-notebooks?ref=badge_large)
