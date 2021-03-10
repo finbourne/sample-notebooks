@@ -71,7 +71,6 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 | --- | --- | --- | --- |
 | Backtesting with LUSID derived portfolios.ipynb | Backtesting with derived portfolios |  | aggregation, cocoon, derived portfolios, holdings, instruments, quotes |
 | Calculating P&amp;L on strategy.ipynb | Calculating P&amp;L on strategies | Demonstration of how to use sub-holding keys and output transactions to track P&amp;L on different strategies. | cocoon - seed_data, derived portfolios, output transactions, properties, sub-holding keys, transactions |
-| Loading and calculating returns-Copy1.ipynb | Loading and caculating returns | Demonstration of how to load and calculate returns in LUSID. | Returns |
 | Loading and calculating returns.ipynb | Loading and caculating returns | Demonstration of how to load and calculate returns in LUSID. | Returns |
 | Manage your investment strategies.ipynb | Managing investment strategies | Demonstration of how to compare how strategies are performing across all of our client's holdings, rather than just looking at a single portfolio in isolation. | aggregation, data types, instruments, portfolio groups, properties, set holdings, transactions |
 | Track trading commissions in your portfolio.ipynb | Track trading costs and commissions in your portfolio |  | cocoon, instruments, portfolio groups, properties, sub-holding keys, transaction configuration, transactions |
