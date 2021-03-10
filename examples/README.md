@@ -17,11 +17,6 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 | Processing Corporate Actions as native LUSID transitions.ipynb | Processing Corporate Actions using LUSID transitions | Demonstration of booking corporate actions using LUSID's transitions | cocoon - seed_data, corporate actions, holdings, transaction configuration, transactions |
 | Sub-holding Keys.ipynb | Sub-Holding Keys | Demonstration of how to set up and use sub-holding keys | cocoon - seed_data, holdings, properties, sub-holding keys |
 
-## examples/features/core-lusid/.ipynb_checkpoints
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| Cancelling transactions in LUSID-checkpoint.ipynb | Cancelling transactions | Demonstration of how to use the CancelTransactions endpoint to cancel transactions in a LUSID portfolio. | cancel transactions, cocoon - seed_data, holdings, transactions |
-
 ## examples/use-cases/audit-trail
 | filename | title | description | features |
 | --- | --- | --- | --- |
@@ -56,13 +51,6 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 | Running a Global Fund.ipynb | Running a global fund | Demonstration of using LUSID to run funds fed from multiple source systems across multiple regions | aggregation, cocoon, cut labels, instruments, quotes, recipes, transaction configuration, transactions |
 | Using cut-labels to manage your business across different time-zones.ipynb | Cut Labels |  | cut labels, holdings, instruments, transactions |
 
-## examples/use-cases/ibor/.ipynb_checkpoints
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| IBOR User Journey-checkpoint.ipynb | IBOR User Journey | A day in the life of an IBOR using LUSID | aggregation, aggregation, cocoon, corporate actions, instruments, quotes, results store, sub-holding keys, transaction configuration, valuation reconciliation |
-| Maintain a fund in multiple currencies and share classes-checkpoint.ipynb | Modelling share classes in LUSID |  | adjust holdings, aggregation, holdings, instrument definitions, quotes, transactions |
-| Running a Global Fund-checkpoint.ipynb | Running a global fund | Demonstration of using LUSID to run funds fed from multiple source systems across multiple regions | aggregation, cocoon, cut labels, instruments, quotes, recipes, transaction configuration, transactions |
-
 ## examples/use-cases/orders-management
 | filename | title | description | features |
 | --- | --- | --- | --- |
@@ -88,14 +76,6 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 | Manage your investment strategies.ipynb | Managing investment strategies | Demonstration of how to compare how strategies are performing across all of our client's holdings, rather than just looking at a single portfolio in isolation. | aggregation, data types, instruments, portfolio groups, properties, set holdings, transactions |
 | Track trading commissions in your portfolio.ipynb | Track trading costs and commissions in your portfolio |  | cocoon, instruments, portfolio groups, properties, sub-holding keys, transaction configuration, transactions |
 
-## examples/use-cases/risk-and-performance/.ipynb_checkpoints
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| Backtesting with LUSID derived portfolios-checkpoint.ipynb | Backtesting with derived portfolios |  | aggregation, cocoon, derived portfolios, holdings, instruments, quotes |
-| Loading and calculating returns-Copy1-checkpoint.ipynb | Loading and caculating returns | Demonstration of how to load and calculate returns in LUSID. | Returns |
-| Loading and calculating returns-checkpoint.ipynb | Loading and caculating returns | Demonstration of how to load and calculate returns in LUSID. | Returns |
-| Manage your investment strategies-checkpoint.ipynb | Managing investment strategies | Demonstration of how to compare how strategies are performing across all of our client's holdings, rather than just looking at a single portfolio in isolation. | aggregation, data types, instruments, portfolio groups, properties, set holdings, transactions |
-
 ## examples/use-cases/valuation
 | filename | title | description | features |
 | --- | --- | --- | --- |
@@ -105,11 +85,6 @@ This repository contains various sets of Jupyter notebooks. The examples in this
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | Households.ipynb | Households | Demonstration of how to manage the holdings for an investor based on each Mandate &amp; Household they are associated with. | aggregation, instruments, portfolio groups, portfolios, properties, quotes, set holdings |
-
-## examples/use-cases/wealth-management/.ipynb_checkpoints
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| Households-checkpoint.ipynb | Households | Demonstration of how to manage the holdings for an investor based on each Mandate &amp; Household they are associated with. | aggregation, instruments, portfolio groups, portfolios, properties, quotes, set holdings |
 
 
 | :warning: This file is generated, any direct edits may be lost |
