@@ -250,6 +250,6 @@
 		0.970186025818435,
 		0.969944204112752
 		],
-	"DayCountConvention": 0,
+	"DayCountConvention": "Act360",
 	"MarketElementType": "ZC"
 }
