@@ -1,0 +1,21 @@
+portfolio_code,portfolio_name,portfolio_base_currency,ticker,sedol,instrument_type,instrument_id,name,txn_id,txn_type,txn_trade_date,txn_settle_date,txn_units,txn_price,txn_consideration,currency,sector,cash_transactions
+ukEquityPortfolio,UK Active Equity Portfolio,GBP,BT.A,SEDOL1,equity,EQ_1234,BT GROUP PLC,trd_0001,StockIn,02/01/2020,04/01/2020,60000,1,60000,GBP,media,
+ukEquityPortfolio,UK Active Equity Portfolio,GBP,STAN,SEDOL2,equity,EQ_1235,STANDARD CHARTERED PLC,trd_0002,StockIn,02/01/2020,04/01/2020,100000,1,100000,GBP,financial,
+ukEquityPortfolio,UK Active Equity Portfolio,GBP,SBRY,SEDOL3,equity,EQ_1236,J SAINSBURY PLC,trd_0003,StockIn,02/01/2020,04/01/2020,70000,1,70000,GBP,consumer,
+ukEquityPortfolio,UK Active Equity Portfolio,GBP,BARC,SEDOL4,equity,EQ_1237,BARCLAYS PLC,trd_0004,StockIn,02/01/2020,04/01/2020,30000,1,30000,GBP,financial,
+ukEquityPortfolio,UK Active Equity Portfolio,GBP,BP,SEDOL5,equity,EQ_1238,BP PLC,trd_0005,StockIn,02/01/2020,04/01/2020,80000,1,80000,GBP,energy,
+ukEquityPortfolio,UK Active Equity Portfolio,GBP,GSK,SEDOL6,equity,EQ_1239,GLAXOSMITHKLINE PLC,trd_0006,StockIn,02/01/2020,04/01/2020,100000,1,100000,GBP,pharma,
+ukEquityPortfolio,UK Active Equity Portfolio,GBP,BRBY,SEDOL7,equity,EQ_1240,BURBERRY GROUP PLC,trd_0007,StockIn,02/01/2020,04/01/2020,100000,1,100000,GBP,retail,
+ukEquityPortfolio,UK Active Equity Portfolio,GBP,OCDO,SEDOL8,equity,EQ_1241,OCADO GROUP PLC,trd_0008,StockIn,02/01/2020,04/01/2020,100000,1,100000,GBP,consumer,
+ukEquityPortfolio,UK Active Equity Portfolio,GBP,NXT,SEDOL9,equity,EQ_1242,NEXT PLC,trd_0009,StockIn,02/01/2020,04/01/2020,20000,1,20000,GBP,retail,
+ukEquityPortfolio,UK Active Equity Portfolio,GBP,GBP,GBP,cash,GBP,GBP,fundsin_001,FundsIn,02/01/2020,04/01/2020,10000,1,10000,GBP,cash,GBP
+usEquityPortfolio,US Active Equity Portfolio,USD,MMM,SEDOL10,equity,EQ_1243,3M COMPANY,trd_00010,StockIn,02/01/2020,04/01/2020,80000,1,80000,USD,industrials,
+usEquityPortfolio,US Active Equity Portfolio,USD,ABT,SEDOL11,equity,EQ_1244,ABBOTT LABS,trd_00011,StockIn,02/01/2020,04/01/2020,90000,1,90000,USD,pharma,
+usEquityPortfolio,US Active Equity Portfolio,USD,AAL,SEDOL12,equity,EQ_1245,AMERICAN AIRLINES GROUP,trd_00012,StockIn,02/01/2020,04/01/2020,20000,1,20000,USD,airline,
+usEquityPortfolio,US Active Equity Portfolio,USD,AXP,SEDOL13,equity,EQ_1246,AMERICAN EXPRESS,trd_00013,StockIn,02/01/2020,04/01/2020,40000,1,40000,USD,financial,
+usEquityPortfolio,US Active Equity Portfolio,USD,GIS,SEDOL14,equity,EQ_1247,GENERAL MILLS,trd_00014,StockIn,02/01/2020,04/01/2020,100000,1,100000,USD,consumer,
+usEquityPortfolio,US Active Equity Portfolio,USD,K,SEDOL15,equity,EQ_1248,KELLOGG,trd_00015,StockIn,02/01/2020,04/01/2020,100000,1,100000,USD,consumer,
+usEquityPortfolio,US Active Equity Portfolio,USD,CVX,SEDOL16,equity,EQ_1249,CHEVRON CORP,trd_00016,StockIn,02/01/2020,04/01/2020,110000,1,110000,USD,energy,
+usEquityPortfolio,US Active Equity Portfolio,USD,XOM,SEDOL17,equity,EQ_1250,EXXON MOBIL CORP,trd_00017,StockIn,02/01/2020,04/01/2020,40000,1,40000,USD,energy,
+usEquityPortfolio,US Active Equity Portfolio,USD,WMT,SEDOL18,equity,EQ_1251,WALMART,trd_00018,StockIn,02/01/2020,04/01/2020,100000,1,100000,USD,consumer,
+usEquityPortfolio,US Active Equity Portfolio,USD,USD,USD,cash,USD,USD,fundsin_002,FundsIn,02/01/2020,04/01/2020,100000,1,100000,USD,cash,USD

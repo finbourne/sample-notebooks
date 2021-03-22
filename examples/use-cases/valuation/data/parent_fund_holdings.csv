@@ -1,0 +1,4 @@
+portfolio_code,portfolio_name,portfolio_base_currency,ticker,sedol,instrument_type,instrument_id,name,txn_id,txn_type,txn_trade_date,txn_settle_date,txn_units,txn_price,txn_consideration,currency,sector,cash_transactions
+FundOfHedgeFunds,Fund of fund for Hedge Funds,EUR,ukEquityPortfolioInstrumentCode,ukEquityPortfolioInstrumentCode,equityFund,ukEquityPortfolioInstrumentCode,ukEquityPortfolioInstrumentCode,trd_0001,StockIn,02/01/2020,04/01/2020,1000,1,1000,GBP,funds,
+FundOfHedgeFunds,Fund of fund for Hedge Funds,EUR,usEquityPortfolioInstrumentCode,usEquityPortfolioInstrumentCode,equityFund,usEquityPortfolioInstrumentCode,usEquityPortfolioInstrumentCode,trd_0002,StockIn,02/01/2020,04/01/2020,1000,1,1000,USD,funds,
+
