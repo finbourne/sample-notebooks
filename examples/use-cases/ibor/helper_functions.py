@@ -1,13 +1,18 @@
-import lusid
-import lusid.models as models
-import lusid_sample_data as import_data
-
 # Import Libraries
 import pprint
 from datetime import datetime, timedelta, time
 import pytz
 import printer as prettyprint
 import pandas as pd
+
+# Import LUSID
+import lusid
+import lusid.models as models
+import lusid_sample_data as import_data
+
+recipe_scope = "market_value"
+recipe_code = "helper-functions"
+
 
 def delete_all_current_instruments(api_factory):
     response = api_factory.build(lusid.api.InstrumentsApi).list_instruments()
@@ -327,8 +332,8 @@ def create_aggregation_request(analyst_scope_code, today, quotes_date):
 
     # Create our aggregation request
     inline_recipe = models.ConfigurationRecipe(
-        scope="User",
-        code='quotes_recipe',
+        scope=recipe_scope,
+        code=recipe_code,
         market=models.MarketContext(
             market_rules=[
                 models.MarketDataKeyRule(

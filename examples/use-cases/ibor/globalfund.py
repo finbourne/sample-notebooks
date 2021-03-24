@@ -1,8 +1,3 @@
-# Import LUSID
-import lusid
-import lusid.models as models
-import lusid_sample_data as import_data
-
 # Import Libraries
 import pprint
 from datetime import datetime, timedelta, time, date
@@ -16,8 +11,14 @@ import os
 import json
 import time
 
-globals = {}
+# Import LUSID
+import lusid
+import lusid.models as models
+import lusid_sample_data as import_data
 
+globals = {}
+recipe_scope = "market_value"
+recipe_code = "globalfund"
 
 def valuation(api_factory, marketdata_scope, portfolio_group, time):
 
