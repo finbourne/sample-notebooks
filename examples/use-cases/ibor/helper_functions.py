@@ -328,64 +328,6 @@ def create_instrument_quotes(quotes_effective_date, today, instrument_prices, an
 
     prettyprint.upsert_quotes_response(response)
 
-def create_aggregation_request(analyst_scope_code, today, quotes_date):
-
-    # Create our aggregation request
-    inline_recipe = models.ConfigurationRecipe(
-        scope=recipe_scope,
-        code=recipe_code,
-        market=models.MarketContext(
-            market_rules=[
-                models.MarketDataKeyRule(
-                    key='Equity.LusidInstrumentId.*',
-                    supplier='DataScope',
-                    data_scope=analyst_scope_code,
-                    quote_type='Price',
-                    field='Mid',
-                    quote_interval=quotes_date.strftime("%Y-%m-%d")
-                )
-
-            ],
-            suppliers=models.MarketContextSuppliers(
-                commodity='DataScope',
-                credit='DataScope',
-                equity='DataScope',
-                fx='DataScope',
-                rates='DataScope'),
-            options=models.MarketOptions(
-                default_supplier='DataScope',
-                default_instrument_code_type='LusidInstrumentId',
-                default_scope=analyst_scope_code)
-        ),        
-
-    )
-
-    aggregation_request = models.AggregationRequest(
-        inline_recipe=inline_recipe,
-        effective_at=today,
-        metrics=[
-            models.AggregateSpec(
-                key='Instrument/default/LusidInstrumentId',
-                op='Value'),
-            models.AggregateSpec(
-                key='Holding/default/Units',
-                op='Sum'),
-            models.AggregateSpec(
-                key='Holding/default/Cost',
-                op='Sum'),
-            models.AggregateSpec(
-                key='Holding/default/PV',
-                op='Sum'),
-            models.AggregateSpec(
-                key='Holding/default/Price',
-                op='Sum')
-        ],
-        group_by=[
-            'Instrument/default/LusidInstrumentId'
-        ])
-    
-    return aggregation_request
-
 
 def setup_index(analyst_scope_code, reference_portfolio_code, instrument_prices, api_factory):
     # Set an arbitary index level to start our index with
