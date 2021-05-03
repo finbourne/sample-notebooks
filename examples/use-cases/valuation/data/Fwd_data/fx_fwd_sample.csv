@@ -1,0 +1,2 @@
+PositionDate,FundValueFC,Portfolio,Custodian,Strategy,SecurityDescription,Currency,Amount,CostLC,CostFC,ValueLC,ValueFC,Accrued,Price,TradeNumber,Ccy,Ccy2,DeliveryCurrency,TradeDate,SettlementDate,CcyAmount,Ccy2Amount
+30/09/2020,15760293.76,UK Equity,MS,Rates,GBPUSD 01 Feb 21,GBP,5000,5000,6850,5000,6850,,1.37,101,GBP,USD,,01/01/2021,01/02/2021,5000,6850
