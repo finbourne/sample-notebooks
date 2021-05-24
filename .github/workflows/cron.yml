@@ -1,7 +1,7 @@
 name: Daily build
 on:
   schedule:
-  - cron: "0 4 * * *"
+  - cron: "0 5 * * *"
     
 jobs:
   cron-build-and-test:
