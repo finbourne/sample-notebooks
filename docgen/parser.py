@@ -6,7 +6,7 @@ import os
 
 from pathlib import Path
 
-from docgen import NbMeta
+from nbmeta import NbMeta
 
 
 def find_nbs(nb_root):
@@ -155,7 +155,8 @@ def build_doc(meta, template):
     # 2. convert to a list of dictionaries for mustache
     # 3. sort the notebooks alphabetically
     # note: [*values] converts the generator to a list
-    nbs = [{"k": key, "v": sorted([*values], key=lambda m: m.filename)} for key, values in itertools.groupby(meta, lambda m: m.path)]
+    nbs = [{"k": key, "link": key.replace("examples/", ""), "v": sorted([*values], key=lambda m: m.filename)} for key, values in itertools.groupby(meta, lambda m: m.path)]
+    print(nbs)
 
     # sort by relative path
     nbs.sort(key=lambda n: n["k"])
