@@ -6,7 +6,7 @@ import os
 
 from pathlib import Path
 
-from nbmeta import NbMeta
+from docgen import NbMeta
 
 
 def find_nbs(nb_root):
