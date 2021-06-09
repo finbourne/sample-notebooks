@@ -6,7 +6,8 @@ import os
 
 from pathlib import Path
 
-from docgen import NbMeta
+from  nbmeta import NbMeta
+import re
 
 
 def find_nbs(nb_root):
@@ -25,9 +26,10 @@ def find_nbs(nb_root):
 
     """
     for root, dirs, files in os.walk(nb_root, topdown=False):
-        for name in files:
-            if name.lower().endswith(".ipynb"):
-                yield os.path.join(root, name)
+        if ".ipynb_checkpoints" not in root:
+            for name in files:
+                if name.lower().endswith(".ipynb"):
+                    yield os.path.join(root, name)
 
 
 def sanitize_docstring(raw_str):
@@ -94,12 +96,20 @@ def process_nb(nb_path):
     nb = nbformat.read(nb_path, as_version=4)
 
     if len(nb.cells) < 1 or nb.cells[0].cell_type != "code":
+        print(nb_path, "x (cell 0 is not code)")
         return
 
-    doc_str = sanitize_docstring(nb.cells[0].source)
+    potential_cleaned_str = re.findall('(""".*""")', nb.cells[0].source, re.DOTALL)
+
+    if len(potential_cleaned_str) == 0:
+        print(nb_path, "x (no string)")
+        return
+
+    doc_str = sanitize_docstring(potential_cleaned_str[0])
     doc_str_obj = dp.parse(doc_str)
 
     if doc_str_obj.short_description is None:
+        print(nb_path, "x (no short description)")
         return
 
     return NbMeta(
@@ -156,7 +166,6 @@ def build_doc(meta, template):
     # 3. sort the notebooks alphabetically
     # note: [*values] converts the generator to a list
     nbs = [{"k": key, "link": key.replace("examples/", ""), "v": sorted([*values], key=lambda m: m.filename)} for key, values in itertools.groupby(meta, lambda m: m.path)]
-    print(nbs)
 
     # sort by relative path
     nbs.sort(key=lambda n: n["k"])

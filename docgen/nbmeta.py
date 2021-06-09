@@ -42,3 +42,9 @@ class NbMeta:
         self.description = description
         self.features = features
         self.formatted_features = ", ".join(self.features)
+
+    def __str__(self):
+        return self.filename
+
+    def __repr__(self):
+        return self.filename
