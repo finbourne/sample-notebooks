@@ -22,7 +22,7 @@ git clone git@github.com:finbourne/sample-notebooks.git
 cd sample-notebooks
 ```
 
-2. Create a `secrets.json` file in the **examples** folder with your LUSID credentials. For more details on this, see **Using a secrets.json file** at https://support.lusid.com/getting-started-with-apis-sdks.
+2. Create a `secrets.json` file in the **examples** folder with your LUSID credentials. For more details on this, see the [Using a secrets.json file](https://support.lusid.com/getting-started-with-apis-sdks) documentation.
 
 3. Build the Docker image locally
 
