@@ -114,6 +114,6 @@ We also show how floating weights with a periodic reset. | Floating weights, Ref
 | [Households.ipynb](<use-cases/wealth-management/Households.ipynb>) | Households | Demonstration of how to manage the holdings for an investor based on each Mandate &amp; Household they are associated with. | aggregation, instruments, portfolio groups, portfolios, properties, quotes, set holdings |
 
 
-| :warning: This file is generated, any direct edits will be lost. For instructions on how to generate the file, see [docgen/README](docgen/README.adoc). |
+| :warning: This file is generated, any direct edits will be lost. For instructions on how to generate the file, see [docgen/README](../docgen/README.adoc). |
 | --- |
 
