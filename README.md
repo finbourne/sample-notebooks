@@ -16,8 +16,8 @@ This repository contains sample notebooks showcasing how to use the LUSID SDK. Y
 1. Clone this repository
 
 ```
-git clone git@github.com:finbourne/lusid-sdk-python.git
-cd lusid-sdk-python
+git clone git@github.com:finbourne/sample-notebooks.git
+cd sample-notebooks
 ```
 
 2. Create a `secrets.json` file in the **examples** folder with your LUSID credentials. For more details on this, see **Using a secrets.json file** at https://support.lusid.com/getting-started-with-apis-sdks.
