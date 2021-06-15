@@ -1,3 +1,7 @@
+# Sample Jupyter Notebooks
+
+This repository contains sample notebooks showcasing how to use the LUSID SDK. You can find a list of the notebooks at [examples/README](examples/README.md)
+
 ![LUSID_by_Finbourne](https://content.finbourne.com/LUSID_repo.png)
 
 | branch | status |
@@ -5,7 +9,7 @@
 | `master`  | ![Daily build](https://github.com/finbourne/sample-notebooks/workflows/Daily%20build/badge.svg) ![Build and test](https://github.com/finbourne/sample-notebooks/workflows/Build%20and%20test/badge.svg) |
 | `develop` | ![run-sample-notebooks-tests](https://github.com/finbourne/sample-notebooks/workflows/run-sample-notebooks-tests/badge.svg?branch=develop) |
 
-Sample notebooks showcasing how to use the LUSID SDK.
+
 
 # Running the notebooks locally
 
