@@ -62,4 +62,4 @@ You will see something similar to the following output:
 ```
 
 5. Click on the link shown in the console to open up JupyterHub in a browser.
-6. You can now navigate to your chosen notebook and run it.
+6. Open the `examples` folder and navigate to your chosen notebook.
