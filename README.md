@@ -1,6 +1,6 @@
 # Sample Jupyter Notebooks
 
-This repository contains sample notebooks showcasing how to use the LUSID SDK. You can find a list of the notebooks at [examples/README](examples/README.md)
+This repository contains sample notebooks showcasing how to use the LUSID SDK. You can find a list of the notebooks at [examples/README](examples/README.md).
 
 ![LUSID_by_Finbourne](https://content.finbourne.com/LUSID_repo.png)
 
@@ -11,20 +11,24 @@ This repository contains sample notebooks showcasing how to use the LUSID SDK. Y
 
 
 
-# Running the notebooks locally
+## Running the notebooks locally
 
-Create a `secrets.json` file in the **examples** folder with your LUSID credentials. See **Using a secrets.json file** at https://support.lusid.com/getting-started-with-apis-sdks for details on this.
+1. Clone this repository
 
-## Docker
+```
+git clone git@github.com:finbourne/lusid-sdk-python.git
+cd lusid-sdk-python
+```
 
-1. Ensure that you are in the sample-notebooks folder
-2. Build the Docker image locally
+2. Create a `secrets.json` file in the **examples** folder with your LUSID credentials. For more details on this, see **Using a secrets.json file** at https://support.lusid.com/getting-started-with-apis-sdks.
+
+3. Build the Docker image locally
 
 ```
 docker build -t finbourne/lusid-sample-notebooks .
 ```
 
-3. Run the Docker image
+4. Run the Docker image
 
 **Windows**
 ```
@@ -35,5 +39,5 @@ $ docker run --rm -it --name fbn-jupyter -v %cd%:/home/jovyan -e FBN_SECRETS_PAT
 $ docker run --rm -it --name fbn-jupyter -v $(pwd):/home/jovyan -e FBN_SECRETS_PATH=/home/jovyan/examples/secrets.json -p 8888:8888 finbourne/lusid-sample-notebooks
 ```
 
-4. Click on the link shown in the console to open up JupyterHub in a browser.
-5. You can now navigate to your chosen notebook and run it.
+5. Click on the link shown in the console to open up JupyterHub in a browser.
+6. You can now navigate to your chosen notebook and run it.
