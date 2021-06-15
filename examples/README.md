@@ -2,8 +2,8 @@
 
 This repository contains Jupyter notebooks that show how to use [LUSID](https://www.finbourne.com/lusid-technology). The examples in this repository are in Python. but the underlying LUSID functionality can be implemented using any language which can call our standard REST APIs. The notebooks are divided into two categories:
 
-* `features` - Notebooks showing specific LUSID features. For example, there is notebook showing you how to call holdings using a get holdings request. These notebooks are generally short and specific.
-* `use-cases` - Notebooks showing sample business implementations or use-cases. These notebooks will generally combine various LUSID features to solve a business use-case. For example, there is notebook which uses the LUSID features of derived portfolios, quotes, and get holdings to back-test a trading strategy. These `use-case` notebooks are generally longer than the `features` ones.
+* `features` - Notebooks showing specific LUSID features. These notebooks are generally short and specific.
+* `use-cases` - Notebooks showing sample business implementations or use-cases. These notebooks will generally combine various LUSID features to solve a business use-case. The `use-case` notebooks are generally longer than the `features` ones.
 
 ## examples/entitlements
 | filename | title | description | features |
