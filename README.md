@@ -13,6 +13,8 @@ This repository contains sample notebooks showcasing how to use the LUSID SDK. Y
 
 ## Running the notebooks locally
 
+You can run the notebooks locally by following these steps:
+
 1. Clone this repository
 
 ```
