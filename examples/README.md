@@ -8,7 +8,8 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 ## examples/entitlements
 | filename | title | description | features |
 | --- | --- | --- | --- |
-| [Property value entitlements.ipynb](<entitlements/Property%20value%20entitlements.ipynb>) | Portfolio look-through in LUSID |  | entitlements, property values, transactions |
+| [Portfolio Entitlements.ipynb](<entitlements/Portfolio%20Entitlements.ipynb>) | Portfolio Entitlements | Demonstrates how to create policies/access control to various date items. | entitlements |
+| [Property value entitlements.ipynb](<entitlements/Property%20value%20entitlements.ipynb>) | Portfolio look-through in LUSID | Demonstrates the use of policies to grant access to property values in LUSID. | entitlements, property values, transactions |
 
 ## examples/features/core-lusid
 | filename | title | description | features |
@@ -30,6 +31,18 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | --- | --- | --- | --- |
 | [Relations.ipynb](<features/core-lusid/relations/Relations.ipynb>) | Relations | Demonstrates how to create relationships between different portfolios. | relations |
 
+## examples/features/data-feeds
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Using TraderMade FX spot price data in LUSID.ipynb](<features/data-feeds/Using%20TraderMade%20FX%20spot%20price%20data%20in%20LUSID.ipynb>) | Using TraderMade FX spot price data in LUSID | This notebook shows you how to access TraderMade spot FX data in LUSID | quotes |
+
+## examples/modules
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Valuation.ipynb](<modules/Valuation.ipynb>) | Valuation | Demonstrates how to value a portfolio using a custom recipe. | valuation |
+| [bitemporal-backtrade.ipynb](<modules/bitemporal-backtrade.ipynb>) | Bi-temporal backtrade | Demonstrates how to add a missing trade and then get back transactions using the AsAt date. | bi-temporality |
+| [cashladder.ipynb](<modules/cashladder.ipynb>) | Cash ladder | Demonstration of how to compute a cash ladder across different currencies for a portfolio. | cash |
+
 ## examples/use-cases/abor
 | filename | title | description | features |
 | --- | --- | --- | --- |
@@ -45,6 +58,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | --- | --- | --- | --- |
 | [Accruals.ipynb](<use-cases/cash-management/Accruals.ipynb>) | Accruals | Demonstration of how to model accruals in LUSID | cocoon, holdings, transaction configuration |
 | [Booking subscriptions and redemptions.ipynb](<use-cases/cash-management/Booking%20subscriptions%20and%20redemptions.ipynb>) | Booking subscriptions and redemptions | Demonstration of how to model subscriptions and redemptions in LUSID | cocoon - seed_data, holdings, transaction configuration |
+| [Cash ladder.ipynb](<use-cases/cash-management/Cash%20ladder.ipynb>) | Cash ladder | Demonstration of how to compute a cash ladder for a portfolio. | cash |
 | [Manual journal entries to correct cash balances.ipynb](<use-cases/cash-management/Manual%20journal%20entries%20to%20correct%20cash%20balances.ipynb>) | Correcting cash balances with manual journal entries | Demonstration of how to model manual journal entries in LUSID | cancel transactions, cocoon, holdings, reconciliations, transaction configuration |
 
 ## examples/use-cases/change-management
