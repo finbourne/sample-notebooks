@@ -1,3 +1,5 @@
+import urllib.parse
+
 class NbMeta:
     """
     Metadata associated with a notebook.
@@ -38,8 +40,9 @@ class NbMeta:
 
         self.path = path
         self.filename = filename
+        self.url_filename = urllib.parse.quote(filename)
         self.title = title
-        self.description = description
+        self.description = description.replace("\n", "<br>") if description else description
         self.features = features
         self.formatted_features = ", ".join(self.features)
 

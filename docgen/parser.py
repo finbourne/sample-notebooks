@@ -3,10 +3,11 @@ import docstring_parser as dp
 import itertools
 import nbformat
 import os
+import urllib.parse
 
 from pathlib import Path
 
-from  nbmeta import NbMeta
+from nbmeta import NbMeta
 import re
 
 
@@ -165,7 +166,8 @@ def build_doc(meta, template):
     # 2. convert to a list of dictionaries for mustache
     # 3. sort the notebooks alphabetically
     # note: [*values] converts the generator to a list
-    nbs = [{"k": key, "link": key.replace("examples/", ""), "v": sorted([*values], key=lambda m: m.filename)} for key, values in itertools.groupby(meta, lambda m: m.path)]
+    nbs = [{"k": key, "link": key.replace("examples/", ""), "v": sorted([*values], key=lambda m: m.filename)}
+           for key, values in itertools.groupby(meta, lambda m: m.path)]
 
     # sort by relative path
     nbs.sort(key=lambda n: n["k"])
@@ -202,6 +204,11 @@ def main():
     readme = nb_root.joinpath("README.md")
 
     print(f"saving index to {readme}")
+
+    nb = nbformat.v4.new_notebook()
+    nb['cells'] = [nbformat.v4.new_markdown_cell(doc)]
+    with open('examples/index.ipynb', 'w') as f:
+        nbformat.write(nb, f)
 
     save_index_page(readme, doc)
 
