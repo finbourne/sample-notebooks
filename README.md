@@ -1,6 +1,6 @@
 # Sample Jupyter Notebooks
 
-This repository contains sample notebooks showcasing how to use the LUSID SDK. You can find a list of the notebooks at [examples/README](examples/README.md).
+This repository contains Jupyter notebooks showcasing how to use the LUSID SDK. You can find a list of the notebooks at [examples/README](examples/README.md).
 
 ![LUSID_by_Finbourne](https://content.finbourne.com/LUSID_repo.png)
 
