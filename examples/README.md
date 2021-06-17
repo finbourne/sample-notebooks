@@ -1,9 +1,9 @@
-# Overview
+# LUSID Jupyter notebooks
 
-This repository contains Jupyter notebooks that show how to use [LUSID](https://www.finbourne.com/lusid-technology). The examples in this repository are in Python. but the underlying LUSID functionality can be implemented using any language which can call our standard REST APIs. The notebooks are divided into two categories:
+This repository contains Jupyter notebooks that show how to use [LUSID](https://www.finbourne.com/lusid-technology). The examples in this repository are in Python. but the underlying LUSID functionality can be implemented using any language that has a HTTP client library. The notebooks are divided into two categories:
 
-* `features` - Notebooks showing specific LUSID features. These notebooks are generally short and specific.
-* `use-cases` - Notebooks showing sample business implementations or use-cases. These notebooks will generally combine various LUSID features to solve a business use-case. The `use-case` notebooks are generally longer than the `features` ones.
+* `features` - Notebooks showing specific LUSID features. These notebooks are short and specific.
+* `use-cases` - Notebooks showing sample business implementations or use-cases. These notebooks will combine various LUSID features to solve a business use-case. The `use-case` notebooks are generally longer than the `features` ones.
 
 ## examples/entitlements
 | filename | title | description | features |
