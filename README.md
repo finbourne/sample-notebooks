@@ -62,4 +62,4 @@ You will see something similar to the following output:
 ```
 
 5. Click on the link shown in the console to open up JupyterHub in a browser.
-6. Open the `examples` folder and open `index.ipynb` to see the catalogue of available notebooks.
+6. Open the `examples` folder and open [index.ipynb](http://localhost:8888/notebooks/examples/index.ipynb) to see the catalogue of available notebooks.
