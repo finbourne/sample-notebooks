@@ -23,7 +23,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Run tests on MASTER branch
+      - name: Run doc gen on MASTER branch
         if: ${{ github.base_ref == 'master' }}
         run: |
           echo "generate documentation"
