@@ -26,6 +26,7 @@ jobs:
       - name: Run doc gen on MASTER branch
         run: |
           echo "generate documentation"
+          pip install -r requirements.txt
           python docgen/parser.py
           git add .
           git commit -m "Update examples documentation"
