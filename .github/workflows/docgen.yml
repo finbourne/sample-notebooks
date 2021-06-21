@@ -24,7 +24,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run doc gen on MASTER branch
-        if: ${{ github.base_ref == 'master' }}
         run: |
           echo "generate documentation"
           python docgen/parser.py
