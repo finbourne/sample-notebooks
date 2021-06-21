@@ -28,6 +28,8 @@ jobs:
           echo "generate documentation"
           pip install -r requirements.txt
           python docgen/parser.py
+          git config user.name "GitHub Actions"
+          git config user.email "concourse@finbourne.com"
           git add .
           git commit -m "Update examples documentation"
           git push origin master
