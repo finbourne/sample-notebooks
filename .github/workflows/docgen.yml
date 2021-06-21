@@ -22,6 +22,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run doc gen on MASTER branch
         run: |
