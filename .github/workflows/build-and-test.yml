@@ -34,7 +34,7 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
-        pip install requirements.dev.txt
+        pip install -r requirements.dev.txt
 
     - name: Run tests on DEVELOP branch
       if: ${{ github.base_ref == 'develop' || github.ref == 'refs/heads/develop' }}
