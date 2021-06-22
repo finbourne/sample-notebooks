@@ -10,3 +10,4 @@ lusidtools
 lusid-jam
 docstring-parser
 chevron
+finbourne-access-sdk
