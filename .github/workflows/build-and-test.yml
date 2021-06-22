@@ -1,0 +1,53 @@
+# This job runs the project tests
+
+name: Build and test matrix
+
+# Trigger the workflow on push or pull request to master or develop
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  collect-notebooks-for-testing:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    - name: Check out code into the module directory
+      uses: actions/checkout@v2
+    - name: Refresh JSON of directories with IPYNB files
+      run: |
+        python ci-tools/write_job_matrix_json.py
+    - id: set-matrix
+      run: |
+        matrix=$(cat ci-tools/job_matrix.json | jq '.')                
+        echo ::set-output name=matrix::{\"include\":$(echo $matrix)}\"
+
+  build-and-test:
+    needs: collect-notebooks-for-testing
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJson(needs.collect-notebooks-for-testing.outputs.matrix)}}
+    steps:
+    - name: Install dependencies
+      run: |
+        pip install requirements.dev.txt
+
+    - name: Run tests on DEVELOP branch
+      if: ${{ github.base_ref == 'develop' || github.ref == 'refs/heads/develop' }}
+      env: 
+        FBN_TOKEN_URL: ${{ secrets.DEVELOP_FBN_TOKEN_URL }}
+        FBN_USERNAME: ${{ secrets.DEVELOP_FBN_USERNAME }}
+        FBN_PASSWORD: ${{ secrets.DEVELOP_FBN_PASSWORD }}
+        FBN_CLIENT_ID: ${{ secrets.DEVELOP_FBN_CLIENT_ID }}
+        FBN_CLIENT_SECRET: ${{ secrets.DEVELOP_FBN_CLIENT_SECRET }}
+        FBN_LUSID_API_URL: ${{ secrets.DEVELOP_FBN_LUSID_API_URL }}
+        FBN_APP_NAME: ${{ secrets.DEVELOP_FBN_CLIENT_ID }}
+        NEXUS_USERNAME: ${{ secrets.DEVELOP_NEXUS_USERNAME }}
+        NEXUS_PASSWORD: ${{ secrets.DEVELOP_NEXUS_PASSWORD }}
+
+      run: |
+        jupyter nbconvert --to notebook --inplace --execute ${{ matrix.notebookDir }}/*.ipynb
