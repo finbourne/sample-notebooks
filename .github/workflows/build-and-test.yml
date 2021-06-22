@@ -32,6 +32,12 @@ jobs:
     strategy:
       matrix: ${{fromJson(needs.collect-notebooks-for-testing.outputs.matrix)}}
     steps:
+
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+
     - name: Install dependencies
       run: |
         pip install -r requirements.dev.txt
