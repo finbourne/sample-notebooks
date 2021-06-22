@@ -32,7 +32,9 @@ jobs:
     strategy:
       matrix: ${{fromJson(needs.collect-notebooks-for-testing.outputs.matrix)}}
     steps:
-
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+      
     - name: Set up Python 3.7
       uses: actions/setup-python@v2
       with:
