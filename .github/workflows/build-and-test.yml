@@ -18,10 +18,15 @@ jobs:
     steps:
     - name: Check out code into the module directory
       uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
     - name: Refresh JSON of directories with IPYNB files
       run: |
         python ci-tools/write_job_matrix_json.py
     - id: set-matrix
+      name: Set the individual job params
       run: |
         matrix=$(cat ci-tools/job_matrix.json | jq '.')                
         echo ::set-output name=matrix::{\"include\":$(echo $matrix)}\"
