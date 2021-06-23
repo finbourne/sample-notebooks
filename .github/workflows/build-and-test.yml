@@ -29,6 +29,7 @@ jobs:
   build-and-test:
     needs: collect-notebooks-for-testing
     runs-on: ubuntu-latest
+    name: Test of ${{ matrix.notebookDirShort }}
     strategy:
       matrix: ${{fromJson(needs.collect-notebooks-for-testing.outputs.matrix)}}
       fail-fast: false
@@ -61,4 +62,4 @@ jobs:
         NEXUS_PASSWORD: ${{ secrets.DEVELOP_NEXUS_PASSWORD }}
 
       run: |
-        jupyter nbconvert --to notebook --inplace --execute ${{ matrix.notebookDir }}/*.ipynb
+        jupyter nbconvert --to notebook --inplace --execute ${{ matrix.notebookDir }}/*.ipynb --ExecutePreprocessor.timeout=300
