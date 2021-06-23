@@ -39,7 +39,7 @@ jobs:
       matrix: ${{fromJson(needs.collect-notebooks-for-testing.outputs.matrix)}}
       fail-fast: false
     steps:
-    - name: Check out code into the Go module directory
+    - name: Check out code into the module directory
       uses: actions/checkout@v2
 
     - name: Set up Python 3.7

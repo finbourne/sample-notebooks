@@ -30,7 +30,10 @@ def construct_matrix_json(nb_dirs):
 
     matrix_json = []
     for notebook_dir in nb_dirs:
-        matrix_json.append({"notebookDir": notebook_dir})
+
+        notebook_dir_short =  notebook_dir[notebook_dir.rfind("sample-notebooks")+26:]
+
+        matrix_json.append({"notebookDir": notebook_dir, "notebookDirShort": notebook_dir_short})
     
     return matrix_json
 
