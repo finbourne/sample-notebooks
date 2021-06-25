@@ -85,6 +85,12 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Running a Global Fund.ipynb](<use-cases/ibor/Running%20a%20Global%20Fund.ipynb>) | Running a global fund | Demonstration of using LUSID to run funds fed from multiple source systems across multiple regions | aggregation, cocoon, cut labels, instruments, quotes, recipes, transaction configuration, transactions |
 | [Using cut-labels to manage your business across different time-zones.ipynb](<use-cases/ibor/Using%20cut-labels%20to%20manage%20your%20business%20across%20different%20time-zones.ipynb>) | Cut Labels | Demonstrates how to use cut labels to simplify timestamps and streamline usage of LUSID when used across multiple timezones. | cut labels, holdings, instruments, transactions |
 
+## examples/use-cases/models-and-indices
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Rebalancing with a model portfolio.ipynb](<use-cases/models-and-indices/Rebalancing%20with%20a%20model%20portfolio.ipynb>) | Rebalancing with a model portfolio  | This notebook shows how to you can automatically generate transactions to rebalance a transaction portfolio with a model portfolio | reference portfolios, transactions portfolios |
+| [Setting up a blended benchmark with floating weights.ipynb](<use-cases/models-and-indices/Setting%20up%20a%20blended%20benchmark%20with%20floating%20weights.ipynb>) | Setting up a blended benchmark | Demonstration of how to load a blended benchmark. <br>We also show how floating weights with a periodic reset. | Floating weights, Reference portfolios, Securitised portfolios, Weights |
+
 ## examples/use-cases/orders-management
 | filename | title | description | features |
 | --- | --- | --- | --- |
@@ -108,9 +114,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Calculating P&amp;L on strategy.ipynb](<use-cases/risk-and-performance/Calculating%20P%26L%20on%20strategy.ipynb>) | Calculating P&amp;L on strategies | Demonstration of how to use sub-holding keys and output transactions to track P&L on different strategies. | cocoon - seed_data, derived portfolios, output transactions, properties, sub-holding keys, transactions |
 | [Loading and calculating returns.ipynb](<use-cases/risk-and-performance/Loading%20and%20calculating%20returns.ipynb>) | Loading and caculating returns | Demonstration of how to load and calculate returns in LUSID. | Returns |
 | [Manage your investment strategies.ipynb](<use-cases/risk-and-performance/Manage%20your%20investment%20strategies.ipynb>) | Managing investment strategies | Demonstration of how to compare how strategies are performing across all of our client's holdings, rather than just looking at a single portfolio in isolation. | aggregation, data types, instruments, portfolio groups, properties, set holdings, transactions |
-| [Rebalancing with a model portfolio.ipynb](<use-cases/risk-and-performance/Rebalancing%20with%20a%20model%20portfolio.ipynb>) | Rebalancing with a model portfolio  | This notebook shows how to you can automatically generate transactions to rebalance a transaction portfolio with a model portfolio | reference portfolios, transactions portfolios |
 | [Returns on composite portfolios.ipynb](<use-cases/risk-and-performance/Returns%20on%20composite%20portfolios.ipynb>) | Loading and caculating returns | Demonstration of how to load and calculate returns on composite portfolios in LUSID | Composite portfolios, Returns |
-| [Setting up a blended benchmark with floating weights.ipynb](<use-cases/risk-and-performance/Setting%20up%20a%20blended%20benchmark%20with%20floating%20weights.ipynb>) | Setting up a blended benchmark | Demonstration of how to load a blended benchmark. <br>We also show how floating weights with a periodic reset. | Floating weights, Reference portfolios, Securitised portfolios, Weights |
 | [Track trading commissions in your portfolio.ipynb](<use-cases/risk-and-performance/Track%20trading%20commissions%20in%20your%20portfolio.ipynb>) | Track trading costs and commissions in your portfolio | Demonstrates how to track commissions and fees separately from trade costs. | cocoon, instruments, portfolio groups, properties, sub-holding keys, transaction configuration, transactions |
 
 ## examples/use-cases/valuation
