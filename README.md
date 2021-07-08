@@ -38,7 +38,11 @@ docker run --rm -it --name fbn-jupyter -v %cd%:/home/jovyan -e FBN_SECRETS_PATH=
 ```
 **macOS/linux**
 ```bash
-docker run --rm -it --name fbn-jupyter -v $(pwd):/home/jovyan -e FBN_SECRETS_PATH=/home/jovyan/examples/secrets.json -p 8888:8888 finbourne/lusid-sample-notebooks
+docker run --rm -it --name fbn-jupyter \
+  -v $(pwd):/home/jovyan \
+  -e FBN_SECRETS_PATH=/home/jovyan/examples/secrets.json \
+  -p 8888:8888 \
+  finbourne/lusid-sample-notebooks
 ```
 
 You will see something similar to the following output:
