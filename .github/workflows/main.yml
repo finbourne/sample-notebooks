@@ -32,6 +32,7 @@ jobs:
           FBN_CLIENT_SECRET: ${{ secrets.MASTER_FBN_CLIENT_SECRET }}
           FBN_LUSID_API_URL: ${{ secrets.MASTER_FBN_LUSID_API_URL }}
           FBN_APP_NAME: ${{ secrets.MASTER_FBN_CLIENT_ID }}
+          FBN_LUMI_API_URL: ${{ secrets.MASTER_FBN_LUMI_API_URL }}
         run: | 
           
           echo "env variables for MASTER have been set"
@@ -44,6 +45,7 @@ jobs:
             -e FBN_CLIENT_SECRET=$FBN_CLIENT_SECRET \
             -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL \
             -e FBN_APP_NAME=$FBN_APP_NAME \
+            -e FBN_LUMI_API_URL=$FBN_LUMI_API_URL \
             -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
             -v $(pwd):/usr/notebooks \
             finbourne/notebook-test-runner:latest
@@ -58,6 +60,7 @@ jobs:
           FBN_CLIENT_SECRET: ${{ secrets.DEVELOP_FBN_CLIENT_SECRET }}
           FBN_LUSID_API_URL: ${{ secrets.DEVELOP_FBN_LUSID_API_URL }}
           FBN_APP_NAME: ${{ secrets.DEVELOP_FBN_CLIENT_ID }}
+          FBN_LUMI_API_URL: ${{ secrets.DEVELOP_FBN_LUMI_API_URL }}
           NEXUS_USERNAME: ${{ secrets.DEVELOP_NEXUS_USERNAME }}
           NEXUS_PASSWORD: ${{ secrets.DEVELOP_NEXUS_PASSWORD }}
  
@@ -77,6 +80,7 @@ jobs:
             -e FBN_CLIENT_SECRET=$FBN_CLIENT_SECRET \
             -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL \
             -e FBN_APP_NAME=$FBN_APP_NAME \
+            -e FBN_LUMI_API_URL=$FBN_LUMI_API_URL \
             -e NEXUS_USERNAME=${NEXUS_USERNAME} \
             -e NEXUS_PASSWORD=${NEXUS_PASSWORD} \
             -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
