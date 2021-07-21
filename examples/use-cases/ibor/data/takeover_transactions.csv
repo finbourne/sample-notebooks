@@ -1,0 +1,2 @@
+﻿portfolio_code,transaction_id,figi,ticker,name,transaction_type,transaction_date,settlement_date,transaction_units,transaction_price,total_consideration,transaction_currency
+EquityFund,TX001,BBG000BMFD58,AMTD US,TD AMERITRADE HOLDING CORP,StockIn,10/10/2019,11/10/2019,35000,34.49,"1,207,150.00",USD
