@@ -7,7 +7,7 @@ This repository contains Jupyter notebooks showcasing how to use the LUSID SDK. 
 | branch | status |
 | --- | --- |
 | `master`  | ![Daily build](https://github.com/finbourne/sample-notebooks/workflows/Daily%20build/badge.svg) ![Build and test](https://github.com/finbourne/sample-notebooks/workflows/Build%20and%20test/badge.svg) |
-| `develop` | ![run-sample-notebooks-tests](https://github.com/finbourne/sample-notebooks/workflows/run-sample-notebooks-tests/badge.svg?branch=develop) |
+| `develop` | ![Build and test](https://github.com/finbourne/sample-notebooks/workflows/Build%20and%20test/badge.svg?branch=develop) [view builds](https://github.com/finbourne/sample-notebooks/actions/workflows/main.yml?query=branch%3Adevelop) |
 
 
 
