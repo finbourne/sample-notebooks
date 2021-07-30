@@ -1,0 +1,39 @@
+# This job generates the documentation under examples/
+
+name: Documentation generation
+
+# Trigger the workflow manually
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+  schedule:
+  - cron: "0 5 * * *"        
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.WORKFLOW_TOKEN }}
+
+      - name: Run doc gen on MASTER branch
+        run: |
+          echo "generate documentation"
+          pip install -r requirements.txt
+          python docgen/parser.py
+          git config user.name "GitHub Actions"
+          git config user.email "concourse@finbourne.com"
+          git add .
+          git commit -m "Update examples documentation"
+          git push origin master
