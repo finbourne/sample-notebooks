@@ -1,0 +1,3 @@
+portfolio_code,portfolio_base_currency,ticker,instrument_type,instrument_id,instrument_currency,name,txn_id,txn_type,txn_trade_date,txn_units,txn_price,txn_consideration
+GLOBAL_EQ,USD,GB0002162385,equity,D76B447ADA6446878B2BEC9437CF717C,GBP,Aviva,trd_0001,StockIn,09/03/2021,120000,5,600000
+GLOBAL_EQ,USD,GB0002162385,equity,8B6F3204021C408B8CE5F7DE465A7046,USD,IBM,trd_0002,StockIn,09/03/2021,12000,5,60000
