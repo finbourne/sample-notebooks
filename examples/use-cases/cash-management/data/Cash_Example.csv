@@ -1,0 +1,4 @@
+Portfolio Code,Currency,Class,Units
+port_1,USD,Available,"10,000"
+port_1,USD,Committed Cash,"15,000"
+port_1,USD,CashAtBroker,1000
