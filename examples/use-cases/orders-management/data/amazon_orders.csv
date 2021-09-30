@@ -1,0 +1,5 @@
+﻿portfolio,instrument_name,client_internal,isin,figi,quantity,price,currency,order_id,side,type,state
+us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,1000,USD,ORD001,sell,limit,new
+us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,950,USD,ORD002,buy,limit,new
+us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,3000,,USD,ORD003,buy,stop,new
+us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,,USD,ORD004,buy,market,new
