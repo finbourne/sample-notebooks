@@ -4,3 +4,4 @@ us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,950,USD,O
 us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,3000,,USD,ORD003,buy,stop,new
 us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,,USD,ORD004,buy,market,new
 us_long,Anglian_Water_40LV,imd_13579246,XS0089553282,,500,,USD,ORD005,buy,market,new
+us_long,ICE_Silver_5000oz_Dec21,imd_12457801,,,1,,USD,ORD006,buy,market,new
