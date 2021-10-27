@@ -1,0 +1,4 @@
+instrument_name,client_internal,currency,isin,figi,exchange_code,country_issue,ticker,market_sector,security_type,coupon
+Amazon_Nasdaq_AMZN,imd_34634534,USD,US0231351067,BBG000BVPXP1,UN,united_states_america,AMZN,equity,common_stock,
+Anglian_Water_40LV,imd_13579246,USD,XS0089553282,,GB,united_kingdom,,fixed_income,bond,6.625
+ICE_Silver_5000oz_Dec21,imd_12457801,USD,,,GB,united_kingdom,ZIZ21,commodity,future,
