@@ -47,7 +47,7 @@ def add_activity_row(element, record, df, activity, value):
 
 
 # Read response to data frame
-def response_to_df(response):
+def cashladder_to_df(response):
     
     base_df = new_data_frame()
 
