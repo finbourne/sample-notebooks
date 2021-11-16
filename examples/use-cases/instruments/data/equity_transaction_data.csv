@@ -1,0 +1,2 @@
+﻿txn_id,type,client_id,trade_date,settlement_date,quantity,price,total_consideration,currency,portfolio
+txn001,StockIn,MSFT,2021-09-01T10:00:00Z,2021-09-02T10:00:00Z,1000,300,300000,USD,EquityPortfolioForPnLCalc
