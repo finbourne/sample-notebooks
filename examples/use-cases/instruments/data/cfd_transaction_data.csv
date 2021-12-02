@@ -1,5 +1,5 @@
 ﻿txn_id,type,client_id,trade_date,settlement_date,quantity,price,total_consideration,currency,portfolio
-txn001,OpenContract,AMZN_CFD,2021-09-01T08:00:00Z,2021-09-01T08:00:00Z,100,"3,479.00","350,000.00",USD,CFDPortfolioForPnLCalc
-co_txn001,OpenContract,AAPL_CFD,2021-09-01T08:00:00Z,2021-09-01T08:00:00Z,100,152,"15,200.00",USD,CFDPortfolioForPnLCalc
-co_rpnlb_txn001,RealisePnLIncrease,AAPL_CFD,2021-09-30T08:00:00Z,2021-09-30T08:00:00Z,0,0,"-120,000.00",USD,CFDPortfolioForPnLCalc
-co_rpnlb_txn002,RealisePnLIncrease,AAPL_CFD,2021-10-30T08:00:00Z,2021-10-30T08:00:00Z,0,0,"120,000.00",USD,CFDPortfolioForPnLCalc
+txn001,OpenContract,AMZN_CFD,2021-09-01T08:00:00Z,2021-09-01T08:00:00Z,100,"3,479.00","17,395,000.00",USD,CFDPortfolioForPnLCalc
+co_txn001,OpenContract,AAPL_CFD,2021-09-01T08:00:00Z,2021-09-01T08:00:00Z,100,152,"1,520,000.00",USD,CFDPortfolioForPnLCalc
+co_rpnlb_txn001,RealisePnLDecrease,AAPL_CFD,2021-09-30T08:00:00Z,2021-09-30T08:00:00Z,0,0,"120,000.00",USD,CFDPortfolioForPnLCalc
+co_rpnlb_txn002,RealisePnLIncrease,AAPL_CFD,2021-10-30T08:00:00Z,2021-10-30T08:00:00Z,0,0,"140,000.00",USD,CFDPortfolioForPnLCalc
