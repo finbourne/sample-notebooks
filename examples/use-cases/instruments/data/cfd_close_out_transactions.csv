@@ -1,0 +1,3 @@
+﻿txn_id,type,client_id,trade_date,settlement_date,quantity,price,total_consideration,currency,portfolio
+co_rpnlb_txn001,RealisePnLDecrease,AAPL_CFD,2021-09-30T08:00:00Z,2021-09-30T08:00:00Z,0,0,"120,000.00",USD,CFDPortfolioForPnLCalc
+co_rpnlb_txn002,RealisePnLIncrease,AAPL_CFD,2021-10-30T08:00:00Z,2021-10-30T08:00:00Z,0,0,"140,000.00",USD,CFDPortfolioForPnLCalc
