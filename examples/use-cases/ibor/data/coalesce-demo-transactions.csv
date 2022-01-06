@@ -1,0 +1,6 @@
+﻿txn_id,Strategy,Sector,type,Isin,Ticker,trade_date,settlement_date,quantity,price,total_consideration,currency,portfolio
+txn001,Growth,Technology,Buy,US5949181045,MSFT,2021-09-01T10:00:00Z,2021-09-02T10:00:00Z,"1,000.00",300,"300,000.00",USD,coalescePortfolio
+txn002,Value,Consumer Services,Buy,US9311421039,WMT,2021-09-01T10:00:00Z,2021-09-02T10:00:00Z,"2,705.00",148,"400,340.00",USD,coalescePortfolio
+txn003,Value,Consumer Services,Buy,US4370761029,HD,2021-09-01T10:00:00Z,2021-09-02T10:00:00Z,765,328,"250,920.00",USD,coalescePortfolio
+txn004,Growth,Technology,Buy,US0378331005,AAPL,2021-09-01T10:00:00Z,2021-09-02T10:00:00Z,"4,610.00",152,"700,720.00",USD,coalescePortfolio
+txn005,Growth,Consumer Cyclical,Buy,US3453708600,F,2021-09-01T10:00:00Z,2021-09-02T10:00:00Z,"9,400.00",13.3,"125,020.00",USD,coalescePortfolio
