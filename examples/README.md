@@ -85,6 +85,11 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Running a Global Fund.ipynb](<use-cases/ibor/Running%20a%20Global%20Fund.ipynb>) | Running a global fund | Demonstration of using LUSID to run funds fed from multiple source systems across multiple regions | aggregation, cocoon, cut labels, instruments, quotes, recipes, transaction configuration, transactions |
 | [Using cut-labels to manage your business across different time-zones.ipynb](<use-cases/ibor/Using%20cut-labels%20to%20manage%20your%20business%20across%20different%20time-zones.ipynb>) | Cut Labels | Demonstrates how to use cut labels to simplify timestamps and streamline usage of LUSID when used across multiple timezones. | cut labels, holdings, instruments, transactions |
 
+## examples/use-cases/instruments
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [FundingLegWithEquity.ipynb](<use-cases/instruments/FundingLegWithEquity.ipynb>) | Variable Funding Leg + Equity or Cash Instrument | Demonstrates creation and pricing of a funding leg with <br>variable notional and constructing a related position in<br>an stock or underlying instrument. This construct can be used<br>to represent the mechanics of a total return or equity swap. | aggregation, instruments, market data store, quotes, results store |
+
 ## examples/use-cases/models-and-indices
 | filename | title | description | features |
 | --- | --- | --- | --- |
