@@ -15,7 +15,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -80,13 +80,9 @@ jobs:
             -e FBN_CLIENT_SECRET=$FBN_CLIENT_SECRET \
             -e FBN_LUSID_API_URL=$FBN_LUSID_API_URL \
             -e FBN_APP_NAME=$FBN_APP_NAME \
-            -e NEXUS_USERNAME=${NEXUS_USERNAME} \
             -e FBN_LUMI_API_URL=$FBN_LUMI_API_URL \
-            -e NEXUS_PASSWORD=${NEXUS_PASSWORD} \
-            -e FBN_NOTEBOOK_FOLDER=/usr/notebooks \
-            -e SDK_VERSION=$FBN_SDK_VERSION \
             -v $(pwd):/usr/notebooks \
-            finbourne/notebook-test-runner:latest
+            finbourne/notebook-runner2:latest -v $FBN_SDK_VERSION -u $NEXUS_USERNAME -p NEXUS_PASSWORD
         
       - name: Slack notification
         uses: 8398a7/action-slack@v3
