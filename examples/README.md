@@ -88,6 +88,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 ## examples/use-cases/instruments
 | filename | title | description | features |
 | --- | --- | --- | --- |
+| [FX Forward.ipynb](<use-cases/instruments/FX%20Forward.ipynb>) | FX Forward - Valuation Workflow |  | FX Forwards, complex market data, recipes, valuations |
 | [FundingLegWithEquity.ipynb](<use-cases/instruments/FundingLegWithEquity.ipynb>) | Variable Funding Leg + Equity or Cash Instrument | Demonstrates creation and pricing of a funding leg with <br>variable notional and constructing a related position in<br>an stock or underlying instrument. This construct can be used<br>to represent the mechanics of a total return or equity swap. | aggregation, instruments, market data store, quotes, results store |
 
 ## examples/use-cases/models-and-indices
