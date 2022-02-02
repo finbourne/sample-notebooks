@@ -1,2 +1,2 @@
 ﻿txn_id,type,client_id,trade_date,settlement_date,quantity,price,total_consideration,currency,portfolio
-txn001,StockIn,T_3_02/15/49,2019-04-19T10:00:00Z,2019-04-20T10:00:00Z,1000000,100.7578125,1007600,USD,BondPortfolioForPnLCalc
+txn001,StockIn,T_3_02/15/49,2019-04-19T10:00:00Z,2019-04-20T10:00:00Z,1000000,100.7578125,1007578.13,USD,BondPortfolioForPnLCalc
