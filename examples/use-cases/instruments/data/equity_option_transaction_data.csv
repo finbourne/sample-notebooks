@@ -1,0 +1,2 @@
+﻿txn_id,type,client_id,trade_date,settlement_date,quantity,price,total_consideration,currency,portfolio
+txn001,StockIn,AMZN_10/15/21_C3400,2021-09-16T08:00:00Z,2021-09-16T08:00:00Z,100,220,"22,000.00",USD,equityOptionPortfolio

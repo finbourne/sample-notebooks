@@ -48,11 +48,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | --- | --- | --- | --- |
 | [Generate P&amp;L with different accounting methods (FIFO and LIFO).ipynb](<use-cases/abor/Generate%20P%26L%20with%20different%20accounting%20methods%20%28FIFO%20and%20LIFO%29.ipynb>) | Accounting methods | Generating P&L with different accounting methods (FIFO and LIFO) | accounting methods, cocoon, derived portfolios, transaction configuration |
 
-## examples/use-cases/audit-trail
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| [Identifying Downstream Consumers affected by Backdated Corrections on a Locked Reporting Window.ipynb](<use-cases/audit-trail/Identifying%20Downstream%20Consumers%20affected%20by%20Backdated%20Corrections%20on%20a%20Locked%20Reporting%20Window.ipynb>) | Identifying backdated corrections | Demonstration of how to identify backdated corrections and their impact | build transaction, cocoon - seed_data, insights, portfolio changes |
-
 ## examples/use-cases/cash-management
 | filename | title | description | features |
 | --- | --- | --- | --- |
@@ -84,6 +79,12 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Portfolio types and portfolio groups in LUSID.ipynb](<use-cases/ibor/Portfolio%20types%20and%20portfolio%20groups%20in%20LUSID.ipynb>) | Portfolios and Portfolio Groups | Demonstrates how to do various operations with portfolios and portfolio groups. | commands, corporate actions, portfolio groups, portfolios, transactions |
 | [Running a Global Fund.ipynb](<use-cases/ibor/Running%20a%20Global%20Fund.ipynb>) | Running a global fund | Demonstration of using LUSID to run funds fed from multiple source systems across multiple regions | aggregation, cocoon, cut labels, instruments, quotes, recipes, transaction configuration, transactions |
 | [Using cut-labels to manage your business across different time-zones.ipynb](<use-cases/ibor/Using%20cut-labels%20to%20manage%20your%20business%20across%20different%20time-zones.ipynb>) | Cut Labels | Demonstrates how to use cut labels to simplify timestamps and streamline usage of LUSID when used across multiple timezones. | cut labels, holdings, instruments, transactions |
+
+## examples/use-cases/instruments
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [FX Forward.ipynb](<use-cases/instruments/FX%20Forward.ipynb>) | FX Forward - Valuation Workflow |  | FX Forwards, complex market data, recipes, valuations |
+| [FundingLegWithEquity.ipynb](<use-cases/instruments/FundingLegWithEquity.ipynb>) | Variable Funding Leg + Equity or Cash Instrument | Demonstrates creation and pricing of a funding leg with <br>variable notional and constructing a related position in<br>an stock or underlying instrument. This construct can be used<br>to represent the mechanics of a total return or equity swap. | aggregation, instruments, market data store, quotes, results store |
 
 ## examples/use-cases/models-and-indices
 | filename | title | description | features |
@@ -121,6 +122,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Bond Pricing And Accrued Interest Calculation.ipynb](<use-cases/valuation/Bond%20Pricing%20And%20Accrued%20Interest%20Calculation.ipynb>) | Bond Pricing And Accrued Interest Calculation | Demonstrates pricing a bond and calculating it's accrued interest based on a user defined Bond Instrument. | aggregation, instruments, market data store, quotes, results store |
+| [Futures Valuation with Differing Cost Basis Treatments (Synthetic Cash Method).ipynb](<use-cases/valuation/Futures%20Valuation%20with%20Differing%20Cost%20Basis%20Treatments%20%28Synthetic%20Cash%20Method%29.ipynb>) | Futures Valuation Workflow |  | futures, recipes, transaction types, valuations |
 | [Futures Valuation with Differing Cost Basis Treatments.ipynb](<use-cases/valuation/Futures%20Valuation%20with%20Differing%20Cost%20Basis%20Treatments.ipynb>) | Futures Valuation Workflow |  | futures, recipes, transaction types, valuations |
 | [Look-through valuation.ipynb](<use-cases/valuation/Look-through%20valuation.ipynb>) | Portfolio look-through in LUSID | Shows how to compute the value of a child portfolio's holding as though they were directly held by the parent portfolio. | holdings, look through, portfolios, securitised portfolios, valuations |
 | [Simple Valuation.ipynb](<use-cases/valuation/Simple%20Valuation.ipynb>) | Simple valuation with default recipes | This notebook shows how to value a portfolio using defatul recipes, for an out of the box look at positions and valuations | manifests, recipes, transactions, valuation |
