@@ -141,17 +141,18 @@ def equity_swap_transaction(
         portfolio_scope: str,
         portfolio_code: str,
         notional: float,
+        number_of_shares: float,
         equity_identifier: str,
         funding_leg_identifier: str,
         transaction_currency: str,
         direction: str,
-        trade_date: datetime,
+        trade_date: datetime.datetime,
         transaction_id: str,
         linking_id: str,
         linking_id_property: str,
         funding_leg_identifier_type: str = "ClientInternal",
         equity_identifier_type: str = "ClientInternal",
-        settlement_date: datetime = None,
+        settlement_date: datetime.datetime = None,
         equity_txn_suffix: str = "EQ",
 ):
     """
@@ -176,7 +177,7 @@ def equity_swap_transaction(
     The currency of the transaction
     direction: str
     The direction of the swap, must be either 'L' or 'S' indicating long or short
-    trade_date: datetime
+    trade_date: datetime.datetime
     The transaction date
     transaction_id: str
     The transaction identifier
@@ -188,14 +189,14 @@ def equity_swap_transaction(
     The identifier type of the funding leg, will default to 'ClientInternal'
     equity_identifier_type: str
     The identifier type of the equity or cash instrument, will default to 'ClientInternal'
-    settlement_date: datetime
+    settlement_date: datetime.datetime
     The transaction settlement date, if not provided will be set to the transaction date
     equity_txn_suffix: str
     The suffix to be added to the equity side transaction, will default to 'EQ'
 
     Returns
     ----------
-    lusid.models.upsert_portfolio_transactions_response
+    tuple(lusid.TransactionRequest)
     """
 
 
@@ -204,7 +205,7 @@ def equity_swap_transaction(
         raise ValueError(
             "Invalid direction passed, please ensure to use either 'L' or 'S' to indicate Long or Short direction.")
 
-    transaction_type = "StockIn" if direction == "L" else "StockOut"
+    transaction_type = "LongFundingLeg" if direction == "L" else "ShortFundingLeg"
 
     # Create funding leg transaction against pay/receive leg
     funding_leg_transaction = lusid.models.TransactionRequest(
@@ -233,8 +234,9 @@ def equity_swap_transaction(
         transaction_currency=transaction_currency
     )
 
-    # Set equity leg transaction id
+    # Set equity leg transaction id and define the transaction type
     equity_transaction_id = f"{equity_txn_suffix}-{transaction_id}"
+    transaction_type = "LongSyntheticUnderlying" if direction == "L" else "ShortSyntheticUnderlying"
 
     equity_transaction = lusid.models.TransactionRequest(
         transaction_id=equity_transaction_id,
@@ -242,9 +244,9 @@ def equity_swap_transaction(
         instrument_identifiers={f"Instrument/default/{equity_identifier_type}": f"{equity_identifier}"},
         transaction_date=trade_date,
         settlement_date=settlement_date if settlement_date else trade_date,
-        units=notional,
+        units=number_of_shares,
         transaction_price=lusid.models.TransactionPrice(price=0, type="Price"),
-        total_consideration=lusid.models.CurrencyAndAmount(amount=0, currency=transaction_currency),
+        total_consideration=lusid.models.CurrencyAndAmount(amount=notional, currency=transaction_currency),
         properties={
             linking_id_property: lusid.models.PerpetualProperty(
                 key=linking_id_property,
@@ -256,13 +258,94 @@ def equity_swap_transaction(
         transaction_currency=transaction_currency
     )
 
-    response = api_factory.build(lusid.TransactionPortfoliosApi).upsert_transactions(
-        scope=portfolio_scope,
-        code=portfolio_code,
-        transaction_request=[funding_leg_transaction, equity_transaction]
+    return funding_leg_transaction, equity_transaction
+
+
+def create_funding_leg(
+        start_date: datetime.datetime,
+        maturity_date: datetime.datetime,
+        currency: str,
+        rate_or_spread: float,
+        pay_receive: str,
+        payment_frequency: str,
+        day_count_convention: str,
+        index_reference: str,
+        index_tenor: str,
+        notional: float,
+        roll_convention: str = "MF",
+        settle_days: int = 2,
+        reset_days: int = 0
+):
+    """
+        Creates a funding leg instrument that can be used to represent the financing
+        leg of a Total Return Swap instrument, or used as an independend instrument.
+
+        Parameters
+        ----------
+        start_date: datetime.datetime
+        The start or inception date of the leg, also the accrual start
+        maturity_date: datetime.datetime
+        The maturity date of the leg, also the last principal payment date
+        currency: str
+        The currency of the leg
+        rate_or_spread: float
+        The rate or spread of the funding leg
+        pay_receive: str
+        The direction of payments, either 'Pay' or 'Receive'
+        payment_frequency: str
+        The frequency of payments, e.g. '1M'
+        day_count_convention: str
+        The day count convention used for accrual periods
+        index_reference: str
+        The reference index on top of which the spread is applied, e.g. 'LIBOR.USD1M'
+        index_tenor: str
+        The tenor of the reference index, e.g. '1M'
+        notional: float
+        The notional of the financing leg, commonly initiated with zero and increased via transactions
+        settle_days: int = 2
+        The settlement days for payments/cash flows, defaults to 2
+        reset_days: int = 0
+        The reset days applied to reset/accrual periods, defaults to 0
+
+        Returns
+        ----------
+        lusid.FundingLeg
+
+    """
+
+    flow_convention_float = lusid.models.FlowConventions(
+        currency=currency,
+        payment_frequency=payment_frequency,
+        settle_days=settle_days,
+        reset_days=reset_days,
+        day_count_convention=day_count_convention,
+        roll_convention=roll_convention,
+        reset_calendars=[],
+        payment_calendars=[]
     )
 
-    print(
-        f"Equity and Funding Leg transactions loaded into portfolio with scope {portfolio_scope} and code {portfolio_code}.")
+    index_convention = lusid.models.IndexConvention(
+        currency=currency,
+        payment_tenor=index_tenor,
+        fixing_reference=index_reference,
+        publication_day_lag=0,
+        day_count_convention=day_count_convention
+    )
 
-    return response
+    # Create the leg definitions
+    leg_definition = lusid.models.LegDefinition(
+        rate_or_spread=rate_or_spread,
+        index_convention=index_convention,
+        pay_receive=pay_receive,
+        conventions=flow_convention_float,
+        stub_type="LongBack",
+        notional_exchange_type="None"
+    )
+
+    return lusid.models.FundingLeg(
+        start_date=start_date,
+        maturity_date=maturity_date,
+        notional=notional,
+        leg_definition=leg_definition,
+        instrument_type="FundingLeg",
+    )

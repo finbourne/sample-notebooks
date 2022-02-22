@@ -67,3 +67,31 @@ def cashladder_to_df(response):
 
         
     return base_df
+
+def clean_df_cols(df: pd.DataFrame, exclusions: list=[], inclusions: list=[]):
+    """"
+    Takes a dataframe, and cleans it based on the given lists of strings, where if a column name contains an exclusion
+    string in the column name it will be dropped, and the reverse is true for an inclusion.
+
+    Parameters
+    ----------
+    df: pd.DataFrame
+    Input pandas DataFrame to clean
+    exclusions: list
+    List of strings that if contained in any column names are dropped from the dataframe
+    inclusions: list
+    List of strings that if not contained in any column names are dropped from the dataframe
+
+    Returns
+    ----------
+    pd.DataFrame
+    """
+
+    cols_to_drop = [col for col in df.columns for exclusion in exclusions if exclusion in col]
+    new_df = df.drop(columns=cols_to_drop)
+
+    if inclusions:
+        cols_to_include = [col for col in new_df.columns for inclusion in inclusions if inclusion in col]
+        new_df = new_df[cols_to_include]
+
+    return new_df

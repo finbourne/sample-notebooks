@@ -1,5 +1,7 @@
-﻿transaction_id,notional,equity_identifier,funding_leg_identifier,transaction_currency,direction,trade_date,linking_id,identifier_type
-TXN001,200000,AMZN,FundingLeg001,USD,S,05/04/2021,EQ-SW-001-AMZN,ClientInternal
-TXN002,100000,AMZN,FundingLeg001,USD,S,07/04/2021,EQ-SW-001-AMZN,ClientInternal
-TXN003,100000,AMZN,FundingLeg001,USD,L,09/04/2021,EQ-SW-001-AMZN,ClientInternal
-TXN004,200000,AMZN,FundingLeg001,USD,L,14/04/2021,EQ-SW-001-AMZN,ClientInternal
+﻿transaction_id,notional,number_of_shares,equity_identifier,funding_leg_identifier,transaction_currency,direction,trade_date,linking_id,identifier_type,day_count,start_date,maturity_date,frequency,pay_receive,spread,index_reference
+TXN001,200000,60,AMZN,FundingLeg001,USD,S,05/04/2021,EQ-SW-SHORT-AMZN,ClientInternal,Actual360,01/04/2021,01/04/2022,1M,Receive,-30,USD.LIBOR.1M
+TXN002,100000,30,AMZN,FundingLeg001,USD,S,07/04/2021,EQ-SW-SHORT-AMZN,ClientInternal,Actual360,01/04/2021,01/04/2022,1M,Receive,-30,USD.LIBOR.1M
+TXN003,100000,30,AMZN,FundingLeg001,USD,L,09/04/2021,EQ-SW-SHORT-AMZN,ClientInternal,Actual360,01/04/2021,01/04/2022,1M,Receive,-30,USD.LIBOR.1M
+TXN004,200000,60,AMZN,FundingLeg001,USD,L,14/04/2021,EQ-SW-SHORT-AMZN,ClientInternal,Actual360,01/04/2021,01/04/2022,1M,Receive,-30,USD.LIBOR.1M
+TXN005,200000,60,AMZN,FundingLeg002,USD,L,15/04/2021,EQ-SW-LONG-AMZN,ClientInternal,Actual360,01/04/2021,01/04/2022,1M,Pay,30,USD.LIBOR.1M
+TXN006,150000,45,AMZN,FundingLeg002,USD,L,16/04/2021,EQ-SW-LONG-AMZN,ClientInternal,Actual360,01/04/2021,01/04/2022,1M,Pay,30,USD.LIBOR.1M
