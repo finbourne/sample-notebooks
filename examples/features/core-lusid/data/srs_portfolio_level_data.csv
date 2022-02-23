@@ -1,0 +1,7 @@
+portfolio,effective date,market value,daily return gross,daily return net,currency
+PortfolioA,2020-01-01 00:00:00+00:00,"1,000,000.00",1.09,1.07,USD
+PortfolioA,2020-02-01 00:00:00+00:00,"1,320,000.00",1.094,1.07,USD
+PortfolioA,2020-03-01 00:00:00+00:00,"1,320,000.00",1.094,1.07,USD
+PortfolioB,2020-01-01 00:00:00+00:00,"1,000,000.00",1.09,1.07,USD
+PortfolioB,2020-02-01 00:00:00+00:00,"1,320,000.00",1.094,1.07,USD
+PortfolioB,2020-03-01 00:00:00+00:00,"1,320,000.00",1.094,1.07,USD
