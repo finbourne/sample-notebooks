@@ -10,10 +10,13 @@ This repository contains Jupyter notebooks showcasing how to use the LUSID SDK. 
 | `develop` | ![Build and test](https://github.com/finbourne/sample-notebooks/workflows/Build%20and%20test/badge.svg?branch=develop) [view builds](https://github.com/finbourne/sample-notebooks/actions/workflows/main.yml?query=branch%3Adevelop) |
 
 
+## Running the Notebooks in Jupyterhub for your LUSID domain
 
-## Running the notebooks locally
+Authentication is handled automatically; see https://support.lusid.com/knowledgebase/article/KA-01829/en-us
 
-You can run the notebooks locally by following these steps:
+## Running the Notebooks locally
+
+You can run the Notebooks locally but you will need to set up authentication using a secrets file:
 
 1. Clone this repository
 
@@ -22,7 +25,7 @@ git clone git@github.com:finbourne/sample-notebooks.git
 cd sample-notebooks
 ```
 
-2. Create a `secrets.json` file in the **examples** folder with your LUSID credentials. For more details on this, see the [Using a secrets.json file](https://support.lusid.com/getting-started-with-apis-sdks) documentation.
+2. Create a `secrets.json` file in the **examples** folder with your LUSID credentials. [See how to assemble these](https://support.lusid.com/knowledgebase/article/KA-01663/).
 
 3. Build the Docker image
 
