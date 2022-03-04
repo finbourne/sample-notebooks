@@ -1,0 +1,5 @@
+fund,instrument,isin,txn_id,txn_type,trade_date,settle_date,units,price,currency
+Growth,GBP,,G001,FundsIn,2022-03-01,2022-03-01,100000,1.00,GBP
+Growth,BP,GB0007980591,G002,BuyEQ,2022-03-01,2022-03-03,10000,2.05,GBP
+Growth,Tesco,GB00BLGZ9862,G003,BuyEQ,2022-03-01,2022-03-03,8000,3.05,GBP
+Growth,Glencore,JE00B4T3BW64,G004,BuyEQ,2022-03-01,2022-03-03,7000,4.05,GBP
