@@ -1,0 +1,3 @@
+instrument,isin,txn_id,txn_type,trade_date,units,price,currency
+BP,GB0007980591,MD32001,StockIn,2022-03-05T12:00:00Z,10000,2.00,GBP
+Unilever,GB00B10RZP78,MD32002,StockOut,2022-03-05T12:10:00Z,3000,3.00,GBP
