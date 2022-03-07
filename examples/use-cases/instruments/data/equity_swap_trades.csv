@@ -1,0 +1,5 @@
+﻿transaction_id,notional,equity_identifier,funding_leg_identifier,transaction_currency,direction,trade_date,linking_id,identifier_type
+TXN001,200000,AMZN,FundingLeg001,USD,S,05/04/2021,EQ-SW-001-AMZN,ClientInternal
+TXN002,100000,AMZN,FundingLeg001,USD,S,07/04/2021,EQ-SW-001-AMZN,ClientInternal
+TXN003,100000,AMZN,FundingLeg001,USD,L,09/04/2021,EQ-SW-001-AMZN,ClientInternal
+TXN004,200000,AMZN,FundingLeg001,USD,L,14/04/2021,EQ-SW-001-AMZN,ClientInternal
