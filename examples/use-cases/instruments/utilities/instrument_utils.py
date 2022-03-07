@@ -84,6 +84,28 @@ def upsert_instrument(
     else:
         print("An error occurred with the above upsert_instruments call, see error message:", response.failed)
 
+def upsert_recipe(api_factory, recipe):
+
+    """
+
+    Parameters
+    ----------
+    api_factory: lusid.utilities.ApiClientFactory api_factory
+    The api factory to use
+    recipe: lusid.models.ConfigurationRecipe
+    The configuration recipe that is being upserted
+    Returns
+    -------
+    lusid.models.UpsertSingleStructuredDataResponse
+    """
+
+    recipe_request = lusid.models.UpsertRecipeRequest(
+        configuration_recipe=recipe
+    )
+
+    return api_factory.build(lusid.ConfigurationRecipeApi).upsert_configuration_recipe(
+        upsert_recipe_request=recipe_request)
+
 
 def create_property(
         api_factory: lusid.utilities.ApiClientFactory,
@@ -137,9 +159,6 @@ def create_property(
 
 
 def equity_swap_transaction(
-        api_factory: lusid.utilities.ApiClientFactory,
-        portfolio_scope: str,
-        portfolio_code: str,
         notional: float,
         number_of_shares: float,
         equity_identifier: str,
@@ -161,12 +180,6 @@ def equity_swap_transaction(
 
     Parameters
     ----------
-    api_factory : lusid.utilities.ApiClientFactory api_factory
-    The api factory to use
-    portfolio_scope: str
-    The scope of the portfolio, part of the resource ID
-    portfolio_code: str
-    The code of the portfolio, part of the resource ID
     notional: float
     The notional of the equity swap
     equity_identifier: str

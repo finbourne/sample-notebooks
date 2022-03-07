@@ -95,3 +95,15 @@ def clean_df_cols(df: pd.DataFrame, exclusions: list=[], inclusions: list=[]):
         new_df = new_df[cols_to_include]
 
     return new_df
+
+def reorder_df_cols(df, order_tags=["start", "gains", "carry", "flows", "end"]):
+
+    # Order columns based on order tags, store untagged cols
+    ordered_cols = [col for tag in order_tags for col in df.columns if tag in col]
+    other_cols = [col for col in df.columns if col not in ordered_cols]
+
+    # Create new cols with other cols set at the head and reorder the dataframe
+    new_order_cols = other_cols + ordered_cols
+    new_df = df[new_order_cols]
+
+    return new_df
