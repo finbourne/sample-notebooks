@@ -48,6 +48,11 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | --- | --- | --- | --- |
 | [Generate P&amp;L with different accounting methods (FIFO and LIFO).ipynb](<use-cases/abor/Generate%20P%26L%20with%20different%20accounting%20methods%20%28FIFO%20and%20LIFO%29.ipynb>) | Accounting methods | Generating P&L with different accounting methods (FIFO and LIFO) | accounting methods, cocoon, derived portfolios, transaction configuration |
 
+## examples/use-cases/audit-trail
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Identifying Downstream Consumers affected by Backdated Corrections on a Locked Reporting Window.ipynb](<use-cases/audit-trail/Identifying%20Downstream%20Consumers%20affected%20by%20Backdated%20Corrections%20on%20a%20Locked%20Reporting%20Window.ipynb>) | Identifying backdated corrections | Demonstration of how to identify backdated corrections and their impact | build transaction, cocoon - seed_data, insights, portfolio changes |
+
 ## examples/use-cases/cash-management
 | filename | title | description | features |
 | --- | --- | --- | --- |

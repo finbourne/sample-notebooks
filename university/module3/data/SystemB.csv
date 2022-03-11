@@ -1,0 +1,5 @@
+fund,instrument,isin,txn_id,txn_type,trade_date,settle_date,units,price,currency
+Income,GBP,,I001,FundsIn,2022-03-01,2022-03-01,50000,1.00,GBP
+Income,BP,GB0007980591,I002,Acheter,2022-03-01,2022-03-03,5000,2.10,GBP
+Income,Unilever,GB00B10RZP78,I003,Acheter,2022-03-01,2022-03-03,3750,3.10,GBP
+Income,Burberry,GB0031743007,I004,Acheter,2022-03-01,2022-03-03,3000,4.10,GBP
