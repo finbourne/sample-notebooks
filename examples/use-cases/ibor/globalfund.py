@@ -38,21 +38,21 @@ def valuation(api_factory, marketdata_scope, portfolio_group, time):
         market=models.MarketContext(
             market_rules=[
                 models.MarketDataKeyRule(
-                    key="Equity.Figi.*",
+                    key="Quote.Figi.*",
                     supplier="DataScope",
                     data_scope=marketdata_scope,
                     quote_type="Price",
                     field="Mid",
                 ),
                 models.MarketDataKeyRule(
-                    key="Equity.Isin.*",
+                    key="Quote.Isin.*",
                     supplier="DataScope",
                     data_scope=marketdata_scope,
                     quote_type="Price",
                     field="Mid",
                 ),
                 models.MarketDataKeyRule(
-                    key="Equity.LusidInstrumentId.*",
+                    key="Quote.LusidInstrumentId.*",
                     supplier="DataScope",
                     data_scope=marketdata_scope,
                     quote_type="Price",
