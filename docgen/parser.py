@@ -205,11 +205,6 @@ def main():
 
     print(f"saving index to {readme}")
 
-    nb = nbformat.v4.new_notebook()
-    nb['cells'] = [nbformat.v4.new_markdown_cell(doc)]
-    with open('examples/index.ipynb', 'w') as f:
-        nbformat.write(nb, f)
-
     save_index_page(readme, doc)
 
 

@@ -7,13 +7,16 @@ This repository contains Jupyter notebooks showcasing how to use the LUSID SDK. 
 | branch | status |
 | --- | --- |
 | `master`  | ![Daily build](https://github.com/finbourne/sample-notebooks/workflows/Daily%20build/badge.svg) ![Build and test](https://github.com/finbourne/sample-notebooks/workflows/Build%20and%20test/badge.svg) |
-| `develop` | ![run-sample-notebooks-tests](https://github.com/finbourne/sample-notebooks/workflows/run-sample-notebooks-tests/badge.svg?branch=develop) |
+| `develop` | ![Build and test](https://github.com/finbourne/sample-notebooks/workflows/Build%20and%20test/badge.svg?branch=develop) [view builds](https://github.com/finbourne/sample-notebooks/actions/workflows/main.yml?query=branch%3Adevelop) |
 
 
+## Running the Notebooks in Jupyterhub for your LUSID domain
 
-## Running the notebooks locally
+Authentication is handled automatically; see https://support.lusid.com/knowledgebase/article/KA-01829/en-us
 
-You can run the notebooks locally by following these steps:
+## Running the Notebooks locally
+
+You can run the Notebooks locally but you will need to set up authentication using a secrets file:
 
 1. Clone this repository
 
@@ -22,7 +25,7 @@ git clone git@github.com:finbourne/sample-notebooks.git
 cd sample-notebooks
 ```
 
-2. Create a `secrets.json` file in the **examples** folder with your LUSID credentials. For more details on this, see the [Using a secrets.json file](https://support.lusid.com/getting-started-with-apis-sdks) documentation.
+2. Create a `secrets.json` file in the **examples** folder with your LUSID credentials. [See how to assemble these](https://support.lusid.com/knowledgebase/article/KA-01663/).
 
 3. Build the Docker image
 
@@ -38,7 +41,11 @@ docker run --rm -it --name fbn-jupyter -v %cd%:/home/jovyan -e FBN_SECRETS_PATH=
 ```
 **macOS/linux**
 ```bash
-docker run --rm -it --name fbn-jupyter -v $(pwd):/home/jovyan -e FBN_SECRETS_PATH=/home/jovyan/examples/secrets.json -p 8888:8888 finbourne/lusid-sample-notebooks
+docker run --rm -it --name fbn-jupyter \
+  -v $(pwd):/home/jovyan \
+  -e FBN_SECRETS_PATH=/home/jovyan/examples/secrets.json \
+  -p 8888:8888 \
+  finbourne/lusid-sample-notebooks
 ```
 
 You will see something similar to the following output:

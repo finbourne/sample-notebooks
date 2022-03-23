@@ -1,0 +1,3 @@
+instrument,isin,txn_id,txn_type,trade_date,units,price,currency
+BP,GB0007980591,MD32001,Buy,2022-03-07T12:00:00Z,10000,2.00,GBP
+Unilever,GB00B10RZP78,MD32002,Sell,2022-03-07T12:10:00Z,3000,3.00,GBP

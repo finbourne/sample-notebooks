@@ -57,7 +57,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Accruals.ipynb](<use-cases/cash-management/Accruals.ipynb>) | Accruals | Demonstration of how to model accruals in LUSID | cocoon, holdings, transaction configuration |
-| [Booking subscriptions and redemptions.ipynb](<use-cases/cash-management/Booking%20subscriptions%20and%20redemptions.ipynb>) | Booking subscriptions and redemptions | Demonstration of how to model subscriptions and redemptions in LUSID | cocoon - seed_data, holdings, transaction configuration |
+| [Booking subscriptions and redemptions.ipynb](<use-cases/cash-management/Booking%20subscriptions%20and%20redemptions.ipynb>) | Booking subscriptions and redemptions | Demonstration of how to model subscriptions and redemptions in LUSID | cocoon - seed_data, holdings, transaction configuration |
 | [Cash ladder.ipynb](<use-cases/cash-management/Cash%20ladder.ipynb>) | Cash ladder | Demonstration of how to compute a cash ladder for a portfolio. | cash |
 | [Manual journal entries to correct cash balances.ipynb](<use-cases/cash-management/Manual%20journal%20entries%20to%20correct%20cash%20balances.ipynb>) | Correcting cash balances with manual journal entries | Demonstration of how to model manual journal entries in LUSID | cancel transactions, cocoon, holdings, reconciliations, transaction configuration |
 
@@ -73,6 +73,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | --- | --- | --- | --- |
 | [Generating Corporate actions natively in LUSID.ipynb](<use-cases/ibor/Generating%20Corporate%20actions%20natively%20in%20LUSID.ipynb>) | Corporate Actions in LUSID | Demonstrates how to create and apply a corporate action to a portfolio. | corporate actions, derived portfolios, holdings, transactions |
 | [Generating holdings with the movements engine in LUSID.ipynb](<use-cases/ibor/Generating%20holdings%20with%20the%20movements%20engine%20in%20LUSID.ipynb>) | Generating holdings | Generating holdings with the movements engine | cocoon, instruments, transaction configuration, transactions |
+| [Get Holdings and Extract to csv.ipynb](<use-cases/ibor/Get%20Holdings%20and%20Extract%20to%20csv.ipynb>) | Get Holdings | Shows how to use the Get Holdings endpoint and extract it to a csv | holdings, transaction portfolios |
 | [Get a consolidated view of your data from multiple systems.ipynb](<use-cases/ibor/Get%20a%20consolidated%20view%20of%20your%20data%20from%20multiple%20systems.ipynb>) | Consolidating multiple systems | Demonstration of how to migrate funds from multiple source systems into LUSID | aggregation, holdings, instruments, properties, quotes, reconciliations, transaction configuration |
 | [How do I create holdings in LUSID.ipynb](<use-cases/ibor/How%20do%20I%20create%20holdings%20in%20LUSID.ipynb>) | Creating holdings in LUSID | Demonstrates how to load transactions based on custom transaction types and then compute the subsequent holdings. | properties, transaction configuration, transactions |
 | [IBOR User Journey.ipynb](<use-cases/ibor/IBOR%20User%20Journey.ipynb>) | IBOR User Journey | A day in the life of an IBOR using LUSID | aggregation, aggregation, cocoon, corporate actions, instruments, quotes, results store, sub-holding keys, transaction configuration, valuation reconciliation |
@@ -84,6 +85,18 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Portfolio types and portfolio groups in LUSID.ipynb](<use-cases/ibor/Portfolio%20types%20and%20portfolio%20groups%20in%20LUSID.ipynb>) | Portfolios and Portfolio Groups | Demonstrates how to do various operations with portfolios and portfolio groups. | commands, corporate actions, portfolio groups, portfolios, transactions |
 | [Running a Global Fund.ipynb](<use-cases/ibor/Running%20a%20Global%20Fund.ipynb>) | Running a global fund | Demonstration of using LUSID to run funds fed from multiple source systems across multiple regions | aggregation, cocoon, cut labels, instruments, quotes, recipes, transaction configuration, transactions |
 | [Using cut-labels to manage your business across different time-zones.ipynb](<use-cases/ibor/Using%20cut-labels%20to%20manage%20your%20business%20across%20different%20time-zones.ipynb>) | Cut Labels | Demonstrates how to use cut labels to simplify timestamps and streamline usage of LUSID when used across multiple timezones. | cut labels, holdings, instruments, transactions |
+
+## examples/use-cases/instruments
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [FX Forward.ipynb](<use-cases/instruments/FX%20Forward.ipynb>) | FX Forward - Valuation Workflow |  | FX Forwards, complex market data, recipes, valuations |
+| [FundingLegWithEquity.ipynb](<use-cases/instruments/FundingLegWithEquity.ipynb>) | Variable Funding Leg + Equity or Cash Instrument | Demonstrates creation and pricing of a funding leg with <br>variable notional and constructing a related position in<br>an stock or underlying instrument. This construct can be used<br>to represent the mechanics of a total return or equity swap. | aggregation, instruments, market data store, quotes, results store |
+
+## examples/use-cases/models-and-indices
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Rebalancing with a model portfolio.ipynb](<use-cases/models-and-indices/Rebalancing%20with%20a%20model%20portfolio.ipynb>) | Rebalancing with a model portfolio  | This notebook shows how to you can automatically generate transactions to rebalance a transaction portfolio with a model portfolio | reference portfolios, transactions portfolios |
+| [Setting up a blended benchmark with floating weights.ipynb](<use-cases/models-and-indices/Setting%20up%20a%20blended%20benchmark%20with%20floating%20weights.ipynb>) | Setting up a blended benchmark | Demonstration of how to load a blended benchmark. <br>We also show how floating weights with a periodic reset. | Floating weights, Reference portfolios, Securitised portfolios, Weights |
 
 ## examples/use-cases/orders-management
 | filename | title | description | features |
@@ -108,15 +121,16 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Calculating P&amp;L on strategy.ipynb](<use-cases/risk-and-performance/Calculating%20P%26L%20on%20strategy.ipynb>) | Calculating P&amp;L on strategies | Demonstration of how to use sub-holding keys and output transactions to track P&L on different strategies. | cocoon - seed_data, derived portfolios, output transactions, properties, sub-holding keys, transactions |
 | [Loading and calculating returns.ipynb](<use-cases/risk-and-performance/Loading%20and%20calculating%20returns.ipynb>) | Loading and caculating returns | Demonstration of how to load and calculate returns in LUSID. | Returns |
 | [Manage your investment strategies.ipynb](<use-cases/risk-and-performance/Manage%20your%20investment%20strategies.ipynb>) | Managing investment strategies | Demonstration of how to compare how strategies are performing across all of our client's holdings, rather than just looking at a single portfolio in isolation. | aggregation, data types, instruments, portfolio groups, properties, set holdings, transactions |
-| [Rebalancing with a model portfolio.ipynb](<use-cases/risk-and-performance/Rebalancing%20with%20a%20model%20portfolio.ipynb>) | Rebalancing with a model portfolio  | This notebook shows how to you can automatically generate transactions to rebalance a transaction portfolio with a model portfolio | reference portfolios, transactions portfolios |
 | [Returns on composite portfolios.ipynb](<use-cases/risk-and-performance/Returns%20on%20composite%20portfolios.ipynb>) | Loading and caculating returns | Demonstration of how to load and calculate returns on composite portfolios in LUSID | Composite portfolios, Returns |
-| [Setting up a blended benchmark with floating weights.ipynb](<use-cases/risk-and-performance/Setting%20up%20a%20blended%20benchmark%20with%20floating%20weights.ipynb>) | Setting up a blended benchmark | Demonstration of how to load a blended benchmark. <br>We also show how floating weights with a periodic reset. | Floating weights, Reference portfolios, Securitised portfolios, Weights |
 | [Track trading commissions in your portfolio.ipynb](<use-cases/risk-and-performance/Track%20trading%20commissions%20in%20your%20portfolio.ipynb>) | Track trading costs and commissions in your portfolio | Demonstrates how to track commissions and fees separately from trade costs. | cocoon, instruments, portfolio groups, properties, sub-holding keys, transaction configuration, transactions |
 
 ## examples/use-cases/valuation
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Bond Pricing And Accrued Interest Calculation.ipynb](<use-cases/valuation/Bond%20Pricing%20And%20Accrued%20Interest%20Calculation.ipynb>) | Bond Pricing And Accrued Interest Calculation | Demonstrates pricing a bond and calculating it's accrued interest based on a user defined Bond Instrument. | aggregation, instruments, market data store, quotes, results store |
+| [Externally Calculated Metrics.ipynb](<use-cases/valuation/Externally%20Calculated%20Metrics.ipynb>) | Save externally calculated metrics and use them within the Valuation Engine | Attributes<br>---------- |  |
+| [Futures Valuation with Differing Cost Basis Treatments (Synthetic Cash Method).ipynb](<use-cases/valuation/Futures%20Valuation%20with%20Differing%20Cost%20Basis%20Treatments%20%28Synthetic%20Cash%20Method%29.ipynb>) | Futures Valuation Workflow |  | futures, recipes, transaction types, valuations |
+| [Futures Valuation with Differing Cost Basis Treatments.ipynb](<use-cases/valuation/Futures%20Valuation%20with%20Differing%20Cost%20Basis%20Treatments.ipynb>) | Futures Valuation Workflow |  | futures, recipes, transaction types, valuations |
 | [Look-through valuation.ipynb](<use-cases/valuation/Look-through%20valuation.ipynb>) | Portfolio look-through in LUSID | Shows how to compute the value of a child portfolio's holding as though they were directly held by the parent portfolio. | holdings, look through, portfolios, securitised portfolios, valuations |
 | [Simple Valuation.ipynb](<use-cases/valuation/Simple%20Valuation.ipynb>) | Simple valuation with default recipes | This notebook shows how to value a portfolio using defatul recipes, for an out of the box look at positions and valuations | manifests, recipes, transactions, valuation |
 | [Valuations with recipes.ipynb](<use-cases/valuation/Valuations%20with%20recipes.ipynb>) | Valuation with recipes | This notebook shows how to value a portfolio using recipes with different pricing sources | manifests, recipes, transactions, valuation |
