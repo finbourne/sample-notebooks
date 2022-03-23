@@ -25,7 +25,6 @@ def find_nbs(nb_root):
     
     return set(nbs_dirs)
 
-
 def construct_matrix_json(nb_dirs):
 
     matrix_json = []
