@@ -1,0 +1,6 @@
+﻿Description,code,action_description,announcement_date,ex_date,record_date,payment_date,input_instrument_figi,instrument_input_ticker,input_instrument_name,input_units_factor,input_cost_factor,output_instrument_figi,output_instrument_name,output_ticker,output_instrument_internal,output_units_factor,output_cost_factor
+Apple Dividend of 0.17 cents per share,ca001,dividend,29/01/2019,08/02/2019,11/02/2019,14/02/2019,BBG000B9XVV8,AAPL,APPLE INC,1,1,,,,CCY_USD,0.017,0
+Cigna & Express Scripts Merger,ca002,merger (equivalent to exchange example),08/03/2018,10/12/2018,13/12/2018,20/12/2018,BBG000C16621,ESRX,EXPRESS SCRIPTS HOLDINGS CO,1,1,BBG00KXXK940,CIGNA CORP,CI,,0.24,1
+Acosa spin-off from Trinity Industries,ca003,spin-off (equivalent to exchange example),01/01/2018,17/10/2018,20/10/2018,01/11/2018,BBG000BVL406,TRN,TRINITY INDUSTRIES INC,3,1,BBG00JGMWFQ5,ARCOSA INC,ACA,,1,0
+Trex 2 for 1 stock split,ca004,split,07/05/2018,21/05/2018,23/05/2018,19/06/2018,BBG000BTGM43,TREX,TREX COMPANY INC,1,1,BBG000BTGM43,TREX COMPANY INC,TREX,,2,1
+ACM Research Inc bonus issue,ca005,bonus issue,03/03/2022,14/03/2022,16/03/2022,23/03/2022,BBG00HPSG933,ACMR,ACM Research Inc,1,1,BBG00HPSG933,ACM Research Inc,ACMR,,2,1
