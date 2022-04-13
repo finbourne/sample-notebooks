@@ -71,6 +71,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 ## examples/use-cases/ibor
 | filename | title | description | features |
 | --- | --- | --- | --- |
+| [Corporate Actions.ipynb](<use-cases/ibor/Corporate%20Actions.ipynb>) | Equity - Handling Corporate Actions |  | bonus issue, corporate actions, dividend, equity, merger, recipes, spin-off, split, valuations |
 | [Generating Corporate actions natively in LUSID.ipynb](<use-cases/ibor/Generating%20Corporate%20actions%20natively%20in%20LUSID.ipynb>) | Corporate Actions in LUSID | Demonstrates how to create and apply a corporate action to a portfolio. | corporate actions, derived portfolios, holdings, transactions |
 | [Generating holdings with the movements engine in LUSID.ipynb](<use-cases/ibor/Generating%20holdings%20with%20the%20movements%20engine%20in%20LUSID.ipynb>) | Generating holdings | Generating holdings with the movements engine | cocoon, instruments, transaction configuration, transactions |
 | [Get Holdings and Extract to csv.ipynb](<use-cases/ibor/Get%20Holdings%20and%20Extract%20to%20csv.ipynb>) | Get Holdings | Shows how to use the Get Holdings endpoint and extract it to a csv | holdings, transaction portfolios |
@@ -89,8 +90,12 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 ## examples/use-cases/instruments
 | filename | title | description | features |
 | --- | --- | --- | --- |
+| [Bond.ipynb](<use-cases/instruments/Bond.ipynb>) | Bonds - Computing P&amp;L and Accrued Interest for Bonds |  | P&amp;L, accrued interest, bond, bonds, recipes, valuations |
+| [Contract for Difference.ipynb](<use-cases/instruments/Contract%20for%20Difference.ipynb>) | Contract for Difference - Calculating Intraday P&amp;L for CFD's with and without Daily Close outs |  | P&amp;L, cfd, close out, contract for difference, recipes, valuations |
+| [Equity Option.ipynb](<use-cases/instruments/Equity%20Option.ipynb>) | Equity Option - Booking and valuing an Equity Option with physical settlement |  | P&amp;L, equity option, physical settlement, recipes, valuations |
 | [FX Forward.ipynb](<use-cases/instruments/FX%20Forward.ipynb>) | FX Forward - Valuation Workflow |  | FX Forwards, complex market data, recipes, valuations |
-| [FundingLegWithEquity.ipynb](<use-cases/instruments/FundingLegWithEquity.ipynb>) | Variable Funding Leg + Equity or Cash Instrument | Demonstrates creation and pricing of a funding leg with <br>variable notional and constructing a related position in<br>an stock or underlying instrument. This construct can be used<br>to represent the mechanics of a total return or equity swap. | aggregation, instruments, market data store, quotes, results store |
+| [Funding Leg Swap.ipynb](<use-cases/instruments/Funding%20Leg%20Swap.ipynb>) | Variable Funding Leg + Equity or Cash Instrument | Demonstrates creation and pricing of a funding leg with <br>variable notional and constructing a related position in<br>an stock or underlying instrument. This construct can be used<br>to represent the mechanics of a total return or equity swap. | aggregation, funding leg swap, instruments, market data store, quotes, results store |
+| [Simple Equity.ipynb](<use-cases/instruments/Simple%20Equity.ipynb>) | Equity - Computing P&amp;L and Handling Dividends for Equities |  | P&amp;L, dividend, equity, recipes, valuations |
 
 ## examples/use-cases/models-and-indices
 | filename | title | description | features |
@@ -119,6 +124,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | --- | --- | --- | --- |
 | [Backtesting with LUSID derived portfolios.ipynb](<use-cases/risk-and-performance/Backtesting%20with%20LUSID%20derived%20portfolios.ipynb>) | Backtesting with derived portfolios | Shows how to use a derived portfolio to test different trading strategies. | aggregation, cocoon, derived portfolios, holdings, instruments, quotes |
 | [Calculating P&amp;L on strategy.ipynb](<use-cases/risk-and-performance/Calculating%20P%26L%20on%20strategy.ipynb>) | Calculating P&amp;L on strategies | Demonstration of how to use sub-holding keys and output transactions to track P&L on different strategies. | cocoon - seed_data, derived portfolios, output transactions, properties, sub-holding keys, transactions |
+| [Composite returns adjusted for FX rates.ipynb](<use-cases/risk-and-performance/Composite%20returns%20adjusted%20for%20FX%20rates.ipynb>) | Loading and caculating returns | Demonstration of how to get aggregate returns adjusted by FX performance | Composite portfolios, FX performance, Returns |
 | [Loading and calculating returns.ipynb](<use-cases/risk-and-performance/Loading%20and%20calculating%20returns.ipynb>) | Loading and caculating returns | Demonstration of how to load and calculate returns in LUSID. | Returns |
 | [Manage your investment strategies.ipynb](<use-cases/risk-and-performance/Manage%20your%20investment%20strategies.ipynb>) | Managing investment strategies | Demonstration of how to compare how strategies are performing across all of our client's holdings, rather than just looking at a single portfolio in isolation. | aggregation, data types, instruments, portfolio groups, properties, set holdings, transactions |
 | [Returns on composite portfolios.ipynb](<use-cases/risk-and-performance/Returns%20on%20composite%20portfolios.ipynb>) | Loading and caculating returns | Demonstration of how to load and calculate returns on composite portfolios in LUSID | Composite portfolios, Returns |
