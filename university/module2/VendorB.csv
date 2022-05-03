@@ -1,5 +1,5 @@
-instrument_name,internal_id,figi,ticker,currency,origin,market_sector,coupon,maturity_date
-BP,imd_43535553,BBG000C05BD1,BP/LN,GBP,GB,equity
-UKT 0 ⅜ 10/22/26,imd_34994599,BBG00ZF1T9P5,UKT 0.375 10/22/26,GBP,Great Britain,bond,0.0375,2026-10-22
-Euro-Bund Futures (FGBL),imd_34588699,BBG012FFPKW7,RXM2,EUR,DE,future,,2022-06-30
-EUR/USD 6M 20220101,imd_34876136,,,USD,usa,fxforward,,2022-07-01
+instrument_name,internal_id,figi,ticker,currency,origin,market_sector,coupon%,maturity_date
+BP,imd_43535553,BBG000C05BD1,BP/LN,GBP,GB,equity,0
+UKT 0 ⅜ 10/22/26,imd_34994599,BBG00ZF1T9P5,UKT 0.375 10/22/26,GBP,Great Britain,bond,0.375,2026-10-22
+Euro-Bund Futures (FGBL),imd_34588699,BBG012FFPKW7,RXM2,EUR,DE,future,0,2022-06-30
+EUR/USD 6M 20220101,imd_34876136,,,USD,usa,fxforward,0,2022-07-01
