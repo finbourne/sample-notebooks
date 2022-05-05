@@ -1,5 +1,5 @@
-instrument_name,internal_id,currency,isin,figi,country_issue,market_sector,coupon,maturity_date
-BP PLC,imd_43535553,GBP,GB0007980591,BBG000C05BD1,United Kingdom,equity
-UK Gilt 0.375 10/22/26,imd_34994599,GBP,GB00BNNGP668,BBG00ZF1T9P5,united_kingdom,bond,0.0375,2026-10-22
-EURO-BUND FUTURE Jun22,imd_34588699,EUR,DE0009652644,BBG012FFPKW7,,future,,2022-06-30
-EURUSD 6M FWD,imd_34876136,USD,,,United States,fxforward,,2022-07-01
+instrument_name,internal_id,currency,isin,figi,country_issue,market_sector,coupon%,maturity_date
+BP PLC,imd_43535553,GBP,GB0007980591,BBG000C05BD1,United Kingdom,equity,0
+UK Gilt 0.375 10/22/26,imd_34994599,GBP,GB00BNNGP668,BBG00ZF1T9P5,united_kingdom,bond,0.375,2026-10-22
+EURO-BUND FUTURE Jun22,imd_34588699,EUR,DE0009652644,BBG012FFPKW7,,future,0,2022-06-30
+EURUSD 6M FWD,imd_34876136,USD,,,United States,fxforward,0,2022-07-01
