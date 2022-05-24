@@ -199,3 +199,4 @@ venv.bak/
 **/secrets*
 **/.idea/
 **/.*
+!.github
