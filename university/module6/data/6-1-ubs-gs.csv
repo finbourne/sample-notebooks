@@ -1,4 +1,0 @@
-source,instrument,asset,figi,txn_id,txn_code,trade_date,settle_date,units,price,currency
-Lusid,GBP,Cash,,61001,FundsIn,2022-05-16T09:00:00Z,2022-05-16T09:01:00Z,500,1,GBP
-UBS,BP,Equity,BBG000C05BD1,61002,10-Draft,2022-05-16T10:00:00Z,2022-05-18T09:00:00Z,50,5,GBP
-GoldmanSachs,BP,Equity,BBG000C05BD1,61003,10-Draft,2022-05-16T11:00:00Z,2022-05-18T09:00:00Z,25,5,GBP
