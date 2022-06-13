@@ -1,4 +1,4 @@
-Port,Currency,Date,Sys,Weight,Value,Class
+Port,Currency,Date,Sys,Weight,Amount,Class
 PortA,AUD,20210713,FSC,10,50000000,C
 PortA,CAD,20210713,FSC,7,138234286,C
 PortA,CHF,20210713,FSC,3,203402,C
