@@ -1,0 +1,19 @@
+date,prices,luid,id_type,currency,scaling_factor,note
+2021-09-01T08:00:00Z,100,FutBund001,ClientInternal,EUR,100,Day 1 opening price
+2021-09-01T12:00:00Z,100.5,FutBund001,ClientInternal,EUR,100,Day 1 intraday MTM price
+2021-09-01T17:00:00Z,100.5,FutBund001,ClientInternal,EUR,100,Day 1 closing price
+2021-09-02T08:00:00Z,100.5,FutBund001,ClientInternal,EUR,100,Day 2 opening price
+2021-09-02T14:15:00Z,99.5,FutBund001,ClientInternal,EUR,100,Day2 intraday trade price
+2021-09-02T17:00:00Z,98,FutBund001,ClientInternal,EUR,100,Day2 closing price
+2021-09-03T08:00:00Z,98,FutBund001,ClientInternal,EUR,100,Day3 opening price
+2021-09-03T14:15:00Z,104,FutBund001,ClientInternal,EUR,100,Day3 intraday trade price
+2021-09-03T17:00:00Z,104,FutBund001,ClientInternal,EUR,100,Day3 closing price
+2021-09-01T08:00:00Z,100,FutBund002,ClientInternal,EUR,100,Day1 opening price
+2021-09-01T12:00:00Z,100.5,FutBund002,ClientInternal,EUR,100,Day 1 intraday MTM price
+2021-09-01T17:00:00Z,100.5,FutBund002,ClientInternal,EUR,100,Day 1 closing price
+2021-09-02T08:00:00Z,100.5,FutBund002,ClientInternal,EUR,100,Day 2 opening price
+2021-09-02T14:15:00Z,99.5,FutBund002,ClientInternal,EUR,100,Day 2 intraday trade price
+2021-09-02T17:00:00Z,98,FutBund002,ClientInternal,EUR,100,Day 2 closing price
+2021-09-03T08:00:00Z,98,FutBund002,ClientInternal,EUR,100,Day 3 opening price
+2021-09-03T14:15:00Z,104,FutBund002,ClientInternal,EUR,100,Day 3 intraday trade price
+2021-09-03T17:00:00Z,104,FutBund002,ClientInternal,EUR,100,Day 3 closing price
