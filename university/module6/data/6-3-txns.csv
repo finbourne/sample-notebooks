@@ -1,0 +1,4 @@
+instrument,asset,figi,txn_id,txn_type,trade_date,settle_date,units,price,currency,commission
+GBP,Cash,,63001,FundsIn,2022-06-06T09:00:00Z,2022-06-08T09:00:00Z,500,1,GBP,0
+BP,Equity,BBG000C05BD1,63002,Buy,2022-06-06T10:00:00Z,2022-06-08T09:00:00Z,25,5,GBP,3.75
+BP,Equity,BBG000C05BD1,63003,Buy,2022-06-06T11:00:00Z,2022-06-08T09:00:00Z,10,5,GBP,1.50
