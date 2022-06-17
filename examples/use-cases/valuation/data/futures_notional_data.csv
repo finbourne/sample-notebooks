@@ -1,6 +1,6 @@
-txn_id,txn_type,trade_date,quantity,luid,price,total_consideration,notional_amount
-fut_open_1,OpenContract,2021-09-01T08:00:00Z,10,FutBund001,0,30,1000000
-fut_open_2,OpenContract,2021-09-01T08:00:00Z,5,FutBund002,0,30,500000
+txn_id,txn_type,trade_date,quantity,identifier,price,total_consideration,notional_amount
+fut_open_1,OpenContract,2021-09-01T08:00:00Z,10,FutBund001,100,30,1000000
+fut_open_2,OpenContract,2021-09-01T08:00:00Z,5,FutBund002,100,30,500000
 vm_1,VM,2021-09-02T08:00:00Z,0,FutBund001,0,5000,0
 fut_close_1,CloseContract,2021-09-02T14:15:00Z,5,FutBund001,0,0,0
 fut_close_2,CloseContract,2021-09-02T14:15:00Z,5,FutBund002,0,0,0
