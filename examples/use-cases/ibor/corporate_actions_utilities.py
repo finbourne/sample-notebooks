@@ -18,25 +18,26 @@ quotes_api = api_factory.build(lu.QuotesApi)
 instruments_api = api_factory.build(lu.api.InstrumentsApi)
 
 
-def corporate_act_quotes_adjuster(scope):
-    def figi_to_lusid(figi):
+def figi_to_lusid(figi):
 
-        instrument = instruments_api.get_instrument(
-            identifier_type="Figi", identifier=figi
-        )
+    instrument = instruments_api.get_instrument(
+        identifier_type="Figi", identifier=figi
+    )
 
-        return instrument.lusid_instrument_id
+    return instrument.lusid_instrument_id
 
+
+def load_eod_prices(scope):
+    
     quotes = [
-        ("2018-05-19T23:59:59Z", "BBG000BVPXP1", 106.02),
-        ("2018-05-20T23:59:59Z", "BBG000B9XVV8", 131.33),
-        ("2018-05-20T23:59:59Z", "BBG000C16621", 112.34),
-        ("2018-05-20T23:59:59Z", "BBG000BVL406", 23.44),
-        ("2018-05-20T23:59:59Z", "BBG000BTGM43", 53.45),
-        ("2018-05-20T23:59:59Z", "BBG00KXXK940", 38.44),
-        ("2018-05-20T23:59:59Z", "BBG00JGMWFQ5", 103.44),
-        ("2018-05-20T23:59:59Z", "BBG00HPSG933", 44.66),
-        ("2018-05-21T00:00:00Z", "BBG000BTGM43", 26.725),
+        ("2018-05-20T23:00:00Z", "BBG000BVPXP1", 106.02),
+        ("2018-05-20T23:00:00Z", "BBG000B9XVV8", 131.33),
+        ("2018-05-20T23:00:00Z", "BBG000C16621", 112.34),
+        ("2018-05-20T23:00:00Z", "BBG000BVL406", 23.44),
+        ("2018-05-20T23:00:00Z", "BBG000BTGM43", 53.45),
+        ("2018-05-20T23:00:00Z", "BBG00KXXK940", 38.44),
+        ("2018-05-20T23:00:00Z", "BBG00JGMWFQ5", 103.44),
+        ("2018-05-20T23:00:00Z", "BBG00HPSG933", 44.66),
     ]
 
     # Create quotes request
@@ -62,6 +63,29 @@ def corporate_act_quotes_adjuster(scope):
                     effective_at=effective_date,
                 ),
                 metric_value=lm.MetricValue(price, unit="USD"),
+            )
+        }
+
+        response = quotes_api.upsert_quotes(scope=scope, request_body=instrument_quotes)
+
+
+def load_corporate_action_split_price(figi, new_price, effective_date, scope):
+    
+        luid = figi_to_lusid(figi)
+
+        instrument_quotes = {
+            "quotes_1": lm.UpsertQuoteRequest(
+                quote_id=lm.QuoteId(
+                    quote_series_id=lm.QuoteSeriesId(
+                        provider="Lusid",
+                        instrument_id=luid,
+                        instrument_id_type="LusidInstrumentId",
+                        quote_type="Price",
+                        field="mid",
+                    ),
+                    effective_at=effective_date,
+                ),
+                metric_value=lm.MetricValue(new_price, unit="USD"),
             )
         }
 
