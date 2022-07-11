@@ -1,6 +1,6 @@
-﻿portfolio,instrument_name,client_internal,isin,figi,quantity,price,currency,order_id,side,type,strategy,state
-us_long,USTreasury_2.00_2021,imd_34535347,US912828U816,BBG00FN3B5K8,121543,99.25,USD,ORD001,buy,limit,Balanced,new
-us_long,USTreasury_2.00_2021,imd_34535347,US912828U816,BBG00FN3B5K8,121,99.30,USD,ORD002,buy,limit,Balanced,new
-us_long,Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,500,1400,USD,ORD003,sell,limit,Tech,new
-us_long,Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,4000,1550,USD,ORD004,buy,limit,Balanced,new
-us_long,USTreasury_6.875_2025,imd_34534512,US912810EV62,BBG000DQQNJ8,5643,140.98,USD,ORD005,trade,limit,Balanced,new
+portfolio,instrument_name,client_internal,isin,figi,quantity,price,currency,order_id,side,type,strategy,state,date
+us_long,USTreasury_2.00_2021,imd_34535347,US912828U816,BBG00FN3B5K8,121543,99.25,USD,ORD001,buy,limit,Balanced,new,2021-01-06T11:15:00+00:00
+us_long,USTreasury_2.00_2021,imd_34535347,US912828U816,BBG00FN3B5K8,121,99.3,USD,ORD002,buy,limit,Balanced,new,2022-09-09T12:19:00+00:00
+us_long,Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,500,1400,USD,ORD003,sell,limit,Tech,new,2019-04-18T09:15:00+00:00
+us_long,Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,4000,1550,USD,ORD004,buy,limit,Balanced,new,2020-11-25T16:11:00+00:00
+us_long,USTreasury_6.875_2025,imd_34534512,US912810EV62,BBG000DQQNJ8,5643,140.98,USD,ORD005,trade,limit,Balanced,new,2021-06-21T10:15:30+00:00
