@@ -1,0 +1,9 @@
+{
+"SourcePortfolioId(default-Properties)": "PortfolioCode", 
+"entry_date_time": "EntryDateTime",
+"transaction_id": "TransactionId",
+"type": "TransactionType",
+"instrument_identifiers.Instrument/default/LusidInstrumentId": "FundFlowCurrency",
+"units": "Units",
+"transaction_date": "TransactionDate"
+}
