@@ -58,7 +58,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Accruals.ipynb](<use-cases/cash-management/Accruals.ipynb>) | Accruals | Demonstration of how to model accruals in LUSID | cocoon, holdings, transaction configuration |
-| [Booking subscriptions and redemptions.ipynb](<use-cases/cash-management/Booking%20subscriptions%20and%20redemptions.ipynb>) | Booking subscriptions and redemptions | Demonstration of how to model subscriptions and redemptions in LUSID | cocoon - seed_data, holdings, transaction configuration |
+| [Booking subscriptions and redemptions.ipynb](<use-cases/cash-management/Booking%20subscriptions%20and%20redemptions.ipynb>) | Booking subscriptions and redemptions | Demonstration of how to model subscriptions and redemptions in LUSID | cocoon - seed_data, holdings, transaction configuration |
 | [Cash ladder.ipynb](<use-cases/cash-management/Cash%20ladder.ipynb>) | Cash ladder | Demonstration of how to compute a cash ladder for a portfolio. | cash |
 | [Manual journal entries to correct cash balances.ipynb](<use-cases/cash-management/Manual%20journal%20entries%20to%20correct%20cash%20balances.ipynb>) | Correcting cash balances with manual journal entries | Demonstration of how to model manual journal entries in LUSID | cancel transactions, cocoon, holdings, reconciliations, transaction configuration |
 
@@ -103,6 +103,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Equity Options - Pricing and risk using Black-Scholes.ipynb](<use-cases/instruments/Equity%20Options%20-%20Pricing%20and%20risk%20using%20Black-Scholes.ipynb>) | Equity Option - Pricing and risk |  | black scholes, equity option, exposure, inline valuations, market value, option delta |
 | [FX Forward.ipynb](<use-cases/instruments/FX%20Forward.ipynb>) | FX Forward - Valuation Workflow |  | FX Forwards, complex market data, recipes, valuations |
 | [Funding Leg Swap.ipynb](<use-cases/instruments/Funding%20Leg%20Swap.ipynb>) | Variable Funding Leg + Equity or Cash Instrument | Demonstrates creation and pricing of a funding leg with <br>variable notional and constructing a related position in<br>an stock or underlying instrument. This construct can be used<br>to represent the mechanics of a total return or equity swap. | aggregation, funding leg swap, instruments, market data store, quotes, results store |
+| [Interest Rate Swap.ipynb](<use-cases/instruments/Interest%20Rate%20Swap.ipynb>) | Interest Rate Swap Valuation | Demonstrates pricing of an Interest Rate Swap based on a user defined Instrument. | instruments, lifecycle events, market data store, quotes, results store, valuation |
 | [Simple Equity.ipynb](<use-cases/instruments/Simple%20Equity.ipynb>) | Equity - Computing P&amp;L and Handling Dividends for Equities |  | P&amp;L, dividend, equity, recipes, valuations |
 
 ## examples/use-cases/models-and-indices
