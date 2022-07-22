@@ -1,0 +1,4 @@
+source,instrument,asset,figi,txn_id,txn_code,trade_date,settle_date,units,price,currency
+Lusid,GBP,Cash,,61001,FundsIn,2022-06-06T09:00:00Z,2022-06-08T09:00:00Z,500,1,GBP
+SocieteGenerale,BP,Equity,BBG000C05BD1,61002,Acheter,2022-06-06T10:00:00Z,2022-06-08T09:00:00Z,50,5,GBP
+DeutscheBank,BP,Equity,BBG000C05BD1,61003,Kaufen,2022-06-06T11:00:00Z,2022-06-08T09:00:00Z,25,5,GBP
