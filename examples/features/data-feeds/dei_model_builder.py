@@ -96,11 +96,11 @@ def get_instruments_with_dei_data():
 
 def dei_filter_by_quantiles(
     df,
-    total_dei_quantile_value=0.5,
-    executive_dei_quantile_value=0.5,
-    board_dei_quantile_value=0.5,
-    gender_dei_quantile_value=0.5,
-    pct_dist_cauc_ex_quantile_value=0.5,):
+    total_dei_quantile_value=0,
+    executive_dei_quantile_value=0,
+    board_dei_quantile_value=0,
+    gender_dei_quantile_value=0,
+    pct_dist_cauc_ex_quantile_value=0):
 
     total_dei_quantile_result = df["TotalDeiScore"].quantile(total_dei_quantile_value)
     executive_dei_quantile_result = df["ExecutiveDeiScore"].quantile(
@@ -152,7 +152,7 @@ def create_reference_portfolio(portfolio_code, portfolio_scope):
         print(json.loads(e.body)["title"])
 
 
-def build_model_portfolio(portfolio_code, portfolio_scope, df, max_stocks=20):
+def build_equally_weighted_model_portfolio(portfolio_code, portfolio_scope, df, max_stocks=20):
 
     create_reference_portfolio(portfolio_code, portfolio_scope)
 
