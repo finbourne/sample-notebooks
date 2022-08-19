@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+
+  notebook-samples-test:
+    container_name: notebook-samples
+    image: finbourne/notebook-runner2:latest-paul3
+    environment:
+      - FBN_LUSID_API_URL=${FBN_BASE_API_URL}/api
+      - FBN_LUMI_API_URL=${FBN_BASE_API_URL}/honeycomb
+      - FBN_ACCESS_TOKEN
+
+      - FBN_TOKEN_URL
+      - FBN_USERNAME
+      - FBN_PASSWORD
+      - FBN_CLIENT_ID
+      - FBN_CLIENT_SECRET
+      - FBN_SECRETS_PATH
+    volumes:
+      - .:/usr/notebooks

@@ -1,0 +1,128 @@
+name: Build and test
+
+# Trigger the workflow when a workflow_dispatch is received.
+on:
+  workflow_dispatch:
+    inputs:
+      pull_request:
+        type: string
+        required: true
+        description: The PR number.
+
+jobs:
+  # This workflow contains a single job called "build"
+  build-and-test-pr:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: "PR-${{ github.event.inputs.pull_request }}"
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # the tip of the merge request is required for the check_run progress
+      - name: Checkout for SHA
+        uses: actions/checkout@v2
+        with:
+          ref: "refs/pull/${{ github.event.inputs.pull_request }}/head"
+
+      - name: Get SHA
+        id: vcs
+        run: echo "::set-output name=sha::$(git rev-parse HEAD)"
+
+      # but actually, we want to test what this is going to look like once it's been merged.
+      - name: Fork based /LGTM checkout
+        uses: actions/checkout@v2
+        with:
+          ref: "refs/pull/${{ github.event.inputs.pull_request }}/merge"
+
+      # let the check run know it's in-progress; this shows up on the PR overview quite prominently
+      - name: Check Run in progress
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const date = new Date();
+            await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head_sha: "${{ steps.vcs.outputs.sha }}",
+              name: "Integration Testing",
+
+              started_at: date.toISOString(),
+              external_id: "${{ github.run_id }}",
+              status: "in_progress",
+
+              output: {
+                title: "Integration Tests",
+                summary: "Build started",
+                text: "Just gonna do stuff ya know."
+              }
+
+            });
+
+      - name: Run tests
+        id: run_tests
+        env:
+          FBN_LUSID_API_URL: ${{ secrets.URI }}
+          FBN_ACCESS_TOKEN: ${{ secrets.TOKEN }}
+          FBN_LUSID_ACCESS_TOKEN: ${{ secrets.TOKEN }}
+        run: |
+          echo "env variables have been set"
+          echo "Changing directory into sdk directory"
+          cd sdk          
+          echo "Running the tests..."
+          docker-compose up --abort-on-container-exit
+          echo "Tests COMPLETED"
+
+      - name: Complete check run
+        if: always()
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const date = new Date();
+            const resp = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: "${{ github.run_id }}"
+            });
+
+            const URL = resp.data.jobs[0].html_url
+
+            await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head_sha: "${{steps.vcs.outputs.sha}}",
+              name: "Integration Testing",
+
+              completed_at: date.toISOString(),
+
+              external_id: "${{ github.run_id }}",
+              details_url: resp.data.jobs[0].html_url,
+              status: "completed",
+              conclusion: "${{steps.run_tests.conclusion}}",
+
+              output: {
+                title: "Integration Tests",
+                summary: "Build completed with ${{steps.run_tests.conclusion}}",
+                text: `Visit the link to see the result of this step. ${URL}`
+              }
+            });
+
+      - name: Slack notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          fields: workflow,job,commit,repo,ref,author,took
+          custom_payload: |
+            {
+            username: 'github-actions-tests',
+            icon_emoji: ':octocat:',
+            attachments: [{
+              color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+              text: `${process.env.AS_WORKFLOW} (${process.env.AS_COMMIT}) of ${process.env.AS_REPO}@PR-${{ github.event.inputs.pull_request }} by ${process.env.GITHUB_ACTOR} failed in ${process.env.AS_TOOK}`
+            }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        if: failure()
