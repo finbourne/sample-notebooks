@@ -18,3 +18,12 @@ services:
       - FBN_SECRETS_PATH
     volumes:
       - .:/usr/notebooks
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        pip config set global.disable-pip-version-check true
+        export FBN_NOTEBOOK_FOLDER=/usr/notebooks
+        cd $${FBN_NOTEBOOK_FOLDER}
+        pip install -r requirements.txt
+        python /usr/src/nbrunner.py --notebooks $${FBN_NOTEBOOK_FOLDER}
