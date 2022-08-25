@@ -4,7 +4,7 @@ services:
 
   notebook-samples-test:
     container_name: notebook-samples
-    image: finbourne/notebook-runner2:latest-paul3
+    image: finbourne/notebook-runner2:latest
     environment:
       - FBN_LUSID_API_URL=${FBN_BASE_API_URL}/api
       - FBN_LUMI_API_URL=${FBN_BASE_API_URL}/honeycomb
