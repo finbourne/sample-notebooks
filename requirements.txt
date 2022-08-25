@@ -1,16 +1,17 @@
+astroid
+chevron
+docstring-parser
 jupyter
 jupyterthemes
-lusid-sdk-preview
+numpy
 openpyxl
 pandas
 pytz
-numpy
 requests
-lusidtools
-lusid-jam
-docstring-parser
-chevron
-finbourne-access-sdk
-finbourne-identity-sdk
-luminesce-sdk-preview
 
+finbourne-access-sdk >= 0.0.2272
+finbourne-identity-sdk >= 0.0.1845
+luminesce-sdk-preview >= 1.11.140
+lusid-jam
+lusid-sdk-preview >= 0.11.4713
+lusidtools >= 1.0.0
