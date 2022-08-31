@@ -68,8 +68,6 @@ jobs:
           FBN_LUSID_ACCESS_TOKEN: ${{ secrets.TOKEN }}
         run: |
           echo "env variables have been set"
-          echo "Changing directory into sdk directory"
-          cd sdk          
           echo "Running the tests..."
           docker-compose up --abort-on-container-exit
           echo "Tests COMPLETED"
