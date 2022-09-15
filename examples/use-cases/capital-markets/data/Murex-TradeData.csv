@@ -1,0 +1,8 @@
+Name,dealReference,description,dealGroup,account,product,portfolio,desk,partyReference,tradeDate,maturityDate,expiryDate,ccy,notional,domCcy,domNotional,fgnCcy,fgnNotional,interestRate,forwardRate,dayBasis,ratesRollConvention,sourceSystem
+1,LN044336001,Deposit / Loan,MM,LDN-MM-001,Depo,LN-Corp-Sales,MM,AMZL,20/05/2021,20/05/2022,,EUR,1.00E+06,,,,,4,,Exact/360,Following,Murex
+2,LN044347002,Deposit / Loan,MM,LDN-MM-001,Depo,LN-Corp-Sales,MM,AAPL,31/05/2021,31/05/2022,,USD,2.00E+06,,,,,5,,Exact/360,Following,Murex
+3,LN044353003,FX Forward,FX,LDN-FX-Sales-JP,Forward,LN-Hedge-FX,FX,META,06/06/2021,11/06/2021,,,,EUR,1.50E+07,USD,1.73E+07,,1.15,,,Murex
+4,LN044384004,FX Forward,FX,LDN-FX-Sales-JP,Forward,LN-Hedge-FX,FX,META,07/07/2021,12/07/2021,,,,EUR,-2.00E+07,USD,-2.24E+08,,1.12,,,Murex
+5,LN044384005,Deposit / Loan,MM,LDN-MM-002,Depo,LN-Corp-Sales2,MM,GOOG,07/07/2021,03/01/2022,,EUR,-3.00E+06,,,,,3.5,,Exact/360,Following,Murex
+6,LN044396006,Deposit / Loan,MM,LDN-MM-002,Depo,LN-Corp-Sales2,MM,NFLX,19/07/2021,15/01/2022,,USD,1.50E+07,,,,,4,,Exact/360,Following,Murex
+7,LN044450007,FX Forward,FX,LDN-FX-Sales-BoB,Forward,LN-Hedge-FX,FX-Sales,AAPL,11/09/2021,16/10/2022,,,,EUR,3.00E+06,USD,3.54E+06,,1.18,,,Murex
