@@ -98,9 +98,9 @@ def run_portfolio_valuation(portfolio_code, effective_date, scope):
         recipe_id=lm.ResourceId(scope=scope, code="default"),
         metrics=[
             lm.AggregateSpec("Instrument/default/Name", "Value"),
-            lm.AggregateSpec("Holding/default/PV", "Proportion"),
+            lm.AggregateSpec("Valuation/PvInReportCcy", "Proportion"),
             lm.AggregateSpec("Quotes/Price", "Value"),
-            lm.AggregateSpec("Holding/default/PV", "Sum"),
+            lm.AggregateSpec("Valuation/PvInReportCcy", "Sum"),
             lm.AggregateSpec("Holding/default/Units", "Sum"),
         ],
         group_by=["Instrument/default/Name"],
