@@ -9,9 +9,9 @@ pandas
 pytz
 requests
 
-finbourne-access-sdk >= 0.0.2272
-finbourne-identity-sdk >= 0.0.1845
-luminesce-sdk-preview >= 1.11.140
+finbourne-access-sdk >= 0.0.2272, < 2
+finbourne-identity-sdk >= 0.0.1845, < 2
+luminesce-sdk-preview >= 1.11.140, < 3
 lusid-jam
-lusid-sdk-preview >= 0.11.4713
+lusid-sdk-preview >= 0.11.4713, < 2
 lusidtools >= 1.0.0
