@@ -99,8 +99,8 @@ def valuation(api_factory, marketdata_scope, portfolio_group, time):
             models.AggregateSpec(key="Instrument/default/Name", op="Value"),
             models.AggregateSpec(key="Holding/default/Units", op="Sum"),
             models.AggregateSpec(key="Holding/default/Cost", op="Sum"),
-            models.AggregateSpec(key="Holding/default/PV", op="Sum"),
-            models.AggregateSpec(key="Holding/default/PV", op="Proportion"),
+            models.AggregateSpec(key="Valuation/PvInReportCcy", op="Sum"),
+            models.AggregateSpec(key="Valuation/PvInReportCcy", op="Proportion"),
         ],
         group_by=["Instrument/default/LusidInstrumentId"],
         portfolio_entity_ids=[
