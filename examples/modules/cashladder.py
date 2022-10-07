@@ -1,5 +1,6 @@
 import lusid
 import lusid.models as models
+from lusidjam import RefreshingToken
 from datetime import datetime
 import pandas as pd
 import numpy as np
