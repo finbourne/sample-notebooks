@@ -7,7 +7,15 @@ import os
 import sample_login
 import pytz
 
-api_factory = sample_login.authenticate_secrets()
+# Authenticate our user and create our API client
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+
+# Create API client
+api_factory = lusid.utilities.ApiClientFactory(
+    token=RefreshingToken(), 
+    api_secrets_filename = secrets_path,
+    app_name="cashladder"
+)
 
 def arrayToDf(data,columns,*args):
     """
