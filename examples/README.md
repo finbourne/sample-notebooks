@@ -121,6 +121,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Managing a transaction lifecycle using LUSID's properties.ipynb](<use-cases/post-trade-processing/Managing%20a%20transaction%20lifecycle%20using%20LUSID%27s%20properties.ipynb>) | Managing the transaction lifecycle on LUSID | Demonstration of how to use properties to manage the transaction lifecycle | cocoon, data types, instruments, properties, transactions |
+| [Transactions with Trade To Portfolio Rate.ipynb](<use-cases/post-trade-processing/Transactions%20with%20Trade%20To%20Portfolio%20Rate.ipynb>) | Trade To Portfolio Rate (TTPR) Demo | This notebook demonstrates how LUSID can resolve the Trade To Portfolio Rate for transactions booked with different trade currencies to the base portfolio currency. | instruments, portfolios, quotes, recipes, trade to portfolio rate, transactions |
 
 ## examples/use-cases/private-assets
 | filename | title | description | features |
