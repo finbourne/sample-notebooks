@@ -70,3 +70,7 @@ You will see something similar to the following output:
 
 5. Click on the link shown in the console to open up JupyterHub in a browser.
 6. Open the `examples` folder and open <a href="http://localhost:8888/notebooks/examples/index.ipynb" target="_blank">index.ipynb</a> to see a catalogue of available notebooks.
+
+## Contributing
+
+We welcome contributions from our community. See our [contributing guide](https://github.com/finbourne/sample-notebooks/blob/master/docs/CONTRIBUTING.md) for information on how to contribute to the Sample Notebooks repository.
