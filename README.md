@@ -73,4 +73,4 @@ You will see something similar to the following output:
 
 ## Contributing
 
-We welcome contributions from our community. See our [contributing guide](https://github.com/finbourne/sample-notebooks/blob/master/docs/CONTRIBUTING.md) for information on how to contribute to the Sample Notebooks repository.
+We welcome contributions from our community. See our [contributing guide](docs/CONTRIBUTING.md) for information on how to contribute to the Sample Notebooks repository.
