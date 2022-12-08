@@ -9,7 +9,9 @@ This repository contains Jupyter notebooks showcasing how to use the LUSID SDK. 
 | `master`  | ![Daily build](https://github.com/finbourne/sample-notebooks/workflows/Daily%20build/badge.svg) ![Build and test](https://github.com/finbourne/sample-notebooks/workflows/Build%20and%20test/badge.svg) |
 | `develop` | ![Build and test](https://github.com/finbourne/sample-notebooks/workflows/Build%20and%20test/badge.svg?branch=develop) [view builds](https://github.com/finbourne/sample-notebooks/actions/workflows/main.yml?query=branch%3Adevelop) |
 
+## Contributing
 
+We welcome contributions from our community. See our [contributing guide](docs/CONTRIBUTING.md) for information on how to contribute to the Sample Notebooks repository.
 ## Running the Notebooks in Jupyterhub for your LUSID domain
 
 Authentication is handled automatically; see https://support.lusid.com/knowledgebase/article/KA-01829/en-us
@@ -71,6 +73,3 @@ You will see something similar to the following output:
 5. Click on the link shown in the console to open up JupyterHub in a browser.
 6. Open the `examples` folder and open <a href="http://localhost:8888/notebooks/examples/index.ipynb" target="_blank">index.ipynb</a> to see a catalogue of available notebooks.
 
-## Contributing
-
-We welcome contributions from our community. See our [contributing guide](docs/CONTRIBUTING.md) for information on how to contribute to the Sample Notebooks repository.
