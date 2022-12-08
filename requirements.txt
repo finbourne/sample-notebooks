@@ -8,6 +8,7 @@ openpyxl
 pandas
 pytz
 requests
+rise
 
 finbourne-access-sdk >= 0.0.2272, < 2
 finbourne-identity-sdk >= 0.0.1845, < 2

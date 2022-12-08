@@ -12,6 +12,11 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Property value entitlements.ipynb](<entitlements/Property%20value%20entitlements.ipynb>) | Portfolio look-through in LUSID | Demonstrates the use of policies to grant access to property values in LUSID. | entitlements, property values, transactions |
 | [Restrict Transactions between two effective dates.ipynb](<entitlements/Restrict%20Transactions%20between%20two%20effective%20dates.ipynb>) | Create Policy to Restrict Portfolio Updates in a Period | This notebook shows how to create a policy to restrict portfolio updates inbetween 2 effective dates by denying any write/delete activity to all portfolios in a given scope. | policies, portfolios |
 
+## examples/example-data
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Example Data Load.ipynb](<example-data/Example%20Data%20Load.ipynb>) | Example Data Load | Loads some example data into LUSID | cutlabels, portfolio groups, quotes, transactions, valuation |
+
 ## examples/features/core-lusid
 | filename | title | description | features |
 | --- | --- | --- | --- |
@@ -145,6 +150,8 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | --- | --- | --- | --- |
 | [Bond Pricing And Accrued Interest Calculation.ipynb](<use-cases/valuation/Bond%20Pricing%20And%20Accrued%20Interest%20Calculation.ipynb>) | Bond Pricing And Accrued Interest Calculation | Demonstrates pricing a bond and calculating it's accrued interest based on a user defined Bond Instrument. | aggregation, instruments, market data store, quotes, results store |
 | [Externally Calculated Metrics.ipynb](<use-cases/valuation/Externally%20Calculated%20Metrics.ipynb>) | Save externally calculated metrics and use them within the Valuation Engine | Attributes<br>---------- |  |
+| [FundingLeg Valuation with compounding interests.ipynb](<use-cases/valuation/FundingLeg%20Valuation%20with%20compounding%20interests.ipynb>) | FundingLeg - Valuation with daily resets |  | Compounding, FundingLeg, recipes, valuations |
+| [Futures Valuation with Differing Cost Basis Treatments (Synthetic Cash Method).ipynb](<use-cases/valuation/Futures%20Valuation%20with%20Differing%20Cost%20Basis%20Treatments%20%28Synthetic%20Cash%20Method%29.ipynb>) | Futures Valuation Workflow |  | futures, recipes, transaction types, valuations |
 | [Futures Valuation with Differing Cost Basis Treatments.ipynb](<use-cases/valuation/Futures%20Valuation%20with%20Differing%20Cost%20Basis%20Treatments.ipynb>) | Futures Valuation Workflow |  | futures, recipes, transaction types, valuations |
 | [Futures Valuation with notional cost and variation margin.ipynb](<use-cases/valuation/Futures%20Valuation%20with%20notional%20cost%20and%20variation%20margin.ipynb>) | Futures Valuation Workflow |  | futures, recipes, transaction types, valuations |
 | [Look-through valuation (multi-level).ipynb](<use-cases/valuation/Look-through%20valuation%20%28multi-level%29.ipynb>) | Look-through Valuation with Multiple Levels | The following notebook details how to compute PVs across different levels of look-through for <br>both securitised funds and Index Futures | futures, instruments, recipes, securitised portfolios, transactions, valuation |
