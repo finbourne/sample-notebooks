@@ -122,6 +122,11 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | --- | --- | --- | --- |
 | [Combining FO and MO.ipynb](<use-cases/orders-management/Combining%20FO%20and%20MO.ipynb>) | Combining Front Office and Middle Office | Demonstration of how to give front office users an view of intraday trading activity on top of their middle office IBOR. | cocoon, derived portfolios, instruments, orders, properties, sub-holdings keys, transactions |
 
+## examples/use-cases/portfolio-construction
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Legal Entity-Instrument Relationships.ipynb](<use-cases/portfolio-construction/Legal%20Entity-Instrument%20Relationships.ipynb>) | Creating Legal Entities and Instrument Relationships | This notebook demonstrates how you can create legal entities with multiple identifiers from different sources and utilise legal entity-instruments relationships to filter a universe of instruments based on the properties attached to the legal entities. | legal entities, relationships |
+
 ## examples/use-cases/post-trade-processing
 | filename | title | description | features |
 | --- | --- | --- | --- |
