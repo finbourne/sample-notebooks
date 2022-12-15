@@ -12,11 +12,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Property value entitlements.ipynb](<entitlements/Property%20value%20entitlements.ipynb>) | Portfolio look-through in LUSID | Demonstrates the use of policies to grant access to property values in LUSID. | entitlements, property values, transactions |
 | [Restrict Transactions between two effective dates.ipynb](<entitlements/Restrict%20Transactions%20between%20two%20effective%20dates.ipynb>) | Create Policy to Restrict Portfolio Updates in a Period | This notebook shows how to create a policy to restrict portfolio updates inbetween 2 effective dates by denying any write/delete activity to all portfolios in a given scope. | policies, portfolios |
 
-## examples/example-data
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| [Example Data Load.ipynb](<example-data/Example%20Data%20Load.ipynb>) | Example Data Load | Loads some example data into LUSID | cutlabels, portfolio groups, quotes, transactions, valuation |
-
 ## examples/features/core-lusid
 | filename | title | description | features |
 | --- | --- | --- | --- |
