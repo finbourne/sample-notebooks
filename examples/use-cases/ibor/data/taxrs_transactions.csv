@@ -1,0 +1,4 @@
+txn_id,trade_date,transaction_type,inst_client_internal,instrument_currency,quantity,price,net_money
+tx_00001,2020-01-02T00:00:00.0000000+00:00,Buy,MSFT,USD,2000,159,318000
+tx_00002,2020-01-02T00:00:00.0000000+00:00,Buy,SBRY,GBP,80000,2.32,185600
+tx_00003,2020-01-02T00:00:00.0000000+00:00,Buy,RR,GBP,60000,2.37,142200
