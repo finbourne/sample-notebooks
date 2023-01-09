@@ -29,6 +29,13 @@ jobs:
         id: vcs
         run: echo "::set-output name=sha::$(git rev-parse HEAD)"
 
+      # Get tip of develop branch so we can compare difference to merged
+      - name: Checkout for SHA develop
+        uses: actions/checkout@v2
+        id: develop
+        with:
+          ref: "develop"
+
       # but actually, we want to test what this is going to look like once it's been merged.
       - name: Fork based /LGTM checkout
         uses: actions/checkout@v2
@@ -65,6 +72,7 @@ jobs:
         env:
           FBN_BASE_API_URL: ${{ secrets.URI }}
           FBN_ACCESS_TOKEN: ${{ secrets.TOKEN }}
+          DEVELOP_SHA: ${{ steps.develop.outputs.sha }}
         run: |
           echo "env variables have been set"
           echo "Running the tests..."
