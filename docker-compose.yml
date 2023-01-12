@@ -23,11 +23,12 @@ services:
     command:
       - -ce
       - |
+        pip config set global.disable-pip-version-check true
         export FBN_NOTEBOOK_FOLDER=/usr/notebooks
         # get all files that have been:
         # Added (A), Copied (C), Modified (M), Renamed (R), have their type (i.e. regular file, symlink, submodule, …​) changed (T)
         # between tip of merge and develop branch
         export GIT_DIFF=$(git diff --name-only --diff-filter=ACMRT $DEVELOP_SHA HEAD | xargs)
-        echo $GIT_DIFF
         cd $${FBN_NOTEBOOK_FOLDER}
+        pip install -r requirements.txt
         python /usr/src/nbrunner/main.py -f $GIT_DIFF -d ' ' -c
