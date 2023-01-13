@@ -8,7 +8,6 @@ services:
     environment:
       - FBN_LUSID_API_URL=${FBN_BASE_API_URL}/api
       - FBN_LUMI_API_URL=${FBN_BASE_API_URL}/honeycomb
-      - DEVELOP_SHA
       - FBN_ACCESS_TOKEN
       - FBN_TOKEN_URL
       - FBN_USERNAME
@@ -28,6 +27,6 @@ services:
         # get all files that have been:
         # Added (A), Copied (C), Modified (M), Renamed (R), have their type (i.e. regular file, symlink, submodule, …​) changed (T)
         # between tip of merge and develop branch
-        export GIT_DIFF=$$(git diff --name-only --diff-filter=ACMRT $$DEVELOP_SHA HEAD)
+        export GIT_DIFF=$$(git diff --name-only --diff-filter=ACMRT origin/develop..HEAD)
         pip install -r requirements.txt
         python /usr/src/nbrunner/main.py -f "$$GIT_DIFF" -d $$'\n' -c
