@@ -30,4 +30,4 @@ services:
         # between tip of merge and develop branch
         export GIT_DIFF=$$(git diff --name-only --diff-filter=ACMRT $$DEVELOP_SHA HEAD)
         pip install -r requirements.txt
-        python /usr/src/nbrunner/main.py -f "$$GIT_DIFF" -d $'\n' -c
+        python /usr/src/nbrunner/main.py -f "$$GIT_DIFF" -d $$'\n' -c
