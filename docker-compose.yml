@@ -25,5 +25,8 @@ services:
         export FBN_NOTEBOOK_FOLDER=/usr/notebooks
         cd $${FBN_NOTEBOOK_FOLDER}
         pip install -r requirements.txt
-        python /usr/src/nbrunner/main.py --notebooks $${FBN_NOTEBOOK_FOLDER}/examples -c
-        python /usr/src/nbrunner/main.py --notebooks $${FBN_NOTEBOOK_FOLDER}/university -c
+        # Get the (A)dded, (C)opied, (M)odified, (R)enamed, (T)ype changed file names
+        # between develop branch
+        # and tip of merge request
+        export GIT_DIFF=$$(git diff --name-only --diff-filter=ACMRT origin/develop..HEAD)
+        python /usr/src/nbrunner/main.py -f "$$GIT_DIFF" -d $$'\n'
