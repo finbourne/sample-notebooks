@@ -9,7 +9,6 @@ services:
       - FBN_LUSID_API_URL=${FBN_BASE_API_URL}/api
       - FBN_LUMI_API_URL=${FBN_BASE_API_URL}/honeycomb
       - FBN_ACCESS_TOKEN
-
       - FBN_TOKEN_URL
       - FBN_USERNAME
       - FBN_PASSWORD
@@ -26,5 +25,5 @@ services:
         export FBN_NOTEBOOK_FOLDER=/usr/notebooks
         cd $${FBN_NOTEBOOK_FOLDER}
         pip install -r requirements.txt
-        python /usr/src/nbrunner.py --notebooks $${FBN_NOTEBOOK_FOLDER}/examples -c
-        python /usr/src/nbrunner.py --notebooks $${FBN_NOTEBOOK_FOLDER}/university -c
+        python /usr/src/nbrunner/main.py --notebooks $${FBN_NOTEBOOK_FOLDER}/examples -c
+        python /usr/src/nbrunner/main.py --notebooks $${FBN_NOTEBOOK_FOLDER}/university -c
