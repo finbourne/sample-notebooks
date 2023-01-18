@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "convert-to-slides"
+version = "0.1.0"
+description = "convert a given list of notebooks to revealjs slides"
+authors = ["FINBOURNE <engineering@finbourne.com>"]
+readme = "README.md"
+packages = [{include = "convert_to_slides"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+nbconvert = "^7.2.8"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^0.991"
+flake8 = "^5.0.0"
+pytest = "^7.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
