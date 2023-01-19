@@ -1,7 +1,7 @@
 import os
 from typing import Generator, Iterable, List
 from nbformat import read, NotebookNode
-from notebook import Notebook
+from convert_to_slides.notebook import Notebook
 
 
 class NotebookRepo:
@@ -21,19 +21,18 @@ class NotebookRepo:
     def split_string_to_files(self, filepaths: str, delimiter: str) -> List[str]:
         return filepaths.split(delimiter)
 
-    def read_files(self, filepaths: Iterable[str]) -> List[Notebook]:
-        notebooks = [
-            Notebook(filepath=filepath, source=read(filepath, as_version=4))
-            for filepath in filepaths
-        ]
+    def read_file(self, filepath: str) -> Notebook:
+        notebook = Notebook(filepath=filepath, source=read(filepath, as_version=4))
         if self.__force_slide_metadata:
-            for notebook in notebooks:
-                self.__check_notebook_has_slide_metadata(notebook)
-        return notebooks
+            self.__check_notebook_has_slide_metadata(notebook)
+        return notebook
+
+    def read_files(self, filepaths: Iterable[str]) -> Generator[Notebook, None, None]:
+        return (self.read_file(filepath) for filepath in filepaths)
 
     def __check_notebook_has_slide_metadata(self, notebook: Notebook) -> None:
         if not any(
-            self.__check_cell_has_slide_metadata(cell) for cell in notebook.cells
+            self.__check_cell_has_slide_metadata(cell) for cell in notebook.source.cells
         ):
             raise ValueError(
                 f"notebook {notebook.filepath} does not have any slide metadata"
@@ -45,3 +44,18 @@ class NotebookRepo:
         if cell.metadata.slideshow is None:
             return False
         return True
+
+    def write_files(self, notebooks: Iterable[Notebook]):
+        for notebook in notebooks:
+            self.write_file(notebook)
+
+    def write_file(self, notebook: Notebook):
+        if not notebook.slides_source:
+            raise ValueError(
+                f"notebook {notebook.filepath} has not got slides to write"
+            )
+        SLIDES_EXT = ".slides.html"
+        filepath, ext = os.path.splitext(notebook.filepath)
+        output_filepath = f"{filepath}{SLIDES_EXT}"
+        with open(output_filepath, "w") as file:
+            file.write(notebook.slides_source)

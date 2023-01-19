@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from nbformat import NotebookNode
-from typing import Dict
+from typing import Dict, Optional
 
 
 @dataclass
 class Notebook:
     filepath: str
     source: NotebookNode
-    slides_source: str
-    slides_resources: Dict
+    slides_source: Optional[str] = None
+    slides_resources: Optional[Dict] = None
