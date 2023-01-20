@@ -18,7 +18,19 @@ flake8 = "*"
 pytest = "^7.2.1"
 pytest-cov = "^4.0.0"
 tox = "^4.3.5"
+coverage = {extras = ["toml"], version = "^7.0.5"}
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+
+[tool.coverage.run]
+omit = ["tests/**/*","*/site-packages/*"]
+source = ["convert_to_slides"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 100
