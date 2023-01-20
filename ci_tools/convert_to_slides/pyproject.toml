@@ -14,9 +14,10 @@ nbformat = "^5.7.3"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^0.991"
-flake8 = "^5.0.0"
+flake8 = "*"
 pytest = "^7.2.1"
 pytest-cov = "^4.0.0"
+tox = "^4.3.5"
 
 [build-system]
 requires = ["poetry-core"]
