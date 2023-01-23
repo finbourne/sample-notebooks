@@ -1,5 +1,5 @@
 import os
-from typing import Generator, Iterable, List
+from typing import Generator, Iterable
 from nbformat import read, NotebookNode
 from convert_to_slides.notebook import Notebook
 
@@ -15,11 +15,8 @@ class NotebookRepo:
         return (
             filepath
             for filepath in filepaths
-            if os.path.splitext(filepath)[0] == NOTEBOOK_EXTENSION
+            if os.path.splitext(filepath)[1] == NOTEBOOK_EXTENSION
         )
-
-    def split_string_to_files(self, filepaths: str, delimiter: str) -> List[str]:
-        return filepaths.split(delimiter)
 
     def read_file(self, filepath: str) -> Notebook:
         notebook = Notebook(filepath=filepath, source=read(filepath, as_version=4))
@@ -39,11 +36,9 @@ class NotebookRepo:
             )
 
     def __check_cell_has_slide_metadata(self, cell: NotebookNode) -> bool:
-        if cell.metadata is None:
-            return False
-        if cell.metadata.slideshow is None:
-            return False
-        return True
+        if hasattr(cell, "metadata") and hasattr(cell.metadata, "slideshow"):
+            return True
+        return False
 
     def write_files(self, notebooks: Iterable[Notebook]):
         for notebook in notebooks:

@@ -8,8 +8,8 @@ class SlidesExporterProcessor:
     def __init__(self, execute_notebooks: bool):
         c = Config()
         if execute_notebooks:
-            c.ExecutePreprocessor.enabled = False
-            c.ClearOutputPreprocessor.enabled = False
+            c.ExecutePreprocessor.enabled = True
+            c.ClearOutputPreprocessor.enabled = True
         c.SlidesExporter.reveal_scroll = True
         self.__slides_exporter = SlidesExporter(config=c)
 

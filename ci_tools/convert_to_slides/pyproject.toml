@@ -11,14 +11,16 @@ python = "^3.7"
 nbconvert = "^7.2.8"
 traitlets = "^5.8.1"
 nbformat = "^5.7.3"
+ipykernel = "^5.0.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^0.991"
 flake8 = "*"
 pytest = "^7.2.1"
 pytest-cov = "^4.0.0"
-tox = "^4.3.5"
+tox = "^3.0.0"
 coverage = {extras = ["toml"], version = "^7.0.5"}
+tox-poetry = "^0.4.1"
 
 [build-system]
 requires = ["poetry-core"]
