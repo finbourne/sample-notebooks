@@ -1,11 +1,15 @@
 import os
 from typing import Generator, Iterable
-from nbformat import read, NotebookNode
+from nbformat import read
 from convert_to_slides.notebook import Notebook
+from convert_to_slides.slide_metadata_checker import SlideMetadataChecker
 
 
 class NotebookRepo:
-    def __init__(self, force_slide_metadata: bool):
+    def __init__(
+        self, slide_metadata_checker: SlideMetadataChecker, force_slide_metadata: bool
+    ):
+        self.__slide_metadata_checker = slide_metadata_checker
         self.__force_slide_metadata = force_slide_metadata
 
     """Object responsible for filtering files and other file processing before slide generation"""
@@ -20,25 +24,20 @@ class NotebookRepo:
 
     def read_file(self, filepath: str) -> Notebook:
         notebook = Notebook(filepath=filepath, source=read(filepath, as_version=4))
-        if self.__force_slide_metadata:
-            self.__check_notebook_has_slide_metadata(notebook)
-        return notebook
-
-    def read_files(self, filepaths: Iterable[str]) -> Generator[Notebook, None, None]:
-        return (self.read_file(filepath) for filepath in filepaths)
-
-    def __check_notebook_has_slide_metadata(self, notebook: Notebook) -> None:
-        if not any(
-            self.__check_cell_has_slide_metadata(cell) for cell in notebook.source.cells
+        if (
+            self.__force_slide_metadata
+            and not self.__slide_metadata_checker.check_notebook_has_slide_metadata(
+                notebook
+            )
         ):
             raise ValueError(
                 f"notebook {notebook.filepath} does not have any slide metadata"
             )
+        return notebook
 
-    def __check_cell_has_slide_metadata(self, cell: NotebookNode) -> bool:
-        if hasattr(cell, "metadata") and hasattr(cell.metadata, "slideshow"):
-            return True
-        return False
+    def read_files(self, filepaths: Iterable[str]) -> Generator[Notebook, None, None]:
+        filtered_filepaths = self.filter_files(filepaths)
+        return (self.read_file(fp) for fp in filtered_filepaths)
 
     def write_files(self, notebooks: Iterable[Notebook]):
         for notebook in notebooks:
