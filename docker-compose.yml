@@ -8,6 +8,13 @@ services:
     environment:
       - FBN_LUSID_API_URL=${FBN_BASE_API_URL}/api
       - FBN_LUMI_API_URL=${FBN_BASE_API_URL}/honeycomb
+      - FBN_LUSID_IDENTITY_URL=${FBN_BASE_API_URL}/identity
+      - FBN_LUSID_ACCESS_URL=${FBN_BASE_API_URL}/access
+      - FBN_LUSID_DRIVE_URL=${FBN_BASE_API_URL}/drive
+      - FBN_NOTIFICATIONS_API_URL=${FBN_BASE_API_URL}/notifications
+      - FBN_SCHEDULER_API_URL=${FBN_BASE_API_URL}/scheduler2
+      - FBN_INSIGHTS_API_URL=${FBN_BASE_API_URL}/insights
+      - FBN_CONFIGURATION_API_URL=${FBN_BASE_API_URL}/configuration
       - FBN_ACCESS_TOKEN
       - FBN_TOKEN_URL
       - FBN_USERNAME
