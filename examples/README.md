@@ -71,11 +71,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Safely and efficiently test changes to your system.ipynb](<use-cases/change-management/Safely%20and%20efficiently%20test%20changes%20to%20your%20system.ipynb>) | Testing system changes | Demonstration of how to safely test changes to your data in a production environment | derived portfolios, instrument definitions, instruments, set holdings, transactions |
 | [Set up a sandbox trading environment.ipynb](<use-cases/change-management/Set%20up%20a%20sandbox%20trading%20environment.ipynb>) | Sandbox trading environment | Learn how to setup a virtual trading environment in LUSID. | aggregation, instruments, properties, quotes, reference portfolios, set holdings, transactions |
 
-## examples/use-cases/data-quality-control
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| [Custom Entities.ipynb](<use-cases/data-quality-control/Custom%20Entities.ipynb>) | Custom Entities in LUSID  | Illustrates the use of Custom Entities. | Custom Entities, Data Quality, Portfolios, RelationShip |
-
 ## examples/use-cases/ibor
 | filename | title | description | features |
 | --- | --- | --- | --- |
