@@ -48,6 +48,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 ## examples/use-cases/abor
 | filename | title | description | features |
 | --- | --- | --- | --- |
+| [Create and Setup Chart of Accounts and General Ledger Accounts.ipynb](<use-cases/abor/Create%20and%20Setup%20Chart%20of%20Accounts%20and%20General%20Ledger%20Accounts.ipynb>) | Corporate Actions in LUSID |  | Accounts, Chart of Accounts, Properties |
 | [Generate P&amp;L with different accounting methods (FIFO and LIFO).ipynb](<use-cases/abor/Generate%20P%26L%20with%20different%20accounting%20methods%20%28FIFO%20and%20LIFO%29.ipynb>) | Accounting methods | Generating P&L with different accounting methods (FIFO and LIFO) | accounting methods, cocoon, derived portfolios, transaction configuration |
 
 ## examples/use-cases/audit-trail
