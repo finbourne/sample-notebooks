@@ -8,6 +8,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 ## examples/entitlements
 | filename | title | description | features |
 | --- | --- | --- | --- |
+| [Access Metadata entitlements.ipynb](<entitlements/Access%20Metadata%20entitlements.ipynb>) | Portfolio look-through in LUSID | Demonstrates the use of policies to grant access to portfolios based on their Access Metadata (AMD) in LUSID. | access metadata, amd, entitlements |
 | [Portfolio Entitlements.ipynb](<entitlements/Portfolio%20Entitlements.ipynb>) | Portfolio Entitlements | Demonstrates how to create policies/access control to various date items. | entitlements |
 | [Property value entitlements.ipynb](<entitlements/Property%20value%20entitlements.ipynb>) | Portfolio look-through in LUSID | Demonstrates the use of policies to grant access to property values in LUSID. | entitlements, property values, transactions |
 | [Restrict Transactions between two effective dates.ipynb](<entitlements/Restrict%20Transactions%20between%20two%20effective%20dates.ipynb>) | Create Policy to Restrict Portfolio Updates in a Period | This notebook shows how to create a policy to restrict portfolio updates inbetween 2 effective dates by denying any write/delete activity to all portfolios in a given scope. | policies, portfolios |
@@ -47,6 +48,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 ## examples/use-cases/abor
 | filename | title | description | features |
 | --- | --- | --- | --- |
+| [Create and Setup Chart of Accounts and General Ledger Accounts.ipynb](<use-cases/abor/Create%20and%20Setup%20Chart%20of%20Accounts%20and%20General%20Ledger%20Accounts.ipynb>) | Corporate Actions in LUSID |  | Accounts, Chart of Accounts, Properties |
 | [Generate P&amp;L with different accounting methods (FIFO and LIFO).ipynb](<use-cases/abor/Generate%20P%26L%20with%20different%20accounting%20methods%20%28FIFO%20and%20LIFO%29.ipynb>) | Accounting methods | Generating P&L with different accounting methods (FIFO and LIFO) | accounting methods, cocoon, derived portfolios, transaction configuration |
 
 ## examples/use-cases/audit-trail
@@ -69,11 +71,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Checking a portfolio for transaction updates since an AsAt time.ipynb](<use-cases/change-management/Checking%20a%20portfolio%20for%20transaction%20updates%20since%20an%20AsAt%20time.ipynb>) | Checking a portfolio for transaction updates since an AsAt time |  | AsAt, GetPortfolioChanges API, Transaction Portfolios |
 | [Safely and efficiently test changes to your system.ipynb](<use-cases/change-management/Safely%20and%20efficiently%20test%20changes%20to%20your%20system.ipynb>) | Testing system changes | Demonstration of how to safely test changes to your data in a production environment | derived portfolios, instrument definitions, instruments, set holdings, transactions |
 | [Set up a sandbox trading environment.ipynb](<use-cases/change-management/Set%20up%20a%20sandbox%20trading%20environment.ipynb>) | Sandbox trading environment | Learn how to setup a virtual trading environment in LUSID. | aggregation, instruments, properties, quotes, reference portfolios, set holdings, transactions |
-
-## examples/use-cases/data-quality-control
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| [Custom Entities.ipynb](<use-cases/data-quality-control/Custom%20Entities.ipynb>) | Custom Entities in LUSID  | Illustrates the use of Custom Entities. | Custom Entities, Data Quality, Portfolios, RelationShip |
 
 ## examples/use-cases/ibor
 | filename | title | description | features |
@@ -117,6 +114,11 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | --- | --- | --- | --- |
 | [Combining FO and MO.ipynb](<use-cases/orders-management/Combining%20FO%20and%20MO.ipynb>) | Combining Front Office and Middle Office | Demonstration of how to give front office users an view of intraday trading activity on top of their middle office IBOR. | cocoon, derived portfolios, instruments, orders, properties, sub-holdings keys, transactions |
 
+## examples/use-cases/portfolio-construction
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Legal Entity-Instrument Relationships.ipynb](<use-cases/portfolio-construction/Legal%20Entity-Instrument%20Relationships.ipynb>) | Creating Legal Entities and Instrument Relationships | This notebook demonstrates how you can create legal entities with multiple identifiers from different sources and utilise legal entity-instruments relationships to filter a universe of instruments based on the properties attached to the legal entities. | legal entities, relationships |
+
 ## examples/use-cases/post-trade-processing
 | filename | title | description | features |
 | --- | --- | --- | --- |
@@ -135,7 +137,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Backtesting with LUSID derived portfolios.ipynb](<use-cases/risk-and-performance/Backtesting%20with%20LUSID%20derived%20portfolios.ipynb>) | Backtesting with derived portfolios | Shows how to use a derived portfolio to test different trading strategies. | aggregation, cocoon, derived portfolios, holdings, instruments, quotes |
 | [Calculating P&amp;L on strategy.ipynb](<use-cases/risk-and-performance/Calculating%20P%26L%20on%20strategy.ipynb>) | Calculating P&amp;L on strategies | Demonstration of how to use sub-holding keys and output transactions to track P&L on different strategies. | cocoon - seed_data, derived portfolios, output transactions, properties, sub-holding keys, transactions |
 | [Composite returns adjusted for FX rates.ipynb](<use-cases/risk-and-performance/Composite%20returns%20adjusted%20for%20FX%20rates.ipynb>) | Loading and caculating returns | Demonstration of how to get aggregate returns adjusted by FX performance | Composite portfolios, FX performance, Returns |
-| [Loading and calculating returns.ipynb](<use-cases/risk-and-performance/Loading%20and%20calculating%20returns.ipynb>) | Loading and caculating returns | Demonstration of how to load and calculate returns in LUSID. | Returns |
+| [Loading and calculating returns.ipynb](<use-cases/risk-and-performance/Loading%20and%20calculating%20returns.ipynb>) | Loading and calculating returns | Demonstration of how to load and calculate returns in LUSID. | Returns |
 | [Manage your investment strategies.ipynb](<use-cases/risk-and-performance/Manage%20your%20investment%20strategies.ipynb>) | Managing investment strategies | Demonstration of how to compare how strategies are performing across all of our client's holdings, rather than just looking at a single portfolio in isolation. | aggregation, data types, instruments, portfolio groups, properties, set holdings, transactions |
 | [Returns on composite portfolios.ipynb](<use-cases/risk-and-performance/Returns%20on%20composite%20portfolios.ipynb>) | Loading and caculating returns | Demonstration of how to load and calculate returns on composite portfolios in LUSID | Composite portfolios, Returns |
 | [Track trading commissions in your portfolio.ipynb](<use-cases/risk-and-performance/Track%20trading%20commissions%20in%20your%20portfolio.ipynb>) | Track trading costs and commissions in your portfolio | Demonstrates how to track commissions and fees separately from trade costs. | cocoon, instruments, portfolio groups, properties, sub-holding keys, transaction configuration, transactions |

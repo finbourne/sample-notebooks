@@ -8,8 +8,14 @@ services:
     environment:
       - FBN_LUSID_API_URL=${FBN_BASE_API_URL}/api
       - FBN_LUMI_API_URL=${FBN_BASE_API_URL}/honeycomb
+      - FBN_LUSID_IDENTITY_URL=${FBN_BASE_API_URL}/identity
+      - FBN_LUSID_ACCESS_URL=${FBN_BASE_API_URL}/access
+      - FBN_LUSID_DRIVE_URL=${FBN_BASE_API_URL}/drive
+      - FBN_NOTIFICATIONS_API_URL=${FBN_BASE_API_URL}/notifications
+      - FBN_SCHEDULER_API_URL=${FBN_BASE_API_URL}/scheduler2
+      - FBN_INSIGHTS_API_URL=${FBN_BASE_API_URL}/insights
+      - FBN_CONFIGURATION_API_URL=${FBN_BASE_API_URL}/configuration
       - FBN_ACCESS_TOKEN
-
       - FBN_TOKEN_URL
       - FBN_USERNAME
       - FBN_PASSWORD
@@ -26,5 +32,8 @@ services:
         export FBN_NOTEBOOK_FOLDER=/usr/notebooks
         cd $${FBN_NOTEBOOK_FOLDER}
         pip install -r requirements.txt
-        python /usr/src/nbrunner.py --notebooks $${FBN_NOTEBOOK_FOLDER}/examples -c
-        python /usr/src/nbrunner.py --notebooks $${FBN_NOTEBOOK_FOLDER}/university -c
+        # Get the (A)dded, (C)opied, (M)odified, (R)enamed, (T)ype changed file names
+        # between develop branch
+        # and tip of merge request
+        export GIT_DIFF=$$(git --git-dir=$${FBN_NOTEBOOK_FOLDER}/.git diff  --name-only --diff-filter=ACMRT origin/develop..HEAD)
+        python /usr/src/nbrunner/main.py -f "$$GIT_DIFF" -d $$'\n'
