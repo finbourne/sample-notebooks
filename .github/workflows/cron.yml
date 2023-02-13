@@ -23,13 +23,13 @@ jobs:
           FBN_LUSID_API_URL: ${{ secrets.MASTER_FBN_LUSID_API_URL }}
           FBN_APP_NAME: ${{ secrets.MASTER_FBN_CLIENT_ID }}
           FBN_LUMI_API_URL: ${{ secrets.MASTER_FBN_LUMI_API_URL }}
-          FBN_LUSID_IDENTITY_URL: ${{secrets.URI}}/identity
-          FBN_LUSID_ACCESS_URL: ${{secrets.URI}}/access
-          FBN_LUSID_DRIVE_URL: ${{secrets.URI}}/drive
-          FBN_NOTIFICATIONS_API_URL: ${{secrets.URI}}/notifications
-          FBN_SCHEDULER_API_URL: ${{secrets.URI}}/scheduler2
-          FBN_INSIGHTS_API_URL: ${{secrets.URI}}/insights
-          FBN_CONFIGURATION_API_URL: ${{secrets.URI}}/configuration
+          FBN_LUSID_IDENTITY_URL: ${{ secrets.URI }}/identity
+          FBN_LUSID_ACCESS_URL: ${{ secrets.URI }}/access
+          FBN_LUSID_DRIVE_URL: ${{ secrets.URI }}/drive
+          FBN_NOTIFICATIONS_API_URL: ${{ secrets.URI }}/notifications
+          FBN_SCHEDULER_API_URL: ${{ secrets.URI }}/scheduler2
+          FBN_INSIGHTS_API_URL: ${{ secrets.URI }}/insights
+          FBN_CONFIGURATION_API_URL: ${{ secrets.URI }}/configuration
 
         with:
           args: -n ./examples
