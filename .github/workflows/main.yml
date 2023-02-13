@@ -5,8 +5,7 @@ name: Build and test
 # Trigger the workflow on push or pull request to master or develop
 
 on:
-  push:
-    branches: [master, develop, develop_test]
+  workflow_dispatch:
 
 env:
   FBN_TOKEN_URL: ${{ secrets.DEVELOP_FBN_TOKEN_URL }}
@@ -39,7 +38,6 @@ jobs:
 
       - name: Run tests on DEVELOP branch
         uses: docker://finbourne/notebook-runner2:latest
-        if: ${{ github.base_ref == 'develop_test' || github.ref == 'refs/heads/develop_test' }}
         with:
           args: -n ./examples -v latest -u ${{ secrets.DEVELOP_NEXUS_USERNAME }} -p ${{ secrets.DEVELOP_NEXUS_PASSWORD }} -c
 
