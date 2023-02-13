@@ -39,7 +39,7 @@ jobs:
 
       - name: Run tests on DEVELOP branch
         uses: docker://finbourne/notebook-runner2:latest
-        if: ${{ github.base_ref == 'develop' || github.ref == 'refs/heads/develop' }}
+        if: ${{ github.base_ref == 'develop_test' || github.ref == 'refs/heads/develop_test' }}
         with:
           args: -n ./examples -v latest -u ${{ secrets.DEVELOP_NEXUS_USERNAME }} -p ${{ secrets.DEVELOP_NEXUS_PASSWORD }} -c
 
