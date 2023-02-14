@@ -60,7 +60,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Identifying Downstream Consumers affected by Backdated Corrections on a Locked Reporting Window.ipynb](<use-cases/audit-trail/Identifying%20Downstream%20Consumers%20affected%20by%20Backdated%20Corrections%20on%20a%20Locked%20Reporting%20Window.ipynb>) | Identifying backdated corrections | Demonstration of how to identify backdated corrections and their impact | build transaction, cocoon - seed_data, insights, portfolio changes |
-| [Requesting log details using the Insights API.ipynb](<use-cases/audit-trail/Requesting%20log%20details%20using%20the%20Insights%20API.ipynb>) | Requesting details of inline valuation operations using the insights API |  | Insights, Request Logs |
 
 ## examples/use-cases/cash-management
 | filename | title | description | features |
