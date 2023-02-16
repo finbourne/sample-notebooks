@@ -6,7 +6,7 @@ name: Build and test
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [master, develop]
 
 jobs:
   # This workflow contains a single job called "build"
@@ -28,11 +28,11 @@ jobs:
 
       - name: Print version
         run: echo ${{ steps.extract_version.outputs.version }}
-          
+
       - name: Run tests on DEVELOP branch
-        uses: docker://finbourne/notebook-runner2:latest 
+        uses: docker://finbourne/notebook-runner2:latest
         if: ${{ github.base_ref == 'develop' || github.ref == 'refs/heads/develop' }}
-        env: 
+        env:
           FBN_TOKEN_URL: ${{ secrets.DEVELOP_FBN_TOKEN_URL }}
           FBN_USERNAME: ${{ secrets.DEVELOP_FBN_USERNAME }}
           FBN_PASSWORD: ${{ secrets.DEVELOP_FBN_PASSWORD }}
@@ -41,14 +41,21 @@ jobs:
           FBN_LUSID_API_URL: ${{ secrets.DEVELOP_FBN_LUSID_API_URL }}
           FBN_APP_NAME: ${{ secrets.DEVELOP_FBN_CLIENT_ID }}
           FBN_LUMI_API_URL: ${{ secrets.DEVELOP_FBN_LUMI_API_URL }}
-        
+          FBN_LUSID_IDENTITY_URL: ${{ secrets.DEVELOP_FBN_IDENTITY_URL }}
+          FBN_LUSID_ACCESS_URL: ${{ secrets.DEVELOP_FBN_ACCESS_URL }}
+          FBN_LUSID_DRIVE_URL: ${{ secrets.DEVELOP_FBN_DRIVE_API_URL }}
+          FBN_NOTIFICATIONS_API_URL: ${{ secrets.DEVELOP_FBN_NOTIFICATIONS_API_URL }}
+          FBN_SCHEDULER_API_URL: ${{ secrets.DEVELOP_FBN_SCHEDULER_API_URL }}
+          FBN_INSIGHTS_API_URL: ${{ secrets.DEVELOP_FBN_INSIGHTS_API_URL }}
+          FBN_CONFIGURATION_API_URL: ${{ secrets.DEVELOP_FBN_CONFIGURATION_API_URL }}
+
         with:
           args: -n ./examples -v ${{ steps.extract_version.outputs.version }} -u ${{ secrets.DEVELOP_NEXUS_USERNAME }} -p ${{ secrets.DEVELOP_NEXUS_PASSWORD }} -c
 
       - name: Run tests on MASTER branch
-        uses: docker://finbourne/notebook-runner2:latest 
+        uses: docker://finbourne/notebook-runner2:latest
         if: ${{ github.base_ref == 'master' }}
-        env: 
+        env:
           FBN_TOKEN_URL: ${{ secrets.MASTER_FBN_TOKEN_URL }}
           FBN_USERNAME: ${{ secrets.MASTER_FBN_USERNAME }}
           FBN_PASSWORD: ${{ secrets.MASTER_FBN_PASSWORD }}
@@ -57,10 +64,17 @@ jobs:
           FBN_LUSID_API_URL: ${{ secrets.MASTER_FBN_LUSID_API_URL }}
           FBN_APP_NAME: ${{ secrets.MASTER_FBN_CLIENT_ID }}
           FBN_LUMI_API_URL: ${{ secrets.MASTER_FBN_LUMI_API_URL }}
-        
+          FBN_LUSID_IDENTITY_URL: ${{ secrets.MASTER_FBN_IDENTITY_URL }}
+          FBN_LUSID_ACCESS_URL: ${{ secrets.MASTER_FBN_ACCESS_URL }}
+          FBN_LUSID_DRIVE_URL: ${{ secrets.MASTER_FBN_DRIVE_API_URL }}
+          FBN_NOTIFICATIONS_API_URL: ${{ secrets.MASTER_FBN_NOTIFICATIONS_API_URL }}
+          FBN_SCHEDULER_API_URL: ${{ secrets.MASTER_FBN_SCHEDULER_API_URL }}
+          FBN_INSIGHTS_API_URL: ${{ secrets.MASTER_FBN_INSIGHTS_API_URL }}
+          FBN_CONFIGURATION_API_URL: ${{ secrets.MASTER_FBN_CONFIGURATION_API_URL }}
+
         with:
-          args: -n ./examples -v ${{ steps.extract_version.outputs.version }} -u ${{ secrets.MASTER_NEXUS_USERNAME }} -p ${{ secrets.MASTER_NEXUS_PASSWORD }}
-        
+          args: -n ./examples -v ${{ steps.extract_version.outputs.version }} -u ${{ secrets.MASTER_NEXUS_USERNAME }} -p ${{ secrets.MASTER_NEXUS_PASSWORD }} -c
+
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:

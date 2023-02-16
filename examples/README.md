@@ -13,6 +13,11 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Property value entitlements.ipynb](<entitlements/Property%20value%20entitlements.ipynb>) | Portfolio look-through in LUSID | Demonstrates the use of policies to grant access to property values in LUSID. | entitlements, property values, transactions |
 | [Restrict Transactions between two effective dates.ipynb](<entitlements/Restrict%20Transactions%20between%20two%20effective%20dates.ipynb>) | Create Policy to Restrict Portfolio Updates in a Period | This notebook shows how to create a policy to restrict portfolio updates inbetween 2 effective dates by denying any write/delete activity to all portfolios in a given scope. | policies, portfolios |
 
+## examples/example-data
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Example Data Load.ipynb](<example-data/Example%20Data%20Load.ipynb>) | Example Data Load | Loads some example data into LUSID | cutlabels, portfolio groups, quotes, transactions, valuation |
+
 ## examples/features/core-lusid
 | filename | title | description | features |
 | --- | --- | --- | --- |
@@ -48,12 +53,14 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 ## examples/use-cases/abor
 | filename | title | description | features |
 | --- | --- | --- | --- |
+| [Create and Setup Chart of Accounts and General Ledger Accounts.ipynb](<use-cases/abor/Create%20and%20Setup%20Chart%20of%20Accounts%20and%20General%20Ledger%20Accounts.ipynb>) | Corporate Actions in LUSID |  | Accounts, Chart of Accounts, Properties |
 | [Generate P&amp;L with different accounting methods (FIFO and LIFO).ipynb](<use-cases/abor/Generate%20P%26L%20with%20different%20accounting%20methods%20%28FIFO%20and%20LIFO%29.ipynb>) | Accounting methods | Generating P&L with different accounting methods (FIFO and LIFO) | accounting methods, cocoon, derived portfolios, transaction configuration |
 
 ## examples/use-cases/audit-trail
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Identifying Downstream Consumers affected by Backdated Corrections on a Locked Reporting Window.ipynb](<use-cases/audit-trail/Identifying%20Downstream%20Consumers%20affected%20by%20Backdated%20Corrections%20on%20a%20Locked%20Reporting%20Window.ipynb>) | Identifying backdated corrections | Demonstration of how to identify backdated corrections and their impact | build transaction, cocoon - seed_data, insights, portfolio changes |
+| [Requesting log details using the Insights API.ipynb](<use-cases/audit-trail/Requesting%20log%20details%20using%20the%20Insights%20API.ipynb>) | Requesting details of inline valuation operations using the insights API |  | Insights, Request Logs |
 
 ## examples/use-cases/cash-management
 | filename | title | description | features |
@@ -70,11 +77,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Checking a portfolio for transaction updates since an AsAt time.ipynb](<use-cases/change-management/Checking%20a%20portfolio%20for%20transaction%20updates%20since%20an%20AsAt%20time.ipynb>) | Checking a portfolio for transaction updates since an AsAt time |  | AsAt, GetPortfolioChanges API, Transaction Portfolios |
 | [Safely and efficiently test changes to your system.ipynb](<use-cases/change-management/Safely%20and%20efficiently%20test%20changes%20to%20your%20system.ipynb>) | Testing system changes | Demonstration of how to safely test changes to your data in a production environment | derived portfolios, instrument definitions, instruments, set holdings, transactions |
 | [Set up a sandbox trading environment.ipynb](<use-cases/change-management/Set%20up%20a%20sandbox%20trading%20environment.ipynb>) | Sandbox trading environment | Learn how to setup a virtual trading environment in LUSID. | aggregation, instruments, properties, quotes, reference portfolios, set holdings, transactions |
-
-## examples/use-cases/data-quality-control
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| [Custom Entities.ipynb](<use-cases/data-quality-control/Custom%20Entities.ipynb>) | Custom Entities in LUSID  | Illustrates the use of Custom Entities. | Custom Entities, Data Quality, Portfolios, RelationShip |
 
 ## examples/use-cases/ibor
 | filename | title | description | features |
