@@ -1,21 +1,20 @@
 name: Daily build
 on:
   schedule:
-  - cron: "0 5 * * *"
-    
+    - cron: "0 5 * * *"
+
 jobs:
   cron-build-and-test:
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
     steps:
-
       - uses: actions/checkout@v2
 
       - name: Run tests on MASTER branch
-        uses: docker://finbourne/notebook-runner2:latest 
+        uses: docker://finbourne/notebook-runner2:latest
         if: ${{ github.ref == 'refs/heads/master' }}
-        env: 
+        env:
           FBN_TOKEN_URL: ${{ secrets.MASTER_FBN_TOKEN_URL }}
           FBN_USERNAME: ${{ secrets.MASTER_FBN_USERNAME }}
           FBN_PASSWORD: ${{ secrets.MASTER_FBN_PASSWORD }}
@@ -33,7 +32,7 @@ jobs:
           FBN_CONFIGURATION_API_URL: ${{ secrets.MASTER_FBN_CONFIGURATION_API_URL }}
         with:
           args: -n ./examples
-        
+
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:
@@ -52,4 +51,3 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
           GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
         if: always()
-    
