@@ -162,6 +162,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Look-through valuation.ipynb](<use-cases/valuation/Look-through%20valuation.ipynb>) | Portfolio look-through in LUSID | Shows how to compute the value of a child portfolio's holding as though they were directly held by the parent portfolio. | holdings, look through, portfolios, securitised portfolios, valuations |
 | [SRS csv Example.ipynb](<use-cases/valuation/SRS%20csv%20Example.ipynb>) | Structured Results Store for storage of Portfolio data |  | luminesce, structured_results_store, virtual_document |
 | [Simple Valuation.ipynb](<use-cases/valuation/Simple%20Valuation.ipynb>) | Simple valuation with default recipes | This notebook shows how to value a portfolio using defatul recipes, for an out of the box look at positions and valuations | manifests, recipes, transactions, valuation |
+| [Valuation Analysis.ipynb](<use-cases/valuation/Valuation%20Analysis.ipynb>) | Valuation Debugging |  | instruments, recipes, transactions, valuation, valuation manifest |
 | [Valuations with recipes.ipynb](<use-cases/valuation/Valuations%20with%20recipes.ipynb>) | Valuation with recipes | This notebook shows how to value a portfolio using recipes with different pricing sources | manifests, recipes, transactions, valuation |
 
 ## examples/use-cases/wealth-management
