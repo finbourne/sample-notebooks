@@ -1,0 +1,15 @@
+﻿investor,txn_id,type,client_id,trade_date,settlement_date,quantity,price,total_consideration,currency,portfolio,holding_class
+Investor 1,tx013,CapitalCall,privateEquityFundSecuritised,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"200,000",100,"20,000,000.00",GBP,generalPartnership,Fund
+Investor 1,tx014,CapitalCall,realEstateFundSecuritised,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"250,000",100,"25,000,000.00",GBP,generalPartnership,Fund
+Investor 2,tx015,CapitalCall,privateEquityFundSecuritised,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"100,000",100,"10,000,000.00",GBP,generalPartnership,Fund
+Investor 2,tx016,CapitalCall,realEstateFundSecuritised,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"100,000",100,"10,000,000.00",GBP,generalPartnership,Fund
+Investor 2,tx017,CapitalCall,privateDebtFundSecuritised,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"40,000",100,"4,000,000.00",GBP,generalPartnership,Fund
+Investor 3,tx018,CapitalCall,privateEquityFundSecuritised,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"100,000",100,"10,000,000.00",GBP,generalPartnership,Fund
+Investor 3,tx019,CapitalCall,realEstateFundSecuritised,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"50,000",100,"5,000,000.00",GBP,generalPartnership,Fund
+Investor 3,tx020,CapitalCall,privateDebtFundSecuritised,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"50,000",100,"5,000,000.00",GBP,generalPartnership,Fund
+,tx021,CapitalCommitment,,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"20,000,000",1,"20,000,000.00",GBP,privateEquityFund,Fund
+,tx022,CapitalCommitment,,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"20,000,000.00",1,"20,000,000.00",GBP,realEstateFund,Fund
+,tx023,CapitalCommitment,,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"10,000,000",1,"10,000,000.00",GBP,privateEquityFund,Fund
+,tx025,CapitalCommitment,,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"4,000,000",1,"4,000,000.00",GBP,privateDebtFund,Fund
+,tx026,CapitalCommitment,,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"10,000,000",1,"10,000,000.00",GBP,privateEquityFund,Fund
+,tx028,CapitalCommitment,,2022-01-04T08:00:00Z,2022-01-04T08:00:00Z,"5,500,000",1,"5,500,000.00",GBP,privateDebtFund,Fund
