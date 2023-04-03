@@ -1,6 +1,0 @@
-code,client_internal,div_amount,div_ccy,announcement_date,ex_date,record_date,payment_date,Holding,Expected Gross Dividend (div_amount * Holding),Expected Tax Rate,Expected Tax Amount (Gross * Tax Rate),Expected Net Dividend (Gross - Tax),Expected cash prior to dividend,Expected cash after net dividend
-RR_1_20200707,RR,0.0379,GBP,31-Mar-20,28-Apr-20,29-Apr-20,07-Jul-20,60000,2274,20%,454.8,1819.2,100,1919.2
-RR_2_20210107,RR,0.035,GBP,01-Oct-20,29-Oct-20,30-Oct-20,07-Jan-21,60000,2100,20%,420,1680,1919.2,3599.2
-RR_3_20210707,RR,0.0375,GBP,31-Mar-21,28-Apr-21,29-Apr-21,07-Jul-21,60000,2250,22%,495,1755,3599.2,5354.2
-RR_4_20220107,RR,0.0402,GBP,01-Oct-21,29-Oct-21,01-Nov-21,07-Jan-22,60000,2412,22%,530.64,1881.36,5354.2,7235.56
-RR_5_20220807,RR,0.0399,GBP,31-Mar-22,28-Apr-22,29-Apr-22,07-Jul-22,60000,2394,24%,574.56,1819.44,7235.56,9055
