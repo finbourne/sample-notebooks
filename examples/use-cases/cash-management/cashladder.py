@@ -10,8 +10,7 @@ import pytz
 from datetime import timedelta
 
 # Authenticate our user and create our API client
-# secrets_path = os.getenv("FBN_SECRETS_PATH")
-secrets_path = os.getenv("HOME") + "/secrets/fbn-local.json"
+secrets_path = os.getenv("FBN_SECRETS_PATH")
 
 # Initiate an API Factory which is the client side object for interacting with LUSID APIs
 api_factory = lusid.utilities.ApiClientFactory(
