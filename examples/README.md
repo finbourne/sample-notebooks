@@ -5,6 +5,18 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 * `features` - Notebooks showing specific LUSID features. These notebooks are short and specific.
 * `use-cases` - Notebooks showing sample business implementations or use-cases. These notebooks will combine various LUSID features to solve a business use-case. The `use-case` notebooks are generally longer than the `features` ones.
 
+## docgen/tests/notebooks
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [no_description.ipynb](<docgen/tests/notebooks/no_description.ipynb>) | Notebook title |  | derived portfolios, properties, transaction config |
+| [no_features.ipynb](<docgen/tests/notebooks/no_features.ipynb>) | Notebook title | Longer description of notebook |  |
+| [valid.ipynb](<docgen/tests/notebooks/valid.ipynb>) | Notebook title | Longer description of notebook | derived portfolios, properties, transaction config |
+
+## docs
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [template.ipynb](<docs/template.ipynb>) | Description here | Attributes<br>---------- |  |
+
 ## examples/entitlements
 | filename | title | description | features |
 | --- | --- | --- | --- |
@@ -171,6 +183,16 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Households.ipynb](<use-cases/wealth-management/Households.ipynb>) | Households | Demonstration of how to manage the holdings for an investor based on each Mandate & Household they are associated with. | aggregation, instruments, portfolio groups, portfolios, properties, quotes, set holdings |
+
+## university/T02002-Luminesce-syntax
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Luminesce Syntax.ipynb](<university/T02002-Luminesce-syntax/Luminesce%20Syntax.ipynb>) | Luminesce Syntax | Attributes<br>---------- |  |
+
+## university/T02003-Luminesce-Providers-and-Views
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Providers and Views.ipynb](<university/T02003-Luminesce-Providers-and-Views/Providers%20and%20Views.ipynb>) | Luminesce Providers and Views | Attributes<br>---------- |  |
 
 
 | :warning: This file is generated, any direct edits will be lost. For instructions on how to generate the file, see [docgen/README](../docgen/). |

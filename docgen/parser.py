@@ -196,6 +196,8 @@ def main():
     repo_root = Path(__file__).parent.parent
     doc_gen_root = repo_root.joinpath("docgen").resolve()
     nb_root = repo_root
+    example_folder = repo_root.joinpath("examples").resolve()
+
 
     print(f"searching for notebooks in {nb_root}")
 
@@ -203,10 +205,12 @@ def main():
     readme_template = doc_gen_root.joinpath("README.mustache").resolve()
     doc = build_doc(meta, readme_template)
     readme = nb_root.joinpath("Index.md")
+    readmecopy = example_folder.joinpath("README.md")
 
-    print(f"saving index to {readme}")
+    print(f"saving index to {readme} and to {readmecopy}")
 
     save_index_page(readme, doc)
+    save_index_page(readmecopy, doc)
 
     ntbk = jupytext.read(readme)
     formatted_ntbk = jupytext.write(ntbk, 'Index.ipynb')
