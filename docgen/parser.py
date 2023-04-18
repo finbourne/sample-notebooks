@@ -4,6 +4,7 @@ import itertools
 import nbformat
 import os
 import urllib.parse
+import jupytext
 
 from pathlib import Path
 
@@ -194,18 +195,21 @@ def save_index_page(path, doc):
 def main():
     repo_root = Path(__file__).parent.parent
     doc_gen_root = repo_root.joinpath("docgen").resolve()
-    nb_root = repo_root.joinpath("examples").resolve()
+    nb_root = repo_root
 
     print(f"searching for notebooks in {nb_root}")
 
     meta = parse(nb_root=nb_root)
     readme_template = doc_gen_root.joinpath("README.mustache").resolve()
     doc = build_doc(meta, readme_template)
-    readme = nb_root.joinpath("README.md")
+    readme = nb_root.joinpath("Index.md")
 
     print(f"saving index to {readme}")
 
     save_index_page(readme, doc)
+
+    ntbk = jupytext.read(readme)
+    formatted_ntbk = jupytext.write(ntbk, 'Index.ipynb')
 
 
 if __name__ == "__main__":

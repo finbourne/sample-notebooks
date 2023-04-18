@@ -30,7 +30,7 @@ jobs:
       - name: Run doc gen on MASTER branch
         run: |
           echo "generate documentation"
-          pip install -r requirements.txt
+          pip install -r requirements.dev.txt
           python docgen/parser.py
 
           if [[ -z $(git status -s) ]]
