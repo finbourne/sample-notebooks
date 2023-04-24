@@ -1,0 +1,2 @@
+placement_id,block_id,instrument_name,client_internal,isin,figi,quantity,state,side,type,time_in_force,created_date
+PLC001,BLOCK001,Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,20,some_state,buy,limit,GTC,2023-04-13T11:15:00+00:00
