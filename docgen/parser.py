@@ -167,12 +167,9 @@ def build_doc(meta, template, generate_for_root_directory):
     # 2. convert to a list of dictionaries for mustache
     # 3. sort the notebooks alphabetically
     # note: [*values] converts the generator to a list
-    if generate_for_root_directory:
-         nbs = [{"k": key, "link": key, "v": sorted([*values], key=lambda m: m.filename)}
+    nbs = [{"k": key, "link": key if generate_for_root_directory else "../" + key, "v": sorted([*values], key=lambda m: m.filename)}
            for key, values in itertools.groupby(meta, lambda m: m.path)]
-    else:
-        nbs = [{"k": key, "link": "../" + key, "v": sorted([*values], key=lambda m: m.filename)}
-           for key, values in itertools.groupby(meta, lambda m: m.path)]
+
 
     # sort by relative path
     nbs.sort(key=lambda n: n["k"])
