@@ -1,3 +1,0 @@
-code,client_internal,div_amount,div_ccy,announcement_date,ex_date,record_date,payment_date,Holding,Expected Gross Dividend (div_amount * Holding),Expected Tax Rate,Expected Tax Amount (Gross * Tax Rate),Expected Net Dividend (Gross - Tax)
-UKF_1_20210315,UKF,0.028,GBP,18-Jan-21,15-Feb-21,16-Feb-21,15-Mar-21,80000,2240,22%,492.8,1747.2
-UKF_2_20220315,UKF,0.025,GBP,18-Jan-22,15-Feb-22,16-Feb-22,15-Mar-22,80000,2000,30%,600,1400
