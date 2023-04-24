@@ -5,13 +5,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 * `features` - Notebooks showing specific LUSID features. These notebooks are short and specific.
 * `use-cases` - Notebooks showing sample business implementations or use-cases. These notebooks will combine various LUSID features to solve a business use-case. The `use-case` notebooks are generally longer than the `features` ones.
 
-## docgen/tests/notebooks
-| filename | title | description | features |
-| --- | --- | --- | --- |
-| [no_description.ipynb](<docgen/tests/notebooks/no_description.ipynb>) | Notebook title |  | derived portfolios, properties, transaction config |
-| [no_features.ipynb](<docgen/tests/notebooks/no_features.ipynb>) | Notebook title | Longer description of notebook |  |
-| [valid.ipynb](<docgen/tests/notebooks/valid.ipynb>) | Notebook title | Longer description of notebook | derived portfolios, properties, transaction config |
-
 ## docs
 | filename | title | description | features |
 | --- | --- | --- | --- |

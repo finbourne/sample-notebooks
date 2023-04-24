@@ -28,7 +28,7 @@ def find_nbs(nb_root):
 
     """
     for root, dirs, files in os.walk(nb_root, topdown=False):
-        if ".ipynb_checkpoints" not in root:
+        if ".ipynb_checkpoints" not in root and "docgen" not in root:
             for name in files:
                 if name.lower().endswith(".ipynb"):
                     yield os.path.join(root, name)
@@ -145,7 +145,7 @@ def parse(nb_root):
     ]
 
 
-def build_doc(meta, template, examples):
+def build_doc(meta, template, generate_for_root_directory):
     """
     Generates a documentation index string given a list of metadata and mustache template
 
@@ -167,11 +167,11 @@ def build_doc(meta, template, examples):
     # 2. convert to a list of dictionaries for mustache
     # 3. sort the notebooks alphabetically
     # note: [*values] converts the generator to a list
-    if examples:
-        nbs = [{"k": key, "link": "../" + key, "v": sorted([*values], key=lambda m: m.filename)}
+    if generate_for_root_directory:
+         nbs = [{"k": key, "link": key, "v": sorted([*values], key=lambda m: m.filename)}
            for key, values in itertools.groupby(meta, lambda m: m.path)]
     else:
-         nbs = [{"k": key, "link": key, "v": sorted([*values], key=lambda m: m.filename)}
+        nbs = [{"k": key, "link": "../" + key, "v": sorted([*values], key=lambda m: m.filename)}
            for key, values in itertools.groupby(meta, lambda m: m.path)]
 
     # sort by relative path
@@ -207,8 +207,10 @@ def main():
 
     meta = parse(nb_root=nb_root)
     readme_template = doc_gen_root.joinpath("README.mustache").resolve()
-    doc_root = build_doc(meta, readme_template, False) #doc for root
-    doc_examples = build_doc(meta, readme_template, True) #doc for examples
+    #doc for root  directory
+    doc_root = build_doc(meta, readme_template, True) 
+    #generate doc for examples directory
+    doc_examples = build_doc(meta, readme_template, False) 
     readme_root = nb_root.joinpath("Index.md")
     readmecopy_examples = example_folder.joinpath("README.md")
 
