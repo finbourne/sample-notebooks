@@ -1,2 +1,0 @@
-code,client_internal,div_amount,div_ccy,announcement_date,ex_date,record_date,payment_date,Holding,Gross Dividend,Tax Rate,Expected: Tax Amount (Gross * Tax Rate),Expected: Gross - Tax,Starting cash,Expected: Holdings cash after net dividend
-SVS_1_20220807,SVS,0.6,USD,31-Mar-22,28-Apr-22,29-Apr-22,07-Jul-22,2000,1200,0%,0,1200,100,1300
