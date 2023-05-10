@@ -9,10 +9,16 @@ pandas
 pytz
 requests
 rise
+backoff
 
 finbourne-access-sdk >= 0.0.2272, < 2
 finbourne-identity-sdk >= 0.0.1845, < 2
+finbourne-insights-sdk-preview
+lusid-notifications-sdk-preview
+lusid-drive-sdk-preview
+lusid-configuration-sdk-preview
 luminesce-sdk-preview >= 1.11.140, < 3
 lusid-jam
 lusid-sdk-preview >= 0.11.4713, < 2
 lusidtools >= 1.0.0
+dve-lumipy-preview

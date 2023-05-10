@@ -4,13 +4,14 @@ import lusid as lu
 import lusid.models as lm
 import pandas as pd
 from lusidjam import RefreshingToken
+import fbnsdkutilities.utilities as utils
 
 # Set the secrets path
 secrets_path = os.getenv("FBN_SECRETS_PATH")
 
 # Authenticate our user and create our API client
-api_factory = lu.utilities.ApiClientFactory(
-    token=RefreshingToken(), api_secrets_filename=secrets_path
+api_factory = utils.ApiClientFactory(
+    lu, token=RefreshingToken(), api_secrets_filename=secrets_path
 )
 
 aggregation_api = api_factory.build(lu.AggregationApi)

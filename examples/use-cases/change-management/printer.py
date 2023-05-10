@@ -418,7 +418,7 @@ def output_transactions(response, scope, code, property_keys=[]):
 
     df = pd.DataFrame(values, columns = columns)
     df = df.sort_values("Realised Gain Loss")
-    df = df.append(df.sum(numeric_only=True), ignore_index=True)
+    df = pd.concat([df, df.sum(numeric_only=True)], ignore_index=True)
     return df
 
 def add_property_response(response, scope, portfolio_name, transaction_id):
@@ -615,7 +615,7 @@ def aggregation_response_households_generic_df(response, index_key, name):
     if "Instrument/default/Name" in df.columns:
         df["Instrument/default/Name"] = df["Instrument/default/Name"].apply(lambda x: "Cash" if x == '<Unknown>' else x)
     df.sort_values(index_key, inplace=True, ascending=True)
-    df = df.append(df.sum(numeric_only=True), ignore_index=True)
+    df = pd.concat([df, df.sum(numeric_only=True)], ignore_index=True)
     df.at[len(df)-1, index_key] = "TOTAL"
     df.name = name
     df.set_index(index_key, drop=True, inplace=True)
@@ -892,7 +892,7 @@ def aggregation_response_generic_df(response, index_key, name):
     if "Instrument/default/Name" in df.columns:
         df["Instrument/default/Name"] = df["Instrument/default/Name"].apply(lambda x: "Cash" if x == '<Unknown>' else x)
     df.sort_values(index_key, inplace=True, ascending=True)
-    df = df.append(df.sum(numeric_only=True), ignore_index=True)
+    df = pd.concat([df, df.sum(numeric_only=True)], ignore_index=True)
     df.at[len(df)-1, index_key] = "TOTAL"
     df.columns.name = name
     df.set_index(index_key, drop=True, inplace=True)
