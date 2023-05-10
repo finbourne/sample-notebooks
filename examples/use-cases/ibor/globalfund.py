@@ -119,7 +119,7 @@ def valuation(api_factory, marketdata_scope, portfolio_group, time):
     )
 
     dataframe = prettyprint.aggregation_responses_generic_df([response])
-    dataframe = dataframe.append(dataframe.sum(numeric_only=True), ignore_index=True)
+    dataframe = pd.concat([dataframe, dataframe.sum(numeric_only=True)], ignore_index=True)
     return dataframe
 
 

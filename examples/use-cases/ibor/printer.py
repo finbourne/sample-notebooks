@@ -418,7 +418,7 @@ def output_transactions(response, scope, code, property_keys=[]):
 
     df = pd.DataFrame(values, columns = columns)
     df = df.sort_values("Realised Gain Loss")
-    df = df.append(df.sum(numeric_only=True), ignore_index=True)
+    df = pd.concat([df, df.sum(numeric_only=True)], ignore_index=True)
     return df
 
 def add_property_response(response, scope, portfolio_name, transaction_id):

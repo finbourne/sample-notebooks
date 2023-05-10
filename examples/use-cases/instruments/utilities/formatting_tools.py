@@ -15,36 +15,36 @@ def new_data_frame():
 # Add open values
 def add_open_row(element, record):
     df = new_data_frame()
-    df = df.append({
+    df = pd.concat([df, pd.DataFrame({
         "Currency": element.currency,
         "Date": record.effective_date,
         "Activity": "Open",
         "Value": record.open
-    }, ignore_index=True)
+    }, index=[0])], ignore_index=True)
 
     return df
 
 
 # Add close values
 def add_close_row(element, record, df):
-    df = df.append({
+    df = pd.concat([df, pd.DataFrame({
         "Currency": element.currency,
         "Date": record.effective_date,
         "Activity": "Close",
         "Value": record.close
-    }, ignore_index=True)
+    }, index=[0])], ignore_index=True)
 
     return df
 
 
 # Add activites
 def add_activity_row(element, record, df, activity, value):
-    df = df.append({
+    df = pd.concat([df, pd.DataFrame({
         "Currency": element.currency,
         "Date": record.effective_date,
         "Activity": activity,
         "Value": value
-    }, ignore_index=True)
+    }, index=[0])], ignore_index=True)
 
     return df
 
@@ -75,7 +75,7 @@ def cashladder_to_df(response) -> pd.DataFrame:
 
             for k, v in shks.items():
                 working_df[k] = v
-            base_df = base_df.append(working_df, ignore_index=True)
+            base_df = pd.concat([base_df, working_df], ignore_index=True)
 
     return base_df
 

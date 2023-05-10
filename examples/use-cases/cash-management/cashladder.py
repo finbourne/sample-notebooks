@@ -3,6 +3,8 @@ import lusid.models as models
 from datetime import datetime
 from lusidjam import RefreshingToken
 from lusidtools.pandas_utils.lusid_pandas import lusid_response_to_data_frame
+import fbnsdkutilities.utilities as utils
+
 import pandas as pd
 import numpy as np
 import os
@@ -13,7 +15,8 @@ from datetime import timedelta
 secrets_path = os.getenv("FBN_SECRETS_PATH")
 
 # Initiate an API Factory which is the client side object for interacting with LUSID APIs
-api_factory = lusid.utilities.ApiClientFactory(
+api_factory = utils.ApiClientFactory(
+    lusid,
     token=RefreshingToken(),
     api_secrets_filename=secrets_path,
     app_name="LusidJupyterNotebook",
@@ -62,8 +65,8 @@ def get_cash_ladder(start_date, portfolio_code, currency, scope):
         period_opening_balance_value = int(holdings_df[holdings_df["HoldingType"]=="B"]["CashImpact"].to_list()[0])
         
         intraday_df = holdings_df[["SettlementDate", "CashImpact"]].groupby(["SettlementDate"], as_index=False).sum()
-        day_1 = pd.Series([ intraday_df["SettlementDate"][0] - timedelta(days=1), int(period_opening_balance_value)], index = intraday_df.columns)
-        intraday_df = intraday_df.append(day_1, ignore_index=True).sort_values("SettlementDate")
+        day_1 = pd.Series([intraday_df["SettlementDate"][0] - timedelta(days=1), int(period_opening_balance_value)], index=["SettlementDate", "CashImpact"])
+        intraday_df = pd.concat([day_1.to_frame(1).T, intraday_df], ignore_index=True).sort_values("SettlementDate")
         
         intraday_df["ClosingBalance"] = intraday_df["CashImpact"].cumsum()
         intraday_df  = intraday_df.rename(columns={"CashImpact": "IntradayActivity"})
@@ -80,9 +83,10 @@ def get_cash_ladder(start_date, portfolio_code, currency, scope):
         closing_balance_df["ReportOrder"] = 2
         closing_balance_df
         
-        cash_ladder_no_trades = holdings_df.append(opening_balance_df).append(closing_balance_df)
+        cash_ladder_no_trades = pd.concat([holdings_df, opening_balance_df, closing_balance_df])
         portfolio = cash_ladder_no_trades["Portfolio"].to_list()[0]
         cash_ladder_no_trades["Portfolio"] = portfolio[portfolio.rfind("/") + 1:]
+
         return cash_ladder_no_trades
     
     
@@ -111,6 +115,7 @@ def get_cash_ladder(start_date, portfolio_code, currency, scope):
         
         trades_df = lusid_response_to_data_frame(trades_response).rename(columns=rename_cols)
         trades_df = trades_df[cols]
+
         cash_ladder = add_daily_balances().merge(trades_df, how="outer")
         
         cash_ladder["CashLadderStatus"] = np.where(cash_ladder["HoldingType"] == "B" ,
