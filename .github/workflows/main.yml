@@ -41,6 +41,13 @@ jobs:
           FBN_LUSID_API_URL: ${{ secrets.DEVELOP_FBN_LUSID_API_URL }}
           FBN_APP_NAME: ${{ secrets.DEVELOP_FBN_CLIENT_ID }}
           FBN_LUMI_API_URL: ${{ secrets.DEVELOP_FBN_LUMI_API_URL }}
+          FBN_LUSID_IDENTITY_URL: ${{ secrets.DEVELOP_FBN_IDENTITY_URL }}
+          FBN_LUSID_ACCESS_URL: ${{ secrets.DEVELOP_FBN_ACCESS_URL }}
+          FBN_DRIVE_API_URL: ${{ secrets.DEVELOP_FBN_DRIVE_API_URL }}
+          FBN_NOTIFICATIONS_API_URL: ${{ secrets.DEVELOP_FBN_NOTIFICATIONS_API_URL }}
+          FBN_SCHEDULER_API_URL: ${{ secrets.DEVELOP_FBN_SCHEDULER_API_URL }}
+          FBN_INSIGHTS_API_URL: ${{ secrets.DEVELOP_FBN_INSIGHTS_API_URL }}
+          FBN_CONFIGURATION_API_URL: ${{ secrets.DEVELOP_FBN_CONFIGURATION_API_URL }}
 
         with:
           args: -n ./examples -v ${{ steps.extract_version.outputs.version }} -u ${{ secrets.DEVELOP_NEXUS_USERNAME }} -p ${{ secrets.DEVELOP_NEXUS_PASSWORD }} -c
@@ -57,6 +64,13 @@ jobs:
           FBN_LUSID_API_URL: ${{ secrets.MASTER_FBN_LUSID_API_URL }}
           FBN_APP_NAME: ${{ secrets.MASTER_FBN_CLIENT_ID }}
           FBN_LUMI_API_URL: ${{ secrets.MASTER_FBN_LUMI_API_URL }}
+          FBN_LUSID_IDENTITY_URL: ${{ secrets.MASTER_FBN_IDENTITY_URL }}
+          FBN_LUSID_ACCESS_URL: ${{ secrets.MASTER_FBN_ACCESS_URL }}
+          FBN_DRIVE_API_URL: ${{ secrets.MASTER_FBN_DRIVE_API_URL }}
+          FBN_NOTIFICATIONS_API_URL: ${{ secrets.MASTER_FBN_NOTIFICATIONS_API_URL }}
+          FBN_SCHEDULER_API_URL: ${{ secrets.MASTER_FBN_SCHEDULER_API_URL }}
+          FBN_INSIGHTS_API_URL: ${{ secrets.MASTER_FBN_INSIGHTS_API_URL }}
+          FBN_CONFIGURATION_API_URL: ${{ secrets.MASTER_FBN_CONFIGURATION_API_URL }}
 
         with:
           args: -n ./examples -v ${{ steps.extract_version.outputs.version }} -u ${{ secrets.MASTER_NEXUS_USERNAME }} -p ${{ secrets.MASTER_NEXUS_PASSWORD }} -c
