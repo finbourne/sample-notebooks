@@ -274,7 +274,7 @@ def create_transaction_type_configuration(api_factory, aliases, movements):
     for alias in aliases:
 
         if alias in aliases_current:
-            return response
+            continue
 
         aliases_new.append(
             models.TransactionConfigurationTypeAlias(
@@ -285,14 +285,15 @@ def create_transaction_type_configuration(api_factory, aliases, movements):
                 transaction_roles="None",
             )
         )
-
-    response = api_factory.build(
-        lusid.api.SystemConfigurationApi
-    ).create_configuration_transaction_type(
-        transaction_configuration_data_request=models.TransactionConfigurationDataRequest(
-            aliases=aliases_new, movements=movements, properties=None
+    
+    if aliases_new:
+        response = api_factory.build(
+            lusid.api.SystemConfigurationApi
+        ).create_configuration_transaction_type(
+            transaction_configuration_data_request=models.TransactionConfigurationDataRequest(
+                aliases=aliases_new, movements=movements, properties=None
+            )
         )
-    )
 
     return response
 
