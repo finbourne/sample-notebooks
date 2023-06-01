@@ -20,15 +20,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Extract version
-        id: extract_version
-        run: |
-          swagger_location=/swagger/v0/swagger.json
-          echo "::set-output name=version::$(curl -s "${{ secrets.DEVELOP_FBN_LUSID_API_URL }}$swagger_location" | jq -r .info.version)"
-
-      - name: Print version
-        run: echo ${{ steps.extract_version.outputs.version }}
-
       - name: Run tests on DEVELOP branch
         uses: docker://finbourne/notebook-runner2:latest
         if: ${{ github.base_ref == 'develop' || github.ref == 'refs/heads/develop' }}
@@ -50,7 +41,7 @@ jobs:
           FBN_CONFIGURATION_API_URL: ${{ secrets.DEVELOP_FBN_CONFIGURATION_API_URL }}
 
         with:
-          args: -n ./examples -v ${{ steps.extract_version.outputs.version }} -u ${{ secrets.DEVELOP_NEXUS_USERNAME }} -p ${{ secrets.DEVELOP_NEXUS_PASSWORD }} -c
+          args: -n ./examples -v latest -u ${{ secrets.DEVELOP_NEXUS_USERNAME }} -p ${{ secrets.DEVELOP_NEXUS_PASSWORD }} -c
 
       - name: Run tests on MASTER branch
         uses: docker://finbourne/notebook-runner2:latest
@@ -73,7 +64,7 @@ jobs:
           FBN_CONFIGURATION_API_URL: ${{ secrets.MASTER_FBN_CONFIGURATION_API_URL }}
 
         with:
-          args: -n ./examples -v ${{ steps.extract_version.outputs.version }} -u ${{ secrets.MASTER_NEXUS_USERNAME }} -p ${{ secrets.MASTER_NEXUS_PASSWORD }} -c
+          args: -n ./examples -v latest -u ${{ secrets.MASTER_NEXUS_USERNAME }} -p ${{ secrets.MASTER_NEXUS_PASSWORD }} -c
 
       - name: Slack notification
         uses: 8398a7/action-slack@v3
