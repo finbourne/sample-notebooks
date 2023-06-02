@@ -34,6 +34,10 @@ cd sample-notebooks
 ```
 docker build -t finbourne/lusid-sample-notebooks .
 ```
+Mac users may need to specify the platform.  On a Mac M1 it is:
+```
+docker build --platform linux/arm64 -t finbourne/lusid-sample-notebooks .
+```
 
 4. Run the Docker image
 
