@@ -114,7 +114,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Funding Leg Swap.ipynb](<../examples/use-cases/instruments/Funding%20Leg%20Swap.ipynb>) | Variable Funding Leg + Equity or Cash Instrument | Demonstrates creation and pricing of a funding leg with <br>variable notional and constructing a related position in<br>an stock or underlying instrument. This construct can be used<br>to represent the mechanics of a total return or equity swap. | aggregation, funding leg swap, instruments, market data store, quotes, results store |
 | [Interest Rate Swap.ipynb](<../examples/use-cases/instruments/Interest%20Rate%20Swap.ipynb>) | Interest Rate Swap Valuation | Demonstrates pricing of an Interest Rate Swap based on a user defined Instrument. | instruments, lifecycle events, market data store, quotes, results store, valuation |
 | [Simple Equity.ipynb](<../examples/use-cases/instruments/Simple%20Equity.ipynb>) | Equity - Computing P&amp;L and Handling Dividends for Equities |  | P&amp;L, dividend, equity, recipes, valuations |
-| [Term Deposit.ipynb](<../examples/use-cases/instruments/Term%20Deposit.ipynb>) | Term Deposit Valuation | Demonstrates pricing of a Term Deposit Investment. | instruments, lifecycle events, market data store, quotes, results store, valuation |
 
 ## examples/use-cases/models-and-indices
 | filename | title | description | features |
