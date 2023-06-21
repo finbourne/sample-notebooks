@@ -31,7 +31,7 @@ jobs:
           FBN_INSIGHTS_API_URL: ${{ secrets.MASTER_FBN_INSIGHTS_API_URL }}
           FBN_CONFIGURATION_API_URL: ${{ secrets.MASTER_FBN_CONFIGURATION_API_URL }}
         with:
-          args: -n ./examples
+          args: -n ./examples -c
 
       - name: Slack notification
         uses: 8398a7/action-slack@v3
