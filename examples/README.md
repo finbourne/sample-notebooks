@@ -131,7 +131,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Call Api On File Upload.ipynb](<../examples/use-cases/portfolio-construction/Call%20Api%20On%20File%20Upload.ipynb>) | Call Api on File Upload |  | events, luminesce, notifications, subscriptions |
-| [Legal Entity-Instrument Relationships.ipynb](<../examples/use-cases/portfolio-construction/Legal%20Entity-Instrument%20Relationships.ipynb>) | Creating Legal Entities and Instrument Relationships | This notebook demonstrates how you can create legal entities with multiple identifiers from different sources and utilise legal entity-instruments relationships to filter a universe of instruments based on the properties attached to the legal entities. | legal entities, relationships |
 
 ## examples/use-cases/post-trade-processing
 | filename | title | description | features |
