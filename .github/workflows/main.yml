@@ -41,7 +41,7 @@ jobs:
           FBN_CONFIGURATION_API_URL: ${{ secrets.DEVELOP_FBN_CONFIGURATION_API_URL }}
 
         with:
-          args: -n ./examples -v latest -u ${{ secrets.DEVELOP_NEXUS_USERNAME }} -p ${{ secrets.DEVELOP_NEXUS_PASSWORD }} -c
+          args: -n ./examples -v latest -u ${{ secrets.DEVELOP_NEXUS_USERNAME }} -p ${{ secrets.DEVELOP_NEXUS_PASSWORD }} -c -r 2
 
       - name: Run tests on MASTER branch
         uses: docker://finbourne/notebook-runner2:latest
@@ -64,7 +64,7 @@ jobs:
           FBN_CONFIGURATION_API_URL: ${{ secrets.MASTER_FBN_CONFIGURATION_API_URL }}
 
         with:
-          args: -n ./examples -v latest -u ${{ secrets.MASTER_NEXUS_USERNAME }} -p ${{ secrets.MASTER_NEXUS_PASSWORD }} -c
+          args: -n ./examples -v latest -u ${{ secrets.MASTER_NEXUS_USERNAME }} -p ${{ secrets.MASTER_NEXUS_PASSWORD }} -c -r 2
 
       - name: Slack notification
         uses: 8398a7/action-slack@v3
