@@ -107,6 +107,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Bond.ipynb](<../examples/use-cases/instruments/Bond.ipynb>) | Bonds - Computing P&amp;L and Accrued Interest for Bonds |  | P&amp;L, accrued interest, bond, bonds, recipes, valuations |
+| [BondWithAmortisation.ipynb](<../examples/use-cases/instruments/BondWithAmortisation.ipynb>) | Bonds - Amortisation |  | P&amp;L, a2b, amortisation, amortization, bond |
 | [Contract for Difference.ipynb](<../examples/use-cases/instruments/Contract%20for%20Difference.ipynb>) | Contract for Difference - Calculating Intraday P&amp;L for CFD's with and without Daily Close outs |  | P&amp;L, cfd, close out, contract for difference, recipes, valuations |
 | [Equity Option.ipynb](<../examples/use-cases/instruments/Equity%20Option.ipynb>) | Equity Option - Booking and valuing an Equity Option with physical settlement |  | P&amp;L, equity option, physical settlement, recipes, valuations |
 | [Equity Options - Pricing and risk using Black-Scholes.ipynb](<../examples/use-cases/instruments/Equity%20Options%20-%20Pricing%20and%20risk%20using%20Black-Scholes.ipynb>) | Equity Option - Pricing and risk |  | black scholes, equity option, exposure, inline valuations, market value, option delta |
