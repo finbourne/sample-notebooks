@@ -3,6 +3,7 @@
 - [ ] Changes follow the [style guide](https://github.com/finbourne/sample-notebooks/blob/master/docs/FINBOURNE%20notebook%20style%20guide.ipynb)
 - [ ] Tests pass
 - [ ] Raised the PR against the `develop` branch
+- [ ] Notebook outputs do not contain any priviledged data
 
 # Description of the PR
 
