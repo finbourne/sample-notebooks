@@ -107,6 +107,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Bond.ipynb](<../examples/use-cases/instruments/Bond.ipynb>) | Bonds - Computing P&amp;L and Accrued Interest for Bonds |  | P&amp;L, accrued interest, bond, bonds, recipes, valuations |
+| [BondWithAmortisation.ipynb](<../examples/use-cases/instruments/BondWithAmortisation.ipynb>) | Bonds - Amortisation |  | P&amp;L, a2b, amortisation, amortization, bond |
 | [Contract for Difference.ipynb](<../examples/use-cases/instruments/Contract%20for%20Difference.ipynb>) | Contract for Difference - Calculating Intraday P&amp;L for CFD's with and without Daily Close outs |  | P&amp;L, cfd, close out, contract for difference, recipes, valuations |
 | [Equity Option.ipynb](<../examples/use-cases/instruments/Equity%20Option.ipynb>) | Equity Option - Booking and valuing an Equity Option with physical settlement |  | P&amp;L, equity option, physical settlement, recipes, valuations |
 | [Equity Options - Pricing and risk using Black-Scholes.ipynb](<../examples/use-cases/instruments/Equity%20Options%20-%20Pricing%20and%20risk%20using%20Black-Scholes.ipynb>) | Equity Option - Pricing and risk |  | black scholes, equity option, exposure, inline valuations, market value, option delta |
@@ -114,6 +115,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Funding Leg Swap.ipynb](<../examples/use-cases/instruments/Funding%20Leg%20Swap.ipynb>) | Variable Funding Leg + Equity or Cash Instrument | Demonstrates creation and pricing of a funding leg with <br>variable notional and constructing a related position in<br>an stock or underlying instrument. This construct can be used<br>to represent the mechanics of a total return or equity swap. | aggregation, funding leg swap, instruments, market data store, quotes, results store |
 | [Interest Rate Swap.ipynb](<../examples/use-cases/instruments/Interest%20Rate%20Swap.ipynb>) | Interest Rate Swap Valuation | Demonstrates pricing of an Interest Rate Swap based on a user defined Instrument. | instruments, lifecycle events, market data store, quotes, results store, valuation |
 | [Simple Equity.ipynb](<../examples/use-cases/instruments/Simple%20Equity.ipynb>) | Equity - Computing P&amp;L and Handling Dividends for Equities |  | P&amp;L, dividend, equity, recipes, valuations |
+| [Term Deposit.ipynb](<../examples/use-cases/instruments/Term%20Deposit.ipynb>) | Term Deposit Valuation | Demonstrates pricing of a Term Deposit Investment. | instruments, lifecycle events, market data store, quotes, results store, valuation |
 
 ## examples/use-cases/models-and-indices
 | filename | title | description | features |
@@ -130,7 +132,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Call Api On File Upload.ipynb](<../examples/use-cases/portfolio-construction/Call%20Api%20On%20File%20Upload.ipynb>) | Call Api on File Upload |  | events, luminesce, notifications, subscriptions |
-| [Legal Entity-Instrument Relationships.ipynb](<../examples/use-cases/portfolio-construction/Legal%20Entity-Instrument%20Relationships.ipynb>) | Creating Legal Entities and Instrument Relationships | This notebook demonstrates how you can create legal entities with multiple identifiers from different sources and utilise legal entity-instruments relationships to filter a universe of instruments based on the properties attached to the legal entities. | legal entities, relationships |
 
 ## examples/use-cases/post-trade-processing
 | filename | title | description | features |
@@ -166,8 +167,9 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Futures Valuation with notional cost and variation margin.ipynb](<../examples/use-cases/valuation/Futures%20Valuation%20with%20notional%20cost%20and%20variation%20margin.ipynb>) | Futures Valuation Workflow |  | futures, recipes, transaction types, valuations |
 | [Look-through valuation (multi-level).ipynb](<../examples/use-cases/valuation/Look-through%20valuation%20%28multi-level%29.ipynb>) | Look-through Valuation with Multiple Levels | The following notebook details how to compute PVs across different levels of look-through for <br>both securitised funds and Index Futures | futures, instruments, recipes, securitised portfolios, transactions, valuation |
 | [Look-through valuation.ipynb](<../examples/use-cases/valuation/Look-through%20valuation.ipynb>) | Portfolio look-through in LUSID | Shows how to compute the value of a child portfolio's holding as though they were directly held by the parent portfolio. | holdings, look through, portfolios, securitised portfolios, valuations |
+| [Model selection using instrument features and properties.ipynb](<../examples/use-cases/valuation/Model%20selection%20using%20instrument%20features%20and%20properties.ipynb>) | Model selection using instrument features and properties | Demonstration of how to configure model selectio for valuation based on instrument features as well as instrument properties. | Derived instrument properties, Instrument features, Instruments, Model selection |
 | [SRS csv Example.ipynb](<../examples/use-cases/valuation/SRS%20csv%20Example.ipynb>) | Structured Results Store for storage of Portfolio data |  | luminesce, structured_results_store, virtual_document |
-| [Simple Valuation.ipynb](<../examples/use-cases/valuation/Simple%20Valuation.ipynb>) | Simple valuation with default recipes | This notebook shows how to value a portfolio using defatul recipes, for an out of the box look at positions and valuations | manifests, recipes, transactions, valuation |
+| [Simple Valuation.ipynb](<../examples/use-cases/valuation/Simple%20Valuation.ipynb>) | Simple valuation with default recipes | This notebook shows how to value a portfolio using recipes, for an out of the box look at positions and valuations | manifests, recipes, transactions, valuation |
 | [Valuation Analysis.ipynb](<../examples/use-cases/valuation/Valuation%20Analysis.ipynb>) | Valuation Debugging |  | instruments, recipes, transactions, valuation, valuation manifest |
 | [Valuations with recipes.ipynb](<../examples/use-cases/valuation/Valuations%20with%20recipes.ipynb>) | Valuation with recipes | This notebook shows how to value a portfolio using recipes with different pricing sources | manifests, recipes, transactions, valuation |
 
