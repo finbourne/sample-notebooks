@@ -1,0 +1,3 @@
+transaction_id,type,units,transaction_price,transaction_date,settlement_date,total_consideration,client_internal,ticker,name,sleeve,trade_to_portfolio_rate
+txn_backdated_sale,Sell,"100,000",166.97,2020-03-07T12:00:00,2020-03-11T00:00:00,16697000,EQUITY_APPL,AAPL,Apple,Sleeve 1,0.766355
+txn_004,Buy,"100,000",164.86,2020-03-07T00:00:00,2020-03-10T00:00:00,16486000,EQUITY_APPL,AAPL,Apple,Sleeve 1,0.766342
