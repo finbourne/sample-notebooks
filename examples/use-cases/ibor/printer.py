@@ -623,21 +623,58 @@ def aggregation_response_households_generic_df(response, index_key, name):
     pd.options.display.float_format = '{:,}'.format
     return df
 
-def transaction_type_response(txnResponse):
-    if txnResponse is None:
+def transaction_type_response(txnResponse, filters=[]):
+    j = 0
+    for source in txnResponse:
+        transaction_types = txnResponse[source]
+        aliases = [alias for transaction_type in transaction_types for alias in transaction_type.aliases ]
+        
+        matches = [alias.type for alias in aliases if alias.type in filters]
+        if len(matches) == 0 and len(filters)>=1:
+            continue
+        j += 1
+        print (colours.bold + colours.UNDERLINE + 'Transaction Configuration source: {}'.format(source) + colours.end + '\n')
+
+        for transaction_type in transaction_types:
+            matching_aliases = [alias for alias in transaction_type.aliases if alias.type in matches]
+            if len(matching_aliases) == 0 and len(filters)>=1:
+                continue
+            print (colours.bold + colours.FAIL + 'Transaction Type Aliases' + colours.end)
+            for alias in matching_aliases:
+                if alias.type not in matches and len(filters)>=1:
+                    continue
+                print (colours.bold + 'Transaction Type: ' + colours.end + colours.FAIL + alias.type + colours.end)
+                print (colours.bold + 'Alias Description: ' + colours.end + alias.description)
+                print (colours.bold + 'Transaction Class: ' + colours.end + alias.transaction_class)
+                print (colours.bold + 'Transaction Roles: ' + colours.end + alias.transaction_roles + '\n' + '\n')
+
+            print (colours.bold + colours.FAIL + 'Transaction Movements' + colours.end)
+            for movement in transaction_type.movements:
+                print (colours.bold + 'Movement Types: ' + colours.end + movement.movement_types)
+                print (colours.bold + 'Side: ' + colours.end + movement.side)
+                print (colours.bold + 'Direction: ' + colours.end + str(movement.direction))
+                if len(movement.properties) > 0:
+                    for key, value in movement.properties.items():
+                        print (f"{colours.bold}Properties: {colours.end}key: {value}\n")
+            print ('\n\n')
+    if j == 0:
+        print ('No matching transaction types in the configuration')
+
+def print_transaction_type(transaction_type):
+    if transaction_type is None:
         print ('No transaction type in response')
     else:
         print (colours.bold + colours.UNDERLINE + 'Transaction Type' + colours.end + '\n')
 
         print (colours.bold + colours.FAIL + 'Transaction Type Aliases' + colours.end)
-        for alias in txnResponse.aliases:
+        for alias in transaction_type.aliases:
             print (colours.bold + 'Transaction Type: ' + colours.end + colours.FAIL + alias.type + colours.end)
             print (colours.bold + 'Alias Description: ' + colours.end + alias.description)
             print (colours.bold + 'Transaction Class: ' + colours.end + alias.transaction_class)
             print (colours.bold + 'Transaction Roles: ' + colours.end + alias.transaction_roles + '\n' + '\n')
 
         print (colours.bold + colours.FAIL + 'Transaction Movements' + colours.end)
-        for movement in txnResponse.movements:
+        for movement in transaction_type.movements:
             print (colours.bold + 'Movement Types: ' + colours.end + movement.movement_types)
             print (colours.bold + 'Side: ' + colours.end + movement.side)
             print (colours.bold + 'Direction: ' + colours.end + str(movement.direction))
