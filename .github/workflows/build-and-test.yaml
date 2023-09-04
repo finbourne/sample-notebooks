@@ -66,6 +66,8 @@ jobs:
         env:
           FBN_BASE_API_URL: ${{ secrets.URI }}
           FBN_ACCESS_TOKEN: ${{ secrets.TOKEN }}
+          FBN_NEXUS_USERNAME: ${{ secrets.FBN_NEXUS_USERNAME }}
+          FBN_NEXUS_PASSWORD: ${{ secrets.FBN_NEXUS_PASSWORD }}
         run: |
           echo "env variables have been set"
           echo "Running the tests..."
