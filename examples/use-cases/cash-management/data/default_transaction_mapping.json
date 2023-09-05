@@ -428,6 +428,35 @@
           }
         ],
         "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "CashFlow",
+            "description": "cash paid/received from instrument",
+            "transactionClass": "CashFlow",
+            "transactionRoles": "AllRoles",
+            "isDefault": false
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "Carry",
+            "side": "Side1",
+            "direction": 1,
+            "properties": {},
+            "mappings": [],
+            "name": "CarryCashFlow"
+          },
+          {
+            "movementTypes": "CashReceivable",
+            "side": "Side2",
+            "direction": 1,
+            "properties": {},
+            "mappings": []
+          }
+        ],
+        "properties": []
       }
     ]
   },
