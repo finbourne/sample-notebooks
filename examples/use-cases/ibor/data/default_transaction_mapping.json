@@ -1,643 +1,939 @@
-{
-  "transactionConfigRequests": [
-    {
-      "aliases": [
-        {
-          "type": "Buy",
-          "description": "Purchase",
-          "transactionClass": "Basic",
-          "transactionGroup": "default",
-          "transactionRoles": "LongLonger"
-        },
-        {
-          "type": "BY",
-          "description": "PURCHASE",
-          "transactionClass": "Basic",
-          "transactionGroup": "alt1",
-          "transactionRoles": "LongLonger"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "Sell",
-          "description": "Sale",
-          "transactionClass": "Basic",
-          "transactionGroup": "default",
-          "transactionRoles": "LongShorter"
-        },
-        {
-          "type": "SL",
-          "description": "SALE",
-          "transactionClass": "Basic",
-          "transactionGroup": "alt1",
-          "transactionRoles": "LongShorter"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "CoverShort",
-          "description": "Cover Short ",
-          "transactionClass": "Basic",
-          "transactionGroup": "default",
-          "transactionRoles": "ShortLonger"
-        },
-        {
-          "type": "CS",
-          "description": "COVER SHORT ",
-          "transactionClass": "Basic",
-          "transactionGroup": "alt1",
-          "transactionRoles": "ShortLonger"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "SellShort",
-          "description": "Sell Short",
-          "transactionClass": "Basic",
-          "transactionGroup": "default",
-          "transactionRoles": "ShortShorter"
-        },
-        {
-          "type": "SS",
-          "description": "SELL SHORT",
-          "transactionClass": "Basic",
-          "transactionGroup": "alt1",
-          "transactionRoles": "ShortShorter"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "StockIn",
-          "description": "Transfer In",
-          "transactionClass": "StockTransfers",
-          "transactionGroup": "default",
-          "transactionRoles": "Longer"
-        },
-        {
-          "type": "SI",
-          "description": "SECURITY IN",
-          "transactionClass": "StockTransfers",
-          "transactionGroup": "alt1",
-          "transactionRoles": "LongLonger"
-        },
-        {
-          "type": "SW",
-          "description": "SHORT SECURITY OUT",
-          "transactionClass": "StockTransfers",
-          "transactionGroup": "alt1",
-          "transactionRoles": "ShortLonger"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "StockOut",
-          "description": "Transfer Out",
-          "transactionClass": "StockTransfers",
-          "transactionGroup": "default",
-          "transactionRoles": "Shorter"
-        },
-        {
-          "type": "SO",
-          "description": "SECURITY OUT",
-          "transactionClass": "StockTransfers",
-          "transactionGroup": "alt1",
-          "transactionRoles": "LongShorter"
-        },
-        {
-          "type": "SA",
-          "description": "SHORT SECURITY IN",
-          "transactionClass": "StockTransfers",
-          "transactionGroup": "alt1",
-          "transactionRoles": "ShortShorter"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "FxBuy",
-          "description": "Spot FX Purchase",
-          "transactionClass": "SpotFx",
-          "transactionGroup": "default",
-          "transactionRoles": "Longer"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side1",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "FxSell",
-          "description": "Spot FX Sale",
-          "transactionClass": "SpotFx",
-          "transactionGroup": "default",
-          "transactionRoles": "Shorter"
-        },
-        {
-          "type": "SF",
-          "description": "SPOT FX",
-          "transactionClass": "SpotFx",
-          "transactionGroup": "alt1",
-          "transactionRoles": "Longer"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side1",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "FwdFxBuy",
-          "description": "Forward FX Purchase",
-          "transactionClass": "FwdFx",
-          "transactionGroup": "default",
-          "transactionRoles": "Longer"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "CashForward",
-          "side": "Side1",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashForward",
-          "side": "Side2",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "FwdFxSell",
-          "description": "Forward FX Sale",
-          "transactionClass": "FwdFx",
-          "transactionGroup": "default",
-          "transactionRoles": "Shorter"
-        },
-        {
-          "type": "FF",
-          "description": "FORWARD FX",
-          "transactionClass": "FwdFx",
-          "transactionGroup": "alt1",
-          "transactionRoles": "Shorter"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "CashForward",
-          "side": "Side1",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashForward",
-          "side": "Side2",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "FundsIn",
-          "description": "Deposit New Funds",
-          "transactionClass": "CashTransfers",
-          "transactionGroup": "default",
-          "transactionRoles": "Longer"
-        },
-        {
-          "type": "FI",
-          "description": "FUNDS IN",
-          "transactionClass": "CashTransfers",
-          "transactionGroup": "alt1",
-          "transactionRoles": "Longer"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "CashAccrual",
-          "side": "Side1",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "FundsOut",
-          "description": "Withdraw Funds",
-          "transactionClass": "CashTransfers",
-          "transactionGroup": "default",
-          "transactionRoles": "Shorter"
-        },
-        {
-          "type": "FO",
-          "description": "FUNDS OUT",
-          "transactionClass": "CashTransfers",
-          "transactionGroup": "alt1",
-          "transactionRoles": "Shorter"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "CashAccrual",
-          "side": "Side1",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "OLFC",
-          "description": "Open Long Futures Contract",
-          "transactionClass": "Futures",
-          "transactionGroup": "default",
-          "transactionRoles": "LongLonger"
-        },
-        {
-          "type": "O1",
-          "description": "OPEN LONG FUTURES CONTRACT",
-          "transactionClass": "Futures",
-          "transactionGroup": "alt1",
-          "transactionRoles": "LongLonger"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": 1,
-          "properties": [
-            {
-              "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
-              "value": "FirstInFirstOut"
-            }
-          ],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "CLFC",
-          "description": "Close Long Futures Contract",
-          "transactionClass": "Futures",
-          "transactionGroup": "default",
-          "transactionRoles": "LongShorter"
-        },
-        {
-          "type": "C1",
-          "description": "CLOSE LONG FUTURES CONTRACT",
-          "transactionClass": "Futures",
-          "transactionGroup": "alt1",
-          "transactionRoles": "LongShorter"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": -1,
-          "properties": [
-            {
-              "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
-              "value": "FirstInFirstOut"
-            }
-          ],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "OSFC",
-          "description": "Open Short Futures Contract",
-          "transactionClass": "Futures",
-          "transactionGroup": "default",
-          "transactionRoles": "ShortShorter"
-        },
-        {
-          "type": "O3",
-          "description": "OPEN SHORT FUTURES CONTRACT",
-          "transactionClass": "Futures",
-          "transactionGroup": "alt1",
-          "transactionRoles": "ShortShorter"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": -1,
-          "properties": [
-            {
-              "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
-              "value": "FirstInFirstOut"
-            }
-          ],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "CSFC",
-          "description": "Close Short Futures Contract",
-          "transactionClass": "Futures",
-          "transactionGroup": "default",
-          "transactionRoles": "ShortLonger"
-        },
-        {
-          "type": "C3",
-          "description": "CLOSE SHORT FUTURES CONTRACT",
-          "transactionClass": "Futures",
-          "transactionGroup": "alt1",
-          "transactionRoles": "ShortLonger"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": 1,
-          "properties": [
-            {
-              "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
-              "value": "FirstInFirstOut"
-            }
-          ],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "Loan",
-          "description": "A private corporate loan to a company",
-          "transactionClass": "Loan",
-          "transactionGroup": "PrivateDebt",
-          "transactionRoles": "ShortLonger"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": 1,
-          "properties": [
-            {
-              "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
-              "value": "FirstInFirstOut"
-            }
-          ],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": -1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "Coupon",
-          "description": "A coupon payment from a private corporate loan to a company",
-          "transactionClass": "Loan",
-          "transactionGroup": "PrivateDebt",
-          "transactionRoles": "Longer"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    },
-    {
-      "aliases": [
-        {
-          "type": "Repayment",
-          "description": "A partial or full repayment from a private corporate loan to a company",
-          "transactionClass": "Loan",
-          "transactionGroup": "PrivateDebt",
-          "transactionRoles": "LongShorter"
-        }
-      ],
-      "movements": [
-        {
-          "movementTypes": "StockMovement",
-          "side": "Side1",
-          "direction": -1,
-          "properties": [
-            {
-              "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
-              "value": "FirstInFirstOut"
-            }
-          ],
-          "mappings": []
-        },
-        {
-          "movementTypes": "CashCommitment",
-          "side": "Side2",
-          "direction": 1,
-          "properties": [],
-          "mappings": []
-        }
-      ],
-      "properties": []
-    }
-  ]
-}
+[
+  {
+    "source": "default",
+    "transactionTypeRequests": [
+      {
+        "aliases": [
+          {
+            "type": "Buy",
+            "description": "Purchase",
+            "transactionClass": "Basic",
+            "transactionRoles": "LongLonger"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "Sell",
+            "description": "Sale",
+            "transactionClass": "Basic",
+            "transactionRoles": "LongShorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "CoverShort",
+            "description": "Cover Short ",
+            "transactionClass": "Basic",
+            "transactionRoles": "ShortLonger"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "SellShort",
+            "description": "Sell Short",
+            "transactionClass": "Basic",
+            "transactionRoles": "ShortShorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "StockIn",
+            "description": "Transfer In",
+            "transactionClass": "StockTransfers",
+            "transactionRoles": "Longer"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "StockOut",
+            "description": "Transfer Out",
+            "transactionClass": "StockTransfers",
+            "transactionGroup": "default",
+            "transactionRoles": "Shorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "FxBuy",
+            "description": "Spot FX Purchase",
+            "transactionClass": "SpotFx",
+            "transactionGroup": "default",
+            "transactionRoles": "Longer"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "FxSell",
+            "description": "Spot FX Sale",
+            "transactionClass": "SpotFx",
+            "transactionGroup": "default",
+            "transactionRoles": "Shorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "FwdFxBuy",
+            "description": "Forward FX Purchase",
+            "transactionClass": "FwdFx",
+            "transactionRoles": "Longer"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashForward",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashForward",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "FwdFxSell",
+            "description": "Forward FX Sale",
+            "transactionClass": "FwdFx",
+            "transactionRoles": "Shorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashForward",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashForward",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "FundsIn",
+            "description": "Deposit New Funds",
+            "transactionClass": "CashTransfers",
+            "transactionRoles": "Longer"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashAccrual",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "FundsOut",
+            "description": "Withdraw Funds",
+            "transactionClass": "CashTransfers",
+            "transactionRoles": "Shorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashAccrual",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "OLFC",
+            "description": "Open Long Futures Contract",
+            "transactionClass": "Futures",
+            "transactionRoles": "LongLonger"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [
+              {
+                "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+                "value": "FirstInFirstOut"
+              }
+            ],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "CLFC",
+            "description": "Close Long Futures Contract",
+            "transactionClass": "Futures",
+            "transactionRoles": "LongShorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [
+              {
+                "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+                "value": "FirstInFirstOut"
+              }
+            ],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "OSFC",
+            "description": "Open Short Futures Contract",
+            "transactionClass": "Futures",
+            "transactionRoles": "ShortShorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [
+              {
+                "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+                "value": "FirstInFirstOut"
+              }
+            ],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "CSFC",
+            "description": "Close Short Futures Contract",
+            "transactionClass": "Futures",
+            "transactionRoles": "ShortLonger"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [
+              {
+                "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+                "value": "FirstInFirstOut"
+              }
+            ],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "CashFlow",
+            "description": "cash paid/received from instrument",
+            "transactionClass": "CashFlow",
+            "transactionRoles": "AllRoles",
+            "isDefault": false
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "Carry",
+            "side": "Side1",
+            "direction": 1,
+            "properties": {},
+            "mappings": [],
+            "name": "CarryCashFlow"
+          },
+          {
+            "movementTypes": "CashReceivable",
+            "side": "Side2",
+            "direction": 1,
+            "properties": {},
+            "mappings": []
+          }
+        ],
+        "properties": []
+      }
+    ]
+  },
+  {
+    "source": "alt1",
+    "transactionTypeRequests": [
+      {
+        "aliases": [
+          {
+            "type": "BY",
+            "description": "PURCHASE",
+            "transactionClass": "Basic",
+            "transactionRoles": "LongLonger"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "SL",
+            "description": "SALE",
+            "transactionClass": "Basic",
+            "transactionRoles": "LongShorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "CS",
+            "description": "COVER SHORT ",
+            "transactionClass": "Basic",
+            "transactionRoles": "ShortLonger"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "SS",
+            "description": "SELL SHORT",
+            "transactionClass": "Basic",
+            "transactionRoles": "ShortShorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "SI",
+            "description": "SECURITY IN",
+            "transactionClass": "StockTransfers",
+            "transactionRoles": "LongLonger"
+          },
+          {
+            "type": "SW",
+            "description": "SHORT SECURITY OUT",
+            "transactionClass": "StockTransfers",
+            "transactionRoles": "ShortLonger"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "SO",
+            "description": "SECURITY OUT",
+            "transactionClass": "StockTransfers",
+            "transactionRoles": "LongShorter"
+          },
+          {
+            "type": "SA",
+            "description": "SHORT SECURITY IN",
+            "transactionClass": "StockTransfers",
+            "transactionRoles": "ShortShorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "SF",
+            "description": "SPOT FX",
+            "transactionClass": "SpotFx",
+            "transactionRoles": "Longer"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "FF",
+            "description": "FORWARD FX",
+            "transactionClass": "FwdFx",
+            "transactionRoles": "Shorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashForward",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashForward",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "FI",
+            "description": "FUNDS IN",
+            "transactionClass": "CashTransfers",
+            "transactionRoles": "Longer"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashAccrual",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "FO",
+            "description": "FUNDS OUT",
+            "transactionClass": "CashTransfers",
+            "transactionRoles": "Shorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashAccrual",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "O1",
+            "description": "OPEN LONG FUTURES CONTRACT",
+            "transactionClass": "Futures",
+            "transactionRoles": "LongLonger"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [
+              {
+                "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+                "value": "FirstInFirstOut"
+              }
+            ],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "C1",
+            "description": "CLOSE LONG FUTURES CONTRACT",
+            "transactionClass": "Futures",
+            "transactionRoles": "LongShorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [
+              {
+                "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+                "value": "FirstInFirstOut"
+              }
+            ],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "O3",
+            "description": "OPEN SHORT FUTURES CONTRACT",
+            "transactionClass": "Futures",
+            "transactionRoles": "ShortShorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [
+              {
+                "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+                "value": "FirstInFirstOut"
+              }
+            ],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "C3",
+            "description": "CLOSE SHORT FUTURES CONTRACT",
+            "transactionClass": "Futures",
+            "transactionRoles": "ShortLonger"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [
+              {
+                "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+                "value": "FirstInFirstOut"
+              }
+            ],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      }
+    ]
+  },
+  {
+    "source": "PrivateDebt",
+    "transactionTypeRequests": [
+      {
+        "aliases": [
+          {
+            "type": "Loan",
+            "description": "A private corporate loan to a company",
+            "transactionClass": "Loan",
+            "transactionRoles": "ShortLonger"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [
+              {
+                "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+                "value": "FirstInFirstOut"
+              }
+            ],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": -1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "Coupon",
+            "description": "A coupon payment from a private corporate loan to a company",
+            "transactionClass": "Loan",
+            "transactionRoles": "Longer"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "Repayment",
+            "description": "A partial or full repayment from a private corporate loan to a company",
+            "transactionClass": "Loan",
+            "transactionRoles": "LongShorter"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "StockMovement",
+            "side": "Side1",
+            "direction": -1,
+            "properties": [
+              {
+                "key": "TransactionConfiguration/default/TaxLotSelectionMethod",
+                "value": "FirstInFirstOut"
+              }
+            ],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
+      }
+    ]
+  }
+]
