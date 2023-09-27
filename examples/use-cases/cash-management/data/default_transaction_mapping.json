@@ -457,6 +457,33 @@
           }
         ],
         "properties": []
+      },
+      {
+        "aliases": [
+          {
+            "type": "Coupon",
+            "description": "A coupon or cash flow from term instrument with a carry movement.",
+            "transactionClass": "default",
+            "transactionRoles": "AllRoles"
+          }
+        ],
+        "movements": [
+          {
+            "movementTypes": "Carry",
+            "side": "Side1",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          },
+          {
+            "movementTypes": "CashCommitment",
+            "side": "Side2",
+            "direction": 1,
+            "properties": [],
+            "mappings": []
+          }
+        ],
+        "properties": []
       }
     ]
   },
