@@ -5,7 +5,7 @@ jupyter
 jupyterthemes
 numpy
 openpyxl
-pandas>=2
+pandas>=2, <3
 pytz
 requests
 rise
