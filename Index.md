@@ -53,7 +53,6 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | --- | --- | --- | --- |
 | [Valuation.ipynb](<examples/modules/Valuation.ipynb>) | Valuation | Demonstrates how to value a portfolio using a custom recipe. | valuation |
 | [bitemporal-backtrade.ipynb](<examples/modules/bitemporal-backtrade.ipynb>) | Bi-temporal backtrade | Demonstrates how to add a missing trade and then get back transactions using the AsAt date. | bi-temporality |
-| [cashladder.ipynb](<examples/modules/cashladder.ipynb>) | Cash ladder | Demonstration of how to compute a cash ladder across different currencies for a portfolio. | cash |
 
 ## examples/use-cases/abor
 | filename | title | description | features |
