@@ -1,21 +1,20 @@
 name: Daily build
 on:
   schedule:
-  - cron: "0 5 * * *"
-    
+    - cron: "0 5 * * *"
+
 jobs:
   cron-build-and-test:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
 
     steps:
-
       - uses: actions/checkout@v2
 
       - name: Run tests on MASTER branch
-        uses: docker://finbourne/notebook-runner2:latest 
+        uses: docker://finbourne/notebook-runner2:latest
         if: ${{ github.ref == 'refs/heads/master' }}
-        env: 
+        env:
           FBN_TOKEN_URL: ${{ secrets.MASTER_FBN_TOKEN_URL }}
           FBN_USERNAME: ${{ secrets.MASTER_FBN_USERNAME }}
           FBN_PASSWORD: ${{ secrets.MASTER_FBN_PASSWORD }}
@@ -24,10 +23,16 @@ jobs:
           FBN_LUSID_API_URL: ${{ secrets.MASTER_FBN_LUSID_API_URL }}
           FBN_APP_NAME: ${{ secrets.MASTER_FBN_CLIENT_ID }}
           FBN_LUMI_API_URL: ${{ secrets.MASTER_FBN_LUMI_API_URL }}
-        
+          FBN_LUSID_IDENTITY_URL: ${{ secrets.MASTER_FBN_IDENTITY_URL }}
+          FBN_LUSID_ACCESS_URL: ${{ secrets.MASTER_FBN_ACCESS_URL }}
+          FBN_DRIVE_API_URL: ${{ secrets.MASTER_FBN_DRIVE_API_URL }}
+          FBN_NOTIFICATIONS_API_URL: ${{ secrets.MASTER_FBN_NOTIFICATIONS_API_URL }}
+          FBN_SCHEDULER_API_URL: ${{ secrets.MASTER_FBN_SCHEDULER_API_URL }}
+          FBN_INSIGHTS_API_URL: ${{ secrets.MASTER_FBN_INSIGHTS_API_URL }}
+          FBN_CONFIGURATION_API_URL: ${{ secrets.MASTER_FBN_CONFIGURATION_API_URL }}
         with:
-          args: -n ./examples
-        
+          args: -n ./examples -c -r 2
+
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:
@@ -46,4 +51,3 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
           GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
         if: always()
-    

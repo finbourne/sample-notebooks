@@ -65,7 +65,6 @@ def authenticate_secrets():
             self.schemas = lusid.SchemasApi(client)
             self.scopes = lusid.ScopesApi(client)
             self.search = lusid.SearchApi(client)
-            self.system_configuration = lusid.SystemConfigurationApi(client)
             self.transaction_portfolios = lusid.TransactionPortfoliosApi(client)
             self.cut_labels = lusid.CutLabelDefinitionsApi(client)
 

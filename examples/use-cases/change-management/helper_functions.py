@@ -266,8 +266,8 @@ def create_instrument_quotes(quotes_effective_date, today, instrument_prices, an
     # Create prices via instrument, analytic
     # Set our quotes effective dates
     now = datetime.now(pytz.UTC).replace(hour=0, minute=0, second=0, microsecond=0)
-    quotes_effective_date = now - timedelta(days=3)
-    today = now
+    quotes_effective_date = (now - timedelta(days=3)).isoformat()
+    today = now.isoformat()
 
     instrument_quotes = {}
 

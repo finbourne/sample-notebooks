@@ -119,7 +119,7 @@ def valuation(api_factory, marketdata_scope, portfolio_group, time):
     )
 
     dataframe = prettyprint.aggregation_responses_generic_df([response])
-    dataframe = dataframe.append(dataframe.sum(numeric_only=True), ignore_index=True)
+    dataframe = pd.concat([dataframe, dataframe.sum(numeric_only=True)]).reset_index(drop=True)
     return dataframe
 
 
@@ -244,58 +244,6 @@ def upsert_quotes(
     # Pretty print the response
     # prettyprint.upsert_quotes_response(response)
     return prettyprint.upsert_quotes_response(response)
-
-
-def create_transaction_type_configuration(api_factory, aliases, movements):
-
-    """
-    This function creates a transaction type configuration if it doesn't already exist.
-    
-    param (lusid.utilities.ClientApiFactory) api_factory: The LUSID api factory to use
-    param (list[tuple(str, str)]) aliases: A list of aliases with their type and group to use for the transaction type
-    param (list[lusid.models.TransactionConfigurationMovementDataRequest]) movements: The movements to use for the transaction type
-    
-    return (lusid.models.createtransactiontyperesponse) response: The response from creating the transaction type
-    """
-
-    # Call LUSID to get your transaction type configuration
-    response = api_factory.build(
-        lusid.api.SystemConfigurationApi
-    ).list_configuration_transaction_types()
-
-    aliases_current = []
-
-    for transaction_grouping in response.transaction_configs:
-        for alias in transaction_grouping.aliases:
-            aliases_current.append((alias.type, alias.transaction_group))
-
-    aliases_new = []
-
-    for alias in aliases:
-
-        if alias in aliases_current:
-            return response
-
-        aliases_new.append(
-            models.TransactionConfigurationTypeAlias(
-                type=alias[0],
-                description=alias[0],
-                transaction_class=alias[0],
-                transaction_group=alias[1],
-                transaction_roles="None",
-            )
-        )
-
-    response = api_factory.build(
-        lusid.api.SystemConfigurationApi
-    ).create_configuration_transaction_type(
-        transaction_configuration_data_request=models.TransactionConfigurationDataRequest(
-            aliases=aliases_new, movements=movements, properties=None
-        )
-    )
-
-    return response
-
 
 def create_portfolios(api_factory, scopes, code, currency):
 
