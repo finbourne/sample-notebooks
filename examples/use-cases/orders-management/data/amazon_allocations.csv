@@ -1,2 +1,2 @@
 ﻿portfolio,instrument_name,client_internal,isin,figi,quantity,price,currency,allocation_id,originating_order,state,side,type
-us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,777,961,USD,ALLOC001-for-ORD004,ORD004,partial allocation,buy,market
+us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,777,102.7,USD,ALLOC001-for-ORD004,ORD004,partial allocation,buy,market
