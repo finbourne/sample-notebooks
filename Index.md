@@ -127,6 +127,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [Combining FO and MO.ipynb](<examples/use-cases/orders-management/Combining%20FO%20and%20MO.ipynb>) | Combining Front Office and Middle Office | Demonstration of how to give front office users an view of intraday trading activity on top of their middle office IBOR. | cocoon, derived portfolios, instruments, orders, properties, sub-holdings keys, transactions |
+| [Incorporating live orders into your holdings view.ipynb](<examples/use-cases/orders-management/Incorporating%20live%20orders%20into%20your%20holdings%20view.ipynb>) | Live Orders with Holdings in LUSID |  | holdings, instruments, orders, portfolio, quotes, recipe |
 
 ## examples/use-cases/portfolio-construction
 | filename | title | description | features |
