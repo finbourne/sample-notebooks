@@ -9,7 +9,7 @@ pandas>=2, <3
 pytz
 requests
 rise
-matplotlib == 3.5.1
+matplotlib
 
 finbourne-access-sdk >= 0.0.2272, < 2
 finbourne-identity-sdk >= 0.0.1845, < 2
