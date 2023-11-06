@@ -1,0 +1,229 @@
+investor,txn_id,type,client_id,trade_date,settlement_date,quantity,price,total_consideration,currency,portfolio,holding_class,expense_type
+Investor 1,tx029,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,10,1,10,GBP,generalPartnership,Management Fee,Rebate
+Investor 2,tx030,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,15,1,15,GBP,generalPartnership,Management Fee,Rebate
+Investor 3,tx031,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,80,1,80,GBP,generalPartnership,Management Fee,Rebate
+Investor 1,tx032,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"1,250.00",1,"1,250.00",GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 2,tx033,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"1,000.00",1,"1,000.00",GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 3,tx034,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"1,600.00",1,"1,600.00",GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 1,tx035,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"2,000.00",1,"2,000.00",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 2,tx036,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"2,500.00",1,"2,500.00",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 3,tx037,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"2,750.00",1,"2,750.00",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 1,tx038,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"1,000.00",1,"1,000.00",GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 2,tx039,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"2,000.00",1,"2,000.00",GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 3,tx040,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"1,000.00",1,"1,000.00",GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 1,tx041,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"12,500.00",1,"12,500.00",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 2,tx042,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"10,000.00",1,"10,000.00",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 3,tx043,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"15,000.00",1,"15,000.00",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 1,tx044,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"20,000.00",1,"20,000.00",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 2,tx045,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"25,000.00",1,"25,000.00",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 3,tx046,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"19,000.00",1,"19,000.00",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 1,tx047,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"10,000.00",1,"10,000.00",GBP,generalPartnership,Partnership Expense,Legal
+Investor 2,tx048,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"18,000.00",1,"18,000.00",GBP,generalPartnership,Partnership Expense,Legal
+Investor 3,tx049,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"12,000.00",1,"12,000.00",GBP,generalPartnership,Partnership Expense,Legal
+Investor 1,tx050,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"10,000.00",1,"10,000.00",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 2,tx051,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"15,000.00",1,"15,000.00",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 3,tx052,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"20,000.00",1,"20,000.00",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 1,tx053,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"2,500.00",1,"2,500.00",GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 2,tx054,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"3,800.00",1,"3,800.00",GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 3,tx055,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"10,000.00",1,"10,000.00",GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 1,tx056,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,400,1,400,GBP,generalPartnership,Partnership Expense,Other
+Investor 2,tx057,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,200,1,200,GBP,generalPartnership,Partnership Expense,Other
+Investor 3,tx058,FundsOut,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,680,1,680,GBP,generalPartnership,Partnership Expense,Other
+Investor 1,tx059,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"16,000.00",1,"16,000.00",GBP,generalPartnership,Offset,Advisory Fee
+Investor 2,tx060,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"14,000.00",1,"14,000.00",GBP,generalPartnership,Offset,Advisory Fee
+Investor 3,tx061,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"18,500.00",1,"18,500.00",GBP,generalPartnership,Offset,Advisory Fee
+Investor 1,tx062,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"8,000.00",1,"8,000.00",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 2,tx063,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"10,000.00",1,"10,000.00",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 3,tx064,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"7,500.00",1,"7,500.00",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 1,tx065,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"4,000.00",1,"4,000.00",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 2,tx066,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"2,800.00",1,"2,800.00",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 3,tx067,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"6,700.00",1,"6,700.00",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 1,tx068,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,600,1,600,GBP,generalPartnership,Offset,Directors Fee
+Investor 2,tx069,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,800,1,800,GBP,generalPartnership,Offset,Directors Fee
+Investor 3,tx070,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,950,1,950,GBP,generalPartnership,Offset,Directors Fee
+Investor 1,tx071,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"30,000.00",1,"30,000.00",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 2,tx072,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"40,000.00",1,"40,000.00",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 3,tx073,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"27,000.00",1,"27,000.00",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 1,tx074,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"15,000.00",1,"15,000.00",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 2,tx075,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"17,500.00",1,"17,500.00",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 3,tx076,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"12,000.00",1,"12,000.00",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 1,tx077,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"8,000.00",1,"8,000.00",GBP,generalPartnership,Offset,Organization Costs
+Investor 2,tx078,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"12,500.00",1,"12,500.00",GBP,generalPartnership,Offset,Organization Costs
+Investor 3,tx079,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"7,000.00",1,"7,000.00",GBP,generalPartnership,Offset,Organization Costs
+Investor 1,tx080,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,600,1,600,GBP,generalPartnership,Offset,Placement Fee
+Investor 2,tx081,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,300,1,300,GBP,generalPartnership,Offset,Placement Fee
+Investor 3,tx082,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,800,1,800,GBP,generalPartnership,Offset,Placement Fee
+Investor 1,tx083,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,200,1,200,GBP,generalPartnership,Offset,Other
+Investor 2,tx084,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,100,1,100,GBP,generalPartnership,Offset,Other
+Investor 3,tx085,FundsIn,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,500,1,500,GBP,generalPartnership,Offset,Other
+Investor 1,tx086,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"1,000.00",1,"1,000.00",GBP,generalPartnership,Management Fee,Rebate
+Investor 2,tx087,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"1,800.00",1,"1,800.00",GBP,generalPartnership,Management Fee,Rebate
+Investor 3,tx088,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,200,1,200,GBP,generalPartnership,Management Fee,Rebate
+Investor 1,tx089,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,734.62,1,734.62,GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 2,tx090,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,989.7,1,989.7,GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 3,tx091,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"2,102.41",1,"2,102.41",GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 1,tx092,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"2,996.76",1,"2,996.76",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 2,tx093,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"2,658.27",1,"2,658.27",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 3,tx094,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"3,034.24",1,"3,034.24",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 1,tx095,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,643.09,1,643.09,GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 2,tx096,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"2,538.79",1,"2,538.79",GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 3,tx097,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,729.17,1,729.17,GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 1,tx098,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"8,815.14",1,"8,815.14",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 2,tx099,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"9,966.81",1,"9,966.81",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 3,tx100,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"21,162.15",1,"21,162.15",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 1,tx101,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"11,472.96",1,"11,472.96",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 2,tx102,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"12,653.32",1,"12,653.32",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 3,tx103,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"16,420.27",1,"16,420.27",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 1,tx104,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"13,513.93",1,"13,513.93",GBP,generalPartnership,Partnership Expense,Legal
+Investor 2,tx105,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"11,994.26",1,"11,994.26",GBP,generalPartnership,Partnership Expense,Legal
+Investor 3,tx106,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"14,777.69",1,"14,777.69",GBP,generalPartnership,Partnership Expense,Legal
+Investor 1,tx107,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"9,026.22",1,"9,026.22",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 2,tx108,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"15,547.52",1,"15,547.52",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 3,tx109,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"28,175.63",1,"28,175.63",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 1,tx110,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"1,393.81",1,"1,393.81",GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 2,tx111,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"3,384.37",1,"3,384.37",GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 3,tx112,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"9,797.39",1,"9,797.39",GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 1,tx113,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,618.28,1,618.28,GBP,generalPartnership,Partnership Expense,Other
+Investor 2,tx114,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,245.08,1,245.08,GBP,generalPartnership,Partnership Expense,Other
+Investor 3,tx115,FundsOut,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,626.43,1,626.43,GBP,generalPartnership,Partnership Expense,Other
+Investor 1,tx116,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"22,550.05",1,"22,550.05",GBP,generalPartnership,Offset,Advisory Fee
+Investor 2,tx117,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"11,884.98",1,"11,884.98",GBP,generalPartnership,Offset,Advisory Fee
+Investor 3,tx118,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"22,327.58",1,"22,327.58",GBP,generalPartnership,Offset,Advisory Fee
+Investor 1,tx119,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"6,895.73",1,"6,895.73",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 2,tx120,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"8,419.81",1,"8,419.81",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 3,tx121,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"9,130.77",1,"9,130.77",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 1,tx122,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"4,380.37",1,"4,380.37",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 2,tx123,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"2,916.76",1,"2,916.76",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 3,tx124,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"5,167.58",1,"5,167.58",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 1,tx125,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,511.44,1,511.44,GBP,generalPartnership,Offset,Directors Fee
+Investor 2,tx126,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,677.7,1,677.7,GBP,generalPartnership,Offset,Directors Fee
+Investor 3,tx127,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"1,447.34",1,"1,447.34",GBP,generalPartnership,Offset,Directors Fee
+Investor 1,tx128,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"26,249.82",1,"26,249.82",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 2,tx129,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"38,768.02",1,"38,768.02",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 3,tx130,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"36,142.94",1,"36,142.94",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 1,tx131,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"16,581.33",1,"16,581.33",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 2,tx132,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"21,210.13",1,"21,210.13",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 3,tx133,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"8,226.11",1,"8,226.11",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 1,tx134,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"10,155.13",1,"10,155.13",GBP,generalPartnership,Offset,Organization Costs
+Investor 2,tx135,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"13,339.15",1,"13,339.15",GBP,generalPartnership,Offset,Organization Costs
+Investor 3,tx136,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"5,386.05",1,"5,386.05",GBP,generalPartnership,Offset,Organization Costs
+Investor 1,tx137,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,858.99,1,858.99,GBP,generalPartnership,Offset,Placement Fee
+Investor 2,tx138,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,307.67,1,307.67,GBP,generalPartnership,Offset,Placement Fee
+Investor 3,tx139,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,728.96,1,728.96,GBP,generalPartnership,Offset,Placement Fee
+Investor 1,tx140,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,210.86,1,210.86,GBP,generalPartnership,Offset,Other
+Investor 2,tx141,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,168.24,1,168.24,GBP,generalPartnership,Offset,Other
+Investor 3,tx142,FundsIn,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,726.19,1,726.19,GBP,generalPartnership,Offset,Other
+Investor 1,tx143,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"1,328.81",1,"1,328.81",GBP,generalPartnership,Management Fee,Rebate
+Investor 2,tx144,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"1,960.42",1,"1,960.42",GBP,generalPartnership,Management Fee,Rebate
+Investor 3,tx145,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,353.14,1,353.14,GBP,generalPartnership,Management Fee,Rebate
+Investor 1,tx146,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,815.04,1,815.04,GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 2,tx147,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,668.6,1,668.6,GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 3,tx148,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"2,215.15",1,"2,215.15",GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 1,tx149,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"2,837.18",1,"2,837.18",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 2,tx150,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"3,218.19",1,"3,218.19",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 3,tx151,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"2,166.20",1,"2,166.20",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 1,tx152,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,695.66,1,695.66,GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 2,tx153,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"3,712.87",1,"3,712.87",GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 3,tx154,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,505.87,1,505.87,GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 1,tx155,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"8,713.66",1,"8,713.66",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 2,tx156,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"10,013.33",1,"10,013.33",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 3,tx157,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"21,070.11",1,"21,070.11",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 1,tx158,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"8,935.05",1,"8,935.05",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 2,tx159,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"17,363.36",1,"17,363.36",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 3,tx160,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"22,870.81",1,"22,870.81",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 1,tx161,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"14,573.25",1,"14,573.25",GBP,generalPartnership,Partnership Expense,Legal
+Investor 2,tx162,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"8,405.05",1,"8,405.05",GBP,generalPartnership,Partnership Expense,Legal
+Investor 3,tx163,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"20,534.84",1,"20,534.84",GBP,generalPartnership,Partnership Expense,Legal
+Investor 1,tx164,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"8,656.97",1,"8,656.97",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 2,tx165,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"8,923.94",1,"8,923.94",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 3,tx166,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"32,506.98",1,"32,506.98",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 1,tx167,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,830.64,1,830.64,GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 2,tx168,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"4,692.99",1,"4,692.99",GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 3,tx169,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"8,284.41",1,"8,284.41",GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 1,tx170,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,441.38,1,441.38,GBP,generalPartnership,Partnership Expense,Other
+Investor 2,tx171,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,315.37,1,315.37,GBP,generalPartnership,Partnership Expense,Other
+Investor 3,tx172,FundsOut,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,731.7,1,731.7,GBP,generalPartnership,Partnership Expense,Other
+Investor 1,tx173,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"22,485.51",1,"22,485.51",GBP,generalPartnership,Offset,Advisory Fee
+Investor 2,tx174,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"9,683.15",1,"9,683.15",GBP,generalPartnership,Offset,Advisory Fee
+Investor 3,tx175,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"20,700.11",1,"20,700.11",GBP,generalPartnership,Offset,Advisory Fee
+Investor 1,tx176,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"10,241.81",1,"10,241.81",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 2,tx177,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"4,618.82",1,"4,618.82",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 3,tx178,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"8,398.75",1,"8,398.75",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 1,tx179,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"4,412.44",1,"4,412.44",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 2,tx180,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"2,953.29",1,"2,953.29",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 3,tx181,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"4,978.43",1,"4,978.43",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 1,tx182,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,771.18,1,771.18,GBP,generalPartnership,Offset,Directors Fee
+Investor 2,tx183,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"1,099.22",1,"1,099.22",GBP,generalPartnership,Offset,Directors Fee
+Investor 3,tx184,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"1,621.47",1,"1,621.47",GBP,generalPartnership,Offset,Directors Fee
+Investor 1,tx185,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"31,609.18",1,"31,609.18",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 2,tx186,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"23,927.17",1,"23,927.17",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 3,tx187,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"42,256.64",1,"42,256.64",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 1,tx188,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"16,557.58",1,"16,557.58",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 2,tx189,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"24,976.53",1,"24,976.53",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 3,tx190,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"5,572.05",1,"5,572.05",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 1,tx191,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"9,942.34",1,"9,942.34",GBP,generalPartnership,Offset,Organization Costs
+Investor 2,tx192,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"7,637.21",1,"7,637.21",GBP,generalPartnership,Offset,Organization Costs
+Investor 3,tx193,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"5,778.35",1,"5,778.35",GBP,generalPartnership,Offset,Organization Costs
+Investor 1,tx194,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"1,217.57",1,"1,217.57",GBP,generalPartnership,Offset,Placement Fee
+Investor 2,tx195,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,496.09,1,496.09,GBP,generalPartnership,Offset,Placement Fee
+Investor 3,tx196,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,688.72,1,688.72,GBP,generalPartnership,Offset,Placement Fee
+Investor 1,tx197,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,291.56,1,291.56,GBP,generalPartnership,Offset,Other
+Investor 2,tx198,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,300.01,1,300.01,GBP,generalPartnership,Offset,Other
+Investor 3,tx199,FundsIn,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,822.21,1,822.21,GBP,generalPartnership,Offset,Other
+Investor 1,tx200,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"1,328.81",1,"1,328.81",GBP,generalPartnership,Management Fee,Rebate
+Investor 2,tx201,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"1,960.42",1,"1,960.42",GBP,generalPartnership,Management Fee,Rebate
+Investor 3,tx202,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,353.14,1,353.14,GBP,generalPartnership,Management Fee,Rebate
+Investor 1,tx203,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,815.04,1,815.04,GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 2,tx204,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,668.6,1,668.6,GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 3,tx205,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"2,215.15",1,"2,215.15",GBP,generalPartnership,Partnership Expense,"Accounting, Administration & IT"
+Investor 1,tx206,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"2,837.18",1,"2,837.18",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 2,tx207,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"3,218.19",1,"3,218.19",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 3,tx208,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"2,166.20",1,"2,166.20",GBP,generalPartnership,Partnership Expense,Audit & Tax Prepatory
+Investor 1,tx209,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,695.66,1,695.66,GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 2,tx210,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"3,712.87",1,"3,712.87",GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 3,tx211,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,505.87,1,505.87,GBP,generalPartnership,Partnership Expense,Bank Fees
+Investor 1,tx212,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"8,713.66",1,"8,713.66",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 2,tx213,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"10,013.33",1,"10,013.33",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 3,tx214,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"21,070.11",1,"21,070.11",GBP,generalPartnership,Partnership Expense,Custody Fees
+Investor 1,tx215,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"8,935.05",1,"8,935.05",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 2,tx216,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"17,363.36",1,"17,363.36",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 3,tx217,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"22,870.81",1,"22,870.81",GBP,generalPartnership,Partnership Expense,Due Diligence
+Investor 1,tx218,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"14,573.25",1,"14,573.25",GBP,generalPartnership,Partnership Expense,Legal
+Investor 2,tx219,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"8,405.05",1,"8,405.05",GBP,generalPartnership,Partnership Expense,Legal
+Investor 3,tx220,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"20,534.84",1,"20,534.84",GBP,generalPartnership,Partnership Expense,Legal
+Investor 1,tx221,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"8,656.97",1,"8,656.97",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 2,tx222,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"8,923.94",1,"8,923.94",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 3,tx223,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"32,506.98",1,"32,506.98",GBP,generalPartnership,Partnership Expense,Organization Costs
+Investor 1,tx224,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,830.64,1,830.64,GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 2,tx225,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"4,692.99",1,"4,692.99",GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 3,tx226,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"8,284.41",1,"8,284.41",GBP,generalPartnership,Partnership Expense,Other Travel & Entertainment
+Investor 1,tx227,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,441.38,1,441.38,GBP,generalPartnership,Partnership Expense,Other
+Investor 2,tx228,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,315.37,1,315.37,GBP,generalPartnership,Partnership Expense,Other
+Investor 3,tx229,FundsOut,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,731.7,1,731.7,GBP,generalPartnership,Partnership Expense,Other
+Investor 1,tx230,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"22,485.51",1,"22,485.51",GBP,generalPartnership,Offset,Advisory Fee
+Investor 2,tx231,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"9,683.15",1,"9,683.15",GBP,generalPartnership,Offset,Advisory Fee
+Investor 3,tx232,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"20,700.11",1,"20,700.11",GBP,generalPartnership,Offset,Advisory Fee
+Investor 1,tx233,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"10,241.81",1,"10,241.81",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 2,tx234,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"4,618.82",1,"4,618.82",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 3,tx235,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"8,398.75",1,"8,398.75",GBP,generalPartnership,Offset,Broken Deal Fee
+Investor 1,tx236,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"4,412.44",1,"4,412.44",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 2,tx237,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"2,953.29",1,"2,953.29",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 3,tx238,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"4,978.43",1,"4,978.43",GBP,generalPartnership,Offset,Transaction & Deal Fee
+Investor 1,tx239,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,771.18,1,771.18,GBP,generalPartnership,Offset,Directors Fee
+Investor 2,tx240,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"1,099.22",1,"1,099.22",GBP,generalPartnership,Offset,Directors Fee
+Investor 3,tx241,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"1,621.47",1,"1,621.47",GBP,generalPartnership,Offset,Directors Fee
+Investor 1,tx242,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"31,609.18",1,"31,609.18",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 2,tx243,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"23,927.17",1,"23,927.17",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 3,tx244,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"42,256.64",1,"42,256.64",GBP,generalPartnership,Offset,Monitoring Fee
+Investor 1,tx245,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"16,557.58",1,"16,557.58",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 2,tx246,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"24,976.53",1,"24,976.53",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 3,tx247,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"5,572.05",1,"5,572.05",GBP,generalPartnership,Offset,Capital Markets Fee
+Investor 1,tx248,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"9,942.34",1,"9,942.34",GBP,generalPartnership,Offset,Organization Costs
+Investor 2,tx249,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"7,637.21",1,"7,637.21",GBP,generalPartnership,Offset,Organization Costs
+Investor 3,tx250,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"5,778.35",1,"5,778.35",GBP,generalPartnership,Offset,Organization Costs
+Investor 1,tx251,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"1,217.57",1,"1,217.57",GBP,generalPartnership,Offset,Placement Fee
+Investor 2,tx252,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,496.09,1,496.09,GBP,generalPartnership,Offset,Placement Fee
+Investor 3,tx253,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,688.72,1,688.72,GBP,generalPartnership,Offset,Placement Fee
+Investor 1,tx254,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,291.56,1,291.56,GBP,generalPartnership,Offset,Other
+Investor 2,tx255,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,300.01,1,300.01,GBP,generalPartnership,Offset,Other
+Investor 3,tx256,FundsIn,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,822.21,1,822.21,GBP,generalPartnership,Offset,Other
