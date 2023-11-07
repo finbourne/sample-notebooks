@@ -145,6 +145,11 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | [Managing cashflows - capital calls and income distributions.ipynb](<../examples/use-cases/private-assets/Managing%20cashflows%20-%20capital%20calls%20and%20income%20distributions.ipynb>) | Running a Fund with Investors | Demonstration of how to manage a fund's subscriptions and capital calls with investors in LUSID | holdings, instruments, properties, transaction configuration, transactions |
 | [Supporting a multi-asset class book of business.ipynb](<../examples/use-cases/private-assets/Supporting%20a%20multi-asset%20class%20book%20of%20business.ipynb>) | Bespoke asset classes | Demonstration of how to create your own custom instrument inside LUSID, create a transaction against it and value it. | aggregation, instruments, properties, quotes, transactions |
 
+## examples/use-cases/private-markets
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [Private Markets and Real Estate.ipynb](<../examples/use-cases/private-markets/Private%20Markets%20and%20Real%20Estate.ipynb>) | Private Markets and Real Estate |  | cash flows, excel, lookthrough, pdf, private markets, quotes, real estate, transactions |
+
 ## examples/use-cases/risk-and-performance
 | filename | title | description | features |
 | --- | --- | --- | --- |

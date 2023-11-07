@@ -1,0 +1,13 @@
+﻿investor,txn_id,type,client_id,trade_date,settlement_date,quantity,price,total_consideration,currency,portfolio,holding_class
+Investor 1,tx001,CapitalCommitment,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"20,000,000.00",1,"20,000,000.00",GBP,generalPartnership,Cash
+Investor 2,tx002,CapitalCommitment,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"5,000,000.00",1,"5,000,000.00",GBP,generalPartnership,Cash
+Investor 3,tx003,CapitalCommitment,,2022-01-01T08:00:00Z,2022-01-03T08:00:00Z,"5,000,000.00",1,"5,000,000.00",GBP,generalPartnership,Cash
+Investor 1,tx004,CapitalCommitment,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"16,000,000.00",1,"16,000,000.00",GBP,generalPartnership,Cash
+Investor 2,tx005,CapitalCommitment,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"12,000,000.00",1,"12,000,000.00",GBP,generalPartnership,Cash
+Investor 3,tx006,CapitalCommitment,,2021-06-01T08:00:00Z,2021-06-03T08:00:00Z,"10,000,000.00",1,"10,000,000.00",GBP,generalPartnership,Cash
+Investor 1,tx007,CapitalCommitment,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"14,000,000.00",1,"14,000,000.00",GBP,generalPartnership,Cash
+Investor 2,tx008,CapitalCommitment,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"8,000,000.00",1,"8,000,000.00",GBP,generalPartnership,Cash
+Investor 3,tx009,CapitalCommitment,,2021-01-04T08:00:00Z,2021-01-06T08:00:00Z,"8,000,000.00",1,"8,000,000.00",GBP,generalPartnership,Cash
+Investor 1,tx010,CapitalCommitment,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"2,000,000.00",1,"2,000,000.00",GBP,generalPartnership,Cash
+Investor 2,tx011,CapitalCommitment,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"5,000,000.00",1,"5,000,000.00",GBP,generalPartnership,Cash
+Investor 3,tx012,CapitalCommitment,,2022-06-01T08:00:00Z,2022-06-03T08:00:00Z,"3,000,000.00",1,"3,000,000.00",GBP,generalPartnership,Cash
