@@ -1,5 +1,5 @@
 # Pull base image
-FROM jupyter/base-notebook:python-3.11.4
+FROM jupyter/base-notebook:python-3.11.6
 
 ENV NEXUS_USER ${NEXUS_USER}
 ENV NEXUS_PASSWORD ${NEXUS_PASSWORD}
