@@ -120,7 +120,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 ## examples/use-cases/models-and-indices
 | filename | title | description | features |
 | --- | --- | --- | --- |
-| [Rebalancing with a model portfolio.ipynb](<examples/use-cases/models-and-indices/Rebalancing%20with%20a%20model%20portfolio.ipynb>) | Rebalancing with a model portfolio  | This notebook shows how to you can automatically generate transactions to rebalance a transaction portfolio with a model portfolio | reference portfolios, transactions portfolios |
+| [Rebalancing with a model portfolio.ipynb](<examples/use-cases/models-and-indices/Rebalancing%20with%20a%20model%20portfolio.ipynb>) | Rebalancing with a model portfolio  | This notebook shows how you can automatically generate transactions to rebalance a transaction portfolio with a model portfolio | reference portfolios, transactions portfolios |
 | [Setting up a blended benchmark with floating weights.ipynb](<examples/use-cases/models-and-indices/Setting%20up%20a%20blended%20benchmark%20with%20floating%20weights.ipynb>) | Setting up a blended benchmark | Demonstration of how to load a blended benchmark. <br>We also show how floating weights with a periodic reset. | Floating weights, Reference portfolios, Securitised portfolios, Weights |
 
 ## examples/use-cases/orders-management
