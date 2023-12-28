@@ -22,6 +22,8 @@ services:
       - FBN_CLIENT_ID
       - FBN_CLIENT_SECRET
       - FBN_SECRETS_PATH
+      - FBN_NEXUS_USERNAME
+      - FBN_NEXUS_PASSWORD
     volumes:
       - .:/usr/notebooks
     entrypoint: /bin/bash
@@ -36,4 +38,4 @@ services:
         # between develop branch
         # and tip of merge request
         export GIT_DIFF=$$(git --git-dir=$${FBN_NOTEBOOK_FOLDER}/.git diff  --name-only --diff-filter=ACMRT origin/develop..HEAD)
-        python /usr/src/nbrunner/main.py -f "$$GIT_DIFF" -d $$'\n'
+        python /usr/src/nbrunner/main.py -f "$$GIT_DIFF" -d $$'\n' -u ${FBN_NEXUS_USERNAME} -p ${FBN_NEXUS_PASSWORD}
