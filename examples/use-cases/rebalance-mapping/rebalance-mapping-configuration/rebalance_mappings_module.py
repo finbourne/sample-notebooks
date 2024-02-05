@@ -107,7 +107,6 @@ class RebalanceMappingsApi():
 
     # Get a dictionary of rebalance mappings that currently exist within a scope/code
     def get_rebalance_mappings_from_scope(self, scope, code, is_portfolio_group=False):
-
         def get_rebalance_mappings_from_scope_http(scope, code, is_portfolio_group):
             try:
                 url = f"{self.endpoint}/api/rebalance/mappings/{scope}/{code}?isPortfolioGroup={is_portfolio_group}"
