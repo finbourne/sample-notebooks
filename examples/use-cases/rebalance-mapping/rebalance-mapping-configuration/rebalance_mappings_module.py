@@ -197,31 +197,3 @@ class RebalanceMappingsApi():
             is_portfolio_group=is_portfolio_group
         )
         return res
-
-
-if __name__ == '__main__':
-    import os
-    from pprint import pprint
-    import lusid
-    from lusidjam.refreshing_token import RefreshingToken
-
-    secrets_path = os.getenv("FBN_SECRETS_PATH")
-
-    api_factory = lusid.utilities.ApiClientFactory(
-        token=RefreshingToken(),
-        api_secrets_filename=secrets_path,
-        app_name="LusidJupyterNotebook",
-    )
-    rebalance_mappings_api = RebalanceMappingsApi(api_factory)
-    scope, code = 'example-ukIBOR', 'ExampleEquityPortfolio'
-
-    def clear_reblance_mappings():
-        rebalance_mappings_data = rebalance_mappings_api.get_all_rebalance_mappings()
-        for rebalance_mapping in rebalance_mappings_data:
-            scope = rebalance_mapping['transactionPortfolioOrGroupId']['scope']
-            code = rebalance_mapping['transactionPortfolioOrGroupId']['code']
-            rebalance_mappings_api.delete_rebalance_mappings_from_scope(
-                scope, code)
-
-    clear_reblance_mappings()
-    print()
