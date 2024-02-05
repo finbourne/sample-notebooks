@@ -128,10 +128,7 @@ class RebalanceMappingsApi():
         )
         return res
 
-        # Get a dictionary of rebalance mappings that currently exist within a scope/code
-
     # delete a rebalance mapping by scope and code
-
     def delete_rebalance_mappings_from_scope(self, scope, code, is_portfolio_group=False):
         '''
 
