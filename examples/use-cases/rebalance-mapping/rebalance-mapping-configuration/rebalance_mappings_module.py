@@ -84,7 +84,7 @@ class RebalanceMappingsApi():
         self.client_domain = parsed_host_url.netloc
         self.access_token = authorized_api_factory.api_client.configuration.access_token.__getattribute__(
             'data')
-        self.endpoint = f"https://{self.client_domain}:443/app"
+        self.endpoint = f"https://{self.client_domain}/app"
 
     def get_all_rebalance_mappings(self):
         def get_all_rebalance_mappings_http():
@@ -107,6 +107,12 @@ class RebalanceMappingsApi():
 
     # Get a dictionary of rebalance mappings that currently exist within a scope/code
     def get_rebalance_mappings_from_scope(self, scope, code, is_portfolio_group=False):
+        '''
+        :param scope: The scope of the transaction portfolio or group of the rebalance mapping
+        :type scope: str
+        :param code: The code of the transaction portfolio or group of the rebalance mapping
+        :type code: str
+        '''
         def get_rebalance_mappings_from_scope_http(scope, code, is_portfolio_group):
             try:
                 url = f"{self.endpoint}/api/rebalance/mappings/{scope}/{code}?isPortfolioGroup={is_portfolio_group}"
