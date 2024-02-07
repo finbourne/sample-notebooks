@@ -1,0 +1,5 @@
+﻿portfolio,instrument_name,client_internal,isin,figi,quantity,price,currency,order_id,side,type,state,limit_price,limit_currency,stop_price,stop_currency
+EQUITY_UK,IAG group plc,EQ_1244,ES0177542018,BBG00J9WBYB9,10000000,1.48,GBP,ORD005,Buy,Limit,New,1.48,GBP,,
+EQUITY_UK,IAG group plc,EQ_1244,ES0177542018,BBG00J9WBYB9,1000,1.48,GBP,ORD006,Buy,Limit,New,1.49,GBP,,
+EQUITY_UK,IAG group plc,EQ_1244,ES0177542018,BBG00J9WBYB9,3000,,GBP,ORD007,Buy,Stop,New,,,1.5,GBP
+EQUITY_UK,IAG group plc,EQ_1244,ES0177542018,BBG00J9WBYB9,4000,,GBP,ORD008,Buy,Market,New,,,,
