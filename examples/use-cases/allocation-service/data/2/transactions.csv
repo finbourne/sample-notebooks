@@ -1,0 +1,2 @@
+transaction_id,portfolio_id,type,instrument_name,client_internal,isin,figi,transaction_date,settlement_date,quantity,price,cost,currency,order_id,allocation_id
+TXN001,PORT001,Buy,Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,2023-04-11T18:00:00+00:00,2023-04-13T18:00:00+00:00,2,1560,3120,USD,ORD001,ALLOC001

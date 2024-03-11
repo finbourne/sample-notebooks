@@ -1,0 +1,2 @@
+block_id,order_ids,instrument_name,client_internal,isin,figi,quantity,side,type,time_in_force,created_date
+BLOCK001,"ORD001,ORD002",Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,20,buy,limit,GTC,2023-04-11T11:15:00+00:00
