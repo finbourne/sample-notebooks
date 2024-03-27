@@ -200,3 +200,6 @@ venv.bak/
 **/.idea/
 **/.*
 !.github
+
+# Specific files that we don't want in GitHub
+examples/use-cases/valuation/data/real-time-valuation/SIX-CROSSREFERENCE.csv
