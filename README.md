@@ -39,7 +39,7 @@ Mac users may need to specify the platform.  On a Mac M1 it is:
 docker build --platform linux/arm64 -t finbourne/lusid-sample-notebooks .
 ```
 
-4. Run the Docker image
+4. Run the Docker image / Run from command line
 
 **Windows**
 ```bash
@@ -74,6 +74,38 @@ You will see something similar to the following output:
      or http://127.0.0.1:8888/?token=<token>
 ```
 
+If you chose to run directly from the command line instead of docker you will need to install the dependencies specified in requirements.txt and then run 'jupyter notebook'
+
 5. Click on the link shown in the console to open up JupyterHub in a browser.
+
 6. Open the `examples` folder and open <a href="http://localhost:8888/notebooks/examples/index.ipynb" target="_blank">index.ipynb</a> to see a catalogue of available notebooks.
 
+
+
+### Running notebooks that require Luminesce
+
+There are few notebooks that interact with Luminesce and need some extra config.
+
+For these notebooks you will need to run the following code in the intended notebook:
+```
+import os
+from IPython.core.magic import (register_line_cell_magic)
+from lusidjam import RefreshingToken
+import lumipy as lm
+
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+
+@register_line_cell_magic
+def luminesce(line, cell=None):
+    query = cell if cell is not None else line
+
+    lm_client = lm.get_client(token=RefreshingToken(), api_secrets_filename=secrets_path)
+
+    df = lm_client.query_and_fetch(query)
+            
+    return df
+
+# In an interactive session, we need to delete to avoid
+# name conflicts for automagic to work on line magics.
+del luminesce
+```
