@@ -36,4 +36,4 @@ services:
         # between develop branch
         # and tip of merge request
         export GIT_DIFF=$$(git --git-dir=$${FBN_NOTEBOOK_FOLDER}/.git diff  --name-only --diff-filter=ACMRT origin/develop..HEAD)
-        python /usr/src/nbrunner/main.py -f "$$GIT_DIFF" -d $$'\n'
+        poetry run python /nbrunner/main.py -f "$$GIT_DIFF" -d $$'\n'
