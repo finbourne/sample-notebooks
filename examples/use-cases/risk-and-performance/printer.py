@@ -527,10 +527,10 @@ def aggregation_response_paper(response):
         print (colours.bold + 'Units :' + colours.end + str(round(result['Sum(Holding/default/Units)'],0)))
         print (colours.bold + 'Current Price :' + '£' + colours.end + str(round(result['Sum(Holding/default/Price)'], 2)))
         print (colours.bold + 'Present Value :' + colours.end + '£' + str(round(result['Sum(Valuation/PvInReportCcy)'],2)))
-        print (colours.bold + 'Cost :' + colours.end + '£' + str(round(result['Sum(Holding/default/Cost)'], 2)))
-        print (colours.bold + 'Return :' + colours.end + str(round(((result['Sum(Valuation/PvInReportCcy)']-result['Sum(Holding/default/Cost)'])/result['Sum(Holding/default/Cost)'])*100*sign, 4)) + '%' + '\n')
+        print (colours.bold + 'Cost :' + colours.end + '£' + str(round(result['Sum(Holding/default/PortfolioCost)'], 2)))
+        print (colours.bold + 'Return :' + colours.end + str(round(((result['Sum(Valuation/PvInReportCcy)']-result['Sum(Holding/default/PortfolioCost)'])/result['Sum(Holding/default/PortfolioCost)'])*100*sign, 4)) + '%' + '\n')
 
-        total_cost += result['Sum(Holding/default/Cost)']
+        total_cost += result['Sum(Holding/default/PortfolioCost)']
         total_pv += result['Sum(Valuation/PvInReportCcy)']
 
     print (colours.bold + 'TOTAL RETURN: ' + colours.end + str(round(((total_pv-total_cost)/total_cost)*100,4)) + '%')
@@ -556,7 +556,7 @@ def aggregation_response(agg_response):
         print (colours.bold + 'LUSID Instrument Id / Currency: ' + colours.end + Luid)
         print (colours.bold + 'Instrument Name: ' + colours.end + instrument_name)
         print (colours.bold + 'Instrument Units: ' + colours.end + str(round(agg_holding['Sum(Holding/default/Units)'],2)))
-        print (colours.bold + 'Instrument Cost: ' + colours.end + str(round(agg_holding['Sum(Holding/default/Cost)'],2)))
+        print (colours.bold + 'Instrument Cost: ' + colours.end + str(round(agg_holding['Sum(Holding/default/PortfolioCost)'],2)))
         print (colours.bold + 'Instrument Currency: ' + colours.end + currency + '\n')
 
 def aggregation_response_strategy(agg_response, strategy_key):
@@ -564,14 +564,14 @@ def aggregation_response_strategy(agg_response, strategy_key):
 
         strategy = agg_holding[strategy_key]
         print (colours.bold + 'Strategy: ' + colours.end + strategy)
-        print (colours.bold + 'Strategy Cost: ' + colours.end + str(round(agg_holding['Sum(Holding/default/Cost)'],2)) + '\n')
+        print (colours.bold + 'Strategy Cost: ' + colours.end + str(round(agg_holding['Sum(Holding/default/PortfolioCost)'],2)) + '\n')
 
 def aggregation_response_index(agg_response):
     base = 0
     present = 0
 
     for d in agg_response.data:
-        base += d['Sum(Holding/default/Cost)']
+        base += d['Sum(Holding/default/PortfolioCost)']
         present += d['Sum(Valuation/PvInReportCcy)']
     total_return = (present-base)/base
 
