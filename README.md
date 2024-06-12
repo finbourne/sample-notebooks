@@ -1,8 +1,10 @@
+![LUSID_by_Finbourne](./resources/Finbourne_Logo_Teal.svg)
+
+
 # Sample Jupyter Notebooks
 
 This repository contains Jupyter notebooks showcasing how to use the LUSID SDK. You can find a list of the notebooks at [examples/README](examples/README.md).
 
-![LUSID_by_Finbourne](./resources/Finbourne_Logo_Teal.svg)
 
 | branch | status |
 | --- | --- |
