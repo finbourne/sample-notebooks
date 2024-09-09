@@ -1,5 +1,5 @@
 portfolio,instrument_name,client_internal,isin,figi,quantity,price,currency,order_id,side,type,state,limit_price,limit_currency,stop_price,stop_currency
-us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,100,USD,ORD001,Sell,limit,new,100,USD
+us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,100,USD,ORD001,Sell,limit,new,100.50,USD
 us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,95,USD,ORD002,Buy,limit,new,96.25,USD
 us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,3000,,USD,ORD003,Buy,stop,new,,,94,USD
 us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,,USD,ORD004,Buy,market,new,,
