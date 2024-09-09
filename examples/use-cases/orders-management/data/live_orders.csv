@@ -1,7 +1,7 @@
-﻿portfolio,instrument_name,client_internal,isin,figi,quantity,price,currency,order_id,side,type,state,limit_price,limit_currency,stop_price,stop_currency
-us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,100,USD,ORD001,sell,limit,new,100.50,USD
-us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,95,USD,ORD002,buy,limit,new,96.25,USD
-us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,3000,,USD,ORD003,buy,stop,new,,,94,USD
-us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,,USD,ORD004,buy,market,new,,
-us_long,Anglian_Water_40LV,imd_13579246,XS0089553282,,500,,USD,ORD005,buy,market,new,,
-us_long,ICE_Silver_5000oz_Dec21,imd_12457801,,,5000,,USD,ORD006,buy,market,new,,
+portfolio,instrument_name,client_internal,isin,figi,quantity,price,currency,order_id,side,type,state,limit_price,limit_currency,stop_price,stop_currency
+us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,100,USD,ORD001,Sell,limit,new,100.50,USD
+us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,95,USD,ORD002,Buy,limit,new,96.25,USD
+us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,3000,,USD,ORD003,Buy,stop,new,,,94,USD
+us_long,Amazon_Nasdaq_AMZN,imd_34634534,US0231351067,BBG000BVPXP1,1000,,USD,ORD004,Buy,market,new,,
+us_long,Anglian_Water_40LV,imd_13579246,XS0089553282,,500,,USD,ORD005,Buy,market,new,,
+us_long,ICE_Silver_5000oz_Dec21,imd_12457801,,,5000,,USD,ORD006,Buy,market,new,,
