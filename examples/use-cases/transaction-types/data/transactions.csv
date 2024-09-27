@@ -1,0 +1,6 @@
+txn_id,trade_date,transaction_type,instrument_desc,client_internal,instrument_currency,quantity,price,net_money
+txn01,2020-01-01T00:00:00.0000000+00:00,FundsIn,CASH_GBP,cash,GBP,1000000,1,1000000
+txn02,2020-01-02T00:00:00.0000000+00:00,Buy,Tesco,EQ_001,GBP,100000,2.56,256000
+txn03,2020-01-03T00:00:00.0000000+00:00,Sell,Tesco,EQ_001,GBP,30000,2.56,256000
+txn04,2020-01-04T00:00:00.0000000+00:00,DirectAdjustmentIncrease,Tesco,EQ_001,GBP,50000,0,0
+txn05,2020-01-05T00:00:00.0000000+00:00,DirectAdjustmentDecrease,Tesco,EQ_001,GBP,40000,0,0
