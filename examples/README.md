@@ -5,6 +5,11 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 * `features` - Notebooks showing specific LUSID features. These notebooks are short and specific.
 * `use-cases` - Notebooks showing sample business implementations or use-cases. These notebooks will combine various LUSID features to solve a business use-case. The `use-case` notebooks are generally longer than the `features` ones.
 
+## analytics/FX
+| filename | title | description | features |
+| --- | --- | --- | --- |
+| [fx-forward-pricing-models.ipynb](<../analytics/FX/fx-forward-pricing-models.ipynb>) | FX Forward Pricing Models |  | FX Forwards, Pricing Models, Valuation |
+
 ## docs
 | filename | title | description | features |
 | --- | --- | --- | --- |
