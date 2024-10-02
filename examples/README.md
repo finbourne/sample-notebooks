@@ -9,6 +9,7 @@ This repository contains Jupyter notebooks that show how to use [LUSID](https://
 | filename | title | description | features |
 | --- | --- | --- | --- |
 | [fx-forward-pricing-models.ipynb](<../analytics/FX/fx-forward-pricing-models.ipynb>) | FX Forward Pricing Models |  | FX Forwards, Pricing Models, Valuation |
+| [fx-inference-triangulation.ipynb](<../analytics/FX/fx-inference-triangulation.ipynb>) | FX Inference Triangulation |  | FX, FX inference, Foreign Exchange, Triangulation |
 
 ## docs
 | filename | title | description | features |
