@@ -1,0 +1,1 @@
+select * from Views.ManualEvent.Writer where OrderCode == '{{Body.code}}' and OrderScope == '{{Body.scope}}';

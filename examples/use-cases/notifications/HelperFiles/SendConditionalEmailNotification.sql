@@ -1,0 +1,1 @@
+select * from Views.ConditionalEmailNotification where OrderCode = '{{Body.jsonMessage.OrderCode}}' and OrderScope = '{{Body.jsonMessage.OrderScope}}' and EmailBody = '"{{html_body}}"';
