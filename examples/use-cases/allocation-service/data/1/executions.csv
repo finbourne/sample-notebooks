@@ -1,0 +1,3 @@
+execution_id,placement_id,instrument_name,client_internal,isin,figi,quantity,state,side,type,price,currency,settlement_currency,settlement_currency_fx_rate,counterparty,created_date
+EXEC001,PLC001,Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,5,some_state,buy,limit,1550,USD,USD,1.0,some_counterparty,2023-04-13T11:15:00+00:00
+EXEC002,PLC001,Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,5,some_state,buy,limit,1560,USD,USD,1.0,some_counterparty,2023-04-13T11:20:00+00:00

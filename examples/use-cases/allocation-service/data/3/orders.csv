@@ -1,0 +1,3 @@
+portfolio,instrument_name,client_internal,isin,figi,quantity,price,currency,order_id,side,type,state,date
+PORT001,Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,10,1550,USD,ORD001,buy,limit,new,2023-04-11T11:10:00+00:00
+PORT002,Amazon_Nasdaq_AMZN,imd_346345343,US0231351067,BBG000BVPXP1,10,1550,USD,ORD002,buy,limit,new,2023-04-11T11:15:00+00:00
