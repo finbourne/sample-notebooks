@@ -1,0 +1,2 @@
+﻿txn_id,type,client_id,trade_date,settlement_date,quantity,price,total_consideration,currency,portfolio
+txn001,StockIn,GB00B3MYD345 UKTI 0 5/8 11/22/42,2019-04-19T10:00:00Z,2019-04-20T10:00:00Z,1000000,152.3,1523000,GBP,inflationBondPortfolio
