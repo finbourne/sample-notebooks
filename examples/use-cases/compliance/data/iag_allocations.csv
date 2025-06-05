@@ -1,2 +1,2 @@
 ﻿instrument_name,client_internal,isin,figi,quantity,price,currency,allocation_id,originating_order,state,side,type
-IAG group plc,EQ_1244,ES0177542018,BBG00J9WBYB9,500,1.48,USD,ALLOC001-for-ORD005,ORD005,partial allocation,Buy,market
+IAG group plc,EQ_1244,ES0177542018,BBG00J9WBYB9,500,1.48,USD,ALLOC001-for-ORD005,ORD005,partial allocation,buy,market
