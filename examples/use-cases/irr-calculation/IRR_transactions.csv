@@ -1,0 +1,3 @@
+portfolio_code,portfolio_name,portfolio_base_currency,instrument_id,client_internal,txn_id,txn_type,txn_trade_date,txn_settle_date,txn_units,txn_price,txn_consideration
+IRR-Notebook-Equity1,IRR-Notebook-Equity1,USD,CCY_USD,,TXN_IRRSample_1,FundsIn,01/03/2024,01/03/2024,40000,0,40000
+IRR-Notebook-Equity1,IRR-Notebook-Equity1,USD,,MSFT_41,TXN_IRRSample_2,Buy,01/03/2024,01/03/2024,100,400,40000
